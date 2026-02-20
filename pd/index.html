@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNVM — Pitch Deck</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='b' cx='40%25' cy='35%25'%3E%3Cstop offset='0%25' stop-color='%23d4b568'/%3E%3Cstop offset='60%25' stop-color='%23a07d3a'/%3E%3Cstop offset='100%25' stop-color='%237a5e28'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='14' fill='url(%23b)'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #09090b;
+            --surface: #111110;
+            --text: #e8e5df;
+            --text-mid: #908d85;
+            --text-dim: #5a5850;
+            --brass: #c9a55a;
+            --brass-muted: #8a7442;
+            --brass-dim: rgba(201, 165, 90, 0.12);
+            --border: rgba(255, 255, 255, 0.05);
+            --border-strong: rgba(255, 255, 255, 0.1);
+            --font-display: 'Instrument Serif', Georgia, serif;
+            --font-body: 'Space Grotesk', -apple-system, sans-serif;
+            --font-mono: 'Space Mono', 'SF Mono', monospace;
+            --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-weight: 300;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        ::selection { background: var(--brass); color: var(--bg); }
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+
+        /* Grain */
+        .grain {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 180px;
+        }
+
+        /* ---- Slide deck container ---- */
+        .deck {
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            height: 100%;
+            transition: transform 0.6s var(--ease-out);
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(4rem, 8vh, 8rem) clamp(3rem, 8vw, 8rem);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-inner {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        /* ---- Navigation ---- */
+        .deck-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem clamp(2rem, 5vw, 4rem);
+            background: linear-gradient(to top, rgba(9,9,11,0.95) 60%, transparent);
+        }
+
+        .deck-nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .deck-mark {
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.65rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+
+        .deck-counter {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+        }
+
+        /* Progress bar */
+        .progress {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background: var(--brass);
+            z-index: 9001;
+            transition: width 0.6s var(--ease-out);
+        }
+
+        .deck-nav-right {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border-strong);
+            background: none;
+            color: var(--text-mid);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s var(--ease-out);
+            font-size: 1rem;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--brass-muted);
+            color: var(--brass);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.2;
+            cursor: default;
+        }
+
+        .nav-btn:disabled:hover {
+            border-color: var(--border-strong);
+            color: var(--text-mid);
+        }
+
+        /* ---- Slide typography ---- */
+        .sn {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--brass-muted);
+            margin-bottom: 2.5rem;
+            display: block;
+        }
+
+        .headline {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .headline em {
+            font-style: italic;
+            color: var(--brass);
+        }
+
+        .subhead {
+            font-family: var(--font-display);
+            font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--text-mid);
+        }
+
+        .body-text {
+            font-size: clamp(0.9rem, 1vw, 1rem);
+            line-height: 1.85;
+            color: var(--text-mid);
+            max-width: 48ch;
+        }
+
+        .body-text + .body-text {
+            margin-top: 1.2rem;
+        }
+
+        .quote {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.35;
+            color: var(--text);
+        }
+
+        .quote-attr {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            color: var(--text-dim);
+            margin-top: 1.5rem;
+            display: block;
+        }
+
+        .spacer { height: 2rem; }
+        .spacer-lg { height: clamp(2rem, 4vh, 4rem); }
+
+        /* ---- Split layout (text + image) ---- */
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(3rem, 6vw, 6rem);
+            align-items: center;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .split-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .split-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* ---- Full image slide ---- */
+        .slide--image {
+            padding: clamp(2rem, 4vw, 4rem);
+        }
+
+        .slide--image .slide-inner {
+            max-width: 1000px;
+        }
+
+        .slide-img {
+            width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+
+        .img-caption {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            letter-spacing: 0.08em;
+            color: var(--text-dim);
+            margin-top: 1rem;
+        }
+
+        /* ---- Grid layouts ---- */
+        .use-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            margin-top: 2rem;
+        }
+
+        .use-item {
+            background: var(--bg);
+            padding: 1.5rem;
+        }
+
+        .use-num {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            color: var(--text-dim);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.8rem;
+        }
+
+        .use-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 0.6rem;
+        }
+
+        .use-body {
+            font-size: 0.8rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        .stat {
+            background: var(--bg);
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            color: var(--text);
+        }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-top: 0.3rem;
+        }
+
+        /* Specs */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        .spec-item {
+            background: var(--bg);
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .spec-label {
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+        }
+
+        .spec-value {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text);
+        }
+
+        /* Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-strong);
+        }
+
+        .team-name {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+        }
+
+        .team-role {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--brass-muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .team-bio {
+            font-size: 0.8rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+        }
+
+        .advisors {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .advisors-label {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 1rem;
+        }
+
+        .advisor {
+            margin-bottom: 0.8rem;
+        }
+
+        .advisor-name {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text);
+        }
+
+        .advisor-title {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        /* Roadmap */
+        .roadmap {
+            margin-top: 2rem;
+        }
+
+        .roadmap-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 1.5rem;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--border);
+            align-items: baseline;
+        }
+
+        .roadmap-phase {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--brass-muted);
+        }
+
+        .roadmap-desc {
+            font-size: 0.85rem;
+            color: var(--text-mid);
+            line-height: 1.65;
+        }
+
+        .roadmap-desc strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* CTA */
+        .cta-email {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            color: var(--brass);
+            border-bottom: 1px solid var(--brass-muted);
+            padding-bottom: 0.2rem;
+        }
+
+        .footer-links {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .footer-links a {
+            color: var(--text-mid);
+        }
+
+        /* ---- Keyboard hint ---- */
+        .key-hint {
+            position: fixed;
+            top: 1.5rem;
+            right: clamp(2rem, 5vw, 4rem);
+            z-index: 9000;
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            color: var(--text-dim);
+            letter-spacing: 0.05em;
+            opacity: 0.5;
+            transition: opacity 0.5s;
+        }
+
+        .key-hint.hidden { opacity: 0; }
+
+        /* ---- Responsive ---- */
+        @media (max-width: 768px) {
+            .split {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .split-image { order: -1; }
+
+            .use-grid { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr; }
+            .specs-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: 1fr; }
+
+            .roadmap-item {
+                grid-template-columns: 1fr;
+                gap: 0.3rem;
+            }
+
+            .key-hint { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="key-hint" id="key-hint">Arrow keys or click to navigate</div>
+
+<!-- ---- SLIDE DECK ---- -->
+<div class="deck" id="deck">
+    <div class="slides" id="slides">
+
+        <!-- SLIDE 1: Title -->
+        <div class="slide">
+            <div class="slide-inner" style="text-align: center;">
+                <span class="sn">Near Field Circuit</span>
+                <h1 class="headline" style="font-size: clamp(3rem, 7vw, 5.5rem);">SIGNVM</h1>
+                <div class="spacer"></div>
+                <p class="subhead">Cryptographic Signet Ring</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: The Problem -->
+        <div class="slide">
+            <div class="slide-inner">
+                <span class="sn">01 — The Problem</span>
+                <p class="quote">
+                    "Your mother gets a call.<br>
+                    It's your voice.<br>
+                    She can't tell it's not you."
+                </p>
+                <div class="spacer-lg"></div>
+                <p class="body-text">
+                    AI can clone a voice in three seconds. Replicate a face from a photograph.
+                    Forge a signature from a sample. Digital identity is becoming unreliable.
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: The Insight -->
+        <div class="slide">
+            <div class="slide-inner">
+                <span class="sn">02 — The Insight</span>
+                <h2 class="headline">
+                    You can't steal<br>possession <em>remotely.</em>
+                </h2>
+                <div class="spacer-lg"></div>
+                <p class="body-text">
+                    Information leaks. Objects don't. For four thousand years, a signet ring
+                    pressed into wax was the most trusted form of identity.
+                </p>
+                <p class="body-text">
+                    Physical presence is the last unforgeable signal.
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: The Solution + CNC image -->
+        <div class="slide">
+            <div class="split">
+                <div class="split-text">
+                    <span class="sn">03 — The Solution</span>
+                    <h2 class="headline">The modern<br><em>signet.</em></h2>
+                    <div class="spacer"></div>
+                    <p class="body-text">
+                        A precision-machined brass antenna with an embedded cryptographic chip.
+                        No battery. No screen. No expiry. The grooves on the ring face are the antenna.
+                        The antenna is the circuit. Nothing is hidden.
+                    </p>
+                </div>
+                <div class="split-image">
+                    <img src="cnc.jpg" alt="CNC machining the SIGNVM antenna trace in brass">
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: How It Works + phone tap -->
+        <div class="slide">
+            <div class="split">
+                <div class="split-text">
+                    <span class="sn">04 — How It Works</span>
+                    <h2 class="headline">Tap to <em>sign.</em></h2>
+                    <div class="spacer"></div>
+                    <p class="body-text">
+                        Hold the ring to any NFC-enabled phone. The phone powers the chip.
+                        The chip generates a unique cryptographic signature — verifiable on-chain
+                        via LUKSO.
+                    </p>
+                    <p class="body-text">
+                        Proof you were there. No app. No pairing. Just tap.
+                    </p>
+                </div>
+                <div class="split-image">
+                    <img src="dezeen4.jpg" alt="SIGNVM ring tapped to iPhone">
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: The Network -->
+        <div class="slide">
+            <div class="slide-inner">
+                <span class="sn">05 — The Network</span>
+                <h2 class="headline">Trust scales through<br><em>constellations.</em></h2>
+                <div class="use-grid">
+                    <div class="use-item">
+                        <div class="use-num">01</div>
+                        <div class="use-name">Access</div>
+                        <p class="use-body">Tap the ring. You're in. No ticket, no app. Your presence is the credential.</p>
+                    </div>
+                    <div class="use-item">
+                        <div class="use-num">02</div>
+                        <div class="use-name">Trust</div>
+                        <p class="use-body">A tap between two rings proves identity. No deepfake survives proximity.</p>
+                    </div>
+                    <div class="use-item">
+                        <div class="use-num">03</div>
+                        <div class="use-name">Authority</div>
+                        <p class="use-body">AI agents act on your behalf. The ring is the only thing that can say yes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: Traction + prototypes image -->
+        <div class="slide">
+            <div class="split">
+                <div class="split-text">
+                    <span class="sn">06 — Traction</span>
+                    <h2 class="headline">Already<br><em>shipped.</em></h2>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-num">10</div>
+                            <div class="stat-label">Objects shipped</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-num">4</div>
+                            <div class="stat-label">Continents</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-num">100%</div>
+                            <div class="stat-label">Sold out</div>
+                        </div>
+                    </div>
+                    <div class="spacer"></div>
+                    <p class="body-text">
+                        Edition 01 — 10 brass objects. Four continents. Sold out.
+                        Partially funded by a US$15K LUKSO grant.
+                    </p>
+                </div>
+                <div class="split-image">
+                    <img src="prototypes.jpg" alt="SIGNVM prototypes and components">
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: The Object + exploded view -->
+        <div class="slide">
+            <div class="split">
+                <div class="split-text">
+                    <span class="sn">07 — The Object</span>
+                    <h2 class="headline">The ring is<br>the <em>technology.</em></h2>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Chip</span>
+                            <span class="spec-value">ARX HaLo</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Frequency</span>
+                            <span class="spec-value">13.56 MHz</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Face</span>
+                            <span class="spec-value">19.5 mm</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight</span>
+                            <span class="spec-value">~17 g</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Power</span>
+                            <span class="spec-value">None</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Blockchain</span>
+                            <span class="spec-value">LUKSO</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Materials</span>
+                            <span class="spec-value">Brass / Ag / Au</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Design</span>
+                            <span class="spec-value">Monolithic</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="split-image">
+                    <img src="exploded-view-sm.png" alt="Exploded view of SIGNVM ring" style="filter: invert(0.9) brightness(0.8); max-width: 380px; margin: 0 auto;">
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: Team -->
+        <div class="slide">
+            <div class="slide-inner">
+                <span class="sn">08 — The Team</span>
+                <h2 class="headline">Built by <em>makers.</em></h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-name">Jim Hannon-Tan</div>
+                        <div class="team-role">Founder &middot; Design &amp; Engineering</div>
+                        <p class="team-bio">25 years in product design and engineering. Alessi, Tom Dixon, LVMH, Flos, Medtech. Tonsley Innovation District, Adelaide.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-name">Aureliano Alarc&oacute;n Smith</div>
+                        <div class="team-role">Blockchain &amp; Software</div>
+                        <p class="team-bio">Full-stack Web3. Smart contracts, wallet integration, authentication. Formerly RTFKT / Nike.</p>
+                    </div>
+                </div>
+                <div class="advisors">
+                    <div class="advisors-label">Advisors</div>
+                    <div class="advisor">
+                        <span class="advisor-name">Fabian Vogelsteller</span>
+                        <span class="advisor-title"> — Co-founder, LUKSO. Creator of ERC-20.</span>
+                    </div>
+                    <div class="advisor">
+                        <span class="advisor-name">Prof. Shengjian Chen</span>
+                        <span class="advisor-title"> — Flinders University. RF/NFC antenna &amp; wireless systems.</span>
+                    </div>
+                    <div class="advisor">
+                        <span class="advisor-name">Cameron Robertson</span>
+                        <span class="advisor-title"> — Technology &amp; product strategy.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: What's Next -->
+        <div class="slide">
+            <div class="slide-inner">
+                <span class="sn">09 — What's Next</span>
+                <h2 class="headline">Edition 02.</h2>
+                <div class="roadmap">
+                    <div class="roadmap-item">
+                        <span class="roadmap-phase">Now</span>
+                        <p class="roadmap-desc"><strong>RF optimisation.</strong> Antenna characterisation with Flinders University. PCB run (15 units). Jewellery finishing.</p>
+                    </div>
+                    <div class="roadmap-item">
+                        <span class="roadmap-phase">Q2 2026</span>
+                        <p class="roadmap-desc"><strong>Platform MVP.</strong> Web3 NFC check-in + wallet integration. LUKSO Universal Profile auth layer.</p>
+                    </div>
+                    <div class="roadmap-item">
+                        <span class="roadmap-phase">Mid 2026</span>
+                        <p class="roadmap-desc"><strong>Berlin launch.</strong> Co-launch with LUKSO and SLEEK Magazine. Live access-control pilot.</p>
+                    </div>
+                    <div class="roadmap-item">
+                        <span class="roadmap-phase">H2 2026</span>
+                        <p class="roadmap-desc"><strong>Scale.</strong> Edition 02 (100 units). Three metals. Pre-seed raise.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: Closing -->
+        <div class="slide">
+            <div class="slide-inner" style="text-align: center;">
+                <p class="quote">
+                    "AI makes everything<br>satisfactorily fake.<br>
+                    Crypto makes it <em style="color: var(--brass);">real.</em>"
+                </p>
+                <span class="quote-attr">Balaji Srinivasan</span>
+                <div class="spacer-lg"></div>
+                <div class="spacer-lg"></div>
+                <a href="mailto:jim@jimhannontan.com" class="cta-email">jim@jimhannontan.com</a>
+                <div class="spacer-lg"></div>
+                <p class="footer-links">
+                    <a href="https://www.jimhannontan.com/" target="_blank">jimhannontan.com</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="https://x.com/phygicoil" target="_blank">@phygicoil</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="https://www.nearfieldcircuit.com/" target="_blank">nearfieldcircuit.com</a>
+                    &nbsp;&middot;&nbsp;
+                    <a href="/">signvm.xyz</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Bottom nav -->
+<div class="deck-nav">
+    <div class="deck-nav-left">
+        <span class="deck-mark">SIGNVM</span>
+        <span class="deck-counter" id="counter">1 / 11</span>
+    </div>
+    <div class="deck-nav-right">
+        <button class="nav-btn" id="prev-btn" disabled aria-label="Previous slide">&larr;</button>
+        <button class="nav-btn" id="next-btn" aria-label="Next slide">&rarr;</button>
+    </div>
+</div>
+<div class="progress" id="progress"></div>
+
+<script>
+(function () {
+    const slides = document.getElementById('slides');
+    const allSlides = slides.children;
+    const total = allSlides.length;
+    const counter = document.getElementById('counter');
+    const progress = document.getElementById('progress');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const hint = document.getElementById('key-hint');
+    let current = 0;
+
+    function goTo(n) {
+        if (n < 0 || n >= total) return;
+        current = n;
+        slides.style.transform = 'translateX(-' + (current * 100) + '%)';
+        counter.textContent = (current + 1) + ' / ' + total;
+        progress.style.width = ((current + 1) / total * 100) + '%';
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === total - 1;
+        if (hint && current > 0) hint.classList.add('hidden');
+    }
+
+    prevBtn.addEventListener('click', function () { goTo(current - 1); });
+    nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+    });
+
+    // Touch / swipe
+    let touchX = 0;
+    document.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; });
+    document.addEventListener('touchend', function (e) {
+        const dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 50) {
+            if (dx < 0) goTo(current + 1);
+            else goTo(current - 1);
+        }
+    });
+
+    // Click on slide to advance (not on links/buttons)
+    document.getElementById('deck').addEventListener('click', function (e) {
+        if (e.target.closest('a') || e.target.closest('button')) return;
+        const x = e.clientX / window.innerWidth;
+        if (x > 0.5) goTo(current + 1);
+        else goTo(current - 1);
+    });
+
+    goTo(0);
+})();
+</script>
+
+</body>
+</html>
