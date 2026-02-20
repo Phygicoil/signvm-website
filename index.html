@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNVM</title>
+    <meta name="description" content="Cryptographic signet ring. Proof of physical presence for a post-AI world.">
+    <meta property="og:title" content="SIGNVM">
+    <meta property="og:description" content="The ring is the antenna. The antenna is the signature.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Grain overlay -->
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Navigation — minimal, out of the way -->
+    <nav class="nav" id="nav">
+        <div class="nav-left">
+            <a href="#" class="nav-mark">SIGNVM</a>
+        </div>
+        <div class="nav-right">
+            <a href="#thesis" class="nav-link">Why</a>
+            <a href="#how" class="nav-link">How</a>
+            <a href="#object" class="nav-link">Object</a>
+            <a href="#acquire" class="nav-link nav-link--cta">Acquire</a>
+        </div>
+        <button class="nav-burger" id="nav-burger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile overlay -->
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="#thesis">Why</a>
+        <a href="#how">How</a>
+        <a href="#object">Object</a>
+        <a href="#acquire">Acquire</a>
+    </div>
+
+    <!-- ============================================
+         CHAPTER 0 — THE OPENING
+         A single, arresting statement. No product shots.
+         ============================================ -->
+    <section class="opening" id="opening">
+        <div class="opening-frame">
+            <div class="opening-content">
+                <span class="opening-anno" data-reveal>Near Field Circuit</span>
+                <h1 class="opening-headline" data-reveal data-delay="1">
+                    Before there were<br>passwords, there were<br><em>seals.</em>
+                </h1>
+            </div>
+            <div class="opening-scroll" data-reveal data-delay="3">
+                <div class="scroll-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CHAPTER 1 — THESIS
+         The philosophical argument. Why this exists.
+         ============================================ -->
+    <section class="thesis" id="thesis">
+        <div class="thesis-track">
+            <div class="thesis-block" data-reveal>
+                <p class="thesis-text">
+                    For four thousand years, a signet ring pressed into wax
+                    was the most trusted form of identity.
+                </p>
+            </div>
+            <div class="thesis-block" data-reveal>
+                <p class="thesis-text">
+                    Not a password. Not a face scan.
+                    <span class="thesis-em">An object you hold.</span>
+                </p>
+            </div>
+            <div class="thesis-block" data-reveal>
+                <p class="thesis-divider-text">
+                    AI can now clone your voice in three seconds.
+                    Replicate your face from a photograph.
+                    Forge your handwriting from a sample.
+                </p>
+            </div>
+            <div class="thesis-block" data-reveal>
+                <p class="thesis-text">
+                    It cannot fake
+                    <span class="thesis-em">a ring on your hand.</span>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CHAPTER 2 — THE REVEAL
+         First time the product appears. Full drama.
+         ============================================ -->
+    <section class="reveal" id="reveal">
+        <div class="reveal-inner">
+            <div class="reveal-image-wrap" data-reveal>
+                <img src="signvm-hero-ring.webp" alt="Three SIGNVM brass signet rings on travertine stone" class="reveal-image" loading="lazy">
+            </div>
+            <div class="reveal-caption" data-reveal data-delay="1">
+                <span class="reveal-label">SIGNVM</span>
+                <span class="reveal-sub">Cryptographic Signet Ring</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CHAPTER 3 — HOW IT WORKS
+         Not "use cases" — a narrative sequence.
+         ============================================ -->
+    <section class="how" id="how">
+        <div class="how-header" data-reveal>
+            <span class="section-number">How it works</span>
+        </div>
+
+        <div class="how-sequence">
+            <div class="how-step" data-reveal>
+                <div class="how-step-visual">
+                    <div class="how-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1">
+                            <circle cx="24" cy="24" r="18"/>
+                            <circle cx="24" cy="24" r="12"/>
+                            <circle cx="24" cy="24" r="6"/>
+                            <circle cx="24" cy="24" r="1.5" fill="currentColor"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="how-step-content">
+                    <span class="how-step-num">01</span>
+                    <h3 class="how-step-title">Tap</h3>
+                    <p class="how-step-body">
+                        Hold the ring to any NFC-enabled phone. The phone powers the chip.
+                        The chip generates a unique cryptographic signature. No battery. No app.
+                        No pairing.
+                    </p>
+                </div>
+            </div>
+
+            <div class="how-step" data-reveal>
+                <div class="how-step-visual">
+                    <div class="how-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1">
+                            <path d="M8 24h32"/>
+                            <path d="M24 8v32"/>
+                            <rect x="16" y="16" width="16" height="16" rx="2"/>
+                            <circle cx="24" cy="24" r="3"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="how-step-content">
+                    <span class="how-step-num">02</span>
+                    <h3 class="how-step-title">Verify</h3>
+                    <p class="how-step-body">
+                        The signature is written to the blockchain. Immutable. Timestamped.
+                        Tied to your Universal Profile. Proof you were there, at that moment,
+                        in that place.
+                    </p>
+                </div>
+            </div>
+
+            <div class="how-step" data-reveal>
+                <div class="how-step-visual">
+                    <div class="how-icon">
+                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1">
+                            <path d="M24 6l16 9v18l-16 9-16-9V15z"/>
+                            <path d="M24 24l16-9"/>
+                            <path d="M24 24L8 15"/>
+                            <path d="M24 24v18"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="how-step-content">
+                    <span class="how-step-num">03</span>
+                    <h3 class="how-step-title">Authorise</h3>
+                    <p class="how-step-body">
+                        Grant access. Confirm identity. Approve an AI agent to act on your behalf.
+                        The ring is the only thing that can say yes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CHAPTER 4 — SCENARIOS
+         Real-world situations, not abstract use-cases.
+         ============================================ -->
+    <section class="scenarios" id="scenarios">
+        <div class="scenarios-inner">
+            <div class="scenario" data-reveal>
+                <div class="scenario-context">Your mother gets a call</div>
+                <p class="scenario-problem">
+                    It sounds exactly like you. Same voice. Same cadence. Same pet name for the dog.
+                    She can't tell it's not you.
+                </p>
+                <p class="scenario-resolve">
+                    But a tap of the ring creates a cryptographic proof no AI can replicate.
+                    A signal only the real you can send.
+                </p>
+            </div>
+            <div class="scenario" data-reveal>
+                <div class="scenario-context">A venue door at midnight</div>
+                <p class="scenario-problem">
+                    No bouncer checking IDs. No QR code. No app to download.
+                </p>
+                <p class="scenario-resolve">
+                    You tap. The door opens. Your ring is the only credential.
+                </p>
+            </div>
+            <div class="scenario" data-reveal>
+                <div class="scenario-context">An AI places an order on your behalf</div>
+                <p class="scenario-problem">
+                    It found the best price. Negotiated terms. Drafted the contract.
+                </p>
+                <p class="scenario-resolve">
+                    But it cannot execute. Machines propose. You authorise.
+                    The ring is the final key.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CHAPTER 5 — THE OBJECT
+         Material, technical, physical. Show the craft.
+         ============================================ -->
+    <section class="object" id="object">
+        <div class="object-grid">
+            <div class="object-image-col" data-reveal>
+                <img src="brass.jpg" alt="SIGNVM ring detail showing machined antenna trace" class="object-photo" loading="lazy">
+            </div>
+            <div class="object-text-col">
+                <h2 class="object-title" data-reveal>The ring is<br>the technology.</h2>
+                <div class="object-statements" data-reveal data-delay="1">
+                    <p>Machined from a single block of metal.</p>
+                    <p>The square spiral on the face is the antenna.</p>
+                    <p>The antenna is the circuit.</p>
+                    <p>Nothing is hidden.</p>
+                </div>
+                <div class="object-detail" data-reveal data-delay="2">
+                    <p>
+                        It draws power from your phone at the moment of contact.
+                        No battery. No charging. No firmware updates. It works the day
+                        you receive it. It will work in twenty years.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="specs" data-reveal>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <span class="spec-label">Chip</span>
+                    <span class="spec-value">ARX HaLo</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Frequency</span>
+                    <span class="spec-value">13.56 MHz</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Face</span>
+                    <span class="spec-value">19.5 mm</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Weight</span>
+                    <span class="spec-value">~17 g (brass)</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Power</span>
+                    <span class="spec-value">None</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Blockchain</span>
+                    <span class="spec-value">LUKSO</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Materials</span>
+                    <span class="spec-value">Brass / Silver / 18K</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Design</span>
+                    <span class="spec-value">Monolithic</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CHAPTER 6 — ACQUIRE
+         Stripped-back. Confident. Not a "shop" — an offering.
+         ============================================ -->
+    <section class="acquire" id="acquire">
+        <div class="acquire-inner">
+            <div class="acquire-header" data-reveal>
+                <span class="section-number">Edition 02</span>
+                <h2 class="acquire-title">Three metals.<br>One circuit.</h2>
+            </div>
+
+            <div class="acquire-grid">
+                <div class="acquire-card" data-reveal>
+                    <div class="acquire-card-top">
+                        <div class="acquire-swatch acquire-swatch--brass"></div>
+                    </div>
+                    <div class="acquire-card-body">
+                        <h3>Brass</h3>
+                        <p class="acquire-note">Develops patina with wear</p>
+                        <div class="acquire-price">TBD</div>
+                        <a href="mailto:signal@nearfieldcircuit.com?subject=SIGNVM%20Brass%20Pre-order" class="btn">Pre-order</a>
+                    </div>
+                </div>
+
+                <div class="acquire-card" data-reveal data-delay="1">
+                    <div class="acquire-card-top">
+                        <div class="acquire-swatch acquire-swatch--silver"></div>
+                    </div>
+                    <div class="acquire-card-body">
+                        <h3>Sterling Silver</h3>
+                        <p class="acquire-note">Hallmarked. Heirloom weight.</p>
+                        <div class="acquire-price">TBD</div>
+                        <a href="mailto:signal@nearfieldcircuit.com?subject=SIGNVM%20Silver%20Interest" class="btn btn--ghost">Register interest</a>
+                    </div>
+                </div>
+
+                <div class="acquire-card" data-reveal data-delay="2">
+                    <div class="acquire-card-top">
+                        <div class="acquire-swatch acquire-swatch--gold"></div>
+                    </div>
+                    <div class="acquire-card-body">
+                        <h3>18K Gold</h3>
+                        <p class="acquire-note">Made to order</p>
+                        <div class="acquire-price">TBD</div>
+                        <a href="mailto:signal@nearfieldcircuit.com?subject=SIGNVM%20Gold%20Commission" class="btn btn--ghost">Register interest</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acquire-provenance" data-reveal>
+                <div class="provenance-line"></div>
+                <p>Edition 01 — ten brass objects. Four continents. <span class="provenance-status">Sold out.</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER — Quiet confidence.
+         ============================================ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-statement" data-reveal>
+                Physical authority for a digital world.
+            </div>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <span class="footer-heading">Project</span>
+                    <a href="https://www.nearfieldcircuit.com/" target="_blank" rel="noopener">Near Field Circuit</a>
+                    <a href="https://lukso.network/" target="_blank" rel="noopener">LUKSO Network</a>
+                </div>
+                <div class="footer-col">
+                    <span class="footer-heading">Studio</span>
+                    <a href="https://www.jimhannontan.com/" target="_blank" rel="noopener">Jim Hannon-Tan</a>
+                    <a href="https://www.instagram.com/jimhannontan/" target="_blank" rel="noopener">Instagram</a>
+                </div>
+                <div class="footer-col">
+                    <span class="footer-heading">Signal</span>
+                    <a href="mailto:signal@nearfieldcircuit.com">signal@nearfieldcircuit.com</a>
+                    <a href="https://x.com/phygicoil" target="_blank" rel="noopener">@phygicoil</a>
+                </div>
+            </div>
+            <div class="footer-base">
+                <span class="footer-wordmark">SIGNVM</span>
+                <span class="footer-copy">&copy; 2026 Near Field Circuit</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
