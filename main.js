@@ -69,38 +69,4 @@
         });
     });
 
-    // ---- Parallax on opening glow ----
-    const opening = document.querySelector('.opening');
-    if (opening) {
-        window.addEventListener(
-            'scroll',
-            () => {
-                const rect = opening.getBoundingClientRect();
-                if (rect.bottom > 0) {
-                    const progress = 1 - rect.bottom / (window.innerHeight + rect.height);
-                    const pseudo = opening;
-                    pseudo.style.setProperty(
-                        '--glow-opacity',
-                        Math.max(0, 1 - progress * 1.5)
-                    );
-                }
-            },
-            { passive: true }
-        );
-    }
-
-    // ---- Stagger reveal for thesis blocks ----
-    const thesisBlocks = document.querySelectorAll('.thesis-block');
-    const thesisObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    thesisObserver.unobserve(entry.target);
-                }
-            });
-        },
-        { threshold: 0.2, rootMargin: '0px 0px -60px 0px' }
-    );
-    thesisBlocks.forEach((el) => thesisObserver.observe(el));
 })();

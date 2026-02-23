@@ -16,10 +16,8 @@
 </head>
 <body>
 
-    <!-- Grain overlay -->
     <div class="grain" aria-hidden="true"></div>
 
-    <!-- Navigation — just the mark and contact -->
     <nav class="nav" id="nav">
         <div class="nav-left">
             <a href="#" class="nav-mark">SIGNVM</a>
@@ -29,155 +27,48 @@
         </div>
     </nav>
 
-    <!-- ============================================
-         1 — OPENING
-         ============================================ -->
+    <!-- Opening -->
     <section class="opening" id="opening">
         <div class="opening-frame">
             <div class="opening-content">
-                <span class="opening-anno" data-reveal>Near Field Circuit</span>
-                <h1 class="opening-headline" data-reveal data-delay="1">
+                <h1 class="opening-headline" data-reveal>
                     Before there were<br>passwords, there were<br><em>seals.</em>
                 </h1>
             </div>
-            <div class="opening-scroll" data-reveal data-delay="3">
-                <div class="scroll-line"></div>
-            </div>
         </div>
     </section>
 
-    <!-- ============================================
-         2 — THESIS (two punches)
-         ============================================ -->
-    <section class="thesis" id="thesis">
-        <div class="thesis-track">
-            <div class="thesis-block" data-reveal>
-                <p class="thesis-text">
-                    A signet ring pressed into wax was the most trusted form
-                    of identity <span class="thesis-em">for four thousand years.</span>
-                </p>
-            </div>
-            <div class="thesis-block" data-reveal>
-                <p class="thesis-text">
-                    AI can fake your voice, your face, your handwriting.
-                    It cannot fake <span class="thesis-em">a ring on your hand.</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================
-         3 — THE OBJECT
-         Hero image, then split detail, then specs.
-         ============================================ -->
-    <section class="reveal" id="reveal">
-        <div class="reveal-inner">
-            <div class="reveal-image-wrap" data-reveal>
-                <img src="hero-ring.jpg" alt="SIGNVM brass signet ring on travertine stone" class="reveal-image">
-            </div>
-        </div>
-    </section>
-
-    <section class="object" id="object">
+    <!-- One image. One explanation. -->
+    <section class="object" id="object" style="border-top: none;">
         <div class="object-grid">
             <div class="object-image-col" data-reveal>
                 <img src="brass.jpg" alt="SIGNVM ring detail — machined antenna trace on the face" class="object-photo">
             </div>
             <div class="object-text-col">
-                <h2 class="object-title" data-reveal>Tap. Sign. Verify.</h2>
-                <div class="object-statements" data-reveal data-delay="1">
-                    <p>The ring signs things. That's it.</p>
-                    <p>A verification challenge. A transaction. A mandate for an AI agent. An access token. A contract.</p>
-                    <p>All the same cryptographic operation.</p>
-                </div>
-                <div class="object-detail" data-reveal data-delay="2">
-                    <p>
-                        No battery. No app. No pairing. The grooves on the face
-                        are the antenna. The antenna is the circuit. It draws power
-                        from your phone at the moment of contact.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="specs" data-reveal>
-            <div class="specs-grid">
-                <div class="spec-item">
-                    <span class="spec-label">Chip</span>
-                    <span class="spec-value">ARX HaLo</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Frequency</span>
-                    <span class="spec-value">13.56 MHz</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Face</span>
-                    <span class="spec-value">19.5 mm</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Weight</span>
-                    <span class="spec-value">~17 g (brass)</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Power</span>
-                    <span class="spec-value">None</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Blockchain</span>
-                    <span class="spec-value">LUKSO</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Materials</span>
-                    <span class="spec-value">Brass / Silver / 18K</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-label">Design</span>
-                    <span class="spec-value">Monolithic</span>
+                <h2 class="object-title" data-reveal>The ring signs things.</h2>
+                <div class="object-detail" data-reveal data-delay="1">
+                    <p>A verification challenge. A transaction. A mandate for an AI agent. A contract. All the same cryptographic operation.</p>
+                    <p style="margin-top: 1.2rem;">No battery. No app. The grooves on the face are the antenna. It draws power from your phone at the moment of contact.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ============================================
-         4 — STATUS
-         ============================================ -->
-    <section class="scenarios" id="status">
-        <div class="scenarios-inner">
-            <div class="scenario" data-reveal style="border-bottom: none; padding-bottom: 0;">
-                <p class="thesis-text" style="margin-bottom: 2rem;">
-                    Edition 01 — ten brass objects. Four continents.
-                    <span class="thesis-em">Sold out.</span>
-                </p>
-                <p class="thesis-text" style="margin-bottom: 3rem;">
-                    Edition 02 — in collaboration with
-                    <span class="thesis-em">Fabian Vogelsteller</span>
-                    <span style="color: var(--text-tertiary);"> (LUKSO, ERC-20).</span>
-                </p>
-                <a href="mailto:jim@jimhannontan.com" style="font-family: var(--font-body); font-size: 1rem; color: var(--brass); border-bottom: 1px solid var(--brass-muted); padding-bottom: 0.2rem;">jim@jimhannontan.com</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================
-         5 — FOOTER
-         ============================================ -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-statement" data-reveal>
-                Physical authority for a digital world.
+                Physical authority<br>for a digital world.
             </div>
-            <div class="footer-grid">
+            <div class="footer-grid" style="grid-template-columns: 1fr 1fr;">
                 <div class="footer-col">
                     <span class="footer-heading">Project</span>
-                    <a href="https://www.nearfieldcircuit.com/" target="_blank" rel="noopener">Near Field Circuit</a>
                     <a href="https://lukso.network/" target="_blank" rel="noopener">LUKSO</a>
-                </div>
-                <div class="footer-col">
-                    <span class="footer-heading">Studio</span>
+                    <a href="https://www.nearfieldcircuit.com/" target="_blank" rel="noopener">Near Field Circuit</a>
                     <a href="https://www.jimhannontan.com/" target="_blank" rel="noopener">Jim Hannon-Tan</a>
                 </div>
                 <div class="footer-col">
-                    <span class="footer-heading">Signal</span>
+                    <span class="footer-heading">Contact</span>
                     <a href="mailto:jim@jimhannontan.com">jim@jimhannontan.com</a>
                     <a href="https://x.com/phygicoil" target="_blank" rel="noopener">@phygicoil</a>
                 </div>
