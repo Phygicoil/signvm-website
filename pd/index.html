@@ -493,6 +493,49 @@
             color: var(--text-mid);
         }
 
+        /* ---- Emphasis slide (money slide) ---- */
+        .slide--emphasis .headline {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+        }
+
+        .step-list {
+            list-style: none;
+            counter-reset: steps;
+            margin-top: 2rem;
+        }
+
+        .step-list li {
+            counter-increment: steps;
+            font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+            line-height: 1.85;
+            color: var(--text-mid);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .step-list li::before {
+            content: counter(steps) ".";
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            color: var(--brass-muted);
+            margin-right: 1rem;
+        }
+
+        .emphasis-line {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-style: italic;
+            color: var(--brass);
+            margin-top: 2.5rem;
+        }
+
+        .emphasis-sub {
+            font-size: clamp(0.85rem, 1vw, 0.95rem);
+            color: var(--text-dim);
+            margin-top: 1.5rem;
+            line-height: 1.8;
+        }
+
         /* ---- Keyboard hint ---- */
         .key-hint {
             position: fixed;
@@ -542,19 +585,19 @@
 <div class="deck" id="deck">
     <div class="slides" id="slides">
 
-        <!-- SLIDE 1: Title -->
+        <!-- SLIDE 0: Title -->
         <div class="slide">
             <div class="slide-inner" style="text-align: center;">
                 <h1 class="headline" style="font-size: clamp(3rem, 7vw, 5.5rem);">SIGNVM</h1>
                 <div class="spacer"></div>
-                <p class="subhead">Cryptographic Signet Ring</p>
+                <p class="subhead">Physical authority for the digital world.</p>
             </div>
         </div>
 
-        <!-- SLIDE 2: The Problem -->
+        <!-- SLIDE 01: The Hook -->
         <div class="slide">
             <div class="slide-inner">
-                <span class="sn">01 — The Problem</span>
+                <span class="sn">01 — The Hook</span>
                 <p class="quote">
                     "Your mother gets a call.<br>
                     It's your voice.<br>
@@ -563,23 +606,30 @@
                 <div class="spacer-lg"></div>
                 <p class="body-text">
                     AI can clone a voice in three seconds. Replicate a face from a photograph.
-                    Forge a signature from a sample. Digital identity is becoming unreliable.
+                    Forge a signature from a sample.
                 </p>
+                <p class="body-text">
+                    If you can't trust a voice, a face, or a fingerprint &mdash; what can you trust?
+                </p>
+                <div class="spacer-lg"></div>
+                <h2 class="headline"><em>Possession.</em></h2>
             </div>
         </div>
 
-        <!-- SLIDE 3: The Insight -->
+        <!-- SLIDE 02: The Thesis -->
         <div class="slide">
             <div class="split">
                 <div class="split-text">
-                    <span class="sn">02 — The Insight</span>
+                    <span class="sn">02 — The Thesis</span>
                     <h2 class="headline">
                         You can't steal<br>possession <em>remotely.</em>
                     </h2>
                     <div class="spacer-lg"></div>
                     <p class="body-text">
-                        Information leaks. Objects don't. For four thousand years, a signet ring
-                        pressed into wax was the most trusted form of identity.
+                        Information leaks. Objects don't.
+                    </p>
+                    <p class="body-text">
+                        For four thousand years, a signet ring pressed into clay was the most trusted form of authority.
                     </p>
                     <p class="body-text">
                         Physical presence is the last unforgeable signal.
@@ -591,39 +641,67 @@
             </div>
         </div>
 
-        <!-- SLIDE 4: The Solution + CNC image -->
+        <!-- SLIDE 03: Why Now (NEW) -->
+        <div class="slide">
+            <div class="slide-inner">
+                <span class="sn">03 — Why Now</span>
+                <h2 class="headline">
+                    AI agents are here.<br>Who <em>controls</em> them?
+                </h2>
+                <div class="spacer-lg"></div>
+                <p class="body-text">
+                    Autonomous agents will manage your wallet, book your travel, execute trades, and deploy capital &mdash; 24 hours a day.
+                </p>
+                <p class="body-text">
+                    The urgent question isn't identity. It's authority.
+                </p>
+                <p class="body-text">
+                    Who gave permission? Within what limits? Can it be revoked?
+                </p>
+                <p class="body-text" style="color: var(--text);">
+                    The answer has to be physical.
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 04: The Object -->
         <div class="slide">
             <div class="split">
                 <div class="split-text">
-                    <span class="sn">03 — The Solution</span>
+                    <span class="sn">04 — The Object</span>
                     <h2 class="headline">The modern<br><em>signet.</em></h2>
                     <div class="spacer"></div>
                     <p class="body-text">
                         A precision-machined brass antenna with an embedded cryptographic chip.
-                        No battery. No screen. No expiry. The grooves on the ring face are the antenna.
+                        No battery. No screen. No expiry.
+                    </p>
+                    <p class="body-text">
+                        The grooves on the ring face are the antenna.
                         The antenna is the circuit. Nothing is hidden.
                     </p>
                 </div>
                 <div class="split-image">
-                    <img src="/pd/tap2.jpg" alt="SIGNVM ring tapped to phone">
+                    <img src="/pd/tap2.jpg" alt="SIGNVM ring close-up">
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 5: How It Works + phone tap -->
+        <!-- SLIDE 05: How It Works -->
         <div class="slide">
             <div class="split">
                 <div class="split-text">
-                    <span class="sn">04 — How It Works</span>
+                    <span class="sn">05 — How It Works</span>
                     <h2 class="headline">Tap to <em>sign.</em></h2>
                     <div class="spacer"></div>
                     <p class="body-text">
                         Hold the ring to any NFC-enabled phone. The phone powers the chip.
-                        The chip generates a unique cryptographic signature — verifiable on-chain
-                        via LUKSO.
+                        The chip generates a unique cryptographic signature &mdash; verified instantly.
                     </p>
                     <p class="body-text">
-                        Proof you were there. No app. No pairing. Just tap.
+                        Built on LUKSO Universal Profiles: the first identity system designed for granular, revocable permissions.
+                    </p>
+                    <p class="body-text">
+                        No app install. No pairing. Just tap.
                     </p>
                 </div>
                 <div class="split-image">
@@ -632,11 +710,28 @@
             </div>
         </div>
 
-        <!-- SLIDE 6: The Network -->
+        <!-- SLIDE 06: Agent Authorization (THE MONEY SLIDE) -->
+        <div class="slide slide--emphasis">
+            <div class="slide-inner">
+                <span class="sn">06 — Agent Authorization</span>
+                <h2 class="headline">
+                    Your AI proposes.<br>You decide. You <em>tap.</em>
+                </h2>
+                <ol class="step-list">
+                    <li>Agent requests action &mdash; amount, destination, purpose, expiry.</li>
+                    <li>You see exactly what it wants to do.</li>
+                    <li>You tap the ring. It executes.</li>
+                </ol>
+                <p class="emphasis-line">No tap, nothing moves.</p>
+                <p class="emphasis-sub">The ring doesn't hold your money. It controls what your agents are allowed to do.</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 07: Three Layers -->
         <div class="slide">
             <div class="slide-inner">
-                <span class="sn">05 — The Network</span>
-                <h2 class="headline">Trust scales through<br><em>constellations.</em></h2>
+                <span class="sn">07 — Three Layers</span>
+                <h2 class="headline">One object.<br>Three layers of <em>authority.</em></h2>
                 <div class="use-grid">
                     <div class="use-item">
                         <div class="use-num">01</div>
@@ -646,7 +741,7 @@
                     <div class="use-item">
                         <div class="use-num">02</div>
                         <div class="use-name">Trust</div>
-                        <p class="use-body">A tap between two rings proves identity. No deepfake survives proximity.</p>
+                        <p class="use-body">A tap between people proves identity. No deepfake survives physical proximity. Families buy sets. We call them constellations.</p>
                     </div>
                     <div class="use-item">
                         <div class="use-num">03</div>
@@ -657,11 +752,11 @@
             </div>
         </div>
 
-        <!-- SLIDE 7: Traction + prototypes image -->
+        <!-- SLIDE 08: Traction -->
         <div class="slide">
             <div class="split">
                 <div class="split-text">
-                    <span class="sn">06 — Traction</span>
+                    <span class="sn">08 — Traction</span>
                     <h2 class="headline">Already<br><em>shipped.</em></h2>
                     <div class="stats">
                         <div class="stat">
@@ -679,8 +774,11 @@
                     </div>
                     <div class="spacer"></div>
                     <p class="body-text">
-                        Edition 01 — 10 brass objects. Four continents. Sold out.
-                        Partially funded by a US$15K LUKSO grant.
+                        Edition 01 &mdash; 10 precision-machined brass objects.
+                        Funded by a US$15K LUKSO Foundation grant.
+                    </p>
+                    <p class="body-text" style="color: var(--text);">
+                        Now building Edition 02.
                     </p>
                 </div>
                 <div class="split-image">
@@ -689,11 +787,11 @@
             </div>
         </div>
 
-        <!-- SLIDE 8: The Object + exploded view -->
+        <!-- SLIDE 09: The Object (Specs) -->
         <div class="slide">
             <div class="split">
                 <div class="split-text">
-                    <span class="sn">07 — The Object</span>
+                    <span class="sn">09 — The Object</span>
                     <h2 class="headline">The ring is<br>the <em>technology.</em></h2>
                     <div class="specs-grid">
                         <div class="spec-item">
@@ -717,12 +815,12 @@
                             <span class="spec-value">None</span>
                         </div>
                         <div class="spec-item">
-                            <span class="spec-label">Blockchain</span>
-                            <span class="spec-value">LUKSO</span>
+                            <span class="spec-label">Identity</span>
+                            <span class="spec-value">LUKSO Universal Profile</span>
                         </div>
                         <div class="spec-item">
                             <span class="spec-label">Materials</span>
-                            <span class="spec-value">Brass / Ag / Au</span>
+                            <span class="spec-value">Brass / Sterling Silver / 18K Gold</span>
                         </div>
                         <div class="spec-item">
                             <span class="spec-label">Design</span>
@@ -736,37 +834,37 @@
             </div>
         </div>
 
-        <!-- SLIDE 9: Team -->
+        <!-- SLIDE 10: Team -->
         <div class="slide">
             <div class="split">
                 <div class="split-text">
-                    <span class="sn">08 — The Team</span>
+                    <span class="sn">10 — The Team</span>
                     <h2 class="headline">Built by <em>makers.</em></h2>
                     <div class="team-grid" style="grid-template-columns: 1fr;">
                         <div class="team-member">
                             <div class="team-name">Jim Hannon-Tan</div>
                             <div class="team-role">Founder &middot; Design &amp; Engineering</div>
-                            <p class="team-bio">25 years in product design and engineering. Alessi, Tom Dixon, LVMH, Flos, Medtech. Tonsley Innovation District, Adelaide.</p>
+                            <p class="team-bio">25 years. Alessi, Tom Dixon, LVMH, Flos. Adelaide.</p>
                         </div>
                         <div class="team-member">
                             <div class="team-name">Aureliano Alarc&oacute;n Smith</div>
                             <div class="team-role">Blockchain &amp; Software</div>
-                            <p class="team-bio">Full-stack Web3. Smart contracts, wallet integration, authentication. Formerly RTFKT / Nike.</p>
+                            <p class="team-bio">Smart contracts, wallet integration, authentication. Formerly RTFKT / Nike.</p>
                         </div>
                     </div>
                     <div class="advisors">
                         <div class="advisors-label">Advisors</div>
                         <div class="advisor">
                             <span class="advisor-name">Fabian Vogelsteller</span>
-                            <span class="advisor-title"> — Co-founder, LUKSO. Creator of ERC-20.</span>
+                            <span class="advisor-title"> &mdash; Co-founder, LUKSO. Creator of ERC-20.</span>
                         </div>
                         <div class="advisor">
                             <span class="advisor-name">Prof. Shengjian Chen</span>
-                            <span class="advisor-title"> — Flinders University. RF/NFC antenna &amp; wireless systems.</span>
+                            <span class="advisor-title"> &mdash; Flinders University. RF &amp; antenna systems.</span>
                         </div>
                         <div class="advisor">
                             <span class="advisor-name">Cameron Robertson</span>
-                            <span class="advisor-title"> — Technology &amp; product strategy.</span>
+                            <span class="advisor-title"> &mdash; Arx Research. Secure element architecture.</span>
                         </div>
                     </div>
                 </div>
@@ -776,53 +874,42 @@
             </div>
         </div>
 
-        <!-- SLIDE 10: What's Next -->
+        <!-- SLIDE 11: What's Next + Close -->
         <div class="slide">
             <div class="slide-inner">
-                <span class="sn">09 — What's Next</span>
-                <h2 class="headline">Edition 02.</h2>
+                <span class="sn">11 — What's Next</span>
+                <h2 class="headline">Edition 02. Berlin.<br><em>Pre-sales open.</em></h2>
                 <div class="roadmap">
                     <div class="roadmap-item">
                         <span class="roadmap-phase">Now</span>
-                        <p class="roadmap-desc"><strong>RF optimisation.</strong> Antenna characterisation with Flinders University. PCB run (15 units). Jewellery finishing.</p>
+                        <p class="roadmap-desc"><strong>First working ring prototype.</strong> Antenna validated with Flinders University.</p>
                     </div>
                     <div class="roadmap-item">
                         <span class="roadmap-phase">Q2 2026</span>
-                        <p class="roadmap-desc"><strong>Platform MVP.</strong> Web3 NFC check-in + wallet integration. LUKSO Universal Profile auth layer.</p>
+                        <p class="roadmap-desc"><strong>Edition 02:</strong> 100 rings. Three metals. Brass $490 / Silver $2,000 / Gold $20,000.</p>
                     </div>
                     <div class="roadmap-item">
                         <span class="roadmap-phase">Mid 2026</span>
-                        <p class="roadmap-desc"><strong>Berlin launch.</strong> Co-launch with LUKSO and SLEEK Magazine. Live access-control pilot.</p>
+                        <p class="roadmap-desc"><strong>Berlin co-launch</strong> with LUKSO and SLEEK Magazine. Live access-control pilot.</p>
                     </div>
                     <div class="roadmap-item">
                         <span class="roadmap-phase">H2 2026</span>
-                        <p class="roadmap-desc"><strong>Scale.</strong> Edition 02 (100 units). Three metals. Pre-seed raise.</p>
+                        <p class="roadmap-desc"><strong>Physical Intent SDK.</strong> Protocol licensing. Pre-seed raise.</p>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 11: Closing -->
-        <div class="slide">
-            <div class="slide-inner" style="text-align: center;">
-                <p class="quote">
-                    "AI makes everything<br>satisfactorily fake.<br>
-                    Crypto makes it <em style="color: var(--brass);">real.</em>"
-                </p>
-                <span class="quote-attr">Balaji Srinivasan</span>
                 <div class="spacer-lg"></div>
                 <div class="spacer-lg"></div>
-                <a href="mailto:jim@jimhannontan.com" class="cta-email">jim@jimhannontan.com</a>
-                <div class="spacer-lg"></div>
-                <p class="footer-links">
-                    <a href="https://www.jimhannontan.com/" target="_blank">jimhannontan.com</a>
-                    &nbsp;&middot;&nbsp;
-                    <a href="https://x.com/phygicoil" target="_blank">@phygicoil</a>
-                    &nbsp;&middot;&nbsp;
-                    <a href="https://www.nearfieldcircuit.com/" target="_blank">nearfieldcircuit.com</a>
-                    &nbsp;&middot;&nbsp;
-                    <a href="/">signvm.xyz</a>
-                </p>
+                <div style="text-align: center;">
+                    <p class="quote"><em style="color: var(--brass);">No tap, nothing moves.</em></p>
+                    <div class="spacer-lg"></div>
+                    <a href="mailto:jim@jimhannontan.com" class="cta-email">jim@jimhannontan.com</a>
+                    <div class="spacer"></div>
+                    <p class="footer-links">
+                        <a href="/">signvm.xyz</a>
+                        &nbsp;&middot;&nbsp;
+                        <a href="https://x.com/signvmstudio" target="_blank">@signvmstudio</a>
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -833,7 +920,7 @@
 <div class="deck-nav">
     <div class="deck-nav-left">
         <span class="deck-mark">SIGNVM</span>
-        <span class="deck-counter" id="counter">1 / 11</span>
+        <span class="deck-counter" id="counter">1 / 12</span>
     </div>
     <div class="deck-nav-right">
         <button class="nav-btn" id="prev-btn" disabled aria-label="Previous slide">&larr;</button>
