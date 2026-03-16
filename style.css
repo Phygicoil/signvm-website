@@ -69,10 +69,29 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 .split-content {
     width: 50%;
     height: 100%;
-    background: var(--bg);
+    background: linear-gradient(135deg, #1a1816 0%, #0A0908 100%);
     display: flex;
     flex-direction: column;
     padding: 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Ghosted spiral pattern */
+.split-content::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    transform: translate(-50%, -50%);
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M100,10 L190,100 L100,190 L10,100 Z M100,25 L175,100 L100,175 L25,100 Z M100,40 L160,100 L100,160 L40,100 Z M100,55 L145,100 L100,145 L55,100 Z M100,70 L130,100 L100,130 L70,100 Z M100,85 L115,100 L100,115 L85,100 Z' fill='none' stroke='%23A88526' stroke-width='0.5' opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 /* ---- Wordmark ---- */
@@ -95,6 +114,8 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
     flex-direction: column;
     justify-content: center;
     max-width: 38ch;
+    position: relative;
+    z-index: 1;
 }
 
 /* ---- Headline ---- */
@@ -137,19 +158,33 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 
 .waitlist-block {
     margin-top: 2.5rem;
+    position: relative;
+    z-index: 1;
 }
 
-.waitlist-trigger {
+.waitlist-btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    font-size: 0.65rem;
-    font-weight: 500;
-    letter-spacing: 0.35em;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
     text-transform: uppercase;
-    color: var(--brass);
-    padding: 0;
+    text-align: center;
+    color: #0A0908;
+    background: linear-gradient(145deg, #C9A84C 0%, #A88526 50%, #8A6D1F 100%);
+    border: none;
+    box-shadow: 0 2px 12px rgba(168, 133, 38, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
 }
 
-.waitlist-trigger.is-hidden {
+.waitlist-btn:hover {
+    background: linear-gradient(145deg, #D4B35A 0%, #B8932D 50%, #967824 100%);
+    box-shadow: 0 4px 20px rgba(168, 133, 38, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    transform: translateY(-1px);
+}
+
+.waitlist-btn.is-hidden {
     display: none;
 }
 
