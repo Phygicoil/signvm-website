@@ -6,21 +6,21 @@
    ============================================ */
 
 :root {
-    /* Surface — warm black */
-    --bg: #0a0a0a;
-    --surface: #111111;
+    /* Surface — warm white */
+    --bg: #faf9f7;
+    --surface: #ffffff;
 
     /* Text */
-    --text-primary: #e8e5df;
-    --text-secondary: #8a8780;
-    --text-muted: #5a5850;
+    --text-primary: #1a1918;
+    --text-secondary: #5a5854;
+    --text-muted: #8a8780;
 
     /* Brass — the only accent */
-    --brass: #c9a55a;
-    --brass-muted: #8a7442;
+    --brass: #9a7b3a;
+    --brass-muted: #b8954d;
 
     /* Border */
-    --border: rgba(255, 255, 255, 0.08);
+    --border: rgba(0, 0, 0, 0.1);
 
     /* Type */
     --font-display: 'EB Garamond', Georgia, serif;
@@ -74,7 +74,7 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
     inset: 0;
     z-index: 10000;
     pointer-events: none;
-    opacity: 0.03;
+    opacity: 0.02;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 180px;
@@ -96,7 +96,7 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 }
 
 .nav--scrolled {
-    background: rgba(10, 10, 10, 0.85);
+    background: rgba(250, 249, 247, 0.9);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 }
@@ -345,7 +345,7 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 
 .btn:hover {
     background: var(--brass);
-    color: var(--bg);
+    color: #ffffff;
     border-color: var(--brass);
 }
 
