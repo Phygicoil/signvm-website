@@ -52,12 +52,13 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
     width: 100vw;
 }
 
-/* Left: Hero portrait of the object */
+/* Left: Hero portrait of the object — wider for visual impact */
 .split-image {
-    width: 50%;
+    width: 55%;
     height: 100%;
     flex-shrink: 0;
     background: #000;
+    position: relative;
 }
 
 .split-image img {
@@ -74,25 +75,25 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
     to { opacity: 1; }
 }
 
-/* Right: Content — warm black, no pattern */
+/* Right: Content — generous padding, centered vertically */
 .split-content {
-    width: 50%;
+    width: 45%;
     height: 100%;
     background: var(--bg);
     display: flex;
     flex-direction: column;
-    padding: 3rem 5rem;
+    padding: 3.5rem 4.5rem 3rem 5.5rem;
 }
 
 /* ---- Wordmark ---- */
 
 .wordmark {
     font-family: var(--font-sans);
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     font-weight: 500;
-    letter-spacing: 0.5em;
+    letter-spacing: 0.45em;
     text-transform: uppercase;
-    color: rgba(244, 241, 232, 0.4);
+    color: rgba(244, 241, 232, 0.5);
     flex-shrink: 0;
     opacity: 0;
     animation: fadeIn 0.8s ease forwards;
@@ -106,16 +107,17 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 42ch;
+    max-width: 36ch;
+    padding-right: 1rem;
 }
 
 /* ---- Headline ---- */
 
 .headline {
-    font-size: 2.8rem;
+    font-size: clamp(2.2rem, 3.2vw, 3.2rem);
     font-weight: 300;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
     color: var(--text);
     opacity: 0;
     transform: translateY(12px);
@@ -133,10 +135,10 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 /* ---- Body Copy ---- */
 
 .body-copy {
-    margin-top: 2.5rem;
+    margin-top: 2.25rem;
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1.1rem;
     opacity: 0;
     transform: translateY(12px);
     animation: slideUp 0.9s ease forwards;
@@ -144,17 +146,17 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 }
 
 .body-copy p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 300;
-    line-height: 1.85;
+    line-height: 1.75;
     color: var(--text-muted);
 }
 
 /* ---- Tagline ---- */
 
 .tagline {
-    margin-top: 2rem;
-    font-size: 1.15rem;
+    margin-top: 1.75rem;
+    font-size: 1.1rem;
     font-weight: 300;
     font-style: italic;
     color: var(--brass);
@@ -167,7 +169,7 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 /* ---- Waitlist — Understated & Elegant ---- */
 
 .waitlist-block {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
     opacity: 0;
     transform: translateY(12px);
     animation: slideUp 0.9s ease forwards;
@@ -297,9 +299,26 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
     color: rgba(244, 241, 232, 0.5);
 }
 
+/* ---- Tablet ---- */
+
+@media (max-width: 1100px) {
+    .split-image {
+        width: 50%;
+    }
+
+    .split-content {
+        width: 50%;
+        padding: 3rem 3.5rem 2.5rem 4rem;
+    }
+
+    .content-inner {
+        max-width: 34ch;
+    }
+}
+
 /* ---- Mobile ---- */
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     html, body {
         height: auto;
         overflow: auto;
@@ -313,8 +332,8 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 
     .split-image {
         width: 100%;
-        height: 50vh;
-        min-height: 300px;
+        height: 45vh;
+        min-height: 320px;
         flex-shrink: 0;
     }
 
@@ -326,30 +345,36 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
         width: 100%;
         height: auto;
         flex: 1;
-        padding: 2.5rem clamp(1.5rem, 8vw, 4rem);
+        padding: 2.5rem clamp(2rem, 8vw, 4rem);
     }
 
     .content-inner {
         max-width: none;
+        padding-right: 0;
     }
 
     .headline {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .body-copy p {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 
     .tagline {
-        font-size: 1.05rem;
+        font-size: 1rem;
+    }
+
+    .footer {
+        margin-top: 3rem;
+        padding-bottom: 1rem;
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 480px) {
     .split-image {
-        height: 40vh;
-        min-height: 250px;
+        height: 38vh;
+        min-height: 260px;
     }
 
     .split-content {
@@ -357,7 +382,12 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
     }
 
     .headline {
-        font-size: 1.8rem;
+        font-size: 1.75rem;
+    }
+
+    .body-copy {
+        margin-top: 1.75rem;
+        gap: 1rem;
     }
 
     .waitlist-form {
