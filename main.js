@@ -20,53 +20,24 @@
     );
     reveals.forEach((el) => revealObserver.observe(el));
 
-    // ---- Nav scroll state ----
-    const nav = document.getElementById('nav');
-    let lastScroll = 0;
+    // ---- Waitlist toggle ----
+    const waitlistBtn = document.getElementById('waitlist-btn');
+    const waitlistForm = document.getElementById('waitlist-form');
+    const confirmation = document.getElementById('confirmation');
 
-    function handleNavScroll() {
-        const y = window.scrollY;
-        if (y > 60) {
-            nav.classList.add('nav--scrolled');
-        } else {
-            nav.classList.remove('nav--scrolled');
-        }
-        lastScroll = y;
-    }
-
-    window.addEventListener('scroll', handleNavScroll, { passive: true });
-
-    // ---- Mobile menu ----
-    const burger = document.getElementById('nav-burger');
-    const mobileNav = document.getElementById('mobile-nav');
-
-    if (burger && mobileNav) {
-        burger.addEventListener('click', () => {
-            burger.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-            document.body.style.overflow = mobileNav.classList.contains('active')
-                ? 'hidden'
-                : '';
+    if (waitlistBtn && waitlistForm) {
+        waitlistBtn.addEventListener('click', () => {
+            waitlistBtn.style.display = 'none';
+            waitlistForm.classList.add('is-visible');
+            waitlistForm.querySelector('input').focus();
         });
 
-        mobileNav.querySelectorAll('a').forEach((link) => {
-            link.addEventListener('click', () => {
-                burger.classList.remove('active');
-                mobileNav.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+        waitlistForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            waitlistForm.classList.remove('is-visible');
+            waitlistForm.style.display = 'none';
+            confirmation.classList.add('is-visible');
         });
     }
-
-    // ---- Smooth anchor scrolling ----
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener('click', function (e) {
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-    });
 
 })();
