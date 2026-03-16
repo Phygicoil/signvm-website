@@ -1,21 +1,24 @@
 /* ============================================
-   SIGNVM — Dark. Typographic. Precise.
-   Patek Philippe meets Braun.
+   SIGNVM — Single screen. No scroll.
    ============================================ */
 
 :root {
     --bg: #0A0908;
     --text: #EDEAE2;
-    --text-muted: #6a6862;
+    --text-muted: #6A6258;
     --brass: #A88526;
     --font: 'Cormorant Garamond', Georgia, serif;
-    --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 *, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
 }
 
 html {
@@ -29,8 +32,6 @@ body {
     font-weight: 300;
     color: var(--text);
     background: var(--bg);
-    line-height: 1.6;
-    min-height: 100vh;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -42,40 +43,19 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
     color: var(--bg);
 }
 
-/* ---- Header ---- */
-
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    padding: 2rem;
-    z-index: 100;
-}
-
-.wordmark {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--text);
-}
-
 /* ---- Main Split Layout ---- */
 
 .main {
     display: flex;
-    min-height: 100vh;
+    height: 100vh;
+    width: 100vw;
 }
 
 /* Left: Full-bleed image */
 .split-image {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 50%;
-    height: 100vh;
-    overflow: hidden;
+    height: 100%;
+    flex-shrink: 0;
 }
 
 .split-image img {
@@ -87,83 +67,86 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 
 /* Right: Content */
 .split-content {
-    margin-left: 50%;
     width: 50%;
-    min-height: 100vh;
+    height: 100%;
+    background: var(--bg);
     display: flex;
-    align-items: center;
-    padding: 4rem clamp(3rem, 6vw, 5rem);
+    flex-direction: column;
+    padding: 2rem 4rem;
 }
 
+/* ---- Wordmark ---- */
+
+.wordmark {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: rgba(237, 234, 226, 0.5);
+    flex-shrink: 0;
+}
+
+/* ---- Content Inner ---- */
+
 .content-inner {
-    width: 100%;
-    max-width: 520px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 38ch;
 }
 
 /* ---- Headline ---- */
 
 .headline {
-    font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+    font-size: 2rem;
     font-weight: 300;
-    line-height: 1.1;
+    line-height: 1.3;
     letter-spacing: -0.01em;
-    margin-bottom: 2.5rem;
+    color: var(--text);
 }
 
-.headline em {
+/* ---- Body Copy ---- */
+
+.body-copy {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.body-copy p {
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--text-muted);
+}
+
+/* ---- Tagline ---- */
+
+.tagline {
+    margin-top: 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 300;
     font-style: italic;
     color: var(--brass);
-}
-
-/* ---- Three Acts ---- */
-
-.acts {
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-    margin-bottom: 2.5rem;
-}
-
-.act {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.act-heading {
-    font-size: 0.95rem;
-    font-weight: 400;
-    font-style: italic;
-    color: var(--text);
-    opacity: 0.85;
-}
-
-.act-body {
-    font-size: 0.8rem;
-    font-weight: 300;
-    line-height: 1.6;
-    color: var(--text-muted);
 }
 
 /* ---- Waitlist ---- */
 
 .waitlist-block {
-    margin-bottom: 3rem;
+    margin-top: 2.5rem;
 }
 
 .waitlist-trigger {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     font-size: 0.65rem;
     font-weight: 500;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.35em;
     text-transform: uppercase;
     color: var(--brass);
-    opacity: 0.9;
-    transition: opacity 0.3s var(--ease);
-}
-
-.waitlist-trigger:hover {
-    opacity: 1;
+    padding: 0;
 }
 
 .waitlist-trigger.is-hidden {
@@ -175,6 +158,7 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
     flex-direction: row;
     align-items: stretch;
     gap: 0;
+    max-width: 320px;
 }
 
 .waitlist-form.is-visible {
@@ -183,41 +167,40 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 
 .waitlist-input {
     flex: 1;
-    padding: 0.75rem 1rem;
+    padding: 0.6rem 0.8rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     font-size: 0.85rem;
     font-weight: 400;
     color: var(--text);
     background: transparent;
-    border: 1px solid var(--text-muted);
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
     border-right: none;
     border-radius: 0;
 }
 
 .waitlist-input::placeholder {
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.3);
 }
 
 .waitlist-input:focus {
     outline: none;
-    border-color: var(--text);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 .waitlist-submit {
-    padding: 0.75rem 1.25rem;
+    padding: 0.6rem 1rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
     font-size: 0.65rem;
     font-weight: 500;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--bg);
-    background: var(--text);
-    border: 1px solid var(--text);
-    transition: opacity 0.3s var(--ease);
+    color: var(--text);
+    background: transparent;
+    border: 0.5px solid rgba(255, 255, 255, 0.2);
 }
 
 .waitlist-submit:hover {
-    opacity: 0.85;
+    color: var(--brass);
 }
 
 .confirmation {
@@ -234,40 +217,41 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 /* ---- Footer ---- */
 
 .footer {
+    flex-shrink: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    font-size: 0.6rem;
+    font-size: 0.62rem;
     font-weight: 400;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.18);
 }
 
 .footer a {
-    transition: color 0.3s var(--ease);
+    color: rgba(255, 255, 255, 0.18);
+    transition: color 0.2s ease;
 }
 
 .footer a:hover {
-    color: var(--text);
+    color: rgba(255, 255, 255, 0.4);
 }
 
-.footer-sep {
-    opacity: 0.5;
-}
-
-/* ---- Responsive ---- */
+/* ---- Mobile ---- */
 
 @media (max-width: 900px) {
+    html, body {
+        height: auto;
+        overflow: auto;
+    }
+
     .main {
         flex-direction: column;
+        height: auto;
+        min-height: 100vh;
     }
 
     .split-image {
-        position: relative;
         width: 100%;
-        height: 60vh;
+        height: 45vw;
+        flex-shrink: 0;
     }
 
     .split-image img {
@@ -275,44 +259,45 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
     }
 
     .split-content {
-        margin-left: 0;
         width: 100%;
-        min-height: auto;
-        padding: 3rem clamp(1.5rem, 6vw, 3rem);
+        height: auto;
+        flex: 1;
+        padding: 2rem clamp(1.5rem, 6vw, 3rem);
     }
 
-    .header {
-        background: linear-gradient(to bottom, rgba(10, 9, 8, 0.8), transparent);
-        width: 100%;
-        padding: 1.5rem;
+    .content-inner {
+        max-width: none;
+    }
+
+    .headline {
+        font-size: 1.75rem;
+    }
+
+    .body-copy p {
+        font-size: 1rem;
+    }
+
+    .tagline {
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 500px) {
     .split-image {
-        height: 50vh;
+        height: 50vw;
     }
 
     .headline {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .waitlist-form {
         flex-direction: column;
+        max-width: none;
     }
 
     .waitlist-input {
-        border-right: 1px solid var(--text-muted);
+        border-right: 0.5px solid rgba(255, 255, 255, 0.2);
         border-bottom: none;
-    }
-
-    .footer {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.3rem;
-    }
-
-    .footer-sep {
-        display: none;
     }
 }
