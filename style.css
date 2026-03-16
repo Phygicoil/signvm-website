@@ -138,7 +138,7 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
     margin-top: 2.25rem;
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
+    gap: 1.25rem;
     opacity: 0;
     transform: translateY(12px);
     animation: slideUp 0.9s ease forwards;
@@ -146,18 +146,20 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 }
 
 .body-copy p {
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.75;
-    color: var(--text-muted);
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: rgba(244, 241, 232, 0.75);
 }
 
 /* ---- Tagline ---- */
 
 .tagline {
-    margin-top: 1.75rem;
-    font-size: 1.1rem;
-    font-weight: 300;
+    margin-top: 2rem;
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 400;
     font-style: italic;
     color: var(--brass);
     opacity: 0;
@@ -358,7 +360,7 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
     }
 
     .body-copy p {
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
 
     .tagline {
