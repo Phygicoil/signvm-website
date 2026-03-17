@@ -374,6 +374,10 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 /* ---- Mobile ---- */
 
 @media (max-width: 700px) {
+    .nav-dots {
+        display: none;
+    }
+
     .header {
         padding: 1.5rem 2rem;
     }
