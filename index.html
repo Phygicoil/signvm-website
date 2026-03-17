@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>SIGNVM</title>
     <meta name="description" content="A cryptographic signet ring. Machines execute. Humans authorise.">
     <meta property="og:title" content="SIGNVM">
@@ -10,90 +10,218 @@
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Page views */
+        .view { display: none; }
+        .view.active { display: flex; }
+        
+        /* Logo view */
+        .view-logo {
+            width: 100%;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background: #0C0B09;
+        }
+        .logo-text {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: clamp(3rem, 12vw, 10rem);
+            font-weight: 400;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: #D4C4A8;
+            text-indent: 0.35em;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+            animation-delay: 0.3s;
+        }
+        
+        /* QR view */
+        .view-qr {
+            width: 100%;
+            min-height: 100vh;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            background: #0C0B09;
+        }
+        .qr-brand {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: rgba(212, 196, 168, 0.6);
+        }
+        .qr-code {
+            width: 220px;
+            height: 220px;
+        }
+        .qr-label {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.05em;
+            color: #D4C4A8;
+        }
+        
+        /* Home view wrapper */
+        .view-home {
+            display: none;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .view-home.active {
+            display: flex;
+        }
+    </style>
 </head>
 <body>
 
-    <header class="header">
-        <span class="wordmark">SIGNVM</span>
-    </header>
+    <!-- LOGO VIEW -->
+    <div class="view view-logo" id="view-logo">
+        <h1 class="logo-text">SIGNVM</h1>
+    </div>
 
-    <main class="main">
-        <div class="hero">
-            <div class="hero-image">
-                <img 
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/brass%20ring%20with%20glove2-GHQ4NflWIeWOIR6TjpBYRTsU0vjYj7.png" 
-                    alt="SIGNVM ring — gold signet held in white cotton glove against black"
-                >
-            </div>
+    <!-- HOME VIEW -->
+    <div class="view view-home" id="view-home">
+        <header class="header">
+            <span class="wordmark">SIGNVM</span>
+        </header>
 
-            <div class="hero-content">
-                <div class="text-block">
-                    <h1 class="headline">Machines execute.<span class="emphasis">Humans authorise.</span></h1>
+        <main class="main">
+            <div class="hero">
+                <div class="hero-image">
+                    <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/brass%20ring%20with%20glove2-GHQ4NflWIeWOIR6TjpBYRTsU0vjYj7.png" 
+                        alt="SIGNVM ring — gold signet held in white cotton glove against black"
+                    >
+                </div>
 
-                    <div class="body-copy">
-                        <p>For thousands of years, the signet ring was the instrument of authority. Pressed into wax, it sealed a decree. Possession was proof.</p>
-                        <p>In the age of artificial intelligence, that logic returns. Your agents act. Your voice can be cloned. Your face, replicated. But the ring in your hand — that is still yours.</p>
+                <div class="hero-content">
+                    <div class="text-block">
+                        <h1 class="headline">Machines execute.<span class="emphasis">Humans authorise.</span></h1>
+
+                        <div class="body-copy">
+                            <p>For thousands of years, the signet ring was the instrument of authority. Pressed into wax, it sealed a decree. Possession was proof.</p>
+                            <p>In the age of artificial intelligence, that logic returns. Your agents act. Your voice can be cloned. Your face, replicated. But the ring in your hand — that is still yours.</p>
+                        </div>
+
+                        <p class="tagline">A signet ring for the artificial age.</p>
                     </div>
 
-                    <p class="tagline">A signet ring for the artificial age.</p>
-                </div>
-
-                <div class="waitlist-block">
-                    <button class="waitlist-trigger" id="waitlist-trigger">Waitlist</button>
-                    <form class="waitlist-form" id="waitlist-form">
-                        <input 
-                            type="email" 
-                            name="email" 
-                            placeholder="Email" 
-                            required 
-                            class="waitlist-input"
-                            aria-label="Email address"
-                        >
-                        <button type="submit" class="waitlist-submit">Submit</button>
-                    </form>
-                    <p class="confirmation" id="confirmation">Noted.</p>
+                    <div class="waitlist-block">
+                        <button class="waitlist-trigger" id="waitlist-trigger" type="button">Waitlist</button>
+                        <form class="waitlist-form" id="waitlist-form">
+                            <input 
+                                type="email" 
+                                name="email" 
+                                placeholder="Email" 
+                                required 
+                                class="waitlist-input"
+                                aria-label="Email address"
+                                autocomplete="email"
+                            >
+                            <button type="submit" class="waitlist-submit">Submit</button>
+                        </form>
+                        <p class="confirmation" id="confirmation">Noted.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
 
-    <footer class="footer">
-        <span>&copy; 2026 JIM HANNON-TAN</span>
-    </footer>
+        <footer class="footer">
+            <span>&copy; 2026 JIM HANNON-TAN</span>
+        </footer>
+    </div>
 
+    <!-- QR VIEW -->
+    <div class="view view-qr" id="view-qr">
+        <span class="qr-brand">SIGNVM</span>
+        <img 
+            class="qr-code" 
+            src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://signvm.xyz&bgcolor=0C0B09&color=D4C4A8&margin=0" 
+            alt="QR code to SIGNVM waitlist"
+        >
+        <span class="qr-label">waitlist</span>
+    </div>
+
+    <!-- NAVIGATION DOTS -->
     <nav class="nav-dots">
-        <a href="/logo" class="nav-dot" aria-label="Logo page"></a>
-        <a href="/" class="nav-dot active" aria-label="Home page"></a>
-        <a href="/qr" class="nav-dot" aria-label="QR page"></a>
+        <a href="#logo" class="nav-dot" data-view="logo" aria-label="Logo page"></a>
+        <a href="#home" class="nav-dot" data-view="home" aria-label="Home page"></a>
+        <a href="#qr" class="nav-dot" data-view="qr" aria-label="QR page"></a>
     </nav>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    (function() {
+        // View switching
+        function showView(viewName) {
+            var views = document.querySelectorAll('.view');
+            var dots = document.querySelectorAll('.nav-dot');
+            
+            for (var i = 0; i < views.length; i++) {
+                views[i].classList.remove('active');
+            }
+            for (var i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            
+            var targetView = document.getElementById('view-' + viewName);
+            var targetDot = document.querySelector('[data-view="' + viewName + '"]');
+            
+            if (targetView) targetView.classList.add('active');
+            if (targetDot) targetDot.classList.add('active');
+        }
+        
+        function handleHash() {
+            var hash = window.location.hash.replace('#', '') || 'home';
+            showView(hash);
+        }
+        
+        window.addEventListener('hashchange', handleHash);
+        handleHash();
+        
+        // Waitlist functionality
         var FORMSPREE_URL = 'https://formspree.io/f/mlgppqln';
         var trigger = document.getElementById('waitlist-trigger');
         var form = document.getElementById('waitlist-form');
         var confirmation = document.getElementById('confirmation');
         var input = form ? form.querySelector('.waitlist-input') : null;
         var submitBtn = form ? form.querySelector('.waitlist-submit') : null;
-
-        if (trigger) {
-            trigger.addEventListener('click', function(e) {
+        
+        function openForm(e) {
+            if (e) {
                 e.preventDefault();
                 e.stopPropagation();
-                trigger.style.display = 'none';
-                if (form) form.style.display = 'flex';
-                if (input) setTimeout(function() { input.focus(); }, 100);
-            });
+            }
+            if (trigger) trigger.style.display = 'none';
+            if (form) form.style.display = 'flex';
+            if (input) {
+                setTimeout(function() { 
+                    input.focus(); 
+                }, 150);
+            }
         }
-
+        
+        if (trigger) {
+            // Both click and touchstart for maximum compatibility
+            trigger.onclick = openForm;
+        }
+        
         if (form) {
-            form.addEventListener('submit', function(e) {
+            form.onsubmit = function(e) {
                 e.preventDefault();
                 var email = input ? input.value : '';
-                if (!email) return;
-                if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = '...'; }
+                if (!email) return false;
+                if (submitBtn) { 
+                    submitBtn.disabled = true; 
+                    submitBtn.textContent = '...'; 
+                }
 
                 fetch(FORMSPREE_URL, {
                     method: 'POST',
@@ -102,16 +230,23 @@
                 })
                 .then(function(response) {
                     if (response.ok) {
-                        form.style.display = 'none';
-                        confirmation.style.display = 'block';
-                    } else { throw new Error('Failed'); }
+                        if (form) form.style.display = 'none';
+                        if (confirmation) confirmation.style.display = 'block';
+                    } else { 
+                        throw new Error('Failed'); 
+                    }
                 })
                 .catch(function() {
-                    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Retry'; }
+                    if (submitBtn) { 
+                        submitBtn.disabled = false; 
+                        submitBtn.textContent = 'Retry'; 
+                    }
                 });
-            });
+                
+                return false;
+            };
         }
-    });
+    })();
     </script>
 </body>
 </html>
