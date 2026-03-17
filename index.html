@@ -63,8 +63,35 @@
         <span>&copy; 2026 JIM HANNON-TAN</span>
     </footer>
 
-    <a href="logo.html" class="nav-dot" aria-label="Go to logo page"></a>
-
     <script src="main.js"></script>
+    <script>
+        (function() {
+            var startX = 0;
+            var threshold = 50;
+
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+            }, { passive: true });
+
+            document.addEventListener('touchend', function(e) {
+                var endX = e.changedTouches[0].clientX;
+                var diffX = endX - startX;
+
+                // Horizontal swipe (right)
+                if (diffX > threshold) {
+                    window.location.href = 'logo.html';
+                }
+            }, { passive: true });
+
+            // Trackpad horizontal scroll (right)
+            document.addEventListener('wheel', function(e) {
+                var deltaX = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : 0;
+                
+                if (deltaX < -30) {
+                    window.location.href = 'logo.html';
+                }
+            }, { passive: true });
+        })();
+    </script>
 </body>
 </html>

@@ -6,7 +6,7 @@
     <title>SIGNVM</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -18,6 +18,7 @@
             height: 100%;
             width: 100%;
             overflow: hidden;
+            touch-action: pan-y;
         }
 
         body {
@@ -26,18 +27,18 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
         .logo {
+            font-family: 'EB Garamond', Georgia, serif;
             font-size: clamp(3rem, 12vw, 10rem);
-            font-weight: 500;
-            letter-spacing: 0.4em;
+            font-weight: 400;
+            letter-spacing: 0.35em;
             text-transform: uppercase;
-            color: #F4F1E8;
-            text-indent: 0.4em;
+            color: #D4C4A8;
+            text-indent: 0.35em;
             opacity: 0;
             animation: fadeIn 1.5s ease forwards;
             animation-delay: 0.3s;
@@ -47,30 +48,36 @@
             to { opacity: 1; }
         }
 
-        /* Discreet navigation dot */
-        .nav-dot {
+        /* Swipe hint indicator */
+        .swipe-hint {
             position: fixed;
             bottom: 2.5rem;
             left: 50%;
             transform: translateX(-50%);
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(244, 241, 232, 0.15);
-            transition: background 0.3s ease, transform 0.3s ease;
-            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
             opacity: 0;
-            animation: fadeIn 0.8s ease forwards;
-            animation-delay: 1.5s;
+            animation: fadeIn 0.8s ease forwards, pulse 2s ease-in-out infinite;
+            animation-delay: 2s, 2s;
         }
 
-        .nav-dot:hover {
-            background: rgba(244, 241, 232, 0.4);
-            transform: translateX(-50%) scale(1.25);
+        .swipe-hint span {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: rgba(212, 196, 168, 0.2);
         }
 
-        a {
-            text-decoration: none;
+        .swipe-hint span:nth-child(2) {
+            width: 6px;
+            height: 6px;
+            background: rgba(212, 196, 168, 0.35);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
     </style>
 </head>
@@ -78,7 +85,46 @@
 
     <h1 class="logo">SIGNVM</h1>
 
-    <a href="index.html" class="nav-dot" aria-label="Go to main page"></a>
+    <div class="swipe-hint">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
+    <script>
+        (function() {
+            var startX = 0;
+            var startY = 0;
+            var threshold = 50;
+
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            }, { passive: true });
+
+            document.addEventListener('touchend', function(e) {
+                var endX = e.changedTouches[0].clientX;
+                var endY = e.changedTouches[0].clientY;
+                var diffX = startX - endX;
+                var diffY = startY - endY;
+
+                // Horizontal swipe (left)
+                if (Math.abs(diffX) > Math.abs(diffY) && diffX > threshold) {
+                    window.location.href = 'index.html';
+                }
+            }, { passive: true });
+
+            // Trackpad/mouse wheel horizontal scroll
+            var lastScroll = 0;
+            document.addEventListener('wheel', function(e) {
+                // Detect horizontal scroll or shift+scroll
+                var deltaX = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : 0;
+                
+                if (deltaX > 30) {
+                    window.location.href = 'index.html';
+                }
+            }, { passive: true });
+        })();
+    </script>
 </body>
 </html>

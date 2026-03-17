@@ -305,30 +305,6 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
     animation-delay: 1.3s;
 }
 
-/* ---- Navigation Dot ---- */
-
-.nav-dot {
-    position: fixed;
-    bottom: 2.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(244, 241, 232, 0.15);
-    transition: background 0.3s ease, transform 0.3s ease;
-    cursor: pointer;
-    opacity: 0;
-    animation: fadeIn 0.8s ease forwards;
-    animation-delay: 1.5s;
-    z-index: 100;
-}
-
-.nav-dot:hover {
-    background: rgba(244, 241, 232, 0.4);
-    transform: translateX(-50%) scale(1.25);
-}
-
 .footer a {
     color: rgba(244, 241, 232, 0.25);
     transition: color 0.25s ease;
