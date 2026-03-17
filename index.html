@@ -80,6 +80,63 @@
             animation-delay: 0.3s;
         }
         
+        /* Presentation view */
+        .view-presentation {
+            width: 100%;
+            min-height: 100vh;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.5rem;
+            background: #0C0B09;
+            padding: 3rem;
+        }
+        .presentation-logo {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: clamp(2rem, 8vw, 5rem);
+            font-weight: 400;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: #D4C4A8;
+            text-indent: 0.35em;
+        }
+        .presentation-tagline {
+            text-align: center;
+        }
+        .presentation-tagline .line1 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+            font-weight: 300;
+            color: #F4F1E8;
+            display: block;
+            margin-bottom: 0.2em;
+        }
+        .presentation-tagline .line2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+            font-weight: 300;
+            font-style: italic;
+            color: #D4C4A8;
+            display: block;
+        }
+        .presentation-qr {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .presentation-qr img {
+            width: 140px;
+            height: 140px;
+        }
+        .presentation-qr-label {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 0.85rem;
+            font-style: italic;
+            color: rgba(212, 196, 168, 0.6);
+        }
+        
         /* QR view */
         .view-qr {
             width: 100%;
@@ -137,6 +194,22 @@
     <!-- LOGO VIEW (white - travertine text) -->
     <div class="view view-logo-white" id="view-logo-white">
         <h1 class="logo-text-travertine">SIGNVM</h1>
+    </div>
+
+    <!-- PRESENTATION VIEW -->
+    <div class="view view-presentation" id="view-presentation">
+        <h1 class="presentation-logo">SIGNVM</h1>
+        <div class="presentation-tagline">
+            <span class="line1">Machines execute.</span>
+            <span class="line2">Humans authorise.</span>
+        </div>
+        <div class="presentation-qr">
+            <img 
+                src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://signvm.xyz&bgcolor=0C0B09&color=D4C4A8&margin=0" 
+                alt="QR code to SIGNVM waitlist"
+            >
+            <span class="presentation-qr-label">waitlist</span>
+        </div>
     </div>
 
     <!-- HOME VIEW -->
@@ -207,6 +280,7 @@
         <a href="#logo" class="nav-dot" data-view="logo" aria-label="Logo dark"></a>
         <a href="#logo-light" class="nav-dot" data-view="logo-light" aria-label="Logo light"></a>
         <a href="#logo-white" class="nav-dot" data-view="logo-white" aria-label="Logo white"></a>
+        <a href="#presentation" class="nav-dot" data-view="presentation" aria-label="Presentation"></a>
         <a href="#home" class="nav-dot" data-view="home" aria-label="Home page"></a>
         <a href="#qr" class="nav-dot" data-view="qr" aria-label="QR page"></a>
     </nav>
@@ -263,7 +337,6 @@
         }
         
         if (trigger) {
-            // Both click and touchstart for maximum compatibility
             trigger.onclick = openForm;
         }
         
