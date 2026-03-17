@@ -69,6 +69,49 @@
         <a href="qr.html" class="nav-dot" aria-label="QR page"></a>
     </nav>
 
-    <script src="main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var FORMSPREE_URL = 'https://formspree.io/f/mlgppqln';
+        var trigger = document.getElementById('waitlist-trigger');
+        var form = document.getElementById('waitlist-form');
+        var confirmation = document.getElementById('confirmation');
+        var input = form ? form.querySelector('.waitlist-input') : null;
+        var submitBtn = form ? form.querySelector('.waitlist-submit') : null;
+
+        if (trigger) {
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                trigger.style.display = 'none';
+                if (form) form.style.display = 'flex';
+                if (input) setTimeout(function() { input.focus(); }, 100);
+            });
+        }
+
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var email = input ? input.value : '';
+                if (!email) return;
+                if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = '...'; }
+
+                fetch(FORMSPREE_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({ email: email })
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        form.style.display = 'none';
+                        confirmation.style.display = 'block';
+                    } else { throw new Error('Failed'); }
+                })
+                .catch(function() {
+                    if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Retry'; }
+                });
+            });
+        }
+    });
+    </script>
 </body>
 </html>
