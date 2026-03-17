@@ -84,9 +84,9 @@
     <h1 class="logo">SIGNVM</h1>
 
     <nav class="nav-dots">
-        <a href="logo.html" class="nav-dot active" aria-label="Logo page"></a>
-        <a href="index.html" class="nav-dot" aria-label="Home page"></a>
-        <a href="qr.html" class="nav-dot" aria-label="QR page"></a>
+        <a href="/logo" class="nav-dot active" aria-label="Logo page"></a>
+        <a href="/" class="nav-dot" aria-label="Home page"></a>
+        <a href="/qr" class="nav-dot" aria-label="QR page"></a>
     </nav>
 
     <script>
@@ -108,7 +108,7 @@
 
                 // Horizontal swipe (left)
                 if (Math.abs(diffX) > Math.abs(diffY) && diffX > threshold) {
-                    window.location.href = 'index.html';
+                    window.location.href = '/';
                 }
             }, { passive: true });
 
@@ -119,7 +119,7 @@
                 var deltaX = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : 0;
                 
                 if (deltaX > 30) {
-                    window.location.href = 'index.html';
+                    window.location.href = '/';
                 }
             }, { passive: true });
         })();

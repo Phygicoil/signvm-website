@@ -1,0 +1,14 @@
+{
+  "rewrites": [
+    { "source": "/logo", "destination": "/logo.html" },
+    { "source": "/qr", "destination": "/qr.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+      ]
+    }
+  ]
+}
