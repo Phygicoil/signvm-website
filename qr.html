@@ -34,7 +34,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 3rem;
+            gap: 2.5rem;
             opacity: 0;
             animation: fadeIn 1s ease forwards;
             animation-delay: 0.2s;
@@ -42,29 +42,21 @@
 
         .brand {
             font-family: 'EB Garamond', Georgia, serif;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             font-weight: 400;
-            letter-spacing: 0.4em;
+            letter-spacing: 0.35em;
             text-transform: uppercase;
-            color: rgba(212, 196, 168, 0.5);
-        }
-
-        .qr-container {
-            padding: 1.5rem;
-            background: #F4F1E8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            color: rgba(212, 196, 168, 0.6);
         }
 
         .qr-code {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
         }
 
         .waitlist-label {
             font-family: 'EB Garamond', Georgia, serif;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 400;
             font-style: italic;
             letter-spacing: 0.05em;
@@ -111,13 +103,11 @@
     <div class="content">
         <span class="brand">SIGNVM</span>
         
-        <div class="qr-container">
-            <img 
-                class="qr-code" 
-                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://signvm.vercel.app&bgcolor=F4F1E8&color=0C0B09&margin=0" 
-                alt="QR code to SIGNVM waitlist"
-            >
-        </div>
+        <img 
+            class="qr-code" 
+            src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://signvm.vercel.app&bgcolor=0C0B09&color=D4C4A8&margin=0" 
+            alt="QR code to SIGNVM waitlist"
+        >
         
         <span class="waitlist-label">waitlist</span>
     </div>
