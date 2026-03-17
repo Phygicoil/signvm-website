@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNVM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            touch-action: pan-y;
+        }
+
+        body {
+            background: #0C0B09;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .logo {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: clamp(3rem, 12vw, 10rem);
+            font-weight: 400;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: #D4C4A8;
+            text-indent: 0.35em;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Navigation dots */
+        .nav-dots {
+            position: fixed;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+            animation-delay: 1.5s;
+        }
+
+        .nav-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(212, 196, 168, 0.15);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-dot:hover {
+            background: rgba(212, 196, 168, 0.4);
+            transform: scale(1.3);
+        }
+
+        .nav-dot.active {
+            background: rgba(212, 196, 168, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="logo">SIGNVM</h1>
+
+    <nav class="nav-dots">
+        <a href="logo.html" class="nav-dot active" aria-label="Logo page"></a>
+        <a href="index.html" class="nav-dot" aria-label="Home page"></a>
+        <a href="qr.html" class="nav-dot" aria-label="QR page"></a>
+    </nav>
+
+    <script>
+        (function() {
+            var startX = 0;
+            var startY = 0;
+            var threshold = 50;
+
+            document.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            }, { passive: true });
+
+            document.addEventListener('touchend', function(e) {
+                var endX = e.changedTouches[0].clientX;
+                var endY = e.changedTouches[0].clientY;
+                var diffX = startX - endX;
+                var diffY = startY - endY;
+
+                // Horizontal swipe (left)
+                if (Math.abs(diffX) > Math.abs(diffY) && diffX > threshold) {
+                    window.location.href = 'index.html';
+                }
+            }, { passive: true });
+
+            // Trackpad/mouse wheel horizontal scroll
+            var lastScroll = 0;
+            document.addEventListener('wheel', function(e) {
+                // Detect horizontal scroll or shift+scroll
+                var deltaX = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : 0;
+                
+                if (deltaX > 30) {
+                    window.location.href = 'index.html';
+                }
+            }, { passive: true });
+        })();
+    </script>
+</body>
+</html>
