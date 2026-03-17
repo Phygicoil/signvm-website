@@ -5,8 +5,8 @@
 (function () {
     'use strict';
 
-    // Google Apps Script Web App URL - Replace with your own
-    const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+    // Formspree endpoint - Replace YOUR_FORM_ID with your Formspree form ID
+    const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
 
     const trigger = document.getElementById('waitlist-trigger');
     const form = document.getElementById('waitlist-form');
@@ -35,24 +35,27 @@
         }
 
         try {
-            // Send to Google Sheets
-            await fetch(GOOGLE_SCRIPT_URL, {
+            const response = await fetch(FORMSPREE_URL, {
                 method: 'POST',
-                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Accept': 'application/json'
                 },
-                body: JSON.stringify({ email, timestamp: new Date().toISOString() })
+                body: JSON.stringify({ email })
             });
 
-            // Show confirmation
-            form.classList.remove('is-visible');
-            confirmation.classList.add('is-visible');
+            if (response.ok) {
+                form.classList.remove('is-visible');
+                confirmation.classList.add('is-visible');
+            } else {
+                throw new Error('Submission failed');
+            }
         } catch (error) {
             console.error('Waitlist submission error:', error);
-            // Still show confirmation (no-cors won't return response)
-            form.classList.remove('is-visible');
-            confirmation.classList.add('is-visible');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Retry';
+            }
         }
     });
 
