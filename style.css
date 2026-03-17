@@ -83,13 +83,13 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 
 .hero {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 6rem;
     max-width: 1100px;
     width: 100%;
 }
 
-/* ---- Hero Image — Contained ---- */
+/* ---- Hero Image — Aligned to text block height ---- */
 
 .hero-image {
     flex-shrink: 0;
@@ -97,12 +97,16 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
     opacity: 0;
     animation: fadeIn 1.2s ease forwards;
     animation-delay: 0.2s;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
 }
 
 .hero-image img {
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 /* ---- Hero Content ---- */
@@ -110,6 +114,14 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
 .hero-content {
     flex: 1;
     max-width: 520px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---- Text Block — aligns with image height ---- */
+
+.text-block {
+    flex-shrink: 0;
 }
 
 /* ---- Headline ---- */
@@ -333,11 +345,19 @@ button { font: inherit; border: none; background: none; cursor: pointer; }
         flex-direction: column;
         gap: 3rem;
         text-align: center;
+        align-items: center;
     }
 
     .hero-image {
         width: 100%;
         max-width: 480px;
+        align-self: auto;
+        height: auto;
+    }
+
+    .hero-image img {
+        height: auto;
+        object-fit: contain;
     }
 
     .hero-content {
