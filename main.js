@@ -5,6 +5,8 @@
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
 
+    console.log('[v0] DOM loaded, initializing waitlist...');
+
     // Formspree endpoint
     var FORMSPREE_URL = 'https://formspree.io/f/mlgppqln';
 
@@ -14,24 +16,24 @@ document.addEventListener('DOMContentLoaded', function () {
     var input = form ? form.querySelector('.waitlist-input') : null;
     var submitBtn = form ? form.querySelector('.waitlist-submit') : null;
 
-    // Show form on trigger click/tap
-    function showForm(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        trigger.classList.add('is-hidden');
-        if (form) {
-            form.classList.add('is-visible');
-        }
-        if (input) {
-            setTimeout(function() {
-                input.focus();
-            }, 100);
-        }
-    }
+    console.log('[v0] Elements found:', { trigger: !!trigger, form: !!form, input: !!input });
 
+    // Show form on trigger click
     if (trigger) {
-        trigger.addEventListener('click', showForm);
-        trigger.addEventListener('touchend', showForm);
+        trigger.onclick = function (e) {
+            console.log('[v0] Waitlist trigger clicked');
+            e.preventDefault();
+            trigger.classList.add('is-hidden');
+            if (form) {
+                form.classList.add('is-visible');
+                console.log('[v0] Form should now be visible');
+            }
+            if (input) {
+                setTimeout(function() {
+                    input.focus();
+                }, 100);
+            }
+        };
     }
 
     // Handle form submit
