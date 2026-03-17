@@ -5,8 +5,8 @@
 (function () {
     'use strict';
 
-    // Formspree endpoint - Replace YOUR_FORM_ID with your Formspree form ID
-    const FORMSPREE_URL = 'https://formspree.io/f/YOUR_FORM_ID';
+    // Formspree endpoint
+    const FORMSPREE_URL = 'https://formspree.io/f/mlgppqln';
 
     const trigger = document.getElementById('waitlist-trigger');
     const form = document.getElementById('waitlist-form');
