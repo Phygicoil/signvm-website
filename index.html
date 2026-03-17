@@ -4,105 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIGNVM</title>
-    <meta name="description" content="Give your agent something it can trust. A cryptographic signet ring for the agent economy.">
+    <meta name="description" content="A cryptographic signet ring. Machines execute. Humans authorise.">
     <meta property="og:title" content="SIGNVM">
-    <meta property="og:description" content="Give your agent something it can trust. No tap, nothing moves.">
+    <meta property="og:description" content="A cryptographic signet ring. Machines execute. Humans authorise.">
     <meta property="og:type" content="website">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='b' cx='40%25' cy='35%25'%3E%3Cstop offset='0%25' stop-color='%23d4b568'/%3E%3Cstop offset='60%25' stop-color='%23a07d3a'/%3E%3Cstop offset='100%25' stop-color='%237a5e28'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='14' fill='url(%23b)'/%3E%3C/svg%3E">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="grain" aria-hidden="true"></div>
+    <header class="header">
+        <span class="wordmark">SIGNVM</span>
+    </header>
 
-    <nav class="nav" id="nav">
-        <div class="nav-left">
-            <a href="#" class="nav-mark">SIGNVM</a>
-        </div>
-        <div class="nav-right">
-            <a href="mailto:jim@jimhannontan.com" class="nav-link" style="color: var(--brass-muted);">jim@jimhannontan.com</a>
-        </div>
-    </nav>
+    <main class="main">
+        <div class="hero">
+            <div class="hero-image">
+                <img 
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-kp7vsnqu2UbjWs3cAaCA694bVOpxlV.png" 
+                    alt="SIGNVM ring — gold signet held in white cotton glove against black"
+                >
+            </div>
 
-    <!-- Opening -->
-    <section class="opening" id="opening">
-        <div class="opening-frame">
-            <div class="opening-content">
-                <h1 class="opening-headline" data-reveal>
-                    Give your agent<br>something it can <em>trust.</em>
-                </h1>
-            </div>
-        </div>
-    </section>
+            <div class="hero-content">
+                <div class="text-block">
+                    <h1 class="headline">Machines execute.<br>Humans authorise.</h1>
 
-    <!-- Thesis -->
-    <section class="thesis" id="thesis">
-        <div class="thesis-track">
-            <div class="thesis-block" data-reveal>
-                <p class="thesis-text">
-                    AI agents book flights, move money, manage your life. But every channel they use to reach you is spoofable &mdash;
-                    <span class="thesis-em">voice, email, text, biometrics.</span>
-                </p>
-            </div>
-            <div class="thesis-block" data-reveal>
-                <p class="thesis-text">
-                    Your agent has no way to know
-                    <span class="thesis-em">it's really you</span>
-                    giving the instruction.
-                </p>
-            </div>
-            <div class="thesis-block" data-reveal>
-                <p class="thesis-text">
-                    The ring is a physical cryptographic proof that only you can produce.
-                    <span class="thesis-em">No tap, nothing moves.</span>
-                </p>
-            </div>
-        </div>
-    </section>
+                    <div class="body-copy">
+                        <p>For thousands of years, the signet ring was the instrument of authority. Pressed into wax, it sealed a decree. Possession was proof.</p>
+                        <p>In the age of artificial intelligence, that logic returns. Your agents act. Your voice can be cloned. Your face, replicated. But the ring in your hand — that is still yours.</p>
+                    </div>
 
-    <!-- The Object -->
-    <section class="object" id="object">
-        <div class="object-grid">
-            <div class="object-image-col" data-reveal>
-                <img src="brass.jpg" alt="SIGNVM ring detail — machined antenna trace on the face" class="object-photo">
-            </div>
-            <div class="object-text-col">
-                <h2 class="object-title" data-reveal>The modern signet.</h2>
-                <div class="object-detail" data-reveal data-delay="1">
-                    <p>A precision-machined brass antenna with an embedded cryptographic chip. No battery. No app. The grooves on the face are the antenna.</p>
-                    <p style="margin-top: 1.2rem;">It draws power from your phone at the moment of contact. One tap produces a unique cryptographic signature &mdash; verified instantly.</p>
-                    <p style="margin-top: 1.2rem;">A monolithic antenna which embodies digital authority. Revocable if lost.</p>
+                    <p class="tagline">A signet ring for the artificial age.</p>
+                </div>
+
+                <div class="waitlist-block">
+                    <button class="waitlist-trigger" id="waitlist-trigger">Waitlist</button>
+                    <form class="waitlist-form" id="waitlist-form">
+                        <input 
+                            type="email" 
+                            name="email" 
+                            placeholder="Email" 
+                            required 
+                            class="waitlist-input"
+                            aria-label="Email address"
+                        >
+                        <button type="submit" class="waitlist-submit">Submit</button>
+                    </form>
+                    <p class="confirmation" id="confirmation">Noted.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- Footer -->
     <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-statement" data-reveal>
-                Physical authority<br>for a digital world.
-            </div>
-            <div class="footer-grid" style="grid-template-columns: 1fr 1fr;">
-                <div class="footer-col">
-                    <span class="footer-heading">Project</span>
-                    <a href="https://lukso.network/" target="_blank" rel="noopener">LUKSO</a>
-                    <a href="/" rel="noopener">signvm.xyz</a>
-                </div>
-                <div class="footer-col">
-                    <span class="footer-heading">Contact</span>
-                    <a href="mailto:jim@jimhannontan.com">jim@jimhannontan.com</a>
-                    <a href="https://x.com/signvmstudio" target="_blank" rel="noopener">@signvmstudio</a>
-                </div>
-            </div>
-            <div class="footer-base">
-                <span class="footer-wordmark">SIGNVM</span>
-                <span class="footer-copy">&copy; 2026 SIGNVM</span>
-            </div>
-        </div>
+        <span>&copy; 2026 JIM HANNON-TAN</span>
     </footer>
 
     <script src="main.js"></script>

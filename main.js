@@ -5,68 +5,58 @@
 (function () {
     'use strict';
 
-    // ---- Scroll reveal ----
-    const reveals = document.querySelectorAll('[data-reveal]');
-    const revealObserver = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    revealObserver.unobserve(entry.target);
-                }
-            });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    );
-    reveals.forEach((el) => revealObserver.observe(el));
+    // Formspree endpoint
+    const FORMSPREE_URL = 'https://formspree.io/f/mlgppqln';
 
-    // ---- Nav scroll state ----
-    const nav = document.getElementById('nav');
-    let lastScroll = 0;
+    const trigger = document.getElementById('waitlist-trigger');
+    const form = document.getElementById('waitlist-form');
+    const confirmation = document.getElementById('confirmation');
+    const input = form?.querySelector('.waitlist-input');
+    const submitBtn = form?.querySelector('.waitlist-submit');
 
-    function handleNavScroll() {
-        const y = window.scrollY;
-        if (y > 60) {
-            nav.classList.add('nav--scrolled');
-        } else {
-            nav.classList.remove('nav--scrolled');
+    // Show form on trigger click
+    trigger?.addEventListener('click', () => {
+        trigger.classList.add('is-hidden');
+        form.classList.add('is-visible');
+        input?.focus();
+    });
+
+    // Handle form submit
+    form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const email = input?.value;
+        if (!email) return;
+
+        // Disable button while submitting
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = '...';
         }
-        lastScroll = y;
-    }
 
-    window.addEventListener('scroll', handleNavScroll, { passive: true });
-
-    // ---- Mobile menu ----
-    const burger = document.getElementById('nav-burger');
-    const mobileNav = document.getElementById('mobile-nav');
-
-    if (burger && mobileNav) {
-        burger.addEventListener('click', () => {
-            burger.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-            document.body.style.overflow = mobileNav.classList.contains('active')
-                ? 'hidden'
-                : '';
-        });
-
-        mobileNav.querySelectorAll('a').forEach((link) => {
-            link.addEventListener('click', () => {
-                burger.classList.remove('active');
-                mobileNav.classList.remove('active');
-                document.body.style.overflow = '';
+        try {
+            const response = await fetch(FORMSPREE_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({ email })
             });
-        });
-    }
 
-    // ---- Smooth anchor scrolling ----
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener('click', function (e) {
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: 'smooth' });
+            if (response.ok) {
+                form.classList.remove('is-visible');
+                confirmation.classList.add('is-visible');
+            } else {
+                throw new Error('Submission failed');
             }
-        });
+        } catch (error) {
+            console.error('Waitlist submission error:', error);
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Retry';
+            }
+        }
     });
 
 })();
