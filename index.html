@@ -17,7 +17,7 @@
         .view { display: none; }
         .view.active { display: flex; }
         
-        /* Logo view */
+        /* Logo view (dark) */
         .view-logo {
             width: 100%;
             min-height: 100vh;
@@ -32,6 +32,27 @@
             letter-spacing: 0.35em;
             text-transform: uppercase;
             color: #D4C4A8;
+            text-indent: 0.35em;
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+            animation-delay: 0.3s;
+        }
+        
+        /* Logo view (light) */
+        .view-logo-light {
+            width: 100%;
+            min-height: 100vh;
+            align-items: center;
+            justify-content: center;
+            background: #F4F1E8;
+        }
+        .logo-text-dark {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: clamp(3rem, 12vw, 10rem);
+            font-weight: 400;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: #1a1918;
             text-indent: 0.35em;
             opacity: 0;
             animation: fadeIn 1.5s ease forwards;
@@ -82,9 +103,14 @@
 </head>
 <body>
 
-    <!-- LOGO VIEW -->
+    <!-- LOGO VIEW (dark) -->
     <div class="view view-logo" id="view-logo">
         <h1 class="logo-text">SIGNVM</h1>
+    </div>
+
+    <!-- LOGO VIEW (light) -->
+    <div class="view view-logo-light" id="view-logo-light">
+        <h1 class="logo-text-dark">SIGNVM</h1>
     </div>
 
     <!-- HOME VIEW -->
@@ -152,7 +178,8 @@
 
     <!-- NAVIGATION DOTS -->
     <nav class="nav-dots">
-        <a href="#logo" class="nav-dot" data-view="logo" aria-label="Logo page"></a>
+        <a href="#logo" class="nav-dot" data-view="logo" aria-label="Logo dark"></a>
+        <a href="#logo-light" class="nav-dot" data-view="logo-light" aria-label="Logo light"></a>
         <a href="#home" class="nav-dot" data-view="home" aria-label="Home page"></a>
         <a href="#qr" class="nav-dot" data-view="qr" aria-label="QR page"></a>
     </nav>
