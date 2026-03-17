@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIGNVM</title>
+    <title>SIGNVM — Waitlist</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -18,7 +18,6 @@
             height: 100%;
             width: 100%;
             overflow: hidden;
-            touch-action: pan-y;
         }
 
         body {
@@ -31,17 +30,45 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        .logo {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: clamp(3rem, 12vw, 10rem);
-            font-weight: 400;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: #D4C4A8;
-            text-indent: 0.35em;
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3rem;
             opacity: 0;
-            animation: fadeIn 1.5s ease forwards;
-            animation-delay: 0.3s;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .brand {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: rgba(212, 196, 168, 0.5);
+        }
+
+        .qr-container {
+            padding: 1.5rem;
+            background: #F4F1E8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 200px;
+        }
+
+        .waitlist-label {
+            font-family: 'EB Garamond', Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0.05em;
+            color: #D4C4A8;
         }
 
         @keyframes fadeIn {
@@ -58,7 +85,7 @@
             gap: 12px;
             opacity: 0;
             animation: fadeIn 0.8s ease forwards;
-            animation-delay: 1.5s;
+            animation-delay: 1s;
         }
 
         .nav-dot {
@@ -81,48 +108,25 @@
 </head>
 <body>
 
-    <h1 class="logo">SIGNVM</h1>
+    <div class="content">
+        <span class="brand">SIGNVM</span>
+        
+        <div class="qr-container">
+            <img 
+                class="qr-code" 
+                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://signvm.vercel.app&bgcolor=F4F1E8&color=0C0B09&margin=0" 
+                alt="QR code to SIGNVM waitlist"
+            >
+        </div>
+        
+        <span class="waitlist-label">waitlist</span>
+    </div>
 
     <nav class="nav-dots">
-        <a href="logo.html" class="nav-dot active" aria-label="Logo page"></a>
+        <a href="logo.html" class="nav-dot" aria-label="Logo page"></a>
         <a href="index.html" class="nav-dot" aria-label="Home page"></a>
-        <a href="qr.html" class="nav-dot" aria-label="QR page"></a>
+        <a href="qr.html" class="nav-dot active" aria-label="QR page"></a>
     </nav>
 
-    <script>
-        (function() {
-            var startX = 0;
-            var startY = 0;
-            var threshold = 50;
-
-            document.addEventListener('touchstart', function(e) {
-                startX = e.touches[0].clientX;
-                startY = e.touches[0].clientY;
-            }, { passive: true });
-
-            document.addEventListener('touchend', function(e) {
-                var endX = e.changedTouches[0].clientX;
-                var endY = e.changedTouches[0].clientY;
-                var diffX = startX - endX;
-                var diffY = startY - endY;
-
-                // Horizontal swipe (left)
-                if (Math.abs(diffX) > Math.abs(diffY) && diffX > threshold) {
-                    window.location.href = 'index.html';
-                }
-            }, { passive: true });
-
-            // Trackpad/mouse wheel horizontal scroll
-            var lastScroll = 0;
-            document.addEventListener('wheel', function(e) {
-                // Detect horizontal scroll or shift+scroll
-                var deltaX = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : 0;
-                
-                if (deltaX > 30) {
-                    window.location.href = 'index.html';
-                }
-            }, { passive: true });
-        })();
-    </script>
 </body>
 </html>
