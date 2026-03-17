@@ -14,17 +14,24 @@ document.addEventListener('DOMContentLoaded', function () {
     var input = form ? form.querySelector('.waitlist-input') : null;
     var submitBtn = form ? form.querySelector('.waitlist-submit') : null;
 
-    // Show form on trigger click
-    if (trigger) {
-        trigger.addEventListener('click', function () {
-            trigger.classList.add('is-hidden');
-            if (form) {
-                form.classList.add('is-visible');
-            }
-            if (input) {
+    // Show form on trigger click/tap
+    function showForm(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        trigger.classList.add('is-hidden');
+        if (form) {
+            form.classList.add('is-visible');
+        }
+        if (input) {
+            setTimeout(function() {
                 input.focus();
-            }
-        });
+            }, 100);
+        }
+    }
+
+    if (trigger) {
+        trigger.addEventListener('click', showForm);
+        trigger.addEventListener('touchend', showForm);
     }
 
     // Handle form submit
