@@ -70,7 +70,7 @@
     </nav>
 
     <script>
-    (function() {
+    document.addEventListener('DOMContentLoaded', function() {
         var FORMSPREE_URL = 'https://formspree.io/f/mlgppqln';
         var trigger = document.getElementById('waitlist-trigger');
         var form = document.getElementById('waitlist-form');
@@ -79,16 +79,17 @@
         var submitBtn = form ? form.querySelector('.waitlist-submit') : null;
 
         if (trigger) {
-            trigger.onclick = function(e) {
+            trigger.addEventListener('click', function(e) {
                 e.preventDefault();
-                trigger.classList.add('is-hidden');
-                if (form) form.classList.add('is-visible');
+                e.stopPropagation();
+                trigger.style.display = 'none';
+                if (form) form.style.display = 'flex';
                 if (input) setTimeout(function() { input.focus(); }, 100);
-            };
+            });
         }
 
         if (form) {
-            form.onsubmit = function(e) {
+            form.addEventListener('submit', function(e) {
                 e.preventDefault();
                 var email = input ? input.value : '';
                 if (!email) return;
@@ -101,16 +102,16 @@
                 })
                 .then(function(response) {
                     if (response.ok) {
-                        form.classList.remove('is-visible');
-                        confirmation.classList.add('is-visible');
+                        form.style.display = 'none';
+                        confirmation.style.display = 'block';
                     } else { throw new Error('Failed'); }
                 })
                 .catch(function() {
                     if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Retry'; }
                 });
-            };
+            });
         }
-    })();
+    });
     </script>
 </body>
 </html>
