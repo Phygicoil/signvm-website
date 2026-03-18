@@ -4,13 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title>SIGNVM — A signet ring for the artificial age</title>
-    <meta name="description" content="A precision-machined signet ring for human authority in the agentic age. Machines execute. Humans authorise.">
-    <meta property="og:title" content="SIGNVM">
-    <meta property="og:description" content="A signet ring for the artificial age. Machines execute. Humans authorise.">
-    <meta property="og:type" content="website">
+    <meta name="description" content="Machines execute. Humans authorise. A precision-machined signet ring for the agentic age.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -19,11 +16,10 @@
         }
 
         :root {
-            --bg: #F8F1E3;
-            --text: #1A1A1A;
-            --text-muted: #4A4A4A;
+            --bg: #F8F5F0;
+            --text: #111111;
+            --text-muted: #555555;
             --brass: #C9A66B;
-            --brass-light: #D4B48C;
             --white: #FFFFFF;
             --font-serif: 'Playfair Display', Georgia, serif;
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -40,11 +36,11 @@
             font-weight: 300;
             color: var(--text);
             background: var(--bg);
-            line-height: 1.7;
+            line-height: 1.8;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Navigation */
+        /* Navigation - minimal */
         nav {
             position: fixed;
             top: 0;
@@ -54,29 +50,32 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 3rem;
-            background: rgba(248, 241, 227, 0.9);
+            padding: 2rem 4rem;
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(248, 245, 240, 0.95);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
         }
 
         .nav-logo {
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
-            font-weight: 500;
-            letter-spacing: 0.25em;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.4em;
             color: var(--text);
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
         }
 
         .nav-links a {
             font-family: var(--font-sans);
-            font-size: 0.8rem;
-            font-weight: 400;
+            font-size: 0.7rem;
+            font-weight: 300;
             letter-spacing: 0.05em;
             color: var(--text-muted);
             text-decoration: none;
@@ -87,35 +86,35 @@
             color: var(--brass);
         }
 
-        /* Hero Section */
+        /* Hero - full screen, massive breathing room */
         .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 8rem 2rem 4rem;
+            padding: 10rem 2rem 6rem;
             text-align: center;
         }
 
         .hero-image {
             width: 100%;
-            max-width: 700px;
-            margin-bottom: 3rem;
+            max-width: 480px;
+            margin-bottom: 6rem;
         }
 
         .hero-image img {
             width: 100%;
             height: auto;
-            object-fit: contain;
         }
 
         .hero-headline {
             font-family: var(--font-serif);
-            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
             font-weight: 400;
-            line-height: 1.2;
-            margin-bottom: 1rem;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
         }
 
         .hero-headline em {
@@ -125,233 +124,172 @@
 
         .hero-tagline {
             font-family: var(--font-serif);
-            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-size: 1.1rem;
             font-style: italic;
             color: var(--text-muted);
-            margin-bottom: 3rem;
+            margin-bottom: 8rem;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--brass);
+            margin-bottom: 4rem;
         }
 
         .hero-quote {
-            max-width: 600px;
-            padding: 2rem;
-            border-top: 1px solid var(--brass-light);
-            border-bottom: 1px solid var(--brass-light);
-            margin-bottom: 3rem;
+            max-width: 500px;
         }
 
         .hero-quote blockquote {
             font-family: var(--font-serif);
-            font-size: 1.15rem;
+            font-size: 1rem;
             font-style: italic;
-            color: var(--brass);
-            margin-bottom: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            line-height: 1.7;
         }
 
         .hero-quote cite {
             font-family: var(--font-sans);
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-style: normal;
             color: var(--text-muted);
+            opacity: 0.7;
         }
 
-        .btn-primary {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--white);
-            background: var(--text);
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background: var(--brass);
-        }
-
-        /* Sections */
+        /* Sections - extreme whitespace */
         section {
-            padding: 6rem 2rem;
-            max-width: 900px;
+            padding: 10rem 2rem;
+            max-width: 650px;
             margin: 0 auto;
+            text-align: center;
         }
 
         .section-headline {
             font-family: var(--font-serif);
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
             font-weight: 400;
-            text-align: center;
-            margin-bottom: 2.5rem;
-            line-height: 1.3;
+            line-height: 1.5;
+            margin-bottom: 3rem;
+            letter-spacing: -0.01em;
         }
 
         .section-body {
-            font-size: 1.05rem;
-            line-height: 1.85;
+            font-size: 1rem;
+            line-height: 2;
             color: var(--text-muted);
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto;
         }
 
-        /* Vision Section */
+        /* Vision */
         #vision {
-            background: var(--white);
-            max-width: none;
-            padding: 6rem 2rem;
+            padding-top: 8rem;
         }
 
-        #vision .content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* MVP Section */
+        /* MVP */
         #mvp {
-            background: var(--bg);
+            max-width: 500px;
         }
 
         .mvp-flow {
-            text-align: center;
-            margin: 3rem 0;
-            padding: 2rem;
-            background: var(--white);
-            border-radius: 2px;
+            margin: 4rem 0;
         }
 
         .mvp-flow p {
             font-family: var(--font-serif);
             font-size: 1.1rem;
-            line-height: 2.2;
+            line-height: 2.8;
             color: var(--text);
         }
 
-        .mvp-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-top: 3rem;
+        .mvp-list {
+            text-align: left;
+            margin-top: 5rem;
         }
 
-        .mvp-column h3 {
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 1.5rem;
+        .mvp-list h3 {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
             color: var(--brass);
+            margin-bottom: 2rem;
+            text-align: center;
         }
 
-        .mvp-column ul {
+        .mvp-list ul {
             list-style: none;
         }
 
-        .mvp-column li {
+        .mvp-list li {
             font-size: 0.95rem;
-            line-height: 1.8;
+            line-height: 2.2;
             color: var(--text-muted);
             padding-left: 1.5rem;
             position: relative;
         }
 
-        .mvp-column li::before {
+        .mvp-list li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 0.7em;
+            top: 0.9em;
             width: 6px;
             height: 1px;
             background: var(--brass);
         }
 
-        .mvp-statement {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--brass-light);
-        }
-
-        .mvp-statement p {
-            font-family: var(--font-serif);
-            font-size: 1.15rem;
-            font-style: italic;
-            color: var(--text);
-        }
-
-        /* Ring Section */
+        /* Ring */
         #ring {
-            background: var(--white);
-            max-width: none;
-            text-align: center;
-        }
-
-        #ring .content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .ring-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-top: 3rem;
+            max-width: 800px;
         }
 
         .ring-image {
-            background: var(--bg);
-            padding: 2rem;
+            margin-top: 4rem;
         }
 
         .ring-image img {
             width: 100%;
-            max-width: 350px;
+            max-width: 500px;
             height: auto;
         }
 
-        .ring-image p {
+        .ring-caption {
             font-family: var(--font-serif);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-style: italic;
             color: var(--text-muted);
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
 
-        /* Waitlist Section */
+        /* Waitlist */
         #waitlist {
-            background: var(--text);
-            max-width: none;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        #waitlist .section-headline {
-            color: var(--bg);
+            padding: 10rem 2rem;
+            max-width: 400px;
         }
 
         .waitlist-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 400px;
-            margin: 2rem auto 0;
+            margin-top: 3rem;
         }
 
         .waitlist-form input {
-            padding: 1rem 1.25rem;
+            width: 100%;
+            padding: 1rem 0;
             font-family: var(--font-sans);
             font-size: 1rem;
-            border: 1px solid rgba(248, 241, 227, 0.3);
+            font-weight: 300;
+            border: none;
+            border-bottom: 1px solid rgba(17, 17, 17, 0.15);
             background: transparent;
-            color: var(--bg);
+            color: var(--text);
             outline: none;
+            margin-bottom: 1.5rem;
             transition: border-color 0.3s ease;
         }
 
         .waitlist-form input::placeholder {
-            color: rgba(248, 241, 227, 0.5);
+            color: rgba(17, 17, 17, 0.35);
         }
 
         .waitlist-form input:focus {
@@ -359,49 +297,52 @@
         }
 
         .waitlist-form button {
-            padding: 1rem 2rem;
+            width: 100%;
+            padding: 1.25rem 2rem;
             font-family: var(--font-sans);
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--text);
+            color: var(--white);
             background: var(--brass);
             border: none;
             cursor: pointer;
-            transition: background 0.3s ease;
+            margin-top: 1rem;
+            transition: opacity 0.3s ease;
         }
 
         .waitlist-form button:hover {
-            background: var(--brass-light);
+            opacity: 0.85;
         }
 
         .waitlist-confirmation {
             display: none;
             font-family: var(--font-serif);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-style: italic;
-            color: var(--brass);
+            color: var(--text-muted);
             margin-top: 2rem;
         }
 
         /* Footer */
         footer {
-            background: var(--text);
-            padding: 2rem;
+            padding: 4rem 2rem;
             text-align: center;
+            border-top: 1px solid rgba(17, 17, 17, 0.08);
         }
 
         footer p {
-            font-size: 0.75rem;
-            color: rgba(248, 241, 227, 0.5);
-            line-height: 1.8;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            opacity: 0.6;
         }
 
         /* Mobile */
         @media (max-width: 768px) {
             nav {
-                padding: 1rem 1.5rem;
+                padding: 1.5rem 2rem;
             }
 
             .nav-links {
@@ -409,20 +350,24 @@
             }
 
             .hero {
-                padding: 6rem 1.5rem 3rem;
+                padding: 8rem 2rem 4rem;
             }
 
-            .mvp-columns {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .hero-image {
+                max-width: 320px;
+                margin-bottom: 4rem;
             }
 
-            .ring-images {
-                grid-template-columns: 1fr;
+            .hero-tagline {
+                margin-bottom: 5rem;
             }
 
             section {
-                padding: 4rem 1.5rem;
+                padding: 6rem 2rem;
+            }
+
+            #waitlist {
+                padding: 6rem 2rem;
             }
         }
     </style>
@@ -430,7 +375,7 @@
 <body>
 
     <!-- Navigation -->
-    <nav>
+    <nav id="nav">
         <span class="nav-logo">SIGNVM</span>
         <div class="nav-links">
             <a href="#vision">Vision</a>
@@ -441,35 +386,32 @@
     </nav>
 
     <!-- Hero -->
-    <section class="hero" id="hero">
+    <section class="hero">
         <div class="hero-image">
             <img 
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/brass%20ring%20with%20glove2-GHQ4NflWIeWOIR6TjpBYRTsU0vjYj7.png" 
-                alt="SIGNVM signet ring held in white cotton glove"
+                alt="SIGNVM signet ring"
             >
         </div>
         <h1 class="hero-headline">Machines execute.<br><em>Humans authorise.</em></h1>
         <p class="hero-tagline">A signet ring for the artificial age.</p>
+        <div class="hero-divider"></div>
         <div class="hero-quote">
             <blockquote>"This is going to make web3 feel natural."</blockquote>
             <cite>— Fabian Vogelsteller, ERC-20 inventor, LUKSO co-founder</cite>
         </div>
-        <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
     </section>
 
     <!-- Vision -->
     <section id="vision">
-        <div class="content">
-            <h2 class="section-headline">The physical authority layer for the agentic age.</h2>
-            <p class="section-body">
-                A precision-machined signet ring with embedded ARX HaLo NFC chip. Tap once on your phone to cryptographically authorise AI agents, verify assets, or access real-world events. Your LUKSO Universal Profile + LSP6 Key Manager keeps permissions scoped exactly where you want them. The ring is the only thing that makes the agent move — or opens the door.
-            </p>
-        </div>
+        <p class="section-body">
+            The physical authority layer for the agentic age. A precision-machined signet ring. Tap once to authorise AI actions or access real-world events. Your LUKSO Universal Profile and LSP6 scoped permissions keep everything under your control. The ring is the only thing that makes the agent move — or opens the door.
+        </p>
     </section>
 
     <!-- MVP -->
     <section id="mvp">
-        <h2 class="section-headline">SIGNVM — MVP (Live Today)</h2>
+        <h2 class="section-headline">SIGNVM — MVP</h2>
         
         <div class="mvp-flow">
             <p>An AI agent proposes an action.</p>
@@ -479,55 +421,27 @@
             <p>The chain records your authorisation.</p>
         </div>
 
-        <div class="mvp-columns">
-            <div class="mvp-column">
-                <h3>What exists today</h3>
-                <ul>
-                    <li>Precision-machined signet ring (antenna + ARX HaLo chip fully embedded)</li>
-                    <li>LUKSO Universal Profile with LSP6 Key Manager (scoped permissions)</li>
-                    <li>Demo app showing agent proposals awaiting approval</li>
-                    <li>One working tap-to-authorise flow</li>
-                    <li>Physical event access via Fabian's LUKSO protocol</li>
-                </ul>
-            </div>
-            <div class="mvp-column">
-                <h3>What the MVP proves</h3>
-                <ul>
-                    <li>A physical object can be the single source of truth for human authority</li>
-                    <li>AI actions and real-world access — scoped exactly where friction matters</li>
-                    <li>Low-friction delegation for the everyday</li>
-                    <li>Deliberate physical seal for what actually matters</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="mvp-statement">
-            <p>The ring is the only thing that makes the agent move — or opens the door.</p>
+        <div class="mvp-list">
+            <h3>What exists today</h3>
+            <ul>
+                <li>Precision-machined signet ring (antenna + ARX HaLo chip embedded)</li>
+                <li>LUKSO Universal Profile with LSP6 Key Manager</li>
+                <li>Working tap-to-authorise flow</li>
+                <li>Physical event access (Sleek / LUKSO verifications)</li>
+            </ul>
         </div>
     </section>
 
     <!-- The Ring -->
     <section id="ring">
-        <div class="content">
-            <h2 class="section-headline">Edition 01 — Genesis</h2>
-            <p class="section-body">Limited to 10. Solid bronze, CNC-machined, patina that evolves with your on-chain history.</p>
-            
-            <div class="ring-images">
-                <div class="ring-image">
-                    <img 
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-UlOq8dl45oKlOWXBssxYKoePskQYF5.png" 
-                        alt="SIGNVM Genesis ring on stone surface"
-                    >
-                    <p>Precision-machined brass with spiral antenna pattern</p>
-                </div>
-                <div class="ring-image">
-                    <img 
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-vGXvctJSUh7yMHKQwJuVN7spkee0U9.png" 
-                        alt="SIGNVM ring tapping phone with NFC"
-                    >
-                    <p>Tap to authorise — NFC embedded</p>
-                </div>
-            </div>
+        <h2 class="section-headline">Genesis Edition</h2>
+        <p class="section-body">Handcrafted in Adelaide. Limited. Patina that mirrors your on-chain history.</p>
+        <div class="ring-image">
+            <img 
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-UlOq8dl45oKlOWXBssxYKoePskQYF5.png" 
+                alt="SIGNVM Genesis ring"
+            >
+            <p class="ring-caption">Precision-machined brass with spiral antenna pattern</p>
         </div>
     </section>
 
@@ -535,20 +449,30 @@
     <section id="waitlist">
         <h2 class="section-headline">Join the Waitlist</h2>
         <form class="waitlist-form" id="waitlist-form">
-            <input type="text" name="name" placeholder="Name" required>
             <input type="email" name="email" placeholder="Email" required>
-            <button type="submit">I'm ready to authorise the future</button>
+            <button type="submit">Join the Waitlist</button>
         </form>
-        <p class="waitlist-confirmation" id="confirmation">You're on the list. We'll be in touch.</p>
+        <p class="waitlist-confirmation" id="confirmation">You're on the list.</p>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>Handcrafted in Adelaide. Built for the agentic age.<br>&copy; SIGNVM 2026</p>
+        <p>SIGNVM &copy; 2026 &middot; Adelaide studio &middot; Built on LUKSO</p>
     </footer>
 
     <script>
     (function() {
+        // Nav scroll effect
+        var nav = document.getElementById('nav');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Waitlist form
         var FORMSPREE_URL = 'https://formspree.io/f/mlgppqln';
         var form = document.getElementById('waitlist-form');
         var confirmation = document.getElementById('confirmation');
@@ -556,11 +480,9 @@
         if (form) {
             form.onsubmit = function(e) {
                 e.preventDefault();
-                var formData = new FormData(form);
-                var data = {};
-                formData.forEach(function(value, key) { data[key] = value; });
-                
+                var email = form.querySelector('input[name="email"]').value;
                 var submitBtn = form.querySelector('button');
+                
                 if (submitBtn) {
                     submitBtn.disabled = true;
                     submitBtn.textContent = '...';
@@ -569,7 +491,7 @@
                 fetch(FORMSPREE_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify({ email: email })
                 })
                 .then(function(response) {
                     if (response.ok) {
