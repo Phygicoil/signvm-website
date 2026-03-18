@@ -2,377 +2,451 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>SIGNVM</title>
-    <meta name="description" content="A cryptographic signet ring. Machines execute. Humans authorise.">
-    <meta property="og:title" content="SIGNVM">
-    <meta property="og:description" content="A cryptographic signet ring. Machines execute. Humans authorise.">
-    <meta property="og:type" content="website">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>SIGNVM — A signet ring for the artificial age</title>
+    <meta name="description" content="Machines execute. Humans authorise. A signet ring for the artificial age.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        /* Page views */
-        .view { display: none; }
-        .view.active { display: flex; }
-        
-        /* Logo view (dark) */
-        .view-logo {
-            width: 100%;
-            min-height: 100vh;
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #F8F5F0;
+            --text: #111111;
+            --text-muted: #666666;
+            --brass: #C9A66B;
+            --white: #FFFFFF;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            background: var(--bg);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            font-weight: 300;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation - almost invisible */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            background: #0C0B09;
+            padding: 2.5rem 4rem;
+            background: transparent;
+            transition: background 0.4s ease;
         }
-        .logo-text {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: clamp(3rem, 12vw, 10rem);
+
+        nav.scrolled {
+            background: rgba(248, 245, 240, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
             font-weight: 400;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: #D4C4A8;
-            text-indent: 0.35em;
-            opacity: 0;
-            animation: fadeIn 1.5s ease forwards;
-            animation-delay: 0.3s;
+            letter-spacing: 0.4em;
+            color: var(--text);
         }
-        
-        /* Logo view (light - dark text) */
-        .view-logo-light {
-            width: 100%;
+
+        .nav-waitlist {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-waitlist:hover {
+            color: var(--brass);
+        }
+
+        /* Hero - full screen, enormous breathing room */
+        .hero {
             min-height: 100vh;
-            align-items: center;
-            justify-content: center;
-            background: #F4F1E8;
-        }
-        .logo-text-dark {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: clamp(3rem, 12vw, 10rem);
-            font-weight: 400;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: #1a1918;
-            text-indent: 0.35em;
-            opacity: 0;
-            animation: fadeIn 1.5s ease forwards;
-            animation-delay: 0.3s;
-        }
-        
-        /* Logo view (white - travertine text) */
-        .view-logo-white {
-            width: 100%;
-            min-height: 100vh;
-            align-items: center;
-            justify-content: center;
-            background: #FFFFFF;
-        }
-        .logo-text-travertine {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: clamp(3rem, 12vw, 10rem);
-            font-weight: 400;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: #D4C4A8;
-            text-indent: 0.35em;
-            opacity: 0;
-            animation: fadeIn 1.5s ease forwards;
-            animation-delay: 0.3s;
-        }
-        
-        /* Presentation view */
-        .view-presentation {
-            width: 100%;
-            min-height: 100vh;
+            display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            gap: 2.5rem;
-            background: #0C0B09;
-            padding: 3rem;
-        }
-        .presentation-logo {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: clamp(2rem, 8vw, 5rem);
-            font-weight: 400;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: #D4C4A8;
-            text-indent: 0.35em;
-        }
-        .presentation-tagline {
+            align-items: center;
+            padding: 12rem 2rem 8rem;
             text-align: center;
         }
-        .presentation-tagline .line1 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-            font-weight: 300;
-            color: #F4F1E8;
-            display: block;
-            margin-bottom: 0.2em;
-        }
-        .presentation-tagline .line2 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-            font-weight: 300;
-            font-style: italic;
-            color: #D4C4A8;
-            display: block;
-        }
-        .presentation-qr {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .presentation-qr img {
-            width: 140px;
-            height: 140px;
-        }
-        .presentation-qr-label {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: 0.85rem;
-            font-style: italic;
-            color: rgba(212, 196, 168, 0.6);
-        }
-        
-        /* QR view */
-        .view-qr {
+
+        .hero-image {
             width: 100%;
-            min-height: 100vh;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2.5rem;
-            background: #0C0B09;
+            max-width: 420px;
+            margin-bottom: 8rem;
         }
-        .qr-brand {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: 1.1rem;
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .hero-headline {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 5vw, 3.2rem);
             font-weight: 400;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: rgba(212, 196, 168, 0.6);
+            line-height: 1.25;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
         }
-        .qr-code {
-            width: 220px;
-            height: 220px;
-        }
-        .qr-label {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: 1.15rem;
-            font-weight: 400;
+
+        .hero-headline em {
             font-style: italic;
-            letter-spacing: 0.05em;
-            color: #D4C4A8;
+            color: var(--brass);
         }
-        
-        /* Home view wrapper */
-        .view-home {
+
+        .hero-tagline {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        /* Story section - single line, massive margins */
+        .story {
+            padding: 14rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story p {
+            font-family: var(--font-serif);
+            font-size: clamp(1.3rem, 3vw, 1.7rem);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        .story p + p {
+            margin-top: 3rem;
+        }
+
+        .story-detail {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .story-modern {
+            margin-top: 4rem;
+            font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+            color: var(--text);
+        }
+
+        .story-modern em {
+            font-style: italic;
+        }
+
+        .story-tagline {
+            margin-top: 4rem;
+            font-style: italic;
+            color: var(--brass);
+        }
+
+        /* Waitlist - extremely simple */
+        .waitlist {
+            padding: 10rem 2rem 14rem;
+            text-align: center;
+        }
+
+        .waitlist-btn {
+            display: inline-block;
+            padding: 1.25rem 3.5rem;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: var(--brass);
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .waitlist-btn:hover {
+            opacity: 0.85;
+        }
+
+        /* Modal */
+        .modal-overlay {
             display: none;
-            flex-direction: column;
-            min-height: 100vh;
+            position: fixed;
+            inset: 0;
+            background: rgba(17, 17, 17, 0.4);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
         }
-        .view-home.active {
+
+        .modal-overlay.is-open {
             display: flex;
+        }
+
+        .modal {
+            background: var(--bg);
+            padding: 4rem 3rem;
+            max-width: 380px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 1rem 0;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 300;
+            border: none;
+            border-bottom: 1px solid rgba(17, 17, 17, 0.15);
+            background: transparent;
+            color: var(--text);
+            outline: none;
+            margin-bottom: 2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .modal input::placeholder {
+            color: rgba(17, 17, 17, 0.35);
+        }
+
+        .modal input:focus {
+            border-color: var(--brass);
+        }
+
+        .modal button[type="submit"] {
+            width: 100%;
+            padding: 1.25rem 2rem;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: var(--brass);
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal button[type="submit"]:hover {
+            opacity: 0.85;
+        }
+
+        .modal-confirmation {
+            display: none;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .hero {
+                padding: 10rem 2rem 6rem;
+            }
+
+            .hero-image {
+                max-width: 300px;
+                margin-bottom: 5rem;
+            }
+
+            .story {
+                padding: 8rem 2rem;
+            }
+
+            .waitlist {
+                padding: 6rem 2rem 10rem;
+            }
+
+            .modal {
+                padding: 3rem 2rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- LOGO VIEW (dark) -->
-    <div class="view view-logo" id="view-logo">
-        <h1 class="logo-text">SIGNVM</h1>
-    </div>
-
-    <!-- LOGO VIEW (light - dark text) -->
-    <div class="view view-logo-light" id="view-logo-light">
-        <h1 class="logo-text-dark">SIGNVM</h1>
-    </div>
-
-    <!-- LOGO VIEW (white - travertine text) -->
-    <div class="view view-logo-white" id="view-logo-white">
-        <h1 class="logo-text-travertine">SIGNVM</h1>
-    </div>
-
-    <!-- PRESENTATION VIEW -->
-    <div class="view view-presentation" id="view-presentation">
-        <h1 class="presentation-logo">SIGNVM</h1>
-        <div class="presentation-tagline">
-            <span class="line1">Machines execute.</span>
-            <span class="line2">Humans authorise.</span>
-        </div>
-        <div class="presentation-qr">
-            <img 
-                src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://signvm.xyz&bgcolor=0C0B09&color=D4C4A8&margin=0" 
-                alt="QR code to SIGNVM waitlist"
-            >
-            <span class="presentation-qr-label">waitlist</span>
-        </div>
-    </div>
-
-    <!-- HOME VIEW -->
-    <div class="view view-home" id="view-home">
-        <header class="header">
-            <span class="wordmark">SIGNVM</span>
-        </header>
-
-        <main class="main">
-            <div class="hero">
-                <div class="hero-image">
-                    <img 
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/brass%20ring%20with%20glove2-GHQ4NflWIeWOIR6TjpBYRTsU0vjYj7.png" 
-                        alt="SIGNVM ring — gold signet held in white cotton glove against black"
-                    >
-                </div>
-
-                <div class="hero-content">
-                    <div class="text-block">
-                        <h1 class="headline">Machines execute.<span class="emphasis">Humans authorise.</span></h1>
-
-                        <div class="body-copy">
-                            <p>For thousands of years, the signet ring was the instrument of authority. Pressed into wax, it sealed a decree. Possession was proof.</p>
-                            <p>In the age of artificial intelligence, that logic returns. Your agents act. Your voice can be cloned. Your face, replicated. But the ring in your hand — that is still yours.</p>
-                        </div>
-
-                        <p class="tagline">A signet ring for the artificial age.</p>
-                    </div>
-
-                    <div class="waitlist-block">
-                        <button class="waitlist-trigger" id="waitlist-trigger" type="button">Waitlist</button>
-                        <form class="waitlist-form" id="waitlist-form">
-                            <input 
-                                type="email" 
-                                name="email" 
-                                placeholder="Email" 
-                                required 
-                                class="waitlist-input"
-                                aria-label="Email address"
-                                autocomplete="email"
-                            >
-                            <button type="submit" class="waitlist-submit">Submit</button>
-                        </form>
-                        <p class="confirmation" id="confirmation">Noted.</p>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <footer class="footer">
-            <span>&copy; 2026 JIM HANNON-TAN</span>
-        </footer>
-    </div>
-
-    <!-- QR VIEW -->
-    <div class="view view-qr" id="view-qr">
-        <span class="qr-brand">SIGNVM</span>
-        <img 
-            class="qr-code" 
-            src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://signvm.xyz&bgcolor=0C0B09&color=D4C4A8&margin=0" 
-            alt="QR code to SIGNVM waitlist"
-        >
-        <span class="qr-label">waitlist</span>
-    </div>
-
-    <!-- NAVIGATION DOTS -->
-    <nav class="nav-dots">
-        <a href="#logo" class="nav-dot" data-view="logo" aria-label="Logo dark"></a>
-        <a href="#logo-light" class="nav-dot" data-view="logo-light" aria-label="Logo light"></a>
-        <a href="#logo-white" class="nav-dot" data-view="logo-white" aria-label="Logo white"></a>
-        <a href="#presentation" class="nav-dot" data-view="presentation" aria-label="Presentation"></a>
-        <a href="#home" class="nav-dot" data-view="home" aria-label="Home page"></a>
-        <a href="#qr" class="nav-dot" data-view="qr" aria-label="QR page"></a>
+    <!-- Navigation -->
+    <nav id="nav">
+        <span class="nav-logo">SIGNVM</span>
+        <a href="#" class="nav-waitlist" id="nav-waitlist-btn">Waitlist</a>
     </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-image">
+            <img 
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/signet-ohJtsyGCRRXhSXwVc6VWAvjq4Tsig6.png" 
+                alt="SIGNVM signet ring"
+            >
+        </div>
+        <h1 class="hero-headline">Machines execute.<br><em>Humans authorise.</em></h1>
+    </section>
+
+    <!-- Story -->
+    <section class="story">
+        <p>In 216 BC, after the Battle of Cannae, Hannibal's brother walked into the Carthaginian Senate and tipped an urn onto the floor. Out poured hundreds of gold signet rings — stripped from the fingers of Rome's slain nobility. No speech needed. The rings were the proof.</p>
+        <p class="story-detail">Roman knights wore gold rings as a mark of rank. To hold one was to hold the identity of its owner. Hannibal understood this. Counting the rings wasn't just record-keeping — it was the most legible statement of power available to him.</p>
+        <p class="story-detail">The ring has always worked this way. In ancient Egypt, pharaohs pressed signet rings into clay to seal decrees. In medieval Europe, a nobleman's ring was destroyed upon his death — because a ring in the wrong hands was a forged identity, an unauthorised command, a broken chain of trust. King Edward II decreed that no official document was valid without the King's ring. Not his signature. His ring.</p>
+        <p class="story-modern">Today your agents draft the proposals, move the money, send the messages. Your voice can be cloned. Your face, replicated. Your credentials, phished. Everything that once said <em>this is me</em> can now be faked — except the object in your hand.</p>
+        <p class="story-tagline">A cryptographic signet ring for the artificial age.</p>
+    </section>
+
+    <!-- Waitlist -->
+    <section class="waitlist">
+        <button class="waitlist-btn" id="waitlist-btn">Waitlist</button>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>SIGNVM &copy; 2026 &middot; Adelaide</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <h3>Join the Waitlist</h3>
+            <form id="waitlist-form">
+                <input type="email" name="email" placeholder="Email" required>
+                <button type="submit">Submit</button>
+            </form>
+            <p class="modal-confirmation" id="confirmation">You're on the list.</p>
+        </div>
+    </div>
 
     <script>
     (function() {
-        // View switching
-        function showView(viewName) {
-            var views = document.querySelectorAll('.view');
-            var dots = document.querySelectorAll('.nav-dot');
-            
-            for (var i = 0; i < views.length; i++) {
-                views[i].classList.remove('active');
+        // Nav scroll effect
+        var nav = document.getElementById('nav');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
             }
-            for (var i = 0; i < dots.length; i++) {
-                dots[i].classList.remove('active');
-            }
-            
-            var targetView = document.getElementById('view-' + viewName);
-            var targetDot = document.querySelector('[data-view="' + viewName + '"]');
-            
-            if (targetView) targetView.classList.add('active');
-            if (targetDot) targetDot.classList.add('active');
+        });
+
+        // Modal
+        var modal = document.getElementById('modal');
+        var waitlistBtn = document.getElementById('waitlist-btn');
+        var navWaitlistBtn = document.getElementById('nav-waitlist-btn');
+        var modalClose = document.getElementById('modal-close');
+
+        function openModal(e) {
+            e.preventDefault();
+            modal.classList.add('is-open');
         }
-        
-        function handleHash() {
-            var hash = window.location.hash.replace('#', '') || 'home';
-            showView(hash);
+
+        function closeModal() {
+            modal.classList.remove('is-open');
         }
-        
-        window.addEventListener('hashchange', handleHash);
-        handleHash();
-        
-        // Waitlist functionality
+
+        waitlistBtn.onclick = openModal;
+        navWaitlistBtn.onclick = openModal;
+        modalClose.onclick = closeModal;
+
+        modal.onclick = function(e) {
+            if (e.target === modal) closeModal();
+        };
+
+        // Waitlist form
         var FORMSPREE_URL = 'https://formspree.io/f/mlgppqln';
-        var trigger = document.getElementById('waitlist-trigger');
         var form = document.getElementById('waitlist-form');
         var confirmation = document.getElementById('confirmation');
-        var input = form ? form.querySelector('.waitlist-input') : null;
-        var submitBtn = form ? form.querySelector('.waitlist-submit') : null;
         
-        function openForm(e) {
-            if (e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-            if (trigger) trigger.style.display = 'none';
-            if (form) form.style.display = 'flex';
-            if (input) {
-                setTimeout(function() { 
-                    input.focus(); 
-                }, 150);
-            }
-        }
-        
-        if (trigger) {
-            trigger.onclick = openForm;
-        }
-        
-        if (form) {
-            form.onsubmit = function(e) {
-                e.preventDefault();
-                var email = input ? input.value : '';
-                if (!email) return false;
-                if (submitBtn) { 
-                    submitBtn.disabled = true; 
-                    submitBtn.textContent = '...'; 
-                }
+        form.onsubmit = function(e) {
+            e.preventDefault();
+            var email = form.querySelector('input[name="email"]').value;
+            var submitBtn = form.querySelector('button[type="submit"]');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = '...';
 
-                fetch(FORMSPREE_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({ email: email })
-                })
-                .then(function(response) {
-                    if (response.ok) {
-                        if (form) form.style.display = 'none';
-                        if (confirmation) confirmation.style.display = 'block';
-                    } else { 
-                        throw new Error('Failed'); 
-                    }
-                })
-                .catch(function() {
-                    if (submitBtn) { 
-                        submitBtn.disabled = false; 
-                        submitBtn.textContent = 'Retry'; 
-                    }
-                });
-                
-                return false;
-            };
-        }
+            fetch(FORMSPREE_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({ email: email })
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    form.style.display = 'none';
+                    confirmation.style.display = 'block';
+                } else {
+                    throw new Error('Failed');
+                }
+            })
+            .catch(function() {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Try again';
+            });
+            
+            return false;
+        };
     })();
     </script>
 </body>
