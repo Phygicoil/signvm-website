@@ -2,371 +2,587 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>SIGNVM</title>
-    <meta name="description" content="A cryptographic signet ring. Machines execute. Humans authorise.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>SIGNVM — A signet ring for the artificial age</title>
+    <meta name="description" content="A precision-machined signet ring for human authority in the agentic age. Machines execute. Humans authorise.">
     <meta property="og:title" content="SIGNVM">
-    <meta property="og:description" content="A cryptographic signet ring. Machines execute. Humans authorise.">
+    <meta property="og:description" content="A signet ring for the artificial age. Machines execute. Humans authorise.">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* Page views */
-        .view { display: none; }
-        .view.active { display: flex; }
-        
-        /* Logo view (dark) */
-        .view-logo {
-            width: 100%;
-            min-height: 100vh;
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #F8F1E3;
+            --text: #1A1A1A;
+            --text-muted: #4A4A4A;
+            --brass: #C9A66B;
+            --brass-light: #D4B48C;
+            --white: #FFFFFF;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            background: var(--bg);
+        }
+
+        body {
+            font-family: var(--font-sans);
+            font-weight: 300;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            background: #0C0B09;
+            padding: 1.5rem 3rem;
+            background: rgba(248, 241, 227, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
-        .logo-text {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: clamp(3rem, 12vw, 10rem);
-            font-weight: 400;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: #D4C4A8;
-            text-indent: 0.35em;
-            opacity: 0;
-            animation: fadeIn 1.5s ease forwards;
-            animation-delay: 0.3s;
+
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            color: var(--text);
         }
-        
-        /* Logo view (light - dark text) */
-        .view-logo-light {
-            width: 100%;
-            min-height: 100vh;
-            align-items: center;
-            justify-content: center;
-            background: #F4F1E8;
-        }
-        .logo-text-dark {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: clamp(3rem, 12vw, 10rem);
-            font-weight: 400;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: #1a1918;
-            text-indent: 0.35em;
-            opacity: 0;
-            animation: fadeIn 1.5s ease forwards;
-            animation-delay: 0.3s;
-        }
-        
-        /* Logo view (white - travertine text) */
-        .view-logo-white {
-            width: 100%;
-            min-height: 100vh;
-            align-items: center;
-            justify-content: center;
-            background: #FFFFFF;
-        }
-        .logo-text-travertine {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: clamp(3rem, 12vw, 10rem);
-            font-weight: 400;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: #D4C4A8;
-            text-indent: 0.35em;
-            opacity: 0;
-            animation: fadeIn 1.5s ease forwards;
-            animation-delay: 0.3s;
-        }
-        
-        /* Presentation view */
-        .view-presentation {
-            width: 100%;
-            min-height: 100vh;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+
+        .nav-links {
+            display: flex;
             gap: 2.5rem;
-            background: #0C0B09;
-            padding: 3rem;
         }
-        .presentation-logo {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: clamp(2rem, 8vw, 5rem);
+
+        .nav-links a {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
             font-weight: 400;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: #D4C4A8;
-            text-indent: 0.35em;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
-        .presentation-tagline {
+
+        .nav-links a:hover {
+            color: var(--brass);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
             text-align: center;
         }
-        .presentation-tagline .line1 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-            font-weight: 300;
-            color: #F4F1E8;
-            display: block;
-            margin-bottom: 0.2em;
-        }
-        .presentation-tagline .line2 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-            font-weight: 300;
-            font-style: italic;
-            color: #D4C4A8;
-            display: block;
-        }
-        .presentation-qr {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .presentation-qr img {
-            width: 140px;
-            height: 140px;
-        }
-        .presentation-qr-label {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: 0.85rem;
-            font-style: italic;
-            color: rgba(212, 196, 168, 0.6);
-        }
-        
-        /* QR view */
-        .view-qr {
+
+        .hero-image {
             width: 100%;
-            min-height: 100vh;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2.5rem;
-            background: #0C0B09;
+            max-width: 700px;
+            margin-bottom: 3rem;
         }
-        .qr-brand {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: 1.1rem;
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .hero-headline {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 400;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: rgba(212, 196, 168, 0.6);
+            line-height: 1.2;
+            margin-bottom: 1rem;
         }
-        .qr-code {
-            width: 220px;
-            height: 220px;
-        }
-        .qr-label {
-            font-family: 'EB Garamond', Georgia, serif;
-            font-size: 1.15rem;
-            font-weight: 400;
+
+        .hero-headline em {
             font-style: italic;
-            letter-spacing: 0.05em;
-            color: #D4C4A8;
+            color: var(--brass);
         }
-        
-        /* Home view wrapper */
-        .view-home {
-            display: none;
-            flex-direction: column;
-            min-height: 100vh;
+
+        .hero-tagline {
+            font-family: var(--font-serif);
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
         }
-        .view-home.active {
+
+        .hero-quote {
+            max-width: 600px;
+            padding: 2rem;
+            border-top: 1px solid var(--brass-light);
+            border-bottom: 1px solid var(--brass-light);
+            margin-bottom: 3rem;
+        }
+
+        .hero-quote blockquote {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--brass);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-quote cite {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-style: normal;
+            color: var(--text-muted);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: var(--text);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--brass);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-headline {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            line-height: 1.3;
+        }
+
+        .section-body {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--text-muted);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Vision Section */
+        #vision {
+            background: var(--white);
+            max-width: none;
+            padding: 6rem 2rem;
+        }
+
+        #vision .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* MVP Section */
+        #mvp {
+            background: var(--bg);
+        }
+
+        .mvp-flow {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 2px;
+        }
+
+        .mvp-flow p {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            line-height: 2.2;
+            color: var(--text);
+        }
+
+        .mvp-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .mvp-column h3 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--brass);
+        }
+
+        .mvp-column ul {
+            list-style: none;
+        }
+
+        .mvp-column li {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .mvp-column li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7em;
+            width: 6px;
+            height: 1px;
+            background: var(--brass);
+        }
+
+        .mvp-statement {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--brass-light);
+        }
+
+        .mvp-statement p {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--text);
+        }
+
+        /* Ring Section */
+        #ring {
+            background: var(--white);
+            max-width: none;
+            text-align: center;
+        }
+
+        #ring .content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .ring-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .ring-image {
+            background: var(--bg);
+            padding: 2rem;
+        }
+
+        .ring-image img {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+        }
+
+        .ring-image p {
+            font-family: var(--font-serif);
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-top: 1.5rem;
+        }
+
+        /* Waitlist Section */
+        #waitlist {
+            background: var(--text);
+            max-width: none;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        #waitlist .section-headline {
+            color: var(--bg);
+        }
+
+        .waitlist-form {
             display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 2rem auto 0;
+        }
+
+        .waitlist-form input {
+            padding: 1rem 1.25rem;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            border: 1px solid rgba(248, 241, 227, 0.3);
+            background: transparent;
+            color: var(--bg);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .waitlist-form input::placeholder {
+            color: rgba(248, 241, 227, 0.5);
+        }
+
+        .waitlist-form input:focus {
+            border-color: var(--brass);
+        }
+
+        .waitlist-form button {
+            padding: 1rem 2rem;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text);
+            background: var(--brass);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .waitlist-form button:hover {
+            background: var(--brass-light);
+        }
+
+        .waitlist-confirmation {
+            display: none;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--brass);
+            margin-top: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.75rem;
+            color: rgba(248, 241, 227, 0.5);
+            line-height: 1.8;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .mvp-columns {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .ring-images {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- LOGO VIEW (dark) -->
-    <div class="view view-logo" id="view-logo">
-        <h1 class="logo-text">SIGNVM</h1>
-    </div>
-
-    <!-- LOGO VIEW (light - dark text) -->
-    <div class="view view-logo-light" id="view-logo-light">
-        <h1 class="logo-text-dark">SIGNVM</h1>
-    </div>
-
-    <!-- LOGO VIEW (white - travertine text) -->
-    <div class="view view-logo-white" id="view-logo-white">
-        <h1 class="logo-text-travertine">SIGNVM</h1>
-    </div>
-
-    <!-- PRESENTATION VIEW -->
-    <div class="view view-presentation" id="view-presentation">
-        <h1 class="presentation-logo">SIGNVM</h1>
-        <div class="presentation-tagline">
-            <span class="line1">Machines execute.</span>
-            <span class="line2">Humans authorise.</span>
+    <!-- Navigation -->
+    <nav>
+        <span class="nav-logo">SIGNVM</span>
+        <div class="nav-links">
+            <a href="#vision">Vision</a>
+            <a href="#mvp">MVP</a>
+            <a href="#ring">The Ring</a>
+            <a href="#waitlist">Waitlist</a>
         </div>
-        <div class="presentation-qr">
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-image">
             <img 
-                src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https://signvm.xyz&bgcolor=0C0B09&color=D4C4A8&margin=0" 
-                alt="QR code to SIGNVM waitlist"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/brass%20ring%20with%20glove2-GHQ4NflWIeWOIR6TjpBYRTsU0vjYj7.png" 
+                alt="SIGNVM signet ring held in white cotton glove"
             >
-            <span class="presentation-qr-label">waitlist</span>
         </div>
-    </div>
+        <h1 class="hero-headline">Machines execute.<br><em>Humans authorise.</em></h1>
+        <p class="hero-tagline">A signet ring for the artificial age.</p>
+        <div class="hero-quote">
+            <blockquote>"This is going to make web3 feel natural."</blockquote>
+            <cite>— Fabian Vogelsteller, ERC-20 inventor, LUKSO co-founder</cite>
+        </div>
+        <a href="#waitlist" class="btn-primary">Join the Waitlist</a>
+    </section>
 
-    <!-- HOME VIEW -->
-    <div class="view view-home" id="view-home">
-        <header class="header">
-            <span class="wordmark">SIGNVM</span>
-        </header>
+    <!-- Vision -->
+    <section id="vision">
+        <div class="content">
+            <h2 class="section-headline">The physical authority layer for the agentic age.</h2>
+            <p class="section-body">
+                A precision-machined signet ring with embedded ARX HaLo NFC chip. Tap once on your phone to cryptographically authorise AI agents, verify assets, or access real-world events. Your LUKSO Universal Profile + LSP6 Key Manager keeps permissions scoped exactly where you want them. The ring is the only thing that makes the agent move — or opens the door.
+            </p>
+        </div>
+    </section>
 
-        <main class="main">
-            <div class="hero">
-                <div class="hero-image">
+    <!-- MVP -->
+    <section id="mvp">
+        <h2 class="section-headline">SIGNVM — MVP (Live Today)</h2>
+        
+        <div class="mvp-flow">
+            <p>An AI agent proposes an action.</p>
+            <p>You review it.</p>
+            <p>You tap the ring.</p>
+            <p>The action executes.</p>
+            <p>The chain records your authorisation.</p>
+        </div>
+
+        <div class="mvp-columns">
+            <div class="mvp-column">
+                <h3>What exists today</h3>
+                <ul>
+                    <li>Precision-machined signet ring (antenna + ARX HaLo chip fully embedded)</li>
+                    <li>LUKSO Universal Profile with LSP6 Key Manager (scoped permissions)</li>
+                    <li>Demo app showing agent proposals awaiting approval</li>
+                    <li>One working tap-to-authorise flow</li>
+                    <li>Physical event access via Fabian's LUKSO protocol</li>
+                </ul>
+            </div>
+            <div class="mvp-column">
+                <h3>What the MVP proves</h3>
+                <ul>
+                    <li>A physical object can be the single source of truth for human authority</li>
+                    <li>AI actions and real-world access — scoped exactly where friction matters</li>
+                    <li>Low-friction delegation for the everyday</li>
+                    <li>Deliberate physical seal for what actually matters</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mvp-statement">
+            <p>The ring is the only thing that makes the agent move — or opens the door.</p>
+        </div>
+    </section>
+
+    <!-- The Ring -->
+    <section id="ring">
+        <div class="content">
+            <h2 class="section-headline">Edition 01 — Genesis</h2>
+            <p class="section-body">Limited to 10. Solid bronze, CNC-machined, patina that evolves with your on-chain history.</p>
+            
+            <div class="ring-images">
+                <div class="ring-image">
                     <img 
-                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/brass%20ring%20with%20glove2-GHQ4NflWIeWOIR6TjpBYRTsU0vjYj7.png" 
-                        alt="SIGNVM ring — gold signet held in white cotton glove against black"
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-UlOq8dl45oKlOWXBssxYKoePskQYF5.png" 
+                        alt="SIGNVM Genesis ring on stone surface"
                     >
+                    <p>Precision-machined brass with spiral antenna pattern</p>
                 </div>
-
-                <div class="hero-content">
-                    <div class="text-block">
-                        <h1 class="headline">Machines execute.<span class="emphasis">Humans authorise.</span></h1>
-
-                        <div class="body-copy">
-                            <p>For thousands of years, the signet ring was the instrument of authority. Pressed into wax, it sealed a decree. Possession was proof.</p>
-                            <p>In the age of artificial intelligence, that logic returns. Your agents act. Your voice can be cloned. Your face, replicated. But the ring in your hand — that is still yours.</p>
-                        </div>
-
-                        <p class="tagline">A signet ring for the artificial age.</p>
-                    </div>
-
-                    <div class="waitlist-block">
-                        <button class="waitlist-trigger" id="waitlist-trigger" type="button">Waitlist</button>
-                        <form class="waitlist-form" id="waitlist-form">
-                            <input 
-                                type="email" 
-                                name="email" 
-                                placeholder="Email" 
-                                required 
-                                class="waitlist-input"
-                                aria-label="Email address"
-                                autocomplete="email"
-                            >
-                            <button type="submit" class="waitlist-submit">Submit</button>
-                        </form>
-                        <p class="confirmation" id="confirmation">Noted.</p>
-                    </div>
+                <div class="ring-image">
+                    <img 
+                        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-vGXvctJSUh7yMHKQwJuVN7spkee0U9.png" 
+                        alt="SIGNVM ring tapping phone with NFC"
+                    >
+                    <p>Tap to authorise — NFC embedded</p>
                 </div>
             </div>
-        </main>
+        </div>
+    </section>
 
-        <footer class="footer">
-            <span>&copy; 2026 JIM HANNON-TAN</span>
-        </footer>
-    </div>
+    <!-- Waitlist -->
+    <section id="waitlist">
+        <h2 class="section-headline">Join the Waitlist</h2>
+        <form class="waitlist-form" id="waitlist-form">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <button type="submit">I'm ready to authorise the future</button>
+        </form>
+        <p class="waitlist-confirmation" id="confirmation">You're on the list. We'll be in touch.</p>
+    </section>
 
-    <!-- QR VIEW -->
-    <div class="view view-qr" id="view-qr">
-        <span class="qr-brand">SIGNVM</span>
-        <img 
-            class="qr-code" 
-            src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://signvm.xyz&bgcolor=0C0B09&color=D4C4A8&margin=0" 
-            alt="QR code to SIGNVM waitlist"
-        >
-        <span class="qr-label">waitlist</span>
-    </div>
-
-    <!-- NAVIGATION DOTS -->
-    <nav class="nav-dots">
-        <a href="#logo" class="nav-dot" data-view="logo" aria-label="Logo dark"></a>
-        <a href="#logo-light" class="nav-dot" data-view="logo-light" aria-label="Logo light"></a>
-        <a href="#logo-white" class="nav-dot" data-view="logo-white" aria-label="Logo white"></a>
-        <a href="#presentation" class="nav-dot" data-view="presentation" aria-label="Presentation"></a>
-        <a href="#home" class="nav-dot" data-view="home" aria-label="Home page"></a>
-        <a href="#qr" class="nav-dot" data-view="qr" aria-label="QR page"></a>
-    </nav>
+    <!-- Footer -->
+    <footer>
+        <p>Handcrafted in Adelaide. Built for the agentic age.<br>&copy; SIGNVM 2026</p>
+    </footer>
 
     <script>
     (function() {
-        // View switching
-        function showView(viewName) {
-            var views = document.querySelectorAll('.view');
-            var dots = document.querySelectorAll('.nav-dot');
-            
-            for (var i = 0; i < views.length; i++) {
-                views[i].classList.remove('active');
-            }
-            for (var i = 0; i < dots.length; i++) {
-                dots[i].classList.remove('active');
-            }
-            
-            var targetView = document.getElementById('view-' + viewName);
-            var targetDot = document.querySelector('[data-view="' + viewName + '"]');
-            
-            if (targetView) targetView.classList.add('active');
-            if (targetDot) targetDot.classList.add('active');
-        }
-        
-        function handleHash() {
-            var hash = window.location.hash.replace('#', '') || 'home';
-            showView(hash);
-        }
-        
-        window.addEventListener('hashchange', handleHash);
-        handleHash();
-        
-        // Waitlist functionality
         var FORMSPREE_URL = 'https://formspree.io/f/mlgppqln';
-        var trigger = document.getElementById('waitlist-trigger');
         var form = document.getElementById('waitlist-form');
         var confirmation = document.getElementById('confirmation');
-        var input = form ? form.querySelector('.waitlist-input') : null;
-        var submitBtn = form ? form.querySelector('.waitlist-submit') : null;
-        
-        function openForm(e) {
-            if (e) {
-                e.preventDefault();
-                e.stopPropagation();
-            }
-            if (trigger) trigger.style.display = 'none';
-            if (form) form.style.display = 'flex';
-            if (input) {
-                setTimeout(function() { 
-                    input.focus(); 
-                }, 150);
-            }
-        }
-        
-        if (trigger) {
-            trigger.onclick = openForm;
-        }
         
         if (form) {
             form.onsubmit = function(e) {
                 e.preventDefault();
-                var email = input ? input.value : '';
-                if (!email) return false;
-                if (submitBtn) { 
-                    submitBtn.disabled = true; 
-                    submitBtn.textContent = '...'; 
+                var formData = new FormData(form);
+                var data = {};
+                formData.forEach(function(value, key) { data[key] = value; });
+                
+                var submitBtn = form.querySelector('button');
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = '...';
                 }
 
                 fetch(FORMSPREE_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({ email: email })
+                    body: JSON.stringify(data)
                 })
                 .then(function(response) {
                     if (response.ok) {
-                        if (form) form.style.display = 'none';
-                        if (confirmation) confirmation.style.display = 'block';
-                    } else { 
-                        throw new Error('Failed'); 
+                        form.style.display = 'none';
+                        confirmation.style.display = 'block';
+                    } else {
+                        throw new Error('Failed');
                     }
                 })
                 .catch(function() {
-                    if (submitBtn) { 
-                        submitBtn.disabled = false; 
-                        submitBtn.textContent = 'Retry'; 
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Try again';
                     }
                 });
                 
