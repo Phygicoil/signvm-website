@@ -412,7 +412,7 @@
     <div class="modal-overlay" id="modal">
         <div class="modal">
             <button class="modal-close" id="modal-close">&times;</button>
-            <h3>Join the Waitlist</h3>
+            <h3 id="modal-title">Join the Waitlist</h3>
             <form id="waitlist-form">
                 <input type="hidden" name="access_key" value="08786a92-a002-47eb-bdfe-e7ddfb8e07c3">
                 <input type="hidden" name="subject" value="New Waitlist Signup">
@@ -481,6 +481,7 @@
             .then(function(data) {
                 if (data.success) {
                     form.style.display = 'none';
+                    document.getElementById('modal-title').style.display = 'none';
                     confirmation.style.display = 'block';
                     form.reset();
                 } else {
