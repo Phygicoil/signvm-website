@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title>SIGNVM — A signet ring for the artificial age</title>
     <meta name="description" content="Machines execute. Humans authorise. A signet ring for the artificial age.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
@@ -411,16 +412,16 @@
     <div class="modal-overlay" id="modal">
         <div class="modal">
             <button class="modal-close" id="modal-close">&times;</button>
-            <h3>Join the Waitlist</h3>
+            <h3 id="modal-title">Join the Waitlist</h3>
             <form id="waitlist-form">
-                <input type="hidden" name="access_key" value="5710a7dc-d272-44fb-87d8-c68aa90bc80e">
+                <input type="hidden" name="access_key" value="08786a92-a002-47eb-bdfe-e7ddfb8e07c3">
                 <input type="hidden" name="subject" value="New Waitlist Signup">
                 <input type="hidden" name="from_name" value="Waitlist Form">
                 <input type="email" name="email" placeholder="Email" required>
                 <textarea name="details" placeholder="Optional — Name, handle, ring size, metal preference, or anything you'd like to register"></textarea>
                 <button type="submit">Submit</button>
             </form>
-            <p class="modal-confirmation" id="confirmation">You're on the list.</p>
+            <p class="modal-confirmation" id="confirmation">Noted</p>
         </div>
     </div>
 
@@ -480,6 +481,7 @@
             .then(function(data) {
                 if (data.success) {
                     form.style.display = 'none';
+                    document.getElementById('modal-title').style.display = 'none';
                     confirmation.style.display = 'block';
                     form.reset();
                 } else {

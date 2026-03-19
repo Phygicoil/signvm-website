@@ -1,0 +1,48 @@
+# SIGNVM
+
+**A signet ring for the artificial age.**  
+**Machines execute. Humans authorise.**
+
+For five millennia the signet ring was the mandate of kings and queens. Today it returns as the only thing AI cannot fake.
+
+Created by Jim Hannon-Tan (Alessi, Tom Dixon, LVMH, Flos). Founder of SIGNVM.
+
+## The Core Problem
+
+AI agents can book flights, execute trades, sign contracts and publish on your behalf. Nothing proves a conscious human authorised the action. SIGNVM is that proof — the deliberate physical seal.
+
+## What it is
+
+Precision-machined cryptographic signet ring (brass, sterling silver or 18K gold). The NFC antenna *is* the ring face itself. Embedded ARX HaLo chip registers to your LUKSO Universal Profile.  
+
+AI agent proposes → you review → one tap → cryptographic signature. Action executes. Authorisation is on-chain, timestamped and irrevocable.
+
+Edition 01 sculptural object already with Fabian Vogelsteller. The wearable signet ring is the refined evolution.
+
+**Physical possession is the one primitive AI cannot simulate.**
+
+## Who this is for
+
+Founders deploying high-stakes AI agents • Developers building agent frameworks • Security architects needing human-in-the-loop ratification • Luxury collectors at the intersection of craft and sovereignty • Anyone who wants beautiful, meaningful control in the agentic age.
+
+## The Technology
+
+- Chip: ARX HaLo NFC (secp256k1 on-chip signing)  
+- Identity: LUKSO Universal Profile (ERC-725) + LSP6 Key Manager (scoped permissions)  
+- Multichain-ready: Base, Ethereum, Coinbase x402 and beyond via LSP16 factories  
+- Manufacturing: Precision CNC + hand-finishing at ANFF Adelaide
+
+## The Design Thesis
+
+The infrastructure becomes jewellery. The spiral antenna is machined into the face. Over time the physical patina mirrors the on-chain history.
+
+## Positioning
+
+Machines execute. Humans authorise.  
+A signet ring for the artificial age.
+
+## Links
+
+https://signvm.xyz  
+jim@jimhannontan.com  
+@phygicoil
