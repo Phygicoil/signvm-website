@@ -234,12 +234,32 @@
             transition: border-color 0.3s ease;
         }
 
-        .modal input::placeholder {
+        .modal input::placeholder,
+        .modal textarea::placeholder {
             color: rgba(17, 17, 17, 0.35);
         }
 
-        .modal input:focus {
+        .modal input:focus,
+        .modal textarea:focus {
             border-color: var(--brass);
+        }
+
+        .modal textarea {
+            width: 100%;
+            padding: 1rem 0;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 300;
+            border: none;
+            border-bottom: 1px solid rgba(17, 17, 17, 0.15);
+            background: transparent;
+            color: var(--text);
+            outline: none;
+            margin-bottom: 2rem;
+            transition: border-color 0.3s ease;
+            resize: none;
+            min-height: 80px;
+            line-height: 1.6;
         }
 
         .modal button[type="submit"] {
@@ -387,7 +407,11 @@
             <button class="modal-close" id="modal-close">&times;</button>
             <h3>Join the Waitlist</h3>
             <form id="waitlist-form">
+                <input type="hidden" name="access_key" value="5710a7dc-d272-44fb-87d8-c68aa90bc80e">
+                <input type="hidden" name="subject" value="New Waitlist Signup">
+                <input type="hidden" name="from_name" value="Waitlist Form">
                 <input type="email" name="email" placeholder="Email" required>
+                <textarea name="details" placeholder="Optional — Name, handle, ring size, metal preference, or anything you'd like to share"></textarea>
                 <button type="submit">Submit</button>
             </form>
             <p class="modal-confirmation" id="confirmation">You're on the list.</p>
@@ -429,28 +453,31 @@
             if (e.target === modal) closeModal();
         };
 
-        // Waitlist form
-        var FORMSPREE_URL = 'https://formspree.io/f/mlgppqln';
+        // Waitlist form - Web3Forms
+        var WEB3FORMS_URL = 'https://api.web3forms.com/submit';
         var form = document.getElementById('waitlist-form');
         var confirmation = document.getElementById('confirmation');
         
         form.onsubmit = function(e) {
             e.preventDefault();
-            var email = form.querySelector('input[name="email"]').value;
+            var formData = new FormData(form);
             var submitBtn = form.querySelector('button[type="submit"]');
             
             submitBtn.disabled = true;
             submitBtn.textContent = '...';
 
-            fetch(FORMSPREE_URL, {
+            fetch(WEB3FORMS_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({ email: email })
+                body: formData
             })
             .then(function(response) {
-                if (response.ok) {
+                return response.json();
+            })
+            .then(function(data) {
+                if (data.success) {
                     form.style.display = 'none';
                     confirmation.style.display = 'block';
+                    form.reset();
                 } else {
                     throw new Error('Failed');
                 }
