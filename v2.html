@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>SIGNVM — A signet ring for the artificial age</title>
+    <meta name="description" content="Machines execute. Humans authorise. A cryptographic signet ring for the artificial age.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #FAF8F5;
+            --bg-warm: #F5F2ED;
+            --text: #1A1A1A;
+            --text-muted: rgba(26, 26, 26, 0.55);
+            --text-caption: rgba(26, 26, 26, 0.35);
+            --brass: #C9A66B;
+            --brass-dark: #B8935A;
+            --white: #FFFFFF;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+            background: var(--bg);
+        }
+
+        body {
+            font-family: var(--font-serif);
+            font-weight: 400;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        ::selection {
+            background: var(--brass);
+            color: var(--white);
+        }
+
+        /* ---- Navigation ---- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2.5rem 4rem;
+            background: transparent;
+            transition: background 0.4s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo {
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            font-weight: 400;
+            letter-spacing: 0.45em;
+            color: var(--text);
+            text-transform: uppercase;
+        }
+
+        .nav-social {
+            display: flex;
+            gap: 1.25rem;
+        }
+
+        .nav-social a {
+            color: var(--text);
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-social a:hover {
+            opacity: 0.6;
+        }
+
+        .nav-social svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* ---- Main Content ---- */
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10rem 2rem 6rem;
+            text-align: center;
+            min-height: 100vh;
+        }
+
+        /* ---- Hero Image ---- */
+        .hero-image {
+            width: 100%;
+            max-width: 380px;
+            margin-bottom: 5rem;
+            opacity: 0;
+            animation: fadeIn 1.2s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* ---- Headline ---- */
+        .headline {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.9s ease forwards;
+            animation-delay: 0.5s;
+        }
+
+        .headline em {
+            display: block;
+            font-style: italic;
+            color: var(--brass);
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---- Story Block ---- */
+        .story {
+            max-width: 600px;
+            margin: 0 auto 5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.9s ease forwards;
+            animation-delay: 0.7s;
+        }
+
+        .story p {
+            font-family: var(--font-serif);
+            font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+            font-weight: 400;
+            line-height: 1.75;
+            color: var(--text);
+            margin-bottom: 1.75rem;
+        }
+
+        .story p:last-child {
+            margin-bottom: 0;
+        }
+
+        .story-tagline {
+            margin-top: 2.5rem;
+            font-style: italic;
+            color: var(--brass);
+            font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+        }
+
+        /* ---- CTA Section ---- */
+        .cta {
+            margin-bottom: 6rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUp 0.9s ease forwards;
+            animation-delay: 0.9s;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.15rem 3rem;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: var(--brass);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--brass-dark);
+        }
+
+        .cta-subtitle {
+            margin-top: 1.5rem;
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        /* ---- Technical Caption (Museum Style) ---- */
+        .tech-caption {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+            animation-delay: 1.2s;
+        }
+
+        .tech-caption table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            color: var(--text-caption);
+        }
+
+        .tech-caption td {
+            padding: 0.35rem 1.25rem;
+            vertical-align: top;
+        }
+
+        .tech-caption td:first-child {
+            text-align: right;
+            padding-right: 0.75rem;
+        }
+
+        .tech-caption td:last-child {
+            text-align: left;
+            padding-left: 0.75rem;
+        }
+
+        /* ---- Footer ---- */
+        footer {
+            padding: 2rem 4rem;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+            animation-delay: 1.4s;
+        }
+
+        footer p {
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            letter-spacing: 0.08em;
+            color: var(--text-caption);
+        }
+
+        /* ---- Modal ---- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(26, 26, 26, 0.35);
+            z-index: 200;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .modal-overlay.is-open {
+            display: flex;
+        }
+
+        .modal {
+            background: var(--bg);
+            padding: 4rem 3rem;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--text);
+        }
+
+        .modal h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 1rem 0;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 300;
+            border: none;
+            border-bottom: 1px solid rgba(26, 26, 26, 0.15);
+            background: transparent;
+            color: var(--text);
+            outline: none;
+            margin-bottom: 2rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .modal input::placeholder,
+        .modal textarea::placeholder {
+            color: rgba(26, 26, 26, 0.35);
+        }
+
+        .modal input:focus,
+        .modal textarea:focus {
+            border-color: var(--brass);
+        }
+
+        .modal textarea {
+            width: 100%;
+            padding: 1rem 0 1.5rem 0;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 300;
+            border: none;
+            border-bottom: 1px solid rgba(26, 26, 26, 0.15);
+            background: transparent;
+            color: var(--text);
+            outline: none;
+            margin-bottom: 2rem;
+            transition: border-color 0.3s ease;
+            resize: none;
+            min-height: 100px;
+            line-height: 1.6;
+            overflow: hidden;
+        }
+
+        .modal button[type="submit"] {
+            width: 100%;
+            padding: 1.25rem 2rem;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: var(--brass);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .modal button[type="submit"]:hover {
+            background: var(--brass-dark);
+        }
+
+        .modal-confirmation {
+            display: none;
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text);
+        }
+
+        /* ---- Mobile ---- */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            main {
+                padding: 8rem 2rem 4rem;
+            }
+
+            .hero-image {
+                max-width: 280px;
+                margin-bottom: 3.5rem;
+            }
+
+            .headline {
+                margin-bottom: 3.5rem;
+            }
+
+            .story {
+                margin-bottom: 3.5rem;
+            }
+
+            .story p {
+                text-align: left;
+            }
+
+            .cta {
+                margin-bottom: 4rem;
+            }
+
+            .tech-caption table {
+                font-size: 0.6rem;
+            }
+
+            .tech-caption td {
+                padding: 0.25rem 0.75rem;
+            }
+
+            footer {
+                padding: 1.5rem 2rem;
+            }
+
+            .modal {
+                padding: 3rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            main {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            .hero-image {
+                max-width: 240px;
+                margin-bottom: 3rem;
+            }
+
+            .headline {
+                font-size: 1.9rem;
+            }
+
+            .story p {
+                font-size: 1.05rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="nav">
+        <span class="nav-logo">SIGNVM</span>
+        <div class="nav-social">
+            <a href="https://x.com/phygicoil" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/jimhannontan/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Image -->
+        <div class="hero-image">
+            <img 
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/signet-ohJtsyGCRRXhSXwVc6VWAvjq4Tsig6.png" 
+                alt="SIGNVM precision-machined brass signet ring with spiral antenna detail"
+            >
+        </div>
+
+        <!-- Headline -->
+        <h1 class="headline">
+            Machines execute.<br>
+            <em>Humans authorise.</em>
+        </h1>
+
+        <!-- Story -->
+        <section class="story">
+            <p>The seal was once the mandate. For five millennia, to hold the object was to hold the authority.</p>
+            <p>Today agents act on our behalf while phygital treasures move without conscious presence. Any digital appearance can be forged and anyone can be simulated. What remains is the eternal question of authorisation: what is the one true signal?</p>
+            <p class="story-tagline">A cryptographic signet ring for the artificial age.</p>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta">
+            <button class="cta-button" id="waitlist-btn">Join the Genesis Waitlist</button>
+            <p class="cta-subtitle">Edition 01: The first physical keys to a new kind of identity.</p>
+        </section>
+
+        <!-- Technical Caption -->
+        <div class="tech-caption">
+            <table>
+                <tr>
+                    <td>Substrate</td>
+                    <td>Machined brass / ARX HaLo</td>
+                </tr>
+                <tr>
+                    <td>Protocol</td>
+                    <td>LUKSO (LSP-6)</td>
+                </tr>
+                <tr>
+                    <td>Origin</td>
+                    <td>Adelaide &rarr; Berlin</td>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>SIGNVM &copy; 2026</p>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <h3 id="modal-title">Join the Genesis Waitlist</h3>
+            <form id="waitlist-form">
+                <input type="hidden" name="access_key" value="08786a92-a002-47eb-bdfe-e7ddfb8e07c3">
+                <input type="hidden" name="subject" value="Genesis Waitlist Signup">
+                <input type="hidden" name="from_name" value="SIGNVM Waitlist">
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="details" placeholder="Optional — Name, handle, ring size, metal preference, or anything you'd like to share"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            <p class="modal-confirmation" id="confirmation">Noted</p>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        // Nav scroll effect
+        var nav = document.getElementById('nav');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Modal
+        var modal = document.getElementById('modal');
+        var waitlistBtn = document.getElementById('waitlist-btn');
+        var modalClose = document.getElementById('modal-close');
+
+        function openModal(e) {
+            e.preventDefault();
+            modal.classList.add('is-open');
+        }
+
+        function closeModal() {
+            modal.classList.remove('is-open');
+        }
+
+        waitlistBtn.onclick = openModal;
+        modalClose.onclick = closeModal;
+
+        modal.onclick = function(e) {
+            if (e.target === modal) closeModal();
+        };
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+                closeModal();
+            }
+        });
+
+        // Waitlist form - Web3Forms
+        var WEB3FORMS_URL = 'https://api.web3forms.com/submit';
+        var form = document.getElementById('waitlist-form');
+        var confirmation = document.getElementById('confirmation');
+        
+        form.onsubmit = function(e) {
+            e.preventDefault();
+            var formData = new FormData(form);
+            var submitBtn = form.querySelector('button[type="submit"]');
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = '...';
+
+            fetch(WEB3FORMS_URL, {
+                method: 'POST',
+                body: formData
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                if (data.success) {
+                    form.style.display = 'none';
+                    document.getElementById('modal-title').style.display = 'none';
+                    confirmation.style.display = 'block';
+                    form.reset();
+                } else {
+                    throw new Error('Failed');
+                }
+            })
+            .catch(function() {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Try again';
+            });
+            
+            return false;
+        };
+
+        // Auto-resize textarea
+        var textarea = document.querySelector('.modal textarea');
+        if (textarea) {
+            textarea.addEventListener('input', function() {
+                this.style.height = 'auto';
+                this.style.height = this.scrollHeight + 'px';
+            });
+        }
+    })();
+    </script>
+</body>
+</html>
