@@ -151,29 +151,118 @@
             color: var(--brass);
         }
 
-        /* Waitlist - extremely simple */
-        .waitlist {
-            padding: 10rem 2rem 14rem;
-            text-align: center;
-        }
-
-        .waitlist-btn {
-            display: inline-block;
-            padding: 1.25rem 3.5rem;
+        .story-label {
             font-family: var(--font-sans);
             font-size: 0.7rem;
             font-weight: 400;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--white);
-            background: var(--brass);
-            border: none;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
         }
 
-        .waitlist-btn:hover {
+        .story p + .story-label {
+            margin-top: 3rem;
+        }
+
+        /* Dual Track Section */
+        .dual-track {
+            padding: 6rem 2rem 10rem;
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .track {
+            text-align: center;
+        }
+
+        .track-label {
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .track-desc {
+            font-family: var(--font-serif);
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            font-weight: 400;
+            line-height: 1.7;
+            color: var(--text);
+            margin-bottom: 2rem;
+        }
+
+        .track-btn {
+            display: inline-block;
+            padding: 1.1rem 2.5rem;
+            font-family: var(--font-sans);
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .track-btn-primary {
+            color: var(--white);
+            background: var(--brass);
+            border: 1px solid var(--brass);
+        }
+
+        .track-btn-primary:hover {
             opacity: 0.85;
+        }
+
+        .track-btn-outline {
+            color: var(--text);
+            background: transparent;
+            border: 1px solid var(--text);
+        }
+
+        .track-btn-outline:hover {
+            color: var(--brass);
+            border-color: var(--brass);
+        }
+
+        /* Technical Receipt */
+        .tech-receipt {
+            padding: 4rem 2rem 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .receipt-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+        }
+
+        .receipt-table th,
+        .receipt-table td {
+            padding: 0.75rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+        }
+
+        .receipt-table th {
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+        }
+
+        .receipt-table td {
+            color: var(--text);
+            font-weight: 300;
         }
 
         /* Modal */
@@ -349,8 +438,27 @@
                 padding: 8rem 2rem;
             }
 
-            .waitlist {
-                padding: 6rem 2rem 10rem;
+            .dual-track {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+                padding: 4rem 2rem 8rem;
+            }
+
+            .track-desc {
+                font-size: 1rem;
+            }
+
+            .tech-receipt {
+                padding: 2rem 1.5rem;
+            }
+
+            .receipt-table {
+                font-size: 0.6rem;
+            }
+
+            .receipt-table th,
+            .receipt-table td {
+                padding: 0.5rem 0.5rem;
             }
 
             .modal {
@@ -378,22 +486,52 @@
         <h1 class="hero-headline">Machines execute.<br><em>Humans authorize.</em></h1>
     </section>
 
-    <!-- Story -->
+    <!-- Thesis -->
     <section class="story">
-        <p>For five millennia, the seal was the mandate. Pharaohs, emperors, kings and queens understood that while a scribe may draft the word, the seal gives it force. To hold the object was to hold the authority.</p>
-        <p class="story-detail">That authority has never been more contested. Identities are fragmented. Agents act without presence. Appearances can be forged.</p>
-        <p class="story-detail">Who holds the seal?</p>
-        <p class="story-tagline">A cryptographic signet ring for the artificial age.</p>
+        <p class="story-label">The seal was once the mandate.</p>
+        <p>For five millennia, to hold the object was to hold the authority.</p>
+        <p class="story-detail">Today, digital signals are infinitely spoofable. In the age of autonomous agents and deepfakes, presence is the only scarcity.</p>
+        <p class="story-label">The seal returns.</p>
+        <p class="story-detail">A monolithic brass anchor for a world where only physical presence is undeniable.</p>
     </section>
 
-    <!-- Waitlist -->
-    <section class="waitlist">
-        <button class="waitlist-btn" id="waitlist-btn">Waitlist</button>
+    <!-- Dual Track Capture -->
+    <section class="dual-track">
+        <div class="track track-collector">
+            <h2 class="track-label">The Collector</h2>
+            <p class="track-desc">Apply for Edition 01: The Genesis Monolith. A limited run of 100 hand-finished signet rings. The first physical keys to the LUKSO ecosystem.</p>
+            <button class="track-btn track-btn-primary" id="collector-btn">Join Genesis Waitlist</button>
+        </div>
+        <div class="track track-builder">
+            <h2 class="track-label">The Builder</h2>
+            <p class="track-desc">Integrate the Physical Interrupt. Secure your agentic workflows with un-spoofable human ratification via the SIGNVM API.</p>
+            <button class="track-btn track-btn-outline" id="builder-btn">Request API Access</button>
+        </div>
+    </section>
+
+    <!-- Technical Receipt -->
+    <section class="tech-receipt">
+        <table class="receipt-table">
+            <thead>
+                <tr>
+                    <th>Substrate</th>
+                    <th>Protocol</th>
+                    <th>Origin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Machined Brass / ARX HaLo</td>
+                    <td>LUKSO (LSP-6)</td>
+                    <td>Adelaide &rarr; Berlin</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>SIGNVM &copy; 2026 &middot; Adelaide</p>
+        <p>SIGNVM &copy; 2026</p>
         <div class="social-links">
             <a href="https://x.com/phygicoil" target="_blank" rel="noopener" aria-label="X (Twitter)">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -413,6 +551,7 @@
                 <input type="hidden" name="access_key" value="08786a92-a002-47eb-bdfe-e7ddfb8e07c3">
                 <input type="hidden" name="subject" value="New Waitlist Signup">
                 <input type="hidden" name="from_name" value="Waitlist Form">
+                <input type="hidden" name="type" id="form-type" value="General Waitlist">
                 <input type="email" name="email" placeholder="Email" required>
                 <textarea name="details" placeholder="Optional — Name, handle, ring size, metal preference, or anything you'd like to register"></textarea>
                 <button type="submit">Submit</button>
@@ -435,21 +574,37 @@
 
         // Modal
         var modal = document.getElementById('modal');
-        var waitlistBtn = document.getElementById('waitlist-btn');
+        var collectorBtn = document.getElementById('collector-btn');
+        var builderBtn = document.getElementById('builder-btn');
         var navWaitlistBtn = document.getElementById('nav-waitlist-btn');
         var modalClose = document.getElementById('modal-close');
+        var modalTitle = document.getElementById('modal-title');
+        var formType = document.getElementById('form-type');
 
-        function openModal(e) {
-            e.preventDefault();
-            modal.classList.add('is-open');
+        function openModal(type) {
+            return function(e) {
+                e.preventDefault();
+                if (type === 'collector') {
+                    modalTitle.textContent = 'Join Genesis Waitlist';
+                    formType.value = 'Collector - Genesis Waitlist';
+                } else if (type === 'builder') {
+                    modalTitle.textContent = 'Request API Access';
+                    formType.value = 'Builder - API Access';
+                } else {
+                    modalTitle.textContent = 'Join the Waitlist';
+                    formType.value = 'General Waitlist';
+                }
+                modal.classList.add('is-open');
+            };
         }
 
         function closeModal() {
             modal.classList.remove('is-open');
         }
 
-        waitlistBtn.onclick = openModal;
-        navWaitlistBtn.onclick = openModal;
+        collectorBtn.onclick = openModal('collector');
+        builderBtn.onclick = openModal('builder');
+        navWaitlistBtn.onclick = openModal('general');
         modalClose.onclick = closeModal;
 
         modal.onclick = function(e) {
