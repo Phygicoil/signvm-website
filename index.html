@@ -184,6 +184,15 @@
             margin-bottom: 1.5rem;
         }
 
+        .track-subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+
         .track-desc {
             font-family: var(--font-serif);
             font-size: clamp(1rem, 2vw, 1.15rem);
@@ -467,12 +476,14 @@
     <section class="dual-track">
         <div class="track track-collector">
             <h2 class="track-label">The Collector</h2>
-            <p class="track-desc">Secure Edition 02: The Monolith.<br>A series of hand-finished rings in<br>Brass, Silver, and Solid Gold.</p>
+            <p class="track-subtitle">The Monolith: Edition 02</p>
+            <p class="track-desc">Hand-finished signet rings in<br>Brass, Silver, and Solid Gold.</p>
             <button class="track-btn track-btn-primary" id="collector-btn">Secure Allocation</button>
         </div>
         <div class="track track-builder">
             <h2 class="track-label">The Builder</h2>
-            <p class="track-desc">Integrate the Physical Interrupt.<br>Access the SIGNVM API and developer<br>hardware for agentic ratification.</p>
+            <p class="track-subtitle">The Physical Interrupt</p>
+            <p class="track-desc">API access and developer<br>hardware for ratification.</p>
             <button class="track-btn track-btn-outline" id="builder-btn">Request API Access</button>
         </div>
     </section>
@@ -506,7 +517,7 @@
                 <textarea name="details" id="details-input" placeholder="Name, handle, ring size, or material preference (Brass, Silver, Gold)."></textarea>
                 <button type="submit" id="submit-btn">Join the Genesis</button>
             </form>
-            <p class="modal-confirmation" id="confirmation">Your intent has been recorded. We will notify you when the metal is ready for your signature.</p>
+            <p class="modal-confirmation" id="confirmation">Your allocation request for Edition 02 has been recorded in the registry. We will notify you when the foundry is ready.</p>
         </div>
     </div>
 
@@ -546,7 +557,7 @@
                 buttonText: 'Join the Genesis',
                 formType: 'Collector - Edition 02',
                 subject: 'New Collector Registration',
-                successMessage: 'Your intent has been recorded. We will notify you when the metal is ready for your signature.'
+                successMessage: 'Your allocation request for Edition 02 has been recorded in the registry. We will notify you when the foundry is ready.'
             },
             builder: {
                 title: 'Secure the Interrupt',
@@ -556,7 +567,7 @@
                 buttonText: 'Request Dev Kit',
                 formType: 'Builder - Dev Kit',
                 subject: 'New Builder Application',
-                successMessage: 'Request received. Our team will review your project for the developer program.'
+                successMessage: 'Your request for the Physical Interrupt API is under review. Our lab is preparing your developer hardware for shipment.'
             }
         };
 
