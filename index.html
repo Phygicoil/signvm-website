@@ -502,7 +502,7 @@
             <h3 id="modal-title">Secure your Allocation</h3>
             <p class="modal-subtext" id="modal-subtext">Registration for Edition 02: The Monolith is now open. Hand-finished keys to the LUKSO ecosystem.</p>
             <form id="waitlist-form">
-                <input type="hidden" name="access_key" value="08786a92-a002-47eb-bdfe-e7ddfb8e07c3">
+                <input type="hidden" name="access_key" id="form-access-key" value="08786a92-a002-47eb-bdfe-e7ddfb8e07c3">
                 <input type="hidden" name="subject" id="form-subject" value="New Collector Registration">
                 <input type="hidden" name="from_name" value="SIGNVM Registration">
                 <input type="hidden" name="type" id="form-type" value="Collector - Edition 02">
@@ -535,6 +535,7 @@
         var modalSubtext = document.getElementById('modal-subtext');
         var formType = document.getElementById('form-type');
         var formSubject = document.getElementById('form-subject');
+        var formAccessKey = document.getElementById('form-access-key');
         var emailInput = document.getElementById('email-input');
         var detailsInput = document.getElementById('details-input');
         var submitBtn = document.getElementById('submit-btn');
@@ -550,6 +551,7 @@
                 buttonText: 'Join the Genesis',
                 formType: 'Collector - Edition 02',
                 subject: 'New Collector Registration',
+                accessKey: '08786a92-a002-47eb-bdfe-e7ddfb8e07c3',
                 successMessage: 'Your allocation request for Edition 02 has been recorded in the registry. We will notify you when the foundry is ready.'
             },
             builder: {
@@ -560,6 +562,7 @@
                 buttonText: 'Request Dev Kit',
                 formType: 'Builder - Dev Kit',
                 subject: 'New Builder Application',
+                accessKey: '2bcce2a4-04ef-4d44-8747-5753f9fe040a',
                 successMessage: 'Your request for the Physical Interrupt API is under review. Our lab is preparing your developer hardware for shipment.'
             }
         };
@@ -577,6 +580,7 @@
                 submitBtn.textContent = content.buttonText;
                 formType.value = content.formType;
                 formSubject.value = content.subject;
+                formAccessKey.value = content.accessKey;
                 confirmation.textContent = content.successMessage;
                 
                 modal.classList.add('is-open');
