@@ -69,18 +69,13 @@
             color: var(--text);
         }
 
-        .nav-waitlist {
+        .nav-edition {
             font-family: var(--font-sans);
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 300;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-waitlist:hover {
-            color: var(--brass);
+            opacity: 0.5;
         }
 
         /* Hero - full screen, enormous breathing room */
@@ -167,12 +162,12 @@
 
         /* Dual Track Section */
         .dual-track {
-            padding: 6rem 2rem 10rem;
+            padding: 6rem 2rem 12rem;
             max-width: 900px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 6rem;
         }
 
         .track {
@@ -357,17 +352,28 @@
 
         /* Footer */
         footer {
+            position: relative;
             padding: 2.5rem 4rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        footer p {
+        .footer-copyright {
             font-size: 0.65rem;
             letter-spacing: 0.08em;
             color: var(--text-muted);
             opacity: 0.5;
+        }
+
+        .footer-provenance {
+            font-size: 0.6rem;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            opacity: 0.4;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .social-links {
@@ -434,7 +440,7 @@
     <!-- Navigation -->
     <nav id="nav">
         <span class="nav-logo">SIGNVM</span>
-        <a href="#" class="nav-waitlist" id="nav-waitlist-btn">Waitlist</a>
+        <span class="nav-edition">EDITION 01</span>
     </nav>
 
     <!-- Hero -->
@@ -462,7 +468,7 @@
         <div class="track track-collector">
             <h2 class="track-label">The Collector</h2>
             <p class="track-desc">Apply for Edition 01: The Genesis Monolith. A limited run of 100 hand-finished signet rings. The first physical keys to a new kind of identity.</p>
-            <button class="track-btn track-btn-primary" id="collector-btn">Join Genesis Waitlist</button>
+            <button class="track-btn track-btn-primary" id="collector-btn">Secure Allocation</button>
         </div>
         <div class="track track-builder">
             <h2 class="track-label">The Builder</h2>
@@ -473,7 +479,8 @@
 
     <!-- Footer -->
     <footer>
-        <p>SIGNVM &copy; 2026</p>
+        <p class="footer-copyright">SIGNVM &copy; 2026</p>
+        <p class="footer-provenance">ADELAIDE &times; LUKSO</p>
         <div class="social-links">
             <a href="https://x.com/phygicoil" target="_blank" rel="noopener" aria-label="X (Twitter)">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -497,7 +504,7 @@
                 <input type="hidden" name="type" id="form-type" value="Collector - Genesis">
                 <input type="email" name="email" id="email-input" placeholder="Email Address" required>
                 <textarea name="details" id="details-input" placeholder="Name, X/LUKSO handle, ring size, metal preference (Brass, Bronze, Silver), or anything you'd like to register."></textarea>
-                <button type="submit" id="submit-btn">Join the Genesis</button>
+                <button type="submit" id="submit-btn">Register Interest</button>
             </form>
             <p class="modal-confirmation" id="confirmation">Your intent has been recorded. We will notify you when the brass is ready for your signature.</p>
         </div>
@@ -519,7 +526,6 @@
         var modal = document.getElementById('modal');
         var collectorBtn = document.getElementById('collector-btn');
         var builderBtn = document.getElementById('builder-btn');
-        var navWaitlistBtn = document.getElementById('nav-waitlist-btn');
         var modalClose = document.getElementById('modal-close');
         var modalTitle = document.getElementById('modal-title');
         var modalSubtext = document.getElementById('modal-subtext');
@@ -537,7 +543,7 @@
                 subtext: 'Registration for Edition 01 is now open. A limited series of 100 hand-finished monoliths.',
                 emailPlaceholder: 'Email Address',
                 detailsPlaceholder: 'Name, X/LUKSO handle, ring size, metal preference (Brass, Bronze, Silver), or anything you\'d like to register.',
-                buttonText: 'Join the Genesis',
+                buttonText: 'Register Interest',
                 formType: 'Collector - Genesis',
                 subject: 'New Collector Registration',
                 successMessage: 'Your intent has been recorded. We will notify you when the brass is ready for your signature.'
@@ -589,7 +595,6 @@
 
         collectorBtn.onclick = openModal('collector');
         builderBtn.onclick = openModal('builder');
-        navWaitlistBtn.onclick = openModal('collector');
         modalClose.onclick = closeModal;
 
         modal.onclick = function(e) {
