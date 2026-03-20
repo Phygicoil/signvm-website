@@ -272,6 +272,15 @@
             font-family: var(--font-serif);
             font-size: 1.4rem;
             font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .modal-subtext {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.6;
             margin-bottom: 2.5rem;
         }
 
@@ -479,17 +488,18 @@
     <div class="modal-overlay" id="modal">
         <div class="modal">
             <button class="modal-close" id="modal-close">&times;</button>
-            <h3 id="modal-title">Join the Waitlist</h3>
+            <h3 id="modal-title">Secure your Allocation</h3>
+            <p class="modal-subtext" id="modal-subtext">Registration for Edition 01 is now open. A limited series of 100 hand-finished monoliths.</p>
             <form id="waitlist-form">
                 <input type="hidden" name="access_key" value="08786a92-a002-47eb-bdfe-e7ddfb8e07c3">
-                <input type="hidden" name="subject" value="New Waitlist Signup">
-                <input type="hidden" name="from_name" value="Waitlist Form">
-                <input type="hidden" name="type" id="form-type" value="General Waitlist">
-                <input type="email" name="email" placeholder="Email" required>
-                <textarea name="details" placeholder="Optional — Name, handle, ring size, metal preference, or anything you'd like to register"></textarea>
-                <button type="submit">Submit</button>
+                <input type="hidden" name="subject" id="form-subject" value="New Collector Registration">
+                <input type="hidden" name="from_name" value="SIGNVM Registration">
+                <input type="hidden" name="type" id="form-type" value="Collector - Genesis">
+                <input type="email" name="email" id="email-input" placeholder="Email Address" required>
+                <textarea name="details" id="details-input" placeholder="Name, X/LUKSO handle, ring size, metal preference (Brass, Bronze, Silver), or anything you'd like to register."></textarea>
+                <button type="submit" id="submit-btn">Join the Genesis</button>
             </form>
-            <p class="modal-confirmation" id="confirmation">Noted</p>
+            <p class="modal-confirmation" id="confirmation">Your intent has been recorded. We will notify you when the brass is ready for your signature.</p>
         </div>
     </div>
 
@@ -512,32 +522,74 @@
         var navWaitlistBtn = document.getElementById('nav-waitlist-btn');
         var modalClose = document.getElementById('modal-close');
         var modalTitle = document.getElementById('modal-title');
+        var modalSubtext = document.getElementById('modal-subtext');
         var formType = document.getElementById('form-type');
+        var formSubject = document.getElementById('form-subject');
+        var emailInput = document.getElementById('email-input');
+        var detailsInput = document.getElementById('details-input');
+        var submitBtn = document.getElementById('submit-btn');
+        var confirmation = document.getElementById('confirmation');
+        var currentModalType = 'collector';
+
+        var modalContent = {
+            collector: {
+                title: 'Secure your Allocation',
+                subtext: 'Registration for Edition 01 is now open. A limited series of 100 hand-finished monoliths.',
+                emailPlaceholder: 'Email Address',
+                detailsPlaceholder: 'Name, X/LUKSO handle, ring size, metal preference (Brass, Bronze, Silver), or anything you\'d like to register.',
+                buttonText: 'Join the Genesis',
+                formType: 'Collector - Genesis',
+                subject: 'New Collector Registration',
+                successMessage: 'Your intent has been recorded. We will notify you when the brass is ready for your signature.'
+            },
+            builder: {
+                title: 'Secure the Interrupt',
+                subtext: 'The SIGNVM API is in private development. Apply for early access to our agentic ratification and human-in-the-loop pilots.',
+                emailPlaceholder: 'Professional Email',
+                detailsPlaceholder: 'Tell us about your project, your agentic stack, or your vision for verifiable human presence.',
+                buttonText: 'Request Access',
+                formType: 'Builder - API Access',
+                subject: 'New Builder Application',
+                successMessage: 'Request received. Our team will review your project for the private beta.'
+            }
+        };
 
         function openModal(type) {
             return function(e) {
                 e.preventDefault();
-                if (type === 'collector') {
-                    modalTitle.textContent = 'Join Genesis Waitlist';
-                    formType.value = 'Collector - Genesis Waitlist';
-                } else if (type === 'builder') {
-                    modalTitle.textContent = 'Request API Access';
-                    formType.value = 'Builder - API Access';
-                } else {
-                    modalTitle.textContent = 'Join the Waitlist';
-                    formType.value = 'General Waitlist';
-                }
+                currentModalType = type === 'builder' ? 'builder' : 'collector';
+                var content = modalContent[currentModalType];
+                
+                modalTitle.textContent = content.title;
+                modalSubtext.textContent = content.subtext;
+                emailInput.placeholder = content.emailPlaceholder;
+                detailsInput.placeholder = content.detailsPlaceholder;
+                submitBtn.textContent = content.buttonText;
+                formType.value = content.formType;
+                formSubject.value = content.subject;
+                confirmation.textContent = content.successMessage;
+                
                 modal.classList.add('is-open');
             };
         }
 
         function closeModal() {
             modal.classList.remove('is-open');
+            // Reset modal state for next open
+            setTimeout(function() {
+                form.style.display = 'block';
+                modalTitle.style.display = 'block';
+                modalSubtext.style.display = 'block';
+                confirmation.style.display = 'none';
+                submitBtn.disabled = false;
+                var content = modalContent[currentModalType];
+                submitBtn.textContent = content.buttonText;
+            }, 300);
         }
 
         collectorBtn.onclick = openModal('collector');
         builderBtn.onclick = openModal('builder');
-        navWaitlistBtn.onclick = openModal('general');
+        navWaitlistBtn.onclick = openModal('collector');
         modalClose.onclick = closeModal;
 
         modal.onclick = function(e) {
@@ -547,12 +599,11 @@
         // Waitlist form - Web3Forms
         var WEB3FORMS_URL = 'https://api.web3forms.com/submit';
         var form = document.getElementById('waitlist-form');
-        var confirmation = document.getElementById('confirmation');
         
         form.onsubmit = function(e) {
             e.preventDefault();
             var formData = new FormData(form);
-            var submitBtn = form.querySelector('button[type="submit"]');
+            var originalBtnText = submitBtn.textContent;
             
             submitBtn.disabled = true;
             submitBtn.textContent = '...';
@@ -567,7 +618,8 @@
             .then(function(data) {
                 if (data.success) {
                     form.style.display = 'none';
-                    document.getElementById('modal-title').style.display = 'none';
+                    modalTitle.style.display = 'none';
+                    modalSubtext.style.display = 'none';
                     confirmation.style.display = 'block';
                     form.reset();
                 } else {
@@ -576,7 +628,7 @@
             })
             .catch(function() {
                 submitBtn.disabled = false;
-                submitBtn.textContent = 'Try again';
+                submitBtn.textContent = originalBtnText;
             });
             
             return false;
