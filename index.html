@@ -231,6 +231,39 @@
             border-color: var(--brass);
         }
 
+        /* CTA Section */
+        .cta-section {
+            padding: 1rem 2rem 10rem;
+            text-align: center;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1.25rem 3rem;
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: var(--brass);
+            border: 1px solid var(--brass);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            opacity: 0.85;
+        }
+
+        .cta-subtitle {
+            margin-top: 1.5rem;
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
         /* Technical Receipt */
         .tech-receipt {
             padding: 4rem 2rem 2rem;
@@ -438,14 +471,12 @@
                 padding: 8rem 2rem;
             }
 
-            .dual-track {
-                grid-template-columns: 1fr;
-                gap: 4rem;
-                padding: 4rem 2rem 8rem;
+            .cta-section {
+                padding: 1rem 2rem 6rem;
             }
 
-            .track-desc {
-                font-size: 1rem;
+            .cta-btn {
+                padding: 1.1rem 2rem;
             }
 
             .tech-receipt {
@@ -483,30 +514,21 @@
                 alt="SIGNVM signet ring"
             >
         </div>
-        <h1 class="hero-headline">Machines execute.<br><em>Humans authorize.</em></h1>
+        <h1 class="hero-headline">Machines execute.<br><em>Humans authorise.</em></h1>
     </section>
 
-    <!-- Thesis -->
+    <!-- Story -->
     <section class="story">
         <p class="story-label">The seal was once the mandate.</p>
         <p>For five millennia, to hold the object was to hold the authority.</p>
-        <p class="story-detail">Today, digital signals are infinitely spoofable. In the age of autonomous agents and deepfakes, presence is the only scarcity.</p>
-        <p class="story-label">The seal returns.</p>
-        <p class="story-detail">A monolithic brass anchor for a world where only physical presence is undeniable.</p>
+        <p class="story-detail">Today agents act on our behalf while phygital treasures move without conscious presence. Any digital appearance can be forged and anyone can be simulated. What remains is the eternal question of authorisation: what is the one true signal?</p>
+        <p class="story-tagline">A cryptographic signet ring for the artificial age.</p>
     </section>
 
-    <!-- Dual Track Capture -->
-    <section class="dual-track">
-        <div class="track track-collector">
-            <h2 class="track-label">The Collector</h2>
-            <p class="track-desc">Apply for Edition 01: The Genesis Monolith. A limited run of 100 hand-finished signet rings. The first physical keys to the LUKSO ecosystem.</p>
-            <button class="track-btn track-btn-primary" id="collector-btn">Join Genesis Waitlist</button>
-        </div>
-        <div class="track track-builder">
-            <h2 class="track-label">The Builder</h2>
-            <p class="track-desc">Integrate the Physical Interrupt. Secure your agentic workflows with un-spoofable human ratification via the SIGNVM API.</p>
-            <button class="track-btn track-btn-outline" id="builder-btn">Request API Access</button>
-        </div>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <button class="cta-btn" id="collector-btn">Join the Genesis Waitlist</button>
+        <p class="cta-subtitle">Edition 01: The first physical keys to a new kind of identity.</p>
     </section>
 
     <!-- Technical Receipt -->
@@ -546,7 +568,7 @@
     <div class="modal-overlay" id="modal">
         <div class="modal">
             <button class="modal-close" id="modal-close">&times;</button>
-            <h3 id="modal-title">Join the Waitlist</h3>
+            <h3 id="modal-title">Join the Genesis Waitlist</h3>
             <form id="waitlist-form">
                 <input type="hidden" name="access_key" value="08786a92-a002-47eb-bdfe-e7ddfb8e07c3">
                 <input type="hidden" name="subject" value="New Waitlist Signup">
@@ -575,7 +597,6 @@
         // Modal
         var modal = document.getElementById('modal');
         var collectorBtn = document.getElementById('collector-btn');
-        var builderBtn = document.getElementById('builder-btn');
         var navWaitlistBtn = document.getElementById('nav-waitlist-btn');
         var modalClose = document.getElementById('modal-close');
         var modalTitle = document.getElementById('modal-title');
@@ -584,16 +605,8 @@
         function openModal(type) {
             return function(e) {
                 e.preventDefault();
-                if (type === 'collector') {
-                    modalTitle.textContent = 'Join Genesis Waitlist';
-                    formType.value = 'Collector - Genesis Waitlist';
-                } else if (type === 'builder') {
-                    modalTitle.textContent = 'Request API Access';
-                    formType.value = 'Builder - API Access';
-                } else {
-                    modalTitle.textContent = 'Join the Waitlist';
-                    formType.value = 'General Waitlist';
-                }
+                modalTitle.textContent = 'Join the Genesis Waitlist';
+                formType.value = 'Genesis Waitlist';
                 modal.classList.add('is-open');
             };
         }
@@ -603,7 +616,6 @@
         }
 
         collectorBtn.onclick = openModal('collector');
-        builderBtn.onclick = openModal('builder');
         navWaitlistBtn.onclick = openModal('general');
         modalClose.onclick = closeModal;
 
