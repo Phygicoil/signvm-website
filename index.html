@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title>SIGNVM — A signet ring for the artificial age</title>
-    <meta name="description" content="Machines execute. Humans authorise. A signet ring for the artificial age.">
+    <meta name="description" content="Machines execute. Humans authorize. A signet ring for the artificial age.">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -69,13 +69,18 @@
             color: var(--text);
         }
 
-        .nav-edition {
+        .nav-waitlist {
             font-family: var(--font-sans);
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             font-weight: 300;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.1em;
             color: var(--text-muted);
-            opacity: 0.5;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-waitlist:hover {
+            color: var(--brass);
         }
 
         /* Hero - full screen, enormous breathing room */
@@ -146,95 +151,29 @@
             color: var(--brass);
         }
 
-        .story-label {
+        /* Waitlist - extremely simple */
+        .waitlist {
+            padding: 10rem 2rem 14rem;
+            text-align: center;
+        }
+
+        .waitlist-btn {
+            display: inline-block;
+            padding: 1.25rem 3.5rem;
             font-family: var(--font-sans);
             font-size: 0.7rem;
             font-weight: 400;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-        }
-
-        .story p + .story-label {
-            margin-top: 3rem;
-        }
-
-        /* Dual Track Section */
-        .dual-track {
-            padding: 6rem 2rem 12rem;
-            max-width: 900px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-        }
-
-        .track {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .track-label {
-            font-family: var(--font-sans);
-            font-size: 0.65rem;
-            font-weight: 400;
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        .track-subtitle {
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            font-weight: 400;
-            color: var(--text);
-            margin-bottom: 0.5rem;
-        }
-
-        .track-desc {
-            font-family: var(--font-serif);
-            font-size: 0.95rem;
-            font-weight: 400;
-            line-height: 1.6;
-            color: var(--text-muted);
-            margin-bottom: auto;
-            padding-bottom: 2rem;
-        }
-
-        .track-btn {
-            display: inline-block;
-            padding: 1.1rem 2.5rem;
-            font-family: var(--font-sans);
-            font-size: 0.65rem;
-            font-weight: 400;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .track-btn-primary {
             color: var(--white);
             background: var(--brass);
-            border: 1px solid var(--brass);
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
         }
 
-        .track-btn-primary:hover {
+        .waitlist-btn:hover {
             opacity: 0.85;
-        }
-
-        .track-btn-outline {
-            color: var(--text);
-            background: transparent;
-            border: 1px solid var(--text);
-        }
-
-        .track-btn-outline:hover {
-            color: var(--brass);
-            border-color: var(--brass);
         }
 
         /* Modal */
@@ -278,15 +217,6 @@
             font-family: var(--font-serif);
             font-size: 1.4rem;
             font-weight: 400;
-            margin-bottom: 1rem;
-        }
-
-        .modal-subtext {
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            font-weight: 300;
-            color: var(--text-muted);
-            line-height: 1.6;
             margin-bottom: 2.5rem;
         }
 
@@ -369,7 +299,7 @@
             align-items: center;
         }
 
-        .footer-copyright {
+        footer p {
             font-size: 0.65rem;
             letter-spacing: 0.08em;
             color: var(--text-muted);
@@ -419,14 +349,8 @@
                 padding: 8rem 2rem;
             }
 
-            .dual-track {
-                grid-template-columns: 1fr;
-                gap: 4rem;
-                padding: 4rem 2rem 8rem;
-            }
-
-            .track-desc {
-                font-size: 0.9rem;
+            .waitlist {
+                padding: 6rem 2rem 10rem;
             }
 
             .modal {
@@ -440,7 +364,7 @@
     <!-- Navigation -->
     <nav id="nav">
         <span class="nav-logo">SIGNVM</span>
-        <span class="nav-edition">EDITION 02</span>
+        <a href="#" class="nav-waitlist" id="nav-waitlist-btn">Waitlist</a>
     </nav>
 
     <!-- Hero -->
@@ -451,46 +375,31 @@
                 alt="SIGNVM signet ring"
             >
         </div>
-        <h1 class="hero-headline">Machines execute.<br><em>Humans authorise.</em></h1>
+        <h1 class="hero-headline">Machines execute.<br><em>Humans authorize.</em></h1>
     </section>
 
-    <!-- Thesis -->
+    <!-- Story -->
     <section class="story">
-        <p class="story-label">The seal was once the mandate.</p>
-        <p>For five millennia, to hold the object was to hold the authority.</p>
-        <p class="story-detail">Today, digital signals are infinitely spoofable. In the age of autonomous agents and deepfakes, presence is the only scarcity.</p>
-        <p class="story-label">Return of the Seal</p>
-        <p class="story-detail">A monolithic brass anchor for a world where only physical presence is undeniable.</p>
+        <p>For five millennia, the seal was the mandate. Pharaohs, emperors, kings and queens understood that while a scribe may draft the word, the seal gives it force. To hold the object was to hold the authority.</p>
+        <p class="story-detail">That authority has never been more contested. Identities are fragmented. Agents act without presence. Appearances can be forged.</p>
+        <p class="story-detail">Who holds the seal?</p>
+        <p class="story-tagline">A cryptographic signet ring for the artificial age.</p>
     </section>
 
-    <!-- Dual Track Capture -->
-    <section class="dual-track">
-        <div class="track track-collector">
-            <h2 class="track-label">The Collector</h2>
-            <p class="track-subtitle">The Monolith: Edition 02</p>
-            <p class="track-desc">Hand-finished signet rings in<br>Brass, Silver, and Solid Gold.</p>
-            <button class="track-btn track-btn-primary" id="collector-btn">Secure Allocation</button>
-        </div>
-        <div class="track track-builder">
-            <h2 class="track-label">The Builder</h2>
-            <p class="track-subtitle">The Physical Interrupt</p>
-            <p class="track-desc">API access and developer<br>hardware for ratification.</p>
-            <button class="track-btn track-btn-outline" id="builder-btn">Request API Access</button>
-        </div>
+    <!-- Waitlist -->
+    <section class="waitlist">
+        <button class="waitlist-btn" id="waitlist-btn">Waitlist</button>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p class="footer-copyright">SIGNVM &copy; 2026 &middot; Adelaide</p>
+        <p>SIGNVM &copy; 2026 &middot; Adelaide</p>
         <div class="social-links">
             <a href="https://x.com/phygicoil" target="_blank" rel="noopener" aria-label="X (Twitter)">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
             </a>
             <a href="https://www.instagram.com/jimhannontan/" target="_blank" rel="noopener" aria-label="Instagram">
                 <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-            <a href="https://universaleverything.io/0x8adc83bbe4e97d0eb6936dce3325a2bb04f6cb1a/?network=42" target="_blank" rel="noopener" aria-label="Universal Profile">
-                <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4"/></svg>
             </a>
         </div>
     </footer>
@@ -499,18 +408,16 @@
     <div class="modal-overlay" id="modal">
         <div class="modal">
             <button class="modal-close" id="modal-close">&times;</button>
-            <h3 id="modal-title">Secure your Allocation</h3>
-            <p class="modal-subtext" id="modal-subtext">Registration for Edition 02: The Monolith is now open. Hand-finished keys to the LUKSO ecosystem.</p>
+            <h3 id="modal-title">Join the Waitlist</h3>
             <form id="waitlist-form">
-                <input type="hidden" name="access_key" id="form-access-key" value="08786a92-a002-47eb-bdfe-e7ddfb8e07c3">
-                <input type="hidden" name="subject" id="form-subject" value="New Collector Registration">
-                <input type="hidden" name="from_name" value="SIGNVM Registration">
-                <input type="hidden" name="type" id="form-type" value="Collector - Edition 02">
-                <input type="email" name="email" id="email-input" placeholder="Email Address" required>
-                <textarea name="details" id="details-input" placeholder="Name, handle, ring size, or material preference (Brass, Silver, Gold)."></textarea>
-                <button type="submit" id="submit-btn">Join the Genesis</button>
+                <input type="hidden" name="access_key" value="08786a92-a002-47eb-bdfe-e7ddfb8e07c3">
+                <input type="hidden" name="subject" value="New Waitlist Signup">
+                <input type="hidden" name="from_name" value="Waitlist Form">
+                <input type="email" name="email" placeholder="Email" required>
+                <textarea name="details" placeholder="Optional — Name, handle, ring size, metal preference, or anything you'd like to register"></textarea>
+                <button type="submit">Submit</button>
             </form>
-            <p class="modal-confirmation" id="confirmation">Your allocation request for Edition 02 has been recorded in the registry. We will notify you when the foundry is ready.</p>
+            <p class="modal-confirmation" id="confirmation">Noted</p>
         </div>
     </div>
 
@@ -528,81 +435,21 @@
 
         // Modal
         var modal = document.getElementById('modal');
-        var collectorBtn = document.getElementById('collector-btn');
-        var builderBtn = document.getElementById('builder-btn');
+        var waitlistBtn = document.getElementById('waitlist-btn');
+        var navWaitlistBtn = document.getElementById('nav-waitlist-btn');
         var modalClose = document.getElementById('modal-close');
-        var modalTitle = document.getElementById('modal-title');
-        var modalSubtext = document.getElementById('modal-subtext');
-        var formType = document.getElementById('form-type');
-        var formSubject = document.getElementById('form-subject');
-        var formAccessKey = document.getElementById('form-access-key');
-        var emailInput = document.getElementById('email-input');
-        var detailsInput = document.getElementById('details-input');
-        var submitBtn = document.getElementById('submit-btn');
-        var confirmation = document.getElementById('confirmation');
-        var currentModalType = 'collector';
 
-        var modalContent = {
-            collector: {
-                title: 'Secure your Allocation',
-                subtext: 'Registration for Edition 02: The Monolith is now open. Hand-finished keys to the LUKSO ecosystem.',
-                emailPlaceholder: 'Email Address',
-                detailsPlaceholder: 'Name, handle, ring size, or material preference (Brass, Silver, Gold).',
-                buttonText: 'Join the Genesis',
-                formType: 'Collector - Edition 02',
-                subject: 'New Collector Registration',
-                accessKey: '08786a92-a002-47eb-bdfe-e7ddfb8e07c3',
-                successMessage: 'Your allocation request for Edition 02 has been recorded in the registry. We will notify you when the foundry is ready.'
-            },
-            builder: {
-                title: 'Secure the Interrupt',
-                subtext: 'Request the SIGNVM API and developer kit. We ship programmed ARX tags for human-in-the-loop agentic testing.',
-                emailPlaceholder: 'Professional Email',
-                detailsPlaceholder: 'Project vision, agentic stack, or LUKSO implementation details.',
-                buttonText: 'Request Dev Kit',
-                formType: 'Builder - Dev Kit',
-                subject: 'New Builder Application',
-                accessKey: '2bcce2a4-04ef-4d44-8747-5753f9fe040a',
-                successMessage: 'Your request for the Physical Interrupt API is under review. Our lab is preparing your developer hardware for shipment.'
-            }
-        };
-
-        function openModal(type) {
-            return function(e) {
-                e.preventDefault();
-                currentModalType = type === 'builder' ? 'builder' : 'collector';
-                var content = modalContent[currentModalType];
-                
-                modalTitle.textContent = content.title;
-                modalSubtext.textContent = content.subtext;
-                emailInput.placeholder = content.emailPlaceholder;
-                detailsInput.placeholder = content.detailsPlaceholder;
-                submitBtn.textContent = content.buttonText;
-                formType.value = content.formType;
-                formSubject.value = content.subject;
-                formAccessKey.value = content.accessKey;
-                confirmation.textContent = content.successMessage;
-                
-                modal.classList.add('is-open');
-            };
+        function openModal(e) {
+            e.preventDefault();
+            modal.classList.add('is-open');
         }
 
         function closeModal() {
             modal.classList.remove('is-open');
-            // Reset modal state for next open
-            setTimeout(function() {
-                form.style.display = 'block';
-                modalTitle.style.display = 'block';
-                modalSubtext.style.display = 'block';
-                confirmation.style.display = 'none';
-                submitBtn.disabled = false;
-                var content = modalContent[currentModalType];
-                submitBtn.textContent = content.buttonText;
-            }, 300);
         }
 
-        collectorBtn.onclick = openModal('collector');
-        builderBtn.onclick = openModal('builder');
+        waitlistBtn.onclick = openModal;
+        navWaitlistBtn.onclick = openModal;
         modalClose.onclick = closeModal;
 
         modal.onclick = function(e) {
@@ -612,11 +459,12 @@
         // Waitlist form - Web3Forms
         var WEB3FORMS_URL = 'https://api.web3forms.com/submit';
         var form = document.getElementById('waitlist-form');
+        var confirmation = document.getElementById('confirmation');
         
         form.onsubmit = function(e) {
             e.preventDefault();
             var formData = new FormData(form);
-            var originalBtnText = submitBtn.textContent;
+            var submitBtn = form.querySelector('button[type="submit"]');
             
             submitBtn.disabled = true;
             submitBtn.textContent = '...';
@@ -631,8 +479,7 @@
             .then(function(data) {
                 if (data.success) {
                     form.style.display = 'none';
-                    modalTitle.style.display = 'none';
-                    modalSubtext.style.display = 'none';
+                    document.getElementById('modal-title').style.display = 'none';
                     confirmation.style.display = 'block';
                     form.reset();
                 } else {
@@ -641,7 +488,7 @@
             })
             .catch(function() {
                 submitBtn.disabled = false;
-                submitBtn.textContent = originalBtnText;
+                submitBtn.textContent = 'Try again';
             });
             
             return false;
