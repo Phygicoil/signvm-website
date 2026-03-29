@@ -207,11 +207,16 @@
             font-size: clamp(0.9rem, 1vw, 1rem);
             line-height: 1.85;
             color: var(--text-mid);
-            max-width: 48ch;
+            max-width: 52ch;
         }
 
         .body-text + .body-text {
             margin-top: 1.2rem;
+        }
+
+        .body-text strong {
+            color: var(--text);
+            font-weight: 500;
         }
 
         .quote {
@@ -381,39 +386,39 @@
         .team-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 2rem;
             margin-top: 2rem;
         }
 
         .team-member {
-            padding-top: 1.5rem;
+            padding-top: 1rem;
             border-top: 1px solid var(--border-strong);
         }
 
         .team-name {
             font-family: var(--font-display);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 400;
             margin-bottom: 0.2rem;
         }
 
         .team-role {
             font-family: var(--font-mono);
-            font-size: 0.55rem;
+            font-size: 0.5rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--brass-muted);
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
         }
 
         .team-bio {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-mid);
-            line-height: 1.65;
+            line-height: 1.6;
         }
 
         .advisors {
-            margin-top: 2.5rem;
+            margin-top: 2rem;
             padding-top: 1.5rem;
             border-top: 1px solid var(--border);
         }
@@ -428,35 +433,60 @@
         }
 
         .advisor {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.6rem;
         }
 
         .advisor-name {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 400;
             color: var(--text);
         }
 
         .advisor-title {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: var(--text-dim);
         }
 
-        /* Roadmap */
-        .roadmap {
+        /* Roadmap / Budget */
+        .budget-table {
             margin-top: 2rem;
+            width: 100%;
         }
 
-        .roadmap-item {
+        .budget-row {
             display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 1.5rem;
-            padding: 1.2rem 0;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            padding: 0.8rem 0;
             border-bottom: 1px solid var(--border);
             align-items: baseline;
         }
 
-        .roadmap-phase {
+        .budget-item {
+            font-size: 0.85rem;
+            color: var(--text-mid);
+        }
+
+        .budget-amount {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        .timeline {
+            margin-top: 2rem;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 1.5rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border);
+            align-items: baseline;
+        }
+
+        .timeline-phase {
             font-family: var(--font-mono);
             font-size: 0.55rem;
             letter-spacing: 0.1em;
@@ -464,15 +494,51 @@
             color: var(--brass-muted);
         }
 
-        .roadmap-desc {
+        .timeline-desc {
             font-size: 0.85rem;
             color: var(--text-mid);
             line-height: 1.65;
         }
 
-        .roadmap-desc strong {
+        /* Comparison table */
+        .compare-table {
+            margin-top: 2rem;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.75rem;
+        }
+
+        .compare-table th,
+        .compare-table td {
+            padding: 0.8rem 0.6rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .compare-table th {
+            font-family: var(--font-mono);
+            font-size: 0.55rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            font-weight: 400;
+        }
+
+        .compare-table td {
+            color: var(--text-mid);
+        }
+
+        .compare-table td:first-child {
             color: var(--text);
-            font-weight: 500;
+            font-weight: 400;
+        }
+
+        .compare-table .yes {
+            color: var(--brass);
+        }
+
+        .compare-table .no {
+            color: var(--text-dim);
         }
 
         /* CTA */
@@ -498,29 +564,6 @@
             font-size: clamp(2.8rem, 6vw, 5rem);
         }
 
-        .step-list {
-            list-style: none;
-            counter-reset: steps;
-            margin-top: 2rem;
-        }
-
-        .step-list li {
-            counter-increment: steps;
-            font-size: clamp(0.9rem, 1.1vw, 1.05rem);
-            line-height: 1.85;
-            color: var(--text-mid);
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .step-list li::before {
-            content: counter(steps) ".";
-            font-family: var(--font-mono);
-            font-size: 0.6rem;
-            color: var(--brass-muted);
-            margin-right: 1rem;
-        }
-
         .emphasis-line {
             font-family: var(--font-display);
             font-size: clamp(1.3rem, 2.5vw, 1.8rem);
@@ -533,6 +576,14 @@
             font-size: clamp(0.85rem, 1vw, 0.95rem);
             color: var(--text-dim);
             margin-top: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* Market stats inline */
+        .market-stats {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-mid);
             line-height: 1.8;
         }
 
@@ -566,9 +617,18 @@
             .specs-grid { grid-template-columns: repeat(2, 1fr); }
             .team-grid { grid-template-columns: 1fr; }
 
-            .roadmap-item {
+            .timeline-item {
                 grid-template-columns: 1fr;
                 gap: 0.3rem;
+            }
+
+            .compare-table {
+                font-size: 0.65rem;
+            }
+
+            .compare-table th,
+            .compare-table td {
+                padding: 0.6rem 0.4rem;
             }
 
             .key-hint { display: none; }
@@ -590,302 +650,385 @@
             <div class="slide-inner" style="text-align: center;">
                 <h1 class="headline" style="font-size: clamp(3rem, 7vw, 5.5rem);">SIGNVM</h1>
                 <div class="spacer"></div>
-                <p class="subhead">Physical authority for the digital world.</p>
+                <p class="subhead">Pre-Seed &middot; $500K AUD</p>
             </div>
         </div>
 
-        <!-- SLIDE 01: The Problem -->
+        <!-- SLIDE 01: Hero -->
+        <div class="slide">
+            <div class="slide-inner" style="text-align: center;">
+                <h2 class="headline" style="font-size: clamp(2.8rem, 6vw, 5rem);">
+                    Machines execute.<br><em>Humans authorise.</em>
+                </h2>
+                <div class="spacer-lg"></div>
+                <p class="subhead">signvm.xyz</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 02: The Problem -->
         <div class="slide">
             <div class="slide-inner">
-                <span class="sn">01 — The Problem</span>
-                <p class="quote">
-                    "Your mother gets a call.<br>
-                    It's your voice.<br>
-                    She can't tell it's not you."
-                </p>
-            </div>
-        </div>
-
-        <!-- SLIDE 02: The Thesis -->
-        <div class="slide">
-            <div class="split">
-                <div class="split-text">
-                    <span class="sn">02 — The Thesis</span>
-                    <h2 class="headline">
-                        You can't steal<br>possession <em>remotely.</em>
-                    </h2>
-                    <div class="spacer-lg"></div>
-                    <p class="body-text">
-                        Information leaks. Objects don't.
-                    </p>
-                    <p class="body-text">
-                        For four thousand years, a signet ring pressed into clay was the most trusted form of authority.
-                    </p>
-                    <p class="body-text">
-                        Physical presence is the last unforgeable signal.
-                    </p>
-                </div>
-                <div class="split-image">
-                    <img src="/pd/gold2.png" alt="SIGNVM gold signet ring">
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 03: Why Now -->
-        <div class="slide">
-            <div class="slide-inner">
-                <span class="sn">03 — Why Now</span>
+                <span class="sn">02 — The Problem</span>
                 <h2 class="headline">
-                    AI is now <em>ubiquitous.</em>
+                    AI agents can now spend your money, sign your contracts, act in your name.
                 </h2>
                 <div class="spacer-lg"></div>
                 <p class="body-text">
-                    From deepfakes to autonomous agents. A physical signal is required.
+                    <strong>The execution layer is built. The authorisation layer does not exist.</strong>
+                </p>
+                <div class="spacer"></div>
+                <p class="body-text">
+                    Coinbase launched autonomous agentic wallets, February 2026.
+                </p>
+                <p class="body-text">
+                    Google and Mastercard called verifiable human intent "the missing primitive," March 2026.
+                </p>
+                <p class="body-text">
+                    McKinsey projects $3 to 5 trillion in agentic commerce by 2030.
+                </p>
+                <p class="emphasis-line">The agents are ready. Nothing stops them.</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 03: The Thesis -->
+        <div class="slide">
+            <div class="slide-inner">
+                <span class="sn">03 — The Thesis</span>
+                <h2 class="headline">
+                    Physical possession is the one primitive <em>AI cannot simulate.</em>
+                </h2>
+                <div class="spacer-lg"></div>
+                <p class="body-text">
+                    Passwords are stolen. Biometrics are spoofed. A physical object held in a human hand cannot be faked remotely.
+                </p>
+                <p class="body-text">
+                    This is not a product insight. It is a thermodynamic fact.
+                </p>
+                <p class="body-text">
+                    Every civilisation that needed to bind authority to a person used a signet ring. The instinct is correct. It is 5,000 years old.
+                </p>
+                <p class="emphasis-line">We encoded it in cryptography.</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 04: How It Works -->
+        <div class="slide">
+            <div class="slide-inner">
+                <span class="sn">04 — How It Works</span>
+                <h2 class="headline">
+                    One tap. A scoped, time-limited, on-chain <em>authorisation.</em>
+                </h2>
+                <div class="spacer-lg"></div>
+                <p class="body-text">
+                    The ring contains an ARX HaLo secure element. Keys never leave the chip. A single tap creates a cryptographic record: this human, physically present, authorised this action, at this moment.
+                </p>
+                <p class="body-text">
+                    Connected to a LUKSO Universal Profile via LSP6 Key Manager. The ring signs. It does not execute. It does not hold funds. It holds authority.
+                </p>
+                <p class="emphasis-line">No tap. Nothing moves.</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 05: The Design -->
+        <div class="slide">
+            <div class="slide-inner">
+                <span class="sn">05 — The Design</span>
+                <h2 class="headline">
+                    Three identities fused into <em>one object.</em>
+                </h2>
+                <div class="spacer-lg"></div>
+                <p class="body-text">
+                    Visual, electromagnetic, cryptographic.
+                </p>
+                <p class="body-text">
+                    The spiral groove machined into the ring face is not decoration. It is the precise electromagnetic geometry required to resonate at 13.56 MHz, confirmed by RF simulation and VNA measurement.
+                </p>
+                <p class="body-text">
+                    <strong>The engineering is the ornament. Form following electromagnetic function all the way to beauty.</strong>
+                </p>
+                <p class="body-text">
+                    This has never been done before. Not because the technology was unavailable. Because nobody was standing at the intersection of RF engineering, precision manufacturing, and 25 years of designing objects for Alessi, Tom Dixon, Flos, and LVMH, with the instinct to expose rather than hide the constraint.
+                </p>
+                <p class="emphasis-line">The antenna is the ornament. Everything else follows from that.</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 06: Retention -->
+        <div class="slide">
+            <div class="slide-inner">
+                <span class="sn">06 — Security Architecture</span>
+                <h2 class="headline">
+                    Security models fail when people <em>lose the device.</em>
+                </h2>
+                <div class="spacer-lg"></div>
+                <p class="body-text">
+                    <strong>People do not lose heirlooms.</strong>
+                </p>
+                <p class="body-text">
+                    Decades of research on psychological ownership confirms: objects tied to identity become extensions of the self. People resist losing them, replacing them, discarding them. Heirlooms are passed to children. Gadgets are abandoned in drawers.
+                </p>
+                <p class="body-text">
+                    88% of people hoard unused electronics. Nobody hoards a signet ring.
+                </p>
+                <p class="body-text">
+                    This is engineered retention. A chip in a plastic ring gets left on a counter. A machined spiral in 18K gold does not. The preciousness of the object is a security architecture decision, not an aesthetic one.
                 </p>
             </div>
         </div>
 
-        <!-- SLIDE 04: The Object -->
+        <!-- SLIDE 07: The Moat -->
         <div class="slide">
-            <div class="split">
-                <div class="split-text">
-                    <span class="sn">04 — The Object</span>
-                    <h2 class="headline">The modern<br><em>signet.</em></h2>
-                    <div class="spacer"></div>
-                    <p class="body-text">
-                        A precision-machined brass antenna with an embedded cryptographic chip.
-                        No battery. No screen. No expiry.
-                    </p>
-                    <p class="body-text">
-                        The grooves on the ring face are the antenna.
-                        The antenna is the circuit. Nothing is hidden.
-                    </p>
-                </div>
-                <div class="split-image">
-                    <img src="/pd/modern-signet.jpg" alt="SIGNVM brass signet ring">
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 05: How It Works -->
-        <div class="slide">
-            <div class="split">
-                <div class="split-text">
-                    <span class="sn">05 — How It Works</span>
-                    <h2 class="headline">Tap to <em>sign.</em></h2>
-                    <div class="spacer"></div>
-                    <p class="body-text">
-                        Hold the ring to any NFC-enabled phone. The phone powers the chip.
-                        The chip generates a unique cryptographic signature &mdash; verified instantly.
-                    </p>
-                    <p class="body-text">
-                        Built on LUKSO Universal Profiles: the first identity system designed for granular, revocable permissions.
-                    </p>
-                    <p class="body-text">
-                        No app install. No pairing. Just tap.
-                    </p>
-                </div>
-                <div class="split-image">
-                    <img src="/pd/tap2.jpg" alt="SIGNVM ring tapped to phone">
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 06: Agent Authorization (THE MONEY SLIDE) -->
-        <div class="slide slide--emphasis">
             <div class="slide-inner">
-                <span class="sn">06 — Agent Authorization</span>
+                <span class="sn">07 — The Moat</span>
                 <h2 class="headline">
-                    Your AI proposes.<br>You decide. You <em>tap.</em>
+                    The moat is the <em>intersection.</em>
                 </h2>
-                <ol class="step-list">
-                    <li>Agent requests action &mdash; amount, destination, purpose, expiry.</li>
-                    <li>You see exactly what it wants to do.</li>
-                    <li>You tap the ring. It executes.</li>
-                </ol>
+                <div class="spacer-lg"></div>
+                <p class="body-text">
+                    Not one layer. All of them together.
+                </p>
+                <p class="body-text">
+                    The spiral groove is also the antenna. RF simulation, VNA confirmation, precision machining, and a designer's eye for what to expose rather than hide. No hardware startup has all four. No luxury brand has the RF knowledge.
+                </p>
+                <p class="body-text">
+                    Competitors can copy the architecture. They cannot manufacture the reason someone reaches for it every morning.
+                </p>
+                <p class="body-text">
+                    The protocol is being co-developed with Fabian Vogelsteller, who wrote ERC-20. SIGNVM is the reference hardware implementation. First to define the standard sets the baseline.
+                </p>
+                <p class="emphasis-line">Fabian Vogelsteller owns Edition 01. The protocol's co-author is also the first customer.</p>
             </div>
         </div>
 
-        <!-- SLIDE 07: Three Layers -->
+        <!-- SLIDE 08: Market -->
         <div class="slide">
             <div class="slide-inner">
-                <span class="sn">07 — Three Layers</span>
-                <h2 class="headline">One object.<br>Three layers of <em>authority.</em></h2>
-                <div class="use-grid">
-                    <div class="use-item">
-                        <div class="use-num">01</div>
-                        <div class="use-name">Access</div>
-                        <p class="use-body">Tap the ring. You're in. No ticket, no app. Your presence is the credential.</p>
-                    </div>
-                    <div class="use-item">
-                        <div class="use-num">02</div>
-                        <div class="use-name">Trust</div>
-                        <p class="use-body">A tap between people proves identity. No deepfake survives physical proximity. Families buy sets. We call them constellations.</p>
-                    </div>
-                    <div class="use-item">
-                        <div class="use-num">03</div>
-                        <div class="use-name">Authority</div>
-                        <p class="use-body">AI agents act on your behalf. The ring is the only thing that can say yes.</p>
-                    </div>
-                </div>
+                <span class="sn">08 — Market Validation</span>
+                <h2 class="headline">
+                    Google and Mastercard spent March 2026 confirming this <em>market exists.</em>
+                </h2>
+                <div class="spacer-lg"></div>
+                <p class="body-text">
+                    <strong>Their solution requires trusting Google and Mastercard.</strong>
+                </p>
+                <p class="body-text">
+                    Verifiable Intent, their joint framework, links identity, intent and transaction into a tamper-resistant record. Adyen, Stripe, Visa and American Express endorsed it within weeks.
+                </p>
+                <p class="body-text">
+                    Platform-dependent. Bank-intermediated. Closed.
+                </p>
+                <p class="body-text">
+                    <strong>SIGNVM is sovereign.</strong> No intermediary. Self-custodied. Open protocol.
+                </p>
+                <p class="emphasis-line">They defined the problem. We own the answer that does not depend on them.</p>
+                <p class="market-stats">
+                    $70B digital identity market. $5B luxury authentication. $3 to 5T agentic commerce by 2030.
+                </p>
             </div>
         </div>
 
-        <!-- SLIDE 08: Traction -->
-        <div class="slide">
-            <div class="split">
-                <div class="split-text">
-                    <span class="sn">08 — Traction</span>
-                    <h2 class="headline">Already<br><em>shipped.</em></h2>
-                    <div class="stats">
-                        <div class="stat">
-                            <div class="stat-num">10</div>
-                            <div class="stat-label">Objects shipped</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-num">4</div>
-                            <div class="stat-label">Continents</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-num">100%</div>
-                            <div class="stat-label">Sold out</div>
-                        </div>
-                    </div>
-                    <div class="spacer"></div>
-                    <p class="body-text">
-                        Edition 01 &mdash; 10 precision-machined brass objects.
-                        Funded by a US$15K LUKSO Foundation grant.
-                    </p>
-                    <p class="body-text" style="color: var(--text);">
-                        Now building Edition 02.
-                    </p>
-                </div>
-                <div class="split-image">
-                    <img src="/pd/glove2.png" alt="SIGNVM brass ring on glove">
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 09: The Object (Specs) -->
-        <div class="slide">
-            <div class="split">
-                <div class="split-text">
-                    <span class="sn">09 — The Object</span>
-                    <h2 class="headline">The ring is<br>the <em>technology.</em></h2>
-                    <div class="specs-grid">
-                        <div class="spec-item">
-                            <span class="spec-label">Chip</span>
-                            <span class="spec-value">ARX HaLo</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Frequency</span>
-                            <span class="spec-value">13.56 MHz</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Face</span>
-                            <span class="spec-value">19.5 mm</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Weight</span>
-                            <span class="spec-value">~17 g</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Power</span>
-                            <span class="spec-value">None</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Identity</span>
-                            <span class="spec-value">LUKSO Universal Profile</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Materials</span>
-                            <span class="spec-value">Brass / Sterling Silver / 18K Gold</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Design</span>
-                            <span class="spec-value">Monolithic</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="split-image">
-                    <img src="/pd/sim2.jpg" alt="SIGNVM ring simulation">
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 10: Team -->
-        <div class="slide">
-            <div class="split">
-                <div class="split-image">
-                    <img src="/pd/jim-headshot-sm.jpg" alt="Jim Hannon-Tan">
-                </div>
-                <div class="split-text">
-                    <span class="sn">10 — The Team</span>
-                    <h2 class="headline">Built by <em>makers.</em></h2>
-                    <div class="team-grid" style="grid-template-columns: 1fr;">
-                        <div class="team-member">
-                            <div class="team-name">Jim Hannon-Tan</div>
-                            <div class="team-role">Founder &middot; Design &amp; Engineering</div>
-                            <p class="team-bio">25 years. Alessi, Tom Dixon, LVMH, Flos. Adelaide.</p>
-                        </div>
-                        <div class="team-member">
-                            <div class="team-name">Aureliano Alarc&oacute;n Smith</div>
-                            <div class="team-role">Blockchain &amp; Software</div>
-                            <p class="team-bio">Smart contracts, wallet integration, authentication. Formerly RTFKT / Nike.</p>
-                        </div>
-                    </div>
-                    <div class="advisors">
-                        <div class="advisors-label">Advisors</div>
-                        <div class="advisor">
-                            <span class="advisor-name">Fabian Vogelsteller</span>
-                            <span class="advisor-title"> &mdash; Co-founder, LUKSO. Creator of ERC-20.</span>
-                        </div>
-                        <div class="advisor">
-                            <span class="advisor-name">Prof. Shengjian Chen</span>
-                            <span class="advisor-title"> &mdash; Flinders University. RF &amp; antenna systems.</span>
-                        </div>
-                        <div class="advisor">
-                            <span class="advisor-name">Cameron Robertson</span>
-                            <span class="advisor-title"> &mdash; Arx Research. Secure element architecture.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 11: What's Next -->
+        <!-- SLIDE 09: Comparison -->
         <div class="slide">
             <div class="slide-inner">
-                <span class="sn">11 — What's Next</span>
-                <h2 class="headline">Edition <em>02.</em></h2>
-                <div class="roadmap">
-                    <div class="roadmap-item">
-                        <span class="roadmap-phase">Now</span>
-                        <p class="roadmap-desc"><strong>First working ring prototype.</strong> Antenna validated with Flinders University and ANFF.</p>
+                <span class="sn">09 — Competitive Landscape</span>
+                <h2 class="headline">
+                    A different <em>primitive.</em>
+                </h2>
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>SIGNVM</th>
+                            <th>Google / MC</th>
+                            <th>Ledger</th>
+                            <th>YubiKey</th>
+                            <th>Worldcoin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Physical possession proof</td>
+                            <td class="yes">Yes</td>
+                            <td class="no">No</td>
+                            <td class="no">No</td>
+                            <td class="no">No</td>
+                            <td class="no">No</td>
+                        </tr>
+                        <tr>
+                            <td>AI agent authorisation</td>
+                            <td class="yes">Yes</td>
+                            <td>Commerce only</td>
+                            <td class="no">No</td>
+                            <td class="no">No</td>
+                            <td class="no">No</td>
+                        </tr>
+                        <tr>
+                            <td>Sovereign, no intermediary</td>
+                            <td class="yes">Yes</td>
+                            <td class="no">No</td>
+                            <td class="yes">Yes</td>
+                            <td class="no">No</td>
+                            <td class="no">No</td>
+                        </tr>
+                        <tr>
+                            <td>Decentralised identity</td>
+                            <td class="yes">Yes</td>
+                            <td class="no">No</td>
+                            <td>Partial</td>
+                            <td class="no">No</td>
+                            <td>Partial</td>
+                        </tr>
+                        <tr>
+                            <td>Designed to be kept for life</td>
+                            <td class="yes">Yes</td>
+                            <td class="no">No</td>
+                            <td class="no">No</td>
+                            <td class="no">No</td>
+                            <td class="no">No</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="spacer"></div>
+                <p class="body-text">
+                    Ledger secures assets. YubiKey secures logins. Worldcoin proves humanity at scale, centrally, biometrically: the opposite philosophy. None prove authorship. That is a different primitive. Nobody else is building it.
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: Traction -->
+        <div class="slide">
+            <div class="slide-inner">
+                <span class="sn">10 — Traction</span>
+                <h2 class="headline">
+                    Edition 01: 10 brass rings. <em>Sold out globally.</em>
+                </h2>
+                <div class="spacer-lg"></div>
+                <p class="body-text">
+                    Antenna confirmed at 13.56 MHz. Simulation matches physical measurement. Design loop closed.
+                </p>
+                <p class="body-text">
+                    signvm.xyz live. Waitlist open.
+                </p>
+                <div class="spacer"></div>
+                <p class="body-text">
+                    <strong>Fabian Vogelsteller</strong>, ERC-20 author, LUKSO co-founder: Edition 01 owner. Berlin co-launch partner. On record: "Makes a lot of sense."
+                </p>
+                <p class="body-text">
+                    <strong>SLEEK Magazine:</strong> Berlin co-launch confirmed.
+                </p>
+                <p class="body-text">
+                    <strong>LSPXXAssetVerification:</strong> being integrated into the LUKSO Universal Profile mobile app.
+                </p>
+                <p class="body-text">
+                    VUVP investor conditional on Berlin, SLEEK, and Fabian confirmed. All three confirmed.
+                </p>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: Team -->
+        <div class="slide">
+            <div class="slide-inner">
+                <span class="sn">11 — Team</span>
+                <h2 class="headline">Built by <em>makers.</em></h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-name">Jim Hannon-Tan</div>
+                        <div class="team-role">Founder</div>
+                        <p class="team-bio">25 years industrial design. Alessi, Tom Dixon, Flos, LVMH. Built the object, the antenna geometry, and the thesis. Adelaide, South Australia.</p>
                     </div>
-                    <div class="roadmap-item">
-                        <span class="roadmap-phase">Q2 2026</span>
-                        <p class="roadmap-desc"><strong>Edition 02:</strong> 100 rings. Three metals. Brass $490 / Silver $2,000 / Gold $20,000.</p>
+                    <div class="team-member">
+                        <div class="team-name">Aureliano Alarc&oacute;n Smith</div>
+                        <div class="team-role">Software &amp; Blockchain</div>
+                        <p class="team-bio">Formerly RTFKT/Nike. Built the ARX HaLo integration on LUKSO. Building LSPXXAssetVerification.</p>
                     </div>
-                    <div class="roadmap-item">
-                        <span class="roadmap-phase">Mid 2026</span>
-                        <p class="roadmap-desc"><strong>Berlin co-launch</strong> with LUKSO and SLEEK Magazine. Live access-control pilot.</p>
+                    <div class="team-member">
+                        <div class="team-name">Liju Varghese</div>
+                        <div class="team-role">RF Engineering</div>
+                        <p class="team-bio">CST simulation, VNA testing. Confirmed the antenna at physical ring scale.</p>
                     </div>
-                    <div class="roadmap-item">
-                        <span class="roadmap-phase">H2 2026</span>
-                        <p class="roadmap-desc"><strong>Physical Intent SDK.</strong> Protocol licensing. Pre-seed raise.</p>
+                    <div class="team-member">
+                        <div class="team-name">Aaron Mohtar</div>
+                        <div class="team-role">Electronics</div>
+                        <p class="team-bio">PCB assembly, chip integration.</p>
+                    </div>
+                </div>
+                <div class="advisors">
+                    <div class="advisors-label">Advisors</div>
+                    <div class="advisor">
+                        <span class="advisor-name">Fabian Vogelsteller</span>
+                        <span class="advisor-title"> &mdash; LUKSO co-founder. ERC-20 author. The person who wrote the standards SIGNVM runs on.</span>
+                    </div>
+                    <div class="advisor">
+                        <span class="advisor-name">Cameron Robertson</span>
+                        <span class="advisor-title"> &mdash; Arx Research. Secure element architecture.</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 12: Close -->
+        <!-- SLIDE 12: Use of Funds -->
+        <div class="slide">
+            <div class="slide-inner">
+                <span class="sn">12 — Use of Funds</span>
+                <h2 class="headline">
+                    $500K AUD. <em>Berlin is the line.</em>
+                </h2>
+                <div class="budget-table">
+                    <div class="budget-row">
+                        <span class="budget-item">Founder salary, 12 months</span>
+                        <span class="budget-amount">$120K</span>
+                    </div>
+                    <div class="budget-row">
+                        <span class="budget-item">Hardware, Edition 02, 50 rings</span>
+                        <span class="budget-amount">$130K</span>
+                    </div>
+                    <div class="budget-row">
+                        <span class="budget-item">Software, LSPXXAssetVerification and SDK</span>
+                        <span class="budget-amount">$110K</span>
+                    </div>
+                    <div class="budget-row">
+                        <span class="budget-item">Berlin launch, June 2026</span>
+                        <span class="budget-amount">$60K</span>
+                    </div>
+                    <div class="budget-row">
+                        <span class="budget-item">IP and patents</span>
+                        <span class="budget-amount">$40K</span>
+                    </div>
+                    <div class="budget-row">
+                        <span class="budget-item">Operations</span>
+                        <span class="budget-amount">$40K</span>
+                    </div>
+                </div>
+                <div class="spacer"></div>
+                <p class="body-text">
+                    Non-dilutive in parallel: ANFF-C up to $130K. SeedStart SA. LUKSO Foundation grant secured.
+                </p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-phase">Gate 3, This Month</span>
+                        <span class="timeline-desc">First tap on the actual ring.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-phase">Berlin, June 13</span>
+                        <span class="timeline-desc">Edition 02 launches. Presales open.</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-phase">H2 2026</span>
+                        <span class="timeline-desc">SDK public. Series A conversation begins.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 13: Close -->
         <div class="slide">
             <div class="slide-inner" style="text-align: center;">
-                <p class="quote"><em style="color: var(--brass);">No tap, nothing moves.</em></p>
+                <h2 class="headline" style="font-size: clamp(2.8rem, 6vw, 5rem);">
+                    Machines execute.<br><em>Humans authorise.</em>
+                </h2>
                 <div class="spacer-lg"></div>
                 <div class="spacer-lg"></div>
-                <a href="mailto:jim@jimhannontan.com" class="cta-email">jim@jimhannontan.com</a>
+                <a href="mailto:jim@signvm.xyz" class="cta-email">jim@signvm.xyz</a>
                 <div class="spacer"></div>
                 <p class="footer-links">
                     <a href="/">signvm.xyz</a>
@@ -900,7 +1043,7 @@
 <div class="deck-nav">
     <div class="deck-nav-left">
         <span class="deck-mark">SIGNVM</span>
-        <span class="deck-counter" id="counter">1 / 13</span>
+        <span class="deck-counter" id="counter">1 / 14</span>
     </div>
     <div class="deck-nav-right">
         <button class="nav-btn" id="prev-btn" disabled aria-label="Previous slide">&larr;</button>
