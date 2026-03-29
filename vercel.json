@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/v1", "destination": "/v1.html" },
-    { "source": "/pd", "destination": "/pd/index.html" }
+    { "source": "/pd", "destination": "/pitchdeck.html" },
+    { "source": "/pitchdeck", "destination": "/pitchdeck.html" }
   ]
 }
