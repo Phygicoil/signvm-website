@@ -1,2 +1,8 @@
 {
+  "rewrites": [
+    { "source": "/v1", "destination": "/v1.html" },
+    { "source": "/pd", "destination": "/pitchdeck.html" },
+    { "source": "/pitchdeck", "destination": "/pitchdeck.html" },
+    { "source": "/test", "destination": "/test.html" }
+  ]
 }
