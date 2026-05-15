@@ -285,7 +285,6 @@
   <div class="links">
     <a href="/signum.html">Signum</a>
     <a href="/" class="active">House</a>
-    <button type="button" id="nav-cta">Request Allocation</button>
   </div>
 </nav>
 
@@ -338,7 +337,6 @@
 (function() {
   var modal = document.getElementById('modal');
   var heroCta = document.getElementById('hero-cta');
-  var navCta = document.getElementById('nav-cta');
   var modalClose = document.getElementById('modal-close');
 
   function openModal(e) {
@@ -350,7 +348,6 @@
   }
 
   heroCta.addEventListener('click', openModal);
-  navCta.addEventListener('click', openModal);
   modalClose.addEventListener('click', closeModal);
 
   modal.addEventListener('click', function(e) {
