@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>HANNON TAN — House</title>
-<meta name="description" content="Cryptographic seals. Physical objects for digital acts. Signum is the first.">
+<title>HANNON TAN — Signum</title>
+<meta name="description" content="Signum — a cryptographic signet ring that signs when you tap it. Built for LUKSO Universal Profiles.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,6 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* fixed nav */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -68,7 +67,6 @@
   nav .links a:hover, nav .links button:hover { color: var(--ink); }
   nav .links a.active { color: var(--ink); }
 
-  /* TWO-COLUMN SPLIT */
   main {
     padding-top: 6rem;
     min-height: 100vh;
@@ -88,7 +86,6 @@
     height: auto;
     width: auto;
     display: block;
-    filter: grayscale(100%) contrast(1.02);
   }
   .text-col {
     flex: 1 1 45%;
@@ -106,7 +103,7 @@
     line-height: 1.2;
     letter-spacing: -0.018em;
     color: var(--ink);
-    max-width: 22ch;
+    max-width: 14ch;
   }
   .headline em {
     font-style: italic;
@@ -128,15 +125,23 @@
     color: var(--ink);
     letter-spacing: -0.003em;
   }
-  .body p em {
-    font-style: italic;
-    color: var(--ink);
+
+  .details {
+    margin-top: clamp(2.5rem, 4vw, 3.5rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    max-width: 36ch;
   }
 
-  /* CTA */
   .cta {
     display: inline-block;
-    margin-top: clamp(2.5rem, 4vw, 3.5rem);
+    margin-top: clamp(2rem, 3vw, 2.5rem);
     padding: 1.1rem 2.75rem;
     background: var(--brass);
     color: var(--white);
@@ -153,7 +158,6 @@
   }
   .cta:hover { opacity: 0.85; }
 
-  /* footer */
   footer {
     padding: 2rem 2.5rem 1.5rem;
     text-align: center;
@@ -179,7 +183,6 @@
     padding: 2rem;
   }
   .modal-overlay.is-open { display: flex; }
-
   .modal {
     background: var(--paper);
     padding: 4rem 3rem;
@@ -228,13 +231,9 @@
     line-height: 1.6;
   }
   .modal input::placeholder,
-  .modal textarea::placeholder {
-    color: rgba(17, 17, 17, 0.35);
-  }
+  .modal textarea::placeholder { color: rgba(17, 17, 17, 0.35); }
   .modal input:focus,
-  .modal textarea:focus {
-    border-color: var(--brass);
-  }
+  .modal textarea:focus { border-color: var(--brass); }
   .modal button[type="submit"] {
     width: 100%;
     padding: 1.25rem 2rem;
@@ -258,7 +257,6 @@
     color: var(--ink);
   }
 
-  /* mobile / narrow — stack the split */
   @media (max-width: 820px) {
     main { flex-direction: column; padding-top: 5rem; }
     .image-col {
@@ -283,8 +281,8 @@
 <nav>
   <div class="brand">Hannon&nbsp;&nbsp;Tan</div>
   <div class="links">
-    <a href="/signum.html">Signum</a>
-    <a href="/" class="active">House</a>
+    <a href="/signum.html" class="active">Signum</a>
+    <a href="/">House</a>
     <button type="button" id="nav-cta">Request Allocation</button>
   </div>
 </nav>
@@ -292,19 +290,23 @@
 <main>
 
   <div class="image-col">
-    <img src="/atelier.png" alt="Atelier" />
+    <img src="/signum.png" alt="Signum signet ring in 9k yellow gold" />
   </div>
 
   <div class="text-col">
 
     <div class="headline">
-      Cryptographic <em>Seals</em>
+      Your <em>autograph</em>.
     </div>
 
     <div class="body">
-      <p>Physical objects for digital acts.</p>
-      <p>Made to be held, kept, and used when a decision must carry weight.</p>
-      <p>Signum is the first.</p>
+      <p>A cryptographic signet ring that signs when you tap it.</p>
+      <p>The antenna is machined into the metal itself. No battery. No Bluetooth. No sensors. It signs only when tapped.</p>
+      <p>Built for LUKSO Universal Profiles.</p>
+    </div>
+
+    <div class="details">
+      SIGNVM 01 &nbsp;&middot;&nbsp; 9k Gold
     </div>
 
     <button type="button" class="cta" id="hero-cta">Request Allocation</button>
@@ -317,7 +319,6 @@
   Hannon&nbsp;&nbsp;Tan &nbsp;&middot;&nbsp; Adelaide &nbsp;&middot;&nbsp; 2026
 </footer>
 
-<!-- Waitlist Modal -->
 <div class="modal-overlay" id="modal">
   <div class="modal">
     <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
@@ -345,9 +346,7 @@
     if (e) e.preventDefault();
     modal.classList.add('is-open');
   }
-  function closeModal() {
-    modal.classList.remove('is-open');
-  }
+  function closeModal() { modal.classList.remove('is-open'); }
 
   heroCta.addEventListener('click', openModal);
   navCta.addEventListener('click', openModal);
@@ -356,12 +355,10 @@
   modal.addEventListener('click', function(e) {
     if (e.target === modal) closeModal();
   });
-
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeModal();
   });
 
-  // Web3Forms submit
   var WEB3FORMS_URL = 'https://api.web3forms.com/submit';
   var form = document.getElementById('waitlist-form');
   var confirmation = document.getElementById('confirmation');
