@@ -182,7 +182,7 @@ footer a{color:inherit;text-decoration:none;user-select:all}
 <script>(function(){var p=document.getElementById("photo");if(!p)return;p.addEventListener("click",function(){p.classList.toggle("lit")});})();</script>
 <script>(function(){
 var o=document.getElementById("req-open"),f=document.getElementById("req"),s=document.getElementById("f-status"),b=document.getElementById("f-send");
-o.addEventListener("click",function(){f.hidden=false;o.hidden=true;o.setAttribute("aria-expanded","true");document.getElementById("f-name").focus();});
+o.addEventListener("click",function(){var ph=document.getElementById("photo");if(ph&&window.matchMedia("(min-width:900px)").matches){ph.style.height=ph.offsetHeight+"px";ph.style.flex="none";ph.parentNode.style.alignSelf="start";}f.hidden=false;o.hidden=true;o.setAttribute("aria-expanded","true");document.getElementById("f-name").focus();});
 f.addEventListener("submit",function(e){e.preventDefault();b.disabled=true;s.textContent="Sending…";
 fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(Object.assign(Object.fromEntries(new FormData(f)),{replyto:f.email.value,interest:"Edition 01 · Ag 925"}))})
 .then(function(r){return r.json()}).then(function(d){if(d.success){f.reset();f.querySelectorAll("input,textarea,button").forEach(function(x){x.disabled=true});s.textContent="Received. We will be in touch.";}else{throw new Error(d.message)}})
