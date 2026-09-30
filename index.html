@@ -1,523 +1,186 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>SIGNVM — A signet ring for the artificial age</title>
-    <meta name="description" content="Machines execute. Humans authorise. A signet ring for the artificial age.">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Signet 01 · HANNON TAN</title>
+<meta name="description" content="Machines execute. Humans authorize. Signet 01 is a sterling silver ring that signs. Edition 01, 20 rings.">
+<meta property="og:title" content="Signet 01 · HANNON TAN">
+<meta property="og:description" content="Machines execute. Humans authorize.">
+<meta property="og:image" content="/images/signet-01.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#000000">
 
-        :root {
-            --bg: #F8F5F0;
-            --text: #111111;
-            --text-muted: #666666;
-            --brass: #C9A66B;
-            --white: #FFFFFF;
-            --font-serif: 'Playfair Display', Georgia, serif;
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
+<style>
+body{margin:0}
+/* Layout: 12-col grid. Framed photograph left, statement + paragraph + request right, bottom-aligned. Two expanding detail sections below. Deliberately single-theme: black. */
+:root{
+  --bg:#000; --fg:#fff; --dim:#8c8c8c; --soft:#c8c8c8; --line:#2a2a2a; --panel:#111;
+  --grot:'Helvetica Neue',Helvetica,'Nimbus Sans',Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:var(--bg);color:var(--fg)}
+body{font-family:var(--grot);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1400px;margin:0 auto;padding-inline:clamp(16px,4vw,64px)}
+.cap{text-transform:uppercase;letter-spacing:.06em;font-size:11px;font-weight:500}
 
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
-            background: var(--bg);
-        }
+header{display:flex;justify-content:space-between;align-items:center;padding-block:22px;border-bottom:1px solid var(--line)}
+header span{color:var(--dim)}
 
-        body {
-            font-family: var(--font-sans);
-            font-weight: 300;
-            color: var(--text);
-            background: var(--bg);
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
-        }
+.hero{display:grid;grid-template-columns:1fr;gap:40px;padding-block:clamp(32px,6vw,96px)}
+.frame{margin:0;min-width:0}
+.photo{aspect-ratio:4/5;max-width:100%;background:var(--panel);border:1px solid var(--line);position:relative;overflow:hidden;display:grid;place-items:center}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo img.alt{opacity:0;transition:opacity 1.2s ease}
+.photo:hover img.alt,.photo.lit img.alt{opacity:1}
+@media (prefers-reduced-motion:reduce){.photo img.alt{transition:none}}
+.photo svg{width:62%;height:auto}
+.photo path{fill:none;stroke:#5a5a5a;stroke-width:1.2}
+.frame figcaption{display:flex;justify-content:space-between;padding-top:12px;color:var(--dim)}
 
-        /* Navigation - almost invisible */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2.5rem 4rem;
-            background: transparent;
-            transition: background 0.4s ease;
-        }
+.copy{display:flex;flex-direction:column;gap:32px;min-width:0}
+h1{margin:0;text-transform:uppercase;font-weight:500;font-size:clamp(40px,5.6vw,84px);line-height:.95;letter-spacing:-.02em}
+h1 span{display:block}
+.expl{margin:0;max-width:36ch;font-size:clamp(17px,1.4vw,19px);line-height:1.5;color:var(--soft)}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px;border-top:1px solid var(--line)}
+.facts div{display:flex;flex-direction:column;gap:6px;padding-block:14px;border-bottom:1px solid var(--line)}
+.facts dt{color:var(--dim)}
+.facts dd{margin:0}
+.req{display:flex;align-items:center;justify-content:center;min-height:58px;background:var(--soft);color:var(--bg);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.req:hover{opacity:.85}
+.req:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 
-        nav.scrolled {
-            background: rgba(248, 245, 240, 0.95);
-            backdrop-filter: blur(10px);
-        }
+.more{border-top:1px solid var(--line)}
+.more:last-of-type{border-bottom:1px solid var(--line)}
+.more summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:64px}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"+";font-size:18px;font-weight:400;letter-spacing:0;transition:transform .25s}
+.more[open] summary::after{transform:rotate(45deg)}
+.body{display:grid;grid-template-columns:1fr;gap:28px;padding-block:8px 56px}
+.body p{margin:0;max-width:56ch;font-size:15px;line-height:1.65;color:var(--soft)}
+.body p + p{margin-top:14px}
+.credits{margin-top:28px}
+.spec{margin:0}
+.spec div{display:grid;grid-template-columns:minmax(100px,1fr) 3fr;gap:16px;padding-block:10px;font-size:14px;line-height:1.5}
+.spec dt{color:var(--dim);padding-top:2px}
+.spec dd{margin:0;min-width:0}
 
-        .nav-logo {
-            font-family: var(--font-sans);
-            font-size: 0.65rem;
-            font-weight: 400;
-            letter-spacing: 0.4em;
-            color: var(--text);
-        }
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-block:28px 40px;color:var(--dim)}
+footer a{color:inherit;text-decoration:none;user-select:all}
 
-        .nav-waitlist {
-            font-family: var(--font-sans);
-            font-size: 0.65rem;
-            font-weight: 300;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+@media (min-width:900px){
+  .hero{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end}
+  .frame{grid-column:1 / span 6}
+  .copy{grid-column:8 / span 5;padding-bottom:36px}
+  .body{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+  .body > *{grid-column:4 / span 7}
+}
 
-        .nav-waitlist:hover {
-            color: var(--brass);
-        }
+@media (prefers-reduced-motion:no-preference){
+  .photo path{stroke-dasharray:8410;animation:draw 3s cubic-bezier(.7,0,.2,1) both}
+  @keyframes draw{from{stroke-dashoffset:8410}to{stroke-dashoffset:0}}
+}
 
-        /* Hero - full screen, enormous breathing room */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 12rem 2rem 8rem;
-            text-align: center;
-        }
+.req{border:0;cursor:pointer;font-family:var(--grot);width:100%}
+.req-form{display:flex;flex-direction:column;gap:10px}
+.req-form label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--dim);margin-top:6px}
+.req-form label span{text-transform:none;letter-spacing:0}
+.req-form input,.req-form textarea{background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--fg);font:inherit;font-size:16px;padding:8px 0;border-radius:0}
+.req-form input:focus,.req-form textarea:focus{outline:none;border-bottom-color:var(--fg)}
+.req-form textarea{resize:vertical}
+.req-form .req{margin-top:14px}
+.hp{display:none}
+.f-status{margin:0;font-size:14px;color:var(--soft);min-height:1.4em}
+</style>
 
-        .hero-image {
-            width: 100%;
-            max-width: 420px;
-            margin-bottom: 8rem;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: auto;
-        }
-
-        .hero-headline {
-            font-family: var(--font-serif);
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            font-weight: 400;
-            line-height: 1.25;
-            margin-bottom: 2rem;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-headline em {
-            font-style: italic;
-            color: var(--brass);
-        }
-
-        /* Story section - single line, massive margins */
-        .story {
-            padding: 14rem 2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .story p {
-            font-family: var(--font-serif);
-            font-size: clamp(1.3rem, 3vw, 1.7rem);
-            font-weight: 400;
-            line-height: 1.7;
-            color: var(--text);
-        }
-
-        .story p + p {
-            margin-top: 3rem;
-        }
-
-        .story-detail {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-
-        .story-question {
-            color: var(--brass) !important;
-            font-style: italic;
-        }
-
-        .story-tagline {
-            margin-top: 4rem !important;
-            font-style: normal;
-            color: var(--text) !important;
-        }
-
-        /* Waitlist - extremely simple */
-        .waitlist {
-            padding: 10rem 2rem 14rem;
-            text-align: center;
-        }
-
-        .waitlist-btn {
-            display: inline-block;
-            padding: 1.25rem 3.5rem;
-            font-family: var(--font-sans);
-            font-size: 0.7rem;
-            font-weight: 400;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--white);
-            background: var(--brass);
-            border: none;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-        }
-
-        .waitlist-btn:hover {
-            opacity: 0.85;
-        }
-
-        .edition-text {
-            margin-bottom: 2.5rem;
-            font-family: var(--font-sans);
-            font-size: 0.7rem;
-            font-weight: 300;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-            opacity: 0.6;
-        }
-
-        /* Modal */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(17, 17, 17, 0.4);
-            z-index: 200;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-        }
-
-        .modal-overlay.is-open {
-            display: flex;
-        }
-
-        .modal {
-            background: var(--bg);
-            padding: 4rem 3rem;
-            max-width: 380px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            background: none;
-            border: none;
-            cursor: pointer;
-            line-height: 1;
-        }
-
-        .modal h3 {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            font-weight: 400;
-            margin-bottom: 2.5rem;
-        }
-
-        .modal input {
-            width: 100%;
-            padding: 1rem 0;
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            font-weight: 300;
-            border: none;
-            border-bottom: 1px solid rgba(17, 17, 17, 0.15);
-            background: transparent;
-            color: var(--text);
-            outline: none;
-            margin-bottom: 2rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .modal input::placeholder,
-        .modal textarea::placeholder {
-            color: rgba(17, 17, 17, 0.35);
-        }
-
-        .modal input:focus,
-        .modal textarea:focus {
-            border-color: var(--brass);
-        }
-
-        .modal textarea {
-            width: 100%;
-            padding: 1rem 0 1.5rem 0;
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
-            font-weight: 300;
-            border: none;
-            border-bottom: 1px solid rgba(17, 17, 17, 0.15);
-            background: transparent;
-            color: var(--text);
-            outline: none;
-            margin-bottom: 2rem;
-            transition: border-color 0.3s ease;
-            resize: none;
-            min-height: 100px;
-            line-height: 1.6;
-            overflow: hidden;
-        }
-
-        .modal button[type="submit"] {
-            width: 100%;
-            padding: 1.25rem 2rem;
-            font-family: var(--font-sans);
-            font-size: 0.7rem;
-            font-weight: 400;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--white);
-            background: var(--brass);
-            border: none;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal button[type="submit"]:hover {
-            opacity: 0.85;
-        }
-
-        .modal-confirmation {
-            display: none;
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            font-style: italic;
-            color: var(--text);
-        }
-
-        /* Footer */
-        footer {
-            padding: 2.5rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        footer p {
-            font-size: 0.65rem;
-            letter-spacing: 0.08em;
-            color: var(--text-muted);
-            opacity: 0.5;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.25rem;
-        }
-
-        .social-links a {
-            color: var(--text-muted);
-            opacity: 0.35;
-            transition: opacity 0.3s ease;
-        }
-
-        .social-links a:hover {
-            opacity: 0.7;
-        }
-
-        .social-links svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .social-links .lukso-link svg {
-            width: 19px;
-            height: 19px;
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            nav {
-                padding: 1.5rem 2rem;
-            }
-
-            footer {
-                padding: 1.5rem 2rem;
-            }
-
-            .hero {
-                padding: 10rem 2rem 6rem;
-            }
-
-            .hero-image {
-                max-width: 300px;
-                margin-bottom: 5rem;
-            }
-
-            .story {
-                padding: 8rem 2rem;
-            }
-
-            .waitlist {
-                padding: 6rem 2rem 10rem;
-            }
-
-            .modal {
-                padding: 3rem 2rem;
-            }
-        }
-    </style>
 </head>
 <body>
+<div class="wrap">
+  <header class="cap"><b>Hannon Tan</b><span>Signet 01</span></header>
 
-    <!-- Navigation -->
-    <nav id="nav">
-        <span class="nav-logo">SIGNVM</span>
-        <a href="#" class="nav-waitlist" id="nav-waitlist-btn">Register</a>
-    </nav>
+  <main class="hero">
+    <figure class="frame">
+      <div class="photo" id="photo">
+        <img src="/images/signet-01.jpg" alt="Signet 01 in sterling silver, spiral face"><img class="alt" src="/images/signet-01-lit.jpg" alt="" aria-hidden="true">
+      </div>
+      <figcaption class="cap"><span>Signet 01</span><span>Ag 925</span></figcaption>
+    </figure>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-image">
-            <img 
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/signet-ohJtsyGCRRXhSXwVc6VWAvjq4Tsig6.png" 
-                alt="SIGNVM signet ring"
-            >
-        </div>
-        <h1 class="hero-headline">Machines execute.<br><em>Humans authorise.</em></h1>
-    </section>
-
-    <!-- Story -->
-    <section class="story">
-        <p>For five millennia, the seal was the mandate. Pharaohs, emperors, kings and queens understood that while a scribe may draft the word, the seal gives it force. To hold the object was to hold the authority.</p>
-        <p class="story-detail">That authority has never been more contested. Identities are fragmented. Appearances can be faked. Agents act without presence.</p>
-        <p class="story-detail story-question">Who holds the seal?</p>
-        <p class="story-tagline">A cryptographic signet ring for the artificial age. Built on LUKSO Universal Profiles.</p>
-    </section>
-
-    <!-- Waitlist -->
-    <section class="waitlist">
-        <p class="edition-text">Edition 02. Limited. 2026</p>
-        <button class="waitlist-btn" id="waitlist-btn">Register</button>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>SIGNVM &copy; 2026 &middot; Adelaide</p>
-        <div class="social-links">
-            <a href="https://universaleverything.io/0x8adc83bbe4e97d0eb6936dce3325a2bb04f6cb1a" target="_blank" rel="noopener" aria-label="LUKSO" class="lukso-link">
-                <svg viewBox="0 0 114.32 125.69" fill="currentColor"><path d="M104.11,23.95c-12.25-7.07-24.49-14.14-36.74-21.21-6.32-3.65-14.1-3.65-20.42,0-12.25,7.07-24.49,14.14-36.74,21.21C3.89,27.6,0,34.34,0,41.63v42.42c0,7.3,3.89,14.04,10.21,17.68,12.25,7.07,24.49,14.14,36.74,21.21,6.32,3.65,14.1,3.65,20.42,0,12.25-7.07,24.49-14.14,36.74-21.21,6.32-3.65,10.21-10.39,10.21-17.68v-42.42c0-7.3-3.89-14.04-10.21-17.68ZM86.2,66.78c-3.7,6.41-7.41,12.83-11.11,19.24-1.37,2.37-3.9,3.83-6.63,3.83h-22.22c-2.74,0-5.26-1.46-6.63-3.83-3.7-6.41-7.41-12.83-11.11-19.24-1.37-2.37-1.37-5.29,0-7.66,3.7-6.41,7.41-12.83,11.11-19.24,1.37-2.37,3.9-3.83,6.63-3.83h22.22c2.74,0,5.26,1.46,6.63,3.83,3.7,6.41,7.41,12.83,11.11,19.24,1.37,2.37,1.37,5.29,0,7.66Z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/jimhannontan/" target="_blank" rel="noopener" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-            <a href="https://x.com/phygicoil" target="_blank" rel="noopener" aria-label="X (Twitter)">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-        </div>
-    </footer>
-
-    <!-- Modal -->
-    <div class="modal-overlay" id="modal">
-        <div class="modal">
-            <button class="modal-close" id="modal-close">&times;</button>
-            <h3 id="modal-title">Register</h3>
-            <form id="waitlist-form">
-                <input type="hidden" name="access_key" value="08786a92-a002-47eb-bdfe-e7ddfb8e07c3">
-                <input type="hidden" name="subject" value="New Waitlist Signup">
-                <input type="hidden" name="from_name" value="Waitlist Form">
-                <input type="email" name="email" placeholder="Email" required>
-                <textarea name="details" placeholder="Optional — Name, handle, ring size, metal preference, or anything you'd like to register"></textarea>
-                <button type="submit">Seal</button>
-            </form>
-            <p class="modal-confirmation" id="confirmation">Noted</p>
-        </div>
+    <div class="copy">
+      <h1><span>Machines execute.</span><span>Humans authorize.</span></h1>
+      <p class="expl">A ring that signs. Your agent handles a thousand small things. The ones that matter come to your phone, and you sign with a touch of the ring.</p>
+      <dl class="facts cap">
+        <div><dt>Material</dt><dd>Sterling silver</dd></div>
+        <div><dt>Edition 01</dt><dd>20 rings</dd></div>
+      </dl>
+      <button class="req" type="button" id="req-open" aria-expanded="false" aria-controls="req">Request</button>
+      <form class="req-form" id="req" hidden>
+        <input type="hidden" name="access_key" value="2bcce2a4-04ef-4d44-8747-5753f9fe040a">
+        <input type="hidden" name="subject" value="Signet 01 request · Edition 01 · Ag 925">
+        <input type="hidden" name="from_name" value="The Signet">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required>
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+        <label for="f-note">Anything we should know <span>(optional)</span></label>
+        <textarea id="f-note" name="message" rows="3"></textarea>
+        <button class="req" type="submit" id="f-send">Send request</button>
+        <p class="f-status" id="f-status" role="status" aria-live="polite"></p>
+      </form>
     </div>
+  </main>
 
-    <script>
-    (function() {
-        // Nav scroll effect
-        var nav = document.getElementById('nav');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
+  <details class="more">
+    <summary class="cap">The object</summary>
+    <div class="body">
+      <div>
+        <p>Emperors, popes and merchants sealed their decisions with a signet. For five thousand years it was how the world knew a decision was final, and whose it was. Signet 01 does that job for the age of AI.</p>
+        <p>Cast in sterling silver. The square spiral on the face is the antenna, twelve turns in the metal. The mark is the machine. No screen. No battery. Nothing to charge.</p>
+        <p>Twenty will be issued, numbered 01 to 20. Delivery from Q1 2027. USD 4,800.</p>
+        <p class="credits">Designed by Jim Hannon-Tan in Adelaide. Built with specialists in casting, jewellery, RF, electronics, mechanics and software.</p>
+      </div>
+    </div>
+  </details>
 
-        // Modal
-        var modal = document.getElementById('modal');
-        var waitlistBtn = document.getElementById('waitlist-btn');
-        var navWaitlistBtn = document.getElementById('nav-waitlist-btn');
-        var modalClose = document.getElementById('modal-close');
+  <details class="more">
+    <summary class="cap">The gesture</summary>
+    <div class="body">
+      <div>
+        <p>Your agent runs your world while you live in it. It books, buys, sends and negotiates. When it reaches a decision you have kept for yourself, it stops and asks.</p>
+        <p>The request lands on your phone in plain words. What, how much, to whom. You read it. You touch the ring to the phone. Done.</p>
+        <p>The ring signs that exact request with a key only it holds.</p>
+      </div>
+    </div>
+  </details>
 
-        function openModal(e) {
-            e.preventDefault();
-            modal.classList.add('is-open');
-        }
+  <details class="more">
+    <summary class="cap">The technology</summary>
+    <div class="body">
+      <dl class="spec">
+        <div><dt>Chip</dt><dd>Arx HaLo secure element</dd></div>
+        <div><dt>Key</dt><dd>secp256k1, generated inside the chip. Cannot be exported or copied.</dd></div>
+        <div><dt>Connection</dt><dd>NFC. No battery, no charging.</dd></div>
+        <div><dt>Phones</dt><dd>iPhone and Android with NFC</dd></div>
+        <div><dt>Signatures</dt><dd>Standard ECDSA. Verifiable on Ethereum and EVM-compatible chains.</dd></div>
+        <div><dt>Account</dt><dd>LUKSO Universal Profile, with the ring as a scoped controller</dd></div>
+        <div><dt>Agents</dt><dd>Works with MCP-compatible agents. Your agent requests, you tap. Developer access on request.</dd></div>
+        <div><dt>Provenance</dt><dd>Each ring carries an on-chain record of its number</dd></div>
+      </dl>
+    </div>
+  </details>
 
-        function closeModal() {
-            modal.classList.remove('is-open');
-        }
-
-        waitlistBtn.onclick = openModal;
-        navWaitlistBtn.onclick = openModal;
-        modalClose.onclick = closeModal;
-
-        modal.onclick = function(e) {
-            if (e.target === modal) closeModal();
-        };
-
-        // Waitlist form - Web3Forms
-        var WEB3FORMS_URL = 'https://api.web3forms.com/submit';
-        var form = document.getElementById('waitlist-form');
-        var confirmation = document.getElementById('confirmation');
-        
-        form.onsubmit = function(e) {
-            e.preventDefault();
-            var formData = new FormData(form);
-            var submitBtn = form.querySelector('button[type="submit"]');
-            
-            submitBtn.disabled = true;
-            submitBtn.textContent = '...';
-
-            fetch(WEB3FORMS_URL, {
-                method: 'POST',
-                body: formData
-            })
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(data) {
-                if (data.success) {
-                    form.style.display = 'none';
-                    document.getElementById('modal-title').style.display = 'none';
-                    confirmation.style.display = 'block';
-                    form.reset();
-                } else {
-                    throw new Error('Failed');
-                }
-            })
-            .catch(function() {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Try again';
-            });
-            
-            return false;
-        };
-    })();
-    </script>
+  <footer class="cap"><span>Hannon Tan</span><span>Adelaide</span></footer>
+</div>
+<script>(function(){var p=document.getElementById("photo");if(!p)return;p.addEventListener("click",function(){p.classList.toggle("lit")});})();</script>
+<script>(function(){
+var o=document.getElementById("req-open"),f=document.getElementById("req"),s=document.getElementById("f-status"),b=document.getElementById("f-send");
+o.addEventListener("click",function(){f.hidden=false;o.hidden=true;o.setAttribute("aria-expanded","true");document.getElementById("f-name").focus();});
+f.addEventListener("submit",function(e){e.preventDefault();b.disabled=true;s.textContent="Sending…";
+fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(Object.assign(Object.fromEntries(new FormData(f)),{replyto:f.email.value,interest:"Edition 01 · Ag 925"}))})
+.then(function(r){return r.json()}).then(function(d){if(d.success){f.reset();f.querySelectorAll("input,textarea,button").forEach(function(x){x.disabled=true});s.textContent="Received. We will be in touch.";}else{throw new Error(d.message)}})
+.catch(function(){b.disabled=false;s.textContent="That didn’t send. Please try again in a moment.";});});
+})();</script>
 </body>
 </html>
