@@ -70,9 +70,11 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;pa
 footer a{color:inherit;text-decoration:none;user-select:all}
 
 @media (min-width:900px){
-  .hero{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end}
-  .frame{grid-column:1 / span 6}
-  .copy{grid-column:8 / span 5;padding-bottom:36px}
+  .hero{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:stretch}
+  .frame{grid-column:1 / span 6;display:flex}
+  .photo{aspect-ratio:auto;flex:1;width:100%}
+  .copy{grid-column:8 / span 5}
+  h1{margin-top:-.09em}
   .body{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
   .body > *{grid-column:4 / span 7}
 }
