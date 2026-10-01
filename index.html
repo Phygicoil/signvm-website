@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Signet 01 · HANNON TAN</title>
-<meta name="description" content="Machines execute. Humans authorize. Signet 01 is a sterling silver ring that signs. Edition 01, 20 rings.">
+<meta name="description" content="A ring that signs. Signet 01 makes your approval a physical act. Founding Edition, 20 numbered rings.">
 <meta property="og:title" content="Signet 01 · HANNON TAN">
-<meta property="og:description" content="Machines execute. Humans authorize.">
+<meta property="og:description" content="A ring that signs.">
 <link rel="canonical" href="https://www.hannontan.com/">
 <meta property="og:url" content="https://www.hannontan.com/">
 <meta property="og:type" content="website">
@@ -20,7 +20,6 @@
 
 <style>
 body{margin:0}
-[hidden]{display:none!important}
 /* Layout: 12-col grid. Framed photograph left, statement + paragraph + request right, bottom-aligned. Two expanding detail sections below. Deliberately single-theme: black. */
 :root{
   --bg:#000; --fg:#fff; --dim:#8c8c8c; --soft:#c8c8c8; --line:#2a2a2a; --panel:#111;
@@ -48,14 +47,22 @@ header span{color:var(--dim)}
 .frame figcaption{display:flex;justify-content:space-between;padding-top:12px;color:var(--dim)}
 
 .copy{display:flex;flex-direction:column;gap:32px;min-width:0}
-h1{margin:0;text-transform:uppercase;font-weight:500;font-size:clamp(40px,5.6vw,84px);line-height:.95;letter-spacing:-.02em}
+h1{margin:0;text-transform:uppercase;font-weight:500;font-size:clamp(48px,6.2vw,96px);line-height:.95;letter-spacing:-.02em}
 h1 span{display:block}
+.sub{margin:-12px 0 0;font-size:clamp(22px,2.2vw,32px);line-height:1.2;font-weight:500;letter-spacing:-.01em}
+.expl p{margin:0}.expl p+p{margin-top:14px}
 .expl{margin:0;max-width:36ch;font-size:clamp(17px,1.4vw,19px);line-height:1.5;color:var(--soft)}
 .facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px;border-top:1px solid var(--line)}
 .facts div{display:flex;flex-direction:column;gap:6px;padding-block:14px;border-bottom:1px solid var(--line)}
 .facts dt{color:var(--dim)}
 .facts dd{margin:0}
-.req{display:flex;align-items:center;justify-content:center;min-height:58px;background:var(--soft);color:var(--bg);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.offer{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;column-gap:24px;border-top:1px solid var(--line);padding-top:20px}
+.offer .req{width:100%}
+.ed{display:flex;flex-direction:column;justify-content:center;gap:4px;align-items:flex-start;text-align:left}
+.ed .cap{line-height:1.4}
+.ed span:last-child{font-size:16px;line-height:1.5;color:var(--soft)}
+.req{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:48px;padding:0 32px;background:var(--soft);color:var(--bg);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+@media (max-width:420px){.offer .req{width:100%}.ed{align-items:flex-start;text-align:left}}
 .req:hover{opacity:.85}
 .req:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 
@@ -92,20 +99,27 @@ footer a{color:inherit;text-decoration:none;user-select:all}
   @keyframes draw{from{stroke-dashoffset:8410}to{stroke-dashoffset:0}}
 }
 
-.req{border:0;cursor:pointer;font-family:var(--grot);width:100%}
-.req-form{display:flex;flex-direction:column;gap:10px}
-.req-form label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--dim);margin-top:6px}
-.req-form label span{text-transform:none;letter-spacing:0}
-.req-form input,.req-form textarea{background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--fg);font:inherit;font-size:16px;padding:8px 0;border-radius:0}
-.req-form input:focus,.req-form textarea:focus{outline:none;border-bottom-color:var(--fg)}
-.req-form textarea{resize:vertical}
-.req-form .req{margin-top:14px}
+.req{border:0;cursor:pointer;font-family:var(--grot)}
+.req-panel{border-top:1px solid var(--line);padding-top:28px;display:flex;flex-direction:column;gap:14px}
+.req-panel h2{margin:0;font-size:22px;font-weight:500;letter-spacing:-.01em}
+.req-panel .terms{margin:0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);line-height:1.8}
+.req-panel .intro{margin:0;font-size:16px;line-height:1.5;color:var(--soft);max-width:44ch}
+#req-form{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+#req-form label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--dim);margin-top:10px}
+#req-form label span{text-transform:none;letter-spacing:0;font-weight:400}
+#req-form input,#req-form textarea{background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--fg);font:inherit;font-size:16px;padding:8px 0;border-radius:0}
+#req-form input:focus,#req-form textarea:focus{outline:none;border-bottom-color:var(--fg)}
+#req-form textarea{resize:vertical}
+#req-form textarea::placeholder{color:var(--dim)}
+.send{margin-top:20px;align-self:flex-start;min-height:48px;padding:0 28px;border:0;cursor:pointer;background:var(--soft);color:var(--bg);font-family:var(--grot);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.send:hover{opacity:.85}.send:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 .hp{display:none}
-.f-status{margin:0;font-size:14px;color:var(--soft);min-height:1.4em}
+.f-status{margin:0;font-size:15px;color:var(--soft);min-height:1.4em}
+[hidden]{display:none!important}
 </style>
-
 </head>
 <body>
+
 <div class="wrap">
   <header class="cap"><b>Hannon Tan</b><span>Signet 01</span></header>
 
@@ -117,27 +131,33 @@ footer a{color:inherit;text-decoration:none;user-select:all}
     </figure>
 
     <div class="copy">
-      <h1><span>Machines execute.</span><span>Humans authorize.</span></h1>
-      <p class="expl">Signet 01 is a ring that signs. Your agent handles a thousand small things. The ones that matter come to your phone, and you sign with a touch of the ring.</p>
-      <dl class="facts cap">
-        <div><dt>Material</dt><dd>Sterling silver</dd></div>
-        <div><dt>Founding Edition</dt><dd>20 rings</dd></div>
-      </dl>
-      <button class="req" type="button" id="req-open" aria-expanded="false" aria-controls="req">Request</button>
-      <form class="req-form" id="req" hidden>
-        <input type="hidden" name="access_key" value="2bcce2a4-04ef-4d44-8747-5753f9fe040a">
-        <input type="hidden" name="subject" value="Signet 01 request · Edition 01 · Ag 925">
-        <input type="hidden" name="from_name" value="The Signet">
-        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
-        <label for="f-name">Name</label>
-        <input id="f-name" name="name" type="text" autocomplete="name" required>
-        <label for="f-email">Email</label>
-        <input id="f-email" name="email" type="email" autocomplete="email" required>
-        <label for="f-note">Anything we should know <span>(optional)</span></label>
-        <textarea id="f-note" name="message" rows="3"></textarea>
-        <button class="req" type="submit" id="f-send">Send request</button>
-        <p class="f-status" id="f-status" role="status" aria-live="polite"></p>
-      </form>
+      <h1><span>A ring</span><span>that signs.</span></h1>
+      <div class="expl"><p>Cast in sterling silver, Signet 01 makes your approval a physical act.</p><p>Your AI can handle a thousand small things. The decisions you reserve for yourself come to your phone. Review the exact action, then touch the ring to authorize it.</p></div>
+      <div class="offer">
+        <div class="ed"><span class="cap">Founding Edition</span><span>20 numbered rings</span></div>
+        <button class="req" type="button" id="req-open" aria-expanded="false" aria-controls="req-panel">Request</button>
+      </div>
+      <section class="req-panel" id="req-panel" hidden>
+        <h2>Request Signet 01</h2>
+        <p class="terms">Founding Edition · 20 numbered rings<br>USD 4,800 · Expected delivery from Q1 2027</p>
+        <p class="intro">Leave your details and we’ll be in touch personally about availability and next steps.</p>
+        <form id="req-form" novalidate>
+          <input type="hidden" name="access_key" value="2bcce2a4-04ef-4d44-8747-5753f9fe040a">
+          <input type="hidden" name="subject" value="Signet 01 request · Founding Edition">
+          <input type="hidden" name="from_name" value="The Signet">
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required>
+          <label for="f-country">Country</label>
+          <input id="f-country" name="country" type="text" autocomplete="country-name" required>
+          <label for="f-note">A note or question <span>optional</span></label>
+          <textarea id="f-note" name="message" rows="3" placeholder="What draws you to Signet 01? What would you like to sign with yours?"></textarea>
+          <button class="send" type="submit" id="f-send">Send request</button>
+          <p class="f-status" id="f-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
     </div>
   </main>
 
@@ -184,12 +204,12 @@ footer a{color:inherit;text-decoration:none;user-select:all}
 </div>
 <script>(function(){var p=document.getElementById("photo");if(!p)return;p.addEventListener("click",function(){p.classList.toggle("lit")});})();</script>
 <script>(function(){
-var o=document.getElementById("req-open"),f=document.getElementById("req"),s=document.getElementById("f-status"),b=document.getElementById("f-send");
-o.addEventListener("click",function(){var ph=document.getElementById("photo");if(ph&&window.matchMedia("(min-width:900px)").matches){ph.style.height=ph.offsetHeight+"px";ph.style.flex="none";ph.parentNode.style.alignSelf="start";}f.hidden=false;o.hidden=true;o.setAttribute("aria-expanded","true");document.getElementById("f-name").focus();});
-f.addEventListener("submit",function(e){e.preventDefault();b.disabled=true;s.textContent="Sending…";
-fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(Object.assign(Object.fromEntries(new FormData(f)),{replyto:f.email.value,interest:"Edition 01 · Ag 925"}))})
-.then(function(r){return r.json()}).then(function(d){if(d.success){f.reset();f.querySelectorAll("input,textarea,button").forEach(function(x){x.disabled=true});s.textContent="Received. We will be in touch.";}else{throw new Error(d.message)}})
-.catch(function(){b.disabled=false;s.textContent="That didn’t send. Please try again in a moment.";});});
+var o=document.getElementById("req-open"),p=document.getElementById("req-panel"),f=document.getElementById("req-form"),s=document.getElementById("f-status");
+o.addEventListener("click",function(){var ph=document.getElementById("photo");if(ph&&window.matchMedia("(min-width:900px)").matches){ph.style.height=ph.offsetHeight+"px";ph.style.flex="none";ph.parentNode.style.alignSelf="start";}p.hidden=false;o.hidden=true;o.setAttribute("aria-expanded","true");document.getElementById("f-name").focus();});
+f.addEventListener("submit",function(e){e.preventDefault();if(!f.checkValidity()){s.textContent="Please add your name, email and country.";return;}
+var b=document.getElementById("f-send");b.disabled=true;s.textContent="Sending…";
+var d=Object.fromEntries(new FormData(f));d.replyto=d.email;d.interest="Founding Edition";
+fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)}).then(function(r){return r.json()}).then(function(r){if(!r.success)throw 0;f.querySelectorAll("input,textarea,button").forEach(function(x){x.disabled=true});s.textContent="Thank you. We’ve received your request and will be in touch personally.";}).catch(function(){b.disabled=false;s.textContent="That didn’t send. Please try again in a moment.";});});
 })();</script>
 </body>
 </html>
