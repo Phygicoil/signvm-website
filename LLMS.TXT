@@ -1,43 +1,48 @@
-# Signet 01
+# SIGNVM
 
-A sterling silver signet ring with a signing chip in its face. Designed by Jim Hannon-Tan in Adelaide.
+**A signet ring for the artificial age.**  
+**Machines execute. Humans authorise.**
 
-Jim Hannon-Tan is a designer who has worked with Alessi, Tom Dixon, LVMH and Flos.
+For five millennia the signet ring was the mandate of kings and queens. Today it returns as the only thing AI cannot fake.
 
-## What it does
+Created by Jim Hannon-Tan (Alessi, Tom Dixon, LVMH, Flos). Founder of SIGNVM.
 
-Touch the ring to an NFC-equipped phone to sign words, an image or a document. The person you send it to receives the content and a record they can verify.
+## The Core Problem
 
-1. Choose: select the content and any dedication.
-2. Review: see exactly what you are signing and sharing.
-3. Sign: touch the ring to your phone to create the signature.
-4. Send: share the signed record through a link.
+AI agents can book flights, execute trades, sign contracts and publish on your behalf. Nothing proves a conscious human authorised the action. SIGNVM is that proof — the deliberate physical seal.
 
-A signed piece can also be minted as an on-chain collectible.
+## What it is
 
-## The object
+Precision-machined cryptographic signet ring (brass, sterling silver or 18K gold). The NFC antenna *is* the ring face itself. Embedded ARX HaLo chip registers to your LUKSO Universal Profile.  
 
-Cast in sterling silver. The square spiral on the face is the antenna, twelve turns in the metal. There is no battery; the phone powers the chip when you touch them together.
+AI agent proposes → you review → one tap → cryptographic signature. Action executes. Authorisation is on-chain, timestamped and irrevocable.
 
-## Technology
+Edition 01 sculptural object already with Fabian Vogelsteller. The wearable signet ring is the refined evolution.
 
-- Chip: ARX HaLo secure element. It creates the cryptographic signature.
-- Key: secp256k1, generated inside the chip. Cannot be exported or copied.
-- Connection: NFC, touched to a phone.
-- Phones: supported models will be confirmed before delivery.
-- Account: optional. A LUKSO Universal Profile can link the ring to an account, with permissions you set.
-- Networks: signatures can be checked on LUKSO, Ethereum and Base, and by web services that support them.
-- Verification: checks the signing key, and whether the content matches the signed record.
-- Limits: a signature shows that this ring signed this content. On its own it does not establish original authorship or verified legal identity.
-- Status: signing on the chip is demonstrated. The Signet application is in development.
+**Physical possession is the one primitive AI cannot simulate.**
 
-Other software could use the same chip for logging in to accounts, approving wallet transactions, showing membership, or approving an action that a person or an AI agent has prepared. None of these work with Signet 01 yet.
+## Who this is for
 
-## Edition 01
+Founders deploying high-stakes AI agents • Developers building agent frameworks • Security architects needing human-in-the-loop ratification • Luxury collectors at the intersection of craft and sovereignty • Anyone who wants beautiful, meaningful control in the agentic age.
 
-Twenty rings, numbered 01 to 20. USD 4,800. Delivery from Q1 2027.
+## The Technology
 
-## Contact
+- Chip: ARX HaLo NFC (secp256k1 on-chip signing)  
+- Identity: LUKSO Universal Profile (ERC-725) + LSP6 Key Manager (scoped permissions)  
+- Multichain-ready: Base, Ethereum, Coinbase x402 and beyond via LSP16 factories  
+- Manufacturing: Precision CNC + hand-finishing at ANFF Adelaide
 
-https://www.hannontan.com
-jim@jimhannontan.com
+## The Design Thesis
+
+The infrastructure becomes jewellery. The spiral antenna is machined into the face. Over time the physical patina mirrors the on-chain history.
+
+## Positioning
+
+Machines execute. Humans authorise.  
+A signet ring for the artificial age.
+
+## Links
+
+https://signvm.xyz  
+jim@jimhannontan.com  
+@phygicoil

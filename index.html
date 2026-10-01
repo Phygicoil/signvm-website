@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Signet 01 · HANNON TAN</title>
-<meta name="description" content="Signet 01 is a sterling silver signet ring with a signing chip in its face. Edition of twenty numbered rings, USD 4,800. Designed by Jim Hannon-Tan in Adelaide.">
+<meta name="description" content="A ring that signs. Signet 01 makes your approval a physical act. Founding Edition, 20 numbered rings.">
 <meta property="og:title" content="Signet 01 · HANNON TAN">
-<meta property="og:description" content="A sterling silver signet ring with a signing chip in its face. Edition of twenty.">
+<meta property="og:description" content="A ring that signs.">
 <link rel="canonical" href="https://www.hannontan.com/">
 <meta property="og:url" content="https://www.hannontan.com/">
 <meta property="og:type" content="website">
@@ -75,7 +75,7 @@ h1 span{display:block}
 .body{display:grid;grid-template-columns:1fr;gap:28px;padding-block:8px 56px}
 .body p{margin:0;max-width:56ch;font-size:15px;line-height:1.65;color:var(--soft)}
 .body p + p{margin-top:14px}
-.body p.sub{margin-top:40px;color:var(--fg);font-size:11px;line-height:1.4}
+.credits{margin-top:28px}
 .spec{margin:0}
 .spec div{display:grid;grid-template-columns:minmax(100px,1fr) 3fr;gap:16px;padding-block:10px;font-size:14px;line-height:1.5}
 .spec dt{color:var(--dim);padding-top:2px}
@@ -116,25 +116,6 @@ footer a{color:inherit;text-decoration:none;user-select:all}
 .hp{display:none}
 .f-status{margin:0;font-size:15px;color:var(--soft);min-height:1.4em}
 [hidden]{display:none!important}
-
-.sect{display:grid;grid-template-columns:1fr;gap:20px;border-top:1px solid var(--line);padding-block:28px clamp(48px,6vw,88px)}
-.sect h2.cap{margin:0}
-.sect-body{min-width:0;max-width:62ch}
-.sect-body p{margin:0;font-size:16px;line-height:1.6;color:var(--soft)}
-.sect-body p+p{margin-top:16px}
-.sect-body .lede{font-size:clamp(20px,1.9vw,26px);line-height:1.3;font-weight:500;letter-spacing:-.01em;color:var(--fg)}
-.sect-body .lede+p{margin-top:24px}
-.uses{margin-top:20px}
-.sect-body .note,.more .note{margin:20px 0 0;color:var(--dim);font-size:14px}
-.textlink{color:var(--fg);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--dim);padding-bottom:4px}
-.textlink:hover{border-bottom-color:var(--fg)}
-.more + .sect{border-top:0}
-.sect + .more{margin-top:0}
-@media (min-width:900px){
-  .sect{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
-  .sect > h2.cap{grid-column:1 / span 3}
-  .sect > .sect-body{grid-column:4 / span 7}
-}
 </style>
 </head>
 <body>
@@ -151,18 +132,18 @@ footer a{color:inherit;text-decoration:none;user-select:all}
 
     <div class="copy">
       <h1><span>A ring</span><span>that signs.</span></h1>
-      <div class="expl"><p>Crafted in sterling silver, Signet 01 is a physical seal for the digital world.</p><p>Choose words, an image or a document. Review it, then touch the ring to your phone to sign.</p></div>
+      <div class="expl"><p>Cast in sterling silver, Signet 01 makes your approval a physical act.</p><p>Your AI can handle a thousand small things. The decisions you reserve for yourself come to your phone. Review the exact action, then touch the ring to authorize it.</p></div>
       <div class="offer">
-        <div class="ed"><span class="cap">Edition 01</span><span>20 numbered rings</span></div>
-        <button class="req" type="button" id="req-open" aria-expanded="false" aria-controls="req-panel">Enquiries</button>
+        <div class="ed"><span class="cap">Founding Edition</span><span>20 numbered rings</span></div>
+        <button class="req" type="button" id="req-open" aria-expanded="false" aria-controls="req-panel">Request</button>
       </div>
       <section class="req-panel" id="req-panel" hidden>
         <h2>Request Signet 01</h2>
-        <p class="terms">Edition 01 · 20 numbered rings<br>USD 4,800 · Expected delivery from Q1 2027</p>
-        <p class="intro">Please leave your details.</p>
+        <p class="terms">Founding Edition · 20 numbered rings<br>USD 4,800 · Expected delivery from Q1 2027</p>
+        <p class="intro">Leave your details and we’ll be in touch personally about availability and next steps.</p>
         <form id="req-form" novalidate>
           <input type="hidden" name="access_key" value="2bcce2a4-04ef-4d44-8747-5753f9fe040a">
-          <input type="hidden" name="subject" value="Signet 01 request · Edition 01">
+          <input type="hidden" name="subject" value="Signet 01 request · Founding Edition">
           <input type="hidden" name="from_name" value="The Signet">
           <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
           <label for="f-name">Name</label>
@@ -172,7 +153,7 @@ footer a{color:inherit;text-decoration:none;user-select:all}
           <label for="f-country">Country</label>
           <input id="f-country" name="country" type="text" autocomplete="country-name" required>
           <label for="f-note">A note or question <span>optional</span></label>
-          <textarea id="f-note" name="message" rows="3" placeholder="Ring size, timing, or how you would like to use the signet."></textarea>
+          <textarea id="f-note" name="message" rows="3" placeholder="What draws you to Signet 01? What would you like to sign with yours?"></textarea>
           <button class="send" type="submit" id="f-send">Send request</button>
           <p class="f-status" id="f-status" role="status" aria-live="polite"></p>
         </form>
@@ -184,30 +165,21 @@ footer a{color:inherit;text-decoration:none;user-select:all}
     <summary class="cap">The object</summary>
     <div class="body">
       <div>
-        <p>Emperors, popes and merchants sealed their decisions with a signet. Pressed into wax, the mark carried its owner’s identity and authority. Signet 01 brings that gesture into the digital world as a cryptographic signature.</p>
-        <p>The square spiral on the face shapes the silver itself into an antenna. The mark is the machine. Your phone powers the chip when you touch the ring to it. No battery. Nothing to charge.</p>
-        <p>Made to last, designed to evolve. The ring is designed to be opened with a precision cut, allowing the chip to be serviced or upgraded while preserving the silver object.</p>
-        <p>Designed by Jim Hannon-Tan in Adelaide. Built with specialists in casting, jewellery, RF, electronics, mechanics and software.</p>
+        <p>Emperors, popes and merchants sealed their decisions with a signet. For five thousand years it was how the world knew a decision was final, and whose it was. Signet 01 does that job for the age of AI.</p>
+        <p>Cast in sterling silver. The square spiral on the face is the antenna, twelve turns in the metal. The mark is the machine. No screen. No battery. Nothing to charge.</p>
+        <p>Twenty will be issued, numbered 01 to 20. Delivery from Q1 2027. USD 4,800.</p>
+        <p class="credits">Designed by Jim Hannon-Tan in Adelaide. Built with specialists in casting, jewellery, RF, electronics, mechanics and software.</p>
       </div>
     </div>
   </details>
 
   <details class="more">
-    <summary class="cap">The Gesture</summary>
+    <summary class="cap">The gesture</summary>
     <div class="body">
       <div>
-        <p>Your word, sealed.</p>
-        <p>Put your name to a statement, a work or a decision.</p>
-        <p>Write something, generate an image, or upload a photograph or document. Add a dedication or an approval. Review the exact content, then touch Signet 01 to your phone to sign.</p>
-        <p>Share it with a record that lets the recipient verify your ring’s signature and check that the content has not changed.</p>
-        <p class="cap sub">Future applications</p>
-        <p>Connect the ring to the accounts, communities and decisions that matter to you.</p>
-        <dl class="spec uses">
-          <div><dt>Accounts and wallets</dt><dd>Sign in to connected services, authorise a transfer or add your signature to a shared wallet.</dd></div>
-          <div><dt>Membership and access</dt><dd>Carry your membership with you. Verify it remotely or at the door of participating clubs and events.</dd></div>
-          <div><dt>DAOs and governance</dt><dd>Cast your vote, sign a resolution or approve a payment from a community treasury.</dd></div>
-          <div><dt>AI Approval</dt><dd>A purchase, a production order, an instruction prepared by another person or an AI agent. Review the details and touch the ring to give your approval.</dd></div>
-        </dl>
+        <p>Your agent runs your world while you live in it. It books, buys, sends and negotiates. When it reaches a decision you have kept for yourself, it stops and asks.</p>
+        <p>The request lands on your phone in plain words. What, how much, to whom. You read it. You touch the ring to the phone. Done.</p>
+        <p>The ring signs that exact request with a key only it holds.</p>
       </div>
     </div>
   </details>
@@ -216,41 +188,28 @@ footer a{color:inherit;text-decoration:none;user-select:all}
     <summary class="cap">The technology</summary>
     <div class="body">
       <dl class="spec">
-        <div><dt>Chip</dt><dd>ARX HaLo secure element. It creates the cryptographic signature.</dd></div>
+        <div><dt>Chip</dt><dd>Arx HaLo secure element</dd></div>
         <div><dt>Key</dt><dd>secp256k1, generated inside the chip. Cannot be exported or copied.</dd></div>
-        <div><dt>Connection</dt><dd>NFC, touched to a phone. No battery, no charging.</dd></div>
-        <div><dt>Phones</dt><dd>NFC-equipped phones. Supported models will be confirmed before delivery.</dd></div>
-        <div><dt>Account</dt><dd>Optional. A LUKSO Universal Profile can link the ring to an account, with permissions you set.</dd></div>
-        <div><dt>Networks</dt><dd>Its signatures can be checked on LUKSO, Ethereum and Base, and by web services that support them.</dd></div>
-        <div><dt>Collectibles</dt><dd>Minting creates a separate on-chain record. The ring signs the authorisation.</dd></div>
-        <div><dt>Verification</dt><dd>Checks the signing key, and whether the content matches the signed record.</dd></div>
-        <div><dt>Limits</dt><dd>A signature shows that this ring signed this content. On its own it does not establish original authorship or verified legal identity.</dd></div>
-        <div><dt>Status</dt><dd>Signing on the chip is demonstrated. The Signet application is in development.</dd></div>
+        <div><dt>Connection</dt><dd>NFC. No battery, no charging.</dd></div>
+        <div><dt>Phones</dt><dd>iPhone and Android with NFC</dd></div>
+        <div><dt>Signatures</dt><dd>Standard ECDSA. Verifiable on Ethereum and EVM-compatible chains.</dd></div>
+        <div><dt>Account</dt><dd>LUKSO Universal Profile, with the ring as a scoped controller</dd></div>
+        <div><dt>Agents</dt><dd>Works with MCP-compatible agents. Your agent requests, you tap. Developer access on request.</dd></div>
+        <div><dt>Provenance</dt><dd>Each ring carries an on-chain record of its number</dd></div>
       </dl>
     </div>
   </details>
-
-  <section class="sect edition" aria-labelledby="h-ed">
-    <h2 class="cap" id="h-ed">Edition 01</h2>
-    <div class="sect-body">
-      <p class="lede">Twenty rings, numbered 01 to 20.</p>
-      <p>USD 4,800. Delivery from Q1 2027.</p>
-      <p><a class="textlink" href="#req-open" id="req-again">Enquiries</a></p>
-    </div>
-  </section>
 
   <footer class="cap"><span>Hannon Tan</span><span>Adelaide</span></footer>
 </div>
 <script>(function(){var p=document.getElementById("photo");if(!p)return;p.addEventListener("click",function(){p.classList.toggle("lit")});})();</script>
 <script>(function(){
 var o=document.getElementById("req-open"),p=document.getElementById("req-panel"),f=document.getElementById("req-form"),s=document.getElementById("f-status");
-function openReq(){var ph=document.getElementById("photo");if(ph&&window.matchMedia("(min-width:900px)").matches){ph.style.height=ph.offsetHeight+"px";ph.style.flex="none";ph.parentNode.style.alignSelf="start";}p.hidden=false;o.hidden=true;o.setAttribute("aria-expanded","true");document.getElementById("f-name").focus();}
-o.addEventListener("click",openReq);
-var ra=document.getElementById("req-again");if(ra)ra.addEventListener("click",function(e){e.preventDefault();if(p.hidden)openReq();p.scrollIntoView({behavior:"smooth",block:"start"});document.getElementById("f-name").focus({preventScroll:true});});
+o.addEventListener("click",function(){var ph=document.getElementById("photo");if(ph&&window.matchMedia("(min-width:900px)").matches){ph.style.height=ph.offsetHeight+"px";ph.style.flex="none";ph.parentNode.style.alignSelf="start";}p.hidden=false;o.hidden=true;o.setAttribute("aria-expanded","true");document.getElementById("f-name").focus();});
 f.addEventListener("submit",function(e){e.preventDefault();if(!f.checkValidity()){s.textContent="Please add your name, email and country.";return;}
 var b=document.getElementById("f-send");b.disabled=true;s.textContent="Sending…";
-var d=Object.fromEntries(new FormData(f));d.replyto=d.email;d.interest="Edition 01";
-fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)}).then(function(r){return r.json()}).then(function(r){if(!r.success)throw 0;f.querySelectorAll("input,textarea,button").forEach(function(x){x.disabled=true});s.textContent="Thank you.";}).catch(function(){b.disabled=false;s.textContent="That didn’t send. Please try again in a moment.";});});
+var d=Object.fromEntries(new FormData(f));d.replyto=d.email;d.interest="Founding Edition";
+fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)}).then(function(r){return r.json()}).then(function(r){if(!r.success)throw 0;f.querySelectorAll("input,textarea,button").forEach(function(x){x.disabled=true});s.textContent="Thank you. We’ve received your request and will be in touch personally.";}).catch(function(){b.disabled=false;s.textContent="That didn’t send. Please try again in a moment.";});});
 })();</script>
 <script>(function(){var p=document.getElementById("photo");if(!p)return;var q=false;
 function u(){q=false;var h=p.offsetHeight||1;var v=Math.min(1,Math.max(0,window.scrollY/(h*0.45)));p.style.setProperty("--lit",v.toFixed(3));}
