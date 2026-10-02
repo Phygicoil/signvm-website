@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Signet 01 · HANNON TAN</title>
-<meta name="description" content="Signet 01 is a sterling silver signet ring with a signing chip in its face. Edition of twenty numbered rings, USD 4,800. Designed by Jim Hannon-Tan in Adelaide.">
+<meta name="description" content="A ring that signs. Sterling silver, twenty numbered rings. Touch it to your phone and it seals a statement, a work or a decision. USD 4,800, delivery from Q1 2027.">
 <meta property="og:title" content="Signet 01 · HANNON TAN">
-<meta property="og:description" content="A sterling silver signet ring with a signing chip in its face. Edition of twenty.">
+<meta property="og:description" content="A ring that signs. Sterling silver, twenty numbered rings.">
 <link rel="canonical" href="https://www.hannontan.com/">
 <meta property="og:url" content="https://www.hannontan.com/">
 <meta property="og:type" content="website">
@@ -19,70 +19,68 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 <style>
-body{margin:0}
-/* Layout: 12-col grid. Framed photograph left, statement + paragraph + request right, bottom-aligned. Two expanding detail sections below. Deliberately single-theme: black. */
+/* One page: hero (photo + statement + enquire), then three open sections. Single theme: black. */
 :root{
   --bg:#000; --fg:#fff; --dim:#8c8c8c; --soft:#c8c8c8; --line:#2a2a2a; --panel:#111;
   --grot:'Helvetica Neue',Helvetica,'Nimbus Sans',Arial,sans-serif;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html,body{background:var(--bg);color:var(--fg)}
+html,body{margin:0;background:var(--bg);color:var(--fg)}
 body{font-family:var(--grot);-webkit-font-smoothing:antialiased}
 .wrap{max-width:1400px;margin:0 auto;padding-inline:clamp(16px,4vw,64px)}
 .cap{text-transform:uppercase;letter-spacing:.06em;font-size:11px;font-weight:500}
+a:focus-visible,button:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 
 header{display:flex;justify-content:space-between;align-items:center;padding-block:22px;border-bottom:1px solid var(--line)}
 header span{color:var(--dim)}
 
 .hero{display:grid;grid-template-columns:1fr;gap:40px;padding-block:clamp(32px,6vw,96px)}
 .frame{margin:0;min-width:0}
-.photo{aspect-ratio:4/5;max-width:100%;background:var(--panel);border:1px solid var(--line);position:relative;overflow:hidden;display:grid;place-items:center}
+.photo{aspect-ratio:4/5;background:var(--panel);border:1px solid var(--line);position:relative;overflow:hidden}
 .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .photo img.alt{opacity:var(--lit,0);transition:opacity .3s linear}
 .photo:hover img.alt,.photo.lit img.alt{opacity:1}
 @media (prefers-reduced-motion:reduce){.photo img.alt{transition:none}}
-.photo svg{width:62%;height:auto}
-.photo path{fill:none;stroke:#5a5a5a;stroke-width:1.2}
-.frame figcaption{display:flex;justify-content:space-between;padding-top:12px;color:var(--dim)}
 
 .copy{display:flex;flex-direction:column;gap:32px;min-width:0}
 h1{margin:0;text-transform:uppercase;font-weight:500;font-size:clamp(48px,6.2vw,96px);line-height:.95;letter-spacing:-.02em}
 h1 span{display:block}
-.sub{margin:-12px 0 0;font-size:clamp(22px,2.2vw,32px);line-height:1.2;font-weight:500;letter-spacing:-.01em}
+.expl{max-width:38ch;font-size:clamp(17px,1.4vw,19px);line-height:1.5;color:var(--soft)}
 .expl p{margin:0}.expl p+p{margin-top:14px}
-.expl{margin:0;max-width:36ch;font-size:clamp(17px,1.4vw,19px);line-height:1.5;color:var(--soft)}
-.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px;border-top:1px solid var(--line)}
-.facts div{display:flex;flex-direction:column;gap:6px;padding-block:14px;border-bottom:1px solid var(--line)}
-.facts dt{color:var(--dim)}
-.facts dd{margin:0}
-.offer{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:center;column-gap:24px;border-top:1px solid var(--line);padding-top:20px}
-.offer .req{width:100%}
-.ed{display:flex;flex-direction:column;justify-content:center;gap:4px;align-items:flex-start;text-align:left}
-.ed .cap{line-height:1.4}
-.ed span:last-child{font-size:16px;line-height:1.5;color:var(--soft)}
-.req{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:48px;padding:0 32px;background:var(--soft);color:var(--bg);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-@media (max-width:420px){.offer .req{width:100%}.ed{align-items:flex-start;text-align:left}}
+.offer{display:flex;flex-direction:column;gap:20px;border-top:1px solid var(--line);padding-top:20px}
+.offer .cap{color:var(--soft);line-height:1.6}
+.req{display:inline-flex;align-items:center;justify-content:center;height:48px;padding:0 32px;border:0;cursor:pointer;background:var(--soft);color:var(--bg);font-family:var(--grot);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
 .req:hover{opacity:.85}
-.req:focus-visible,summary:focus-visible,a:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
 
-.more{border-top:1px solid var(--line)}
-.more:last-of-type{border-bottom:1px solid var(--line)}
-.more summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;min-height:64px}
-.more summary::-webkit-details-marker{display:none}
-.more summary::after{content:"+";font-size:18px;font-weight:400;letter-spacing:0;transition:transform .25s}
-.more[open] summary::after{transform:rotate(45deg)}
-.body{display:grid;grid-template-columns:1fr;gap:28px;padding-block:8px 56px}
-.body p{margin:0;max-width:56ch;font-size:15px;line-height:1.65;color:var(--soft)}
-.body p + p{margin-top:14px}
-.body p.sub{margin-top:40px;color:var(--fg);font-size:11px;line-height:1.4}
-.spec{margin:0}
-.spec div{display:grid;grid-template-columns:minmax(100px,1fr) 3fr;gap:16px;padding-block:10px;font-size:14px;line-height:1.5}
-.spec dt{color:var(--dim);padding-top:2px}
-.spec dd{margin:0;min-width:0}
+.req-panel{border-top:1px solid var(--line);padding-top:28px;display:flex;flex-direction:column;gap:14px}
+.req-panel h2{margin:0;font-size:22px;font-weight:500;letter-spacing:-.01em}
+.req-panel .intro{margin:0;font-size:16px;line-height:1.5;color:var(--soft);max-width:44ch}
+#req-form{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+#req-form label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--dim);margin-top:10px}
+#req-form input,#req-form textarea{background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--fg);font:inherit;font-size:16px;padding:8px 0;border-radius:0}
+#req-form input:focus,#req-form textarea:focus{outline:none;border-bottom-color:var(--fg)}
+#req-form textarea{resize:vertical}
+.send{margin-top:20px;align-self:flex-start;min-height:48px;padding:0 28px;border:0;cursor:pointer;background:var(--soft);color:var(--bg);font-family:var(--grot);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.send:hover{opacity:.85}
+.hp{display:none}
+.f-status{margin:0;font-size:15px;color:var(--soft);min-height:1.4em}
+[hidden]{display:none!important}
 
-footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;padding-block:28px 40px;color:var(--dim)}
-footer a{color:inherit;text-decoration:none;user-select:all}
+.sect{display:grid;grid-template-columns:1fr;gap:20px;border-top:1px solid var(--line);padding-block:28px clamp(48px,6vw,88px)}
+.sect h2{margin:0}
+.sect-body{min-width:0;max-width:62ch}
+.sect-body p{margin:0;font-size:16px;line-height:1.6;color:var(--soft)}
+.sect-body p+p{margin-top:16px}
+.sect-body .lede{font-size:clamp(20px,1.9vw,26px);line-height:1.3;font-weight:500;letter-spacing:-.01em;color:var(--fg)}
+.sect-body .lede+p{margin-top:24px}
+.sect-body .note{color:var(--dim);font-size:14px}
+.sect-body .act{margin-top:28px}
+.textlink{color:var(--fg);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--dim);padding-bottom:4px}
+.textlink:hover{border-bottom-color:var(--fg)}
+
+footer{border-top:1px solid var(--line);padding-block:28px 40px;color:var(--dim);font-size:13px;line-height:1.5}
+footer p{margin:0;max-width:62ch}
 
 @media (min-width:900px){
   .hero{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:stretch}
@@ -90,156 +88,83 @@ footer a{color:inherit;text-decoration:none;user-select:all}
   .photo{aspect-ratio:auto;flex:1;width:100%}
   .copy{grid-column:8 / span 5}
   h1{margin-top:-.09em}
-  .body{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
-  .body > *{grid-column:4 / span 7}
-}
-
-@media (prefers-reduced-motion:no-preference){
-  .photo path{stroke-dasharray:8410;animation:draw 3s cubic-bezier(.7,0,.2,1) both}
-  @keyframes draw{from{stroke-dashoffset:8410}to{stroke-dashoffset:0}}
-}
-
-.req{border:0;cursor:pointer;font-family:var(--grot)}
-.req-panel{border-top:1px solid var(--line);padding-top:28px;display:flex;flex-direction:column;gap:14px}
-.req-panel h2{margin:0;font-size:22px;font-weight:500;letter-spacing:-.01em}
-.req-panel .terms{margin:0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);line-height:1.8}
-.req-panel .intro{margin:0;font-size:16px;line-height:1.5;color:var(--soft);max-width:44ch}
-#req-form{display:flex;flex-direction:column;gap:8px;margin-top:6px}
-#req-form label{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--dim);margin-top:10px}
-#req-form label span{text-transform:none;letter-spacing:0;font-weight:400}
-#req-form input,#req-form textarea{background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--fg);font:inherit;font-size:16px;padding:8px 0;border-radius:0}
-#req-form input:focus,#req-form textarea:focus{outline:none;border-bottom-color:var(--fg)}
-#req-form textarea{resize:vertical}
-#req-form textarea::placeholder{color:var(--dim)}
-.send{margin-top:20px;align-self:flex-start;min-height:48px;padding:0 28px;border:0;cursor:pointer;background:var(--soft);color:var(--bg);font-family:var(--grot);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
-.send:hover{opacity:.85}.send:focus-visible{outline:2px solid var(--fg);outline-offset:3px}
-.hp{display:none}
-.f-status{margin:0;font-size:15px;color:var(--soft);min-height:1.4em}
-[hidden]{display:none!important}
-
-.sect{display:grid;grid-template-columns:1fr;gap:20px;border-top:1px solid var(--line);padding-block:28px clamp(48px,6vw,88px)}
-.sect h2.cap{margin:0}
-.sect-body{min-width:0;max-width:62ch}
-.sect-body p{margin:0;font-size:16px;line-height:1.6;color:var(--soft)}
-.sect-body p+p{margin-top:16px}
-.sect-body .lede{font-size:clamp(20px,1.9vw,26px);line-height:1.3;font-weight:500;letter-spacing:-.01em;color:var(--fg)}
-.sect-body .lede+p{margin-top:24px}
-.uses{margin-top:20px}
-.sect-body .note,.more .note{margin:20px 0 0;color:var(--dim);font-size:14px}
-.textlink{color:var(--fg);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--dim);padding-bottom:4px}
-.textlink:hover{border-bottom-color:var(--fg)}
-.more + .sect{border-top:0}
-.sect + .more{margin-top:0}
-@media (min-width:900px){
   .sect{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
-  .sect > h2.cap{grid-column:1 / span 3}
+  .sect > h2{grid-column:1 / span 3}
   .sect > .sect-body{grid-column:4 / span 7}
+  footer{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+  footer p{grid-column:4 / span 7}
 }
 </style>
 </head>
 <body>
 
 <div class="wrap">
-  <header class="cap"><b>Hannon Tan</b><span>Signet 01</span></header>
+  <header class="cap"><b>Signet 01</b><span>Hannon Tan</span></header>
 
   <main class="hero">
     <figure class="frame">
       <div class="photo" id="photo">
-        <img src="/images/signet-01.jpg" alt="Signet 01 in sterling silver, spiral face"><img class="alt" src="/images/signet-01-lit.jpg" alt="" aria-hidden="true">
+        <img src="/images/signet-01.jpg" alt="Signet 01 in sterling silver, square spiral face"><img class="alt" src="/images/signet-01-lit.jpg" alt="" aria-hidden="true">
       </div>
     </figure>
 
     <div class="copy">
       <h1><span>A ring</span><span>that signs.</span></h1>
-      <div class="expl"><p>Crafted in sterling silver, Signet 01 is a physical seal for the digital world.</p><p>Choose words, an image or a document. Review it, then touch the ring to your phone to sign.</p></div>
+      <div class="expl"><p>Sterling silver. Twenty numbered rings.</p><p>Touch it to your phone and it seals a statement, a work, or a decision. The key is made inside the ring and cannot be copied out.</p></div>
       <div class="offer">
-        <div class="ed"><span class="cap">Edition 01</span><span>20 numbered rings</span></div>
-        <button class="req" type="button" id="req-open" aria-expanded="false" aria-controls="req-panel">Enquiries</button>
+        <p class="cap" style="margin:0">Edition 01 · 20 rings · USD 4,800 · Delivery from Q1 2027</p>
+        <button class="req" type="button" id="req-open" aria-expanded="false" aria-controls="req-panel">Enquire</button>
       </div>
       <section class="req-panel" id="req-panel" hidden>
-        <h2>Request Signet 01</h2>
-        <p class="terms">Edition 01 · 20 numbered rings<br>USD 4,800 · Expected delivery from Q1 2027</p>
-        <p class="intro">Please leave your details.</p>
+        <h2>Enquire</h2>
+        <p class="intro">A short note on what you would seal is enough.</p>
         <form id="req-form" novalidate>
           <input type="hidden" name="access_key" value="2bcce2a4-04ef-4d44-8747-5753f9fe040a">
-          <input type="hidden" name="subject" value="Signet 01 request · Edition 01">
-          <input type="hidden" name="from_name" value="The Signet">
+          <input type="hidden" name="subject" value="Signet 01 enquiry · Edition 01">
+          <input type="hidden" name="from_name" value="Hannon Tan">
           <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
           <label for="f-name">Name</label>
           <input id="f-name" name="name" type="text" autocomplete="name" required>
           <label for="f-email">Email</label>
           <input id="f-email" name="email" type="email" autocomplete="email" required>
-          <label for="f-country">Country</label>
-          <input id="f-country" name="country" type="text" autocomplete="country-name" required>
-          <label for="f-note">A note or question <span>optional</span></label>
-          <textarea id="f-note" name="message" rows="3" placeholder="Ring size, timing, or how you would like to use the signet."></textarea>
-          <button class="send" type="submit" id="f-send">Send request</button>
+          <label for="f-note">What you would seal</label>
+          <textarea id="f-note" name="message" rows="3" required></textarea>
+          <button class="send" type="submit" id="f-send">Send</button>
           <p class="f-status" id="f-status" role="status" aria-live="polite"></p>
         </form>
       </section>
     </div>
   </main>
 
-  <details class="more">
-    <summary class="cap">The object</summary>
-    <div class="body">
-      <div>
-        <p>Emperors, popes and merchants sealed their decisions with a signet. Pressed into wax, the mark carried its owner’s identity and authority. Signet 01 brings that gesture into the digital world as a cryptographic signature.</p>
-        <p>The square spiral on the face shapes the silver itself into an antenna. The mark is the machine. Your phone powers the chip when you touch the ring to it. No battery. Nothing to charge.</p>
-        <p>Made to last, designed to evolve. The ring is designed to be opened with a precision cut, allowing the chip to be serviced or upgraded while preserving the silver object.</p>
-        <p>Designed by Jim Hannon-Tan in Adelaide. Built with specialists in casting, jewellery, RF, electronics, mechanics and software.</p>
-      </div>
+  <section class="sect" aria-labelledby="h-object">
+    <h2 class="cap" id="h-object">The object</h2>
+    <div class="sect-body">
+      <p>A signet used to be pressed into wax. The mark carried its owner. Signet 01 keeps the gesture and seals with a signature instead of wax.</p>
+      <p>The square spiral on the face is the antenna. The silver is the machine. Your phone powers the chip when you touch the ring to it. No battery.</p>
+      <p>The ring is made to be opened, so the chip can be serviced without replacing the silver.</p>
+      <p>Designed by Jim Hannon-Tan in Adelaide.</p>
     </div>
-  </details>
+  </section>
 
-  <details class="more">
-    <summary class="cap">The Gesture</summary>
-    <div class="body">
-      <div>
-        <p>Your word, sealed.</p>
-        <p>Put your name to a statement, a work or a decision.</p>
-        <p>Write something, generate an image, or upload a photograph or document. Add a dedication or an approval. Review the exact content, then touch Signet 01 to your phone to sign.</p>
-        <p>Share it with a record that lets the recipient verify your ring’s signature and check that the content has not changed.</p>
-        <p class="cap sub">Future applications</p>
-        <p>Connect the ring to the accounts, communities and decisions that matter to you.</p>
-        <dl class="spec uses">
-          <div><dt>Accounts and wallets</dt><dd>Sign in to connected services, authorise a transfer or add your signature to a shared wallet.</dd></div>
-          <div><dt>Membership and access</dt><dd>Carry your membership with you. Verify it remotely or at the door of participating clubs and events.</dd></div>
-          <div><dt>DAOs and governance</dt><dd>Cast your vote, sign a resolution or approve a payment from a community treasury.</dd></div>
-          <div><dt>AI Approval</dt><dd>A purchase, a production order, an instruction prepared by another person or an AI agent. Review the details and touch the ring to give your approval.</dd></div>
-        </dl>
-      </div>
+  <section class="sect" aria-labelledby="h-gesture">
+    <h2 class="cap" id="h-gesture">The gesture</h2>
+    <div class="sect-body">
+      <p>Write a line, or choose an image or a document. Review the exact content. Touch the ring to the phone. Share the seal. A recipient can check that this ring signed this content, and that the content has not changed.</p>
+      <p class="note">Signing on the chip is demonstrated. The application is in development. Supported phones will be confirmed before delivery.</p>
     </div>
-  </details>
+  </section>
 
-  <details class="more">
-    <summary class="cap">The technology</summary>
-    <div class="body">
-      <dl class="spec">
-        <div><dt>Chip</dt><dd>ARX HaLo secure element. It creates the cryptographic signature.</dd></div>
-        <div><dt>Key</dt><dd>secp256k1, generated inside the chip. Cannot be exported or copied.</dd></div>
-        <div><dt>Connection</dt><dd>NFC, touched to a phone. No battery, no charging.</dd></div>
-        <div><dt>Phones</dt><dd>NFC-equipped phones. Supported models will be confirmed before delivery.</dd></div>
-        <div><dt>Account</dt><dd>Optional. A LUKSO Universal Profile can link the ring to an account, with permissions you set.</dd></div>
-        <div><dt>Networks</dt><dd>Its signatures can be checked on LUKSO, Ethereum and Base, and by web services that support them.</dd></div>
-        <div><dt>Collectibles</dt><dd>Minting creates a separate on-chain record. The ring signs the authorisation.</dd></div>
-        <div><dt>Verification</dt><dd>Checks the signing key, and whether the content matches the signed record.</dd></div>
-        <div><dt>Limits</dt><dd>A signature shows that this ring signed this content. On its own it does not establish original authorship or verified legal identity.</dd></div>
-        <div><dt>Status</dt><dd>Signing on the chip is demonstrated. The Signet application is in development.</dd></div>
-      </dl>
-    </div>
-  </details>
-
-  <section class="sect edition" aria-labelledby="h-ed">
+  <section class="sect" aria-labelledby="h-ed">
     <h2 class="cap" id="h-ed">Edition 01</h2>
     <div class="sect-body">
       <p class="lede">Twenty rings, numbered 01 to 20.</p>
       <p>USD 4,800. Delivery from Q1 2027.</p>
-      <p><a class="textlink" href="#req-open" id="req-again">Enquiries</a></p>
+      <p class="act"><a class="textlink" href="#req-open" id="req-again">Enquire</a></p>
+      <p>A short note on what you would seal is enough.</p>
     </div>
   </section>
 
-  <footer class="cap"><span>Hannon Tan</span><span>Adelaide</span></footer>
+  <footer><p>A signature shows that this ring signed this content. It does not, by itself, prove legal identity.</p></footer>
 </div>
 <script>(function(){var p=document.getElementById("photo");if(!p)return;p.addEventListener("click",function(){p.classList.toggle("lit")});})();</script>
 <script>(function(){
@@ -247,7 +172,7 @@ var o=document.getElementById("req-open"),p=document.getElementById("req-panel")
 function openReq(){var ph=document.getElementById("photo");if(ph&&window.matchMedia("(min-width:900px)").matches){ph.style.height=ph.offsetHeight+"px";ph.style.flex="none";ph.parentNode.style.alignSelf="start";}p.hidden=false;o.hidden=true;o.setAttribute("aria-expanded","true");document.getElementById("f-name").focus();}
 o.addEventListener("click",openReq);
 var ra=document.getElementById("req-again");if(ra)ra.addEventListener("click",function(e){e.preventDefault();if(p.hidden)openReq();p.scrollIntoView({behavior:"smooth",block:"start"});document.getElementById("f-name").focus({preventScroll:true});});
-f.addEventListener("submit",function(e){e.preventDefault();if(!f.checkValidity()){s.textContent="Please add your name, email and country.";return;}
+f.addEventListener("submit",function(e){e.preventDefault();if(!f.checkValidity()){s.textContent="Please add your name, email and what you would seal.";return;}
 var b=document.getElementById("f-send");b.disabled=true;s.textContent="Sending…";
 var d=Object.fromEntries(new FormData(f));d.replyto=d.email;d.interest="Edition 01";
 fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)}).then(function(r){return r.json()}).then(function(r){if(!r.success)throw 0;f.querySelectorAll("input,textarea,button").forEach(function(x){x.disabled=true});s.textContent="Thank you.";}).catch(function(){b.disabled=false;s.textContent="That didn’t send. Please try again in a moment.";});});

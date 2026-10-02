@@ -1,43 +1,27 @@
 # Signet 01
 
-A sterling silver signet ring with a signing chip in its face. Designed by Jim Hannon-Tan in Adelaide.
+A ring that signs. Sterling silver. Twenty numbered rings. Designed by Jim Hannon-Tan in Adelaide.
 
-Jim Hannon-Tan is a designer who has worked with Alessi, Tom Dixon, LVMH and Flos.
-
-## What it does
-
-Touch the ring to an NFC-equipped phone to sign words, an image or a document. The person you send it to receives the content and a record they can verify.
-
-1. Choose: select the content and any dedication.
-2. Review: see exactly what you are signing and sharing.
-3. Sign: touch the ring to your phone to create the signature.
-4. Send: share the signed record through a link.
-
-A signed piece can also be minted as an on-chain collectible.
+Touch it to your phone and it seals a statement, a work, or a decision. The key is made inside the ring and cannot be copied out.
 
 ## The object
 
-Cast in sterling silver. The square spiral on the face is the antenna, twelve turns in the metal. There is no battery; the phone powers the chip when you touch them together.
+A signet used to be pressed into wax. The mark carried its owner. Signet 01 keeps the gesture and seals with a signature instead of wax.
 
-## Technology
+The square spiral on the face is the antenna. Your phone powers the chip when you touch the ring to it. No battery. The ring is made to be opened, so the chip can be serviced without replacing the silver.
 
-- Chip: ARX HaLo secure element. It creates the cryptographic signature.
-- Key: secp256k1, generated inside the chip. Cannot be exported or copied.
-- Connection: NFC, touched to a phone.
-- Phones: supported models will be confirmed before delivery.
-- Account: optional. A LUKSO Universal Profile can link the ring to an account, with permissions you set.
-- Networks: signatures can be checked on LUKSO, Ethereum and Base, and by web services that support them.
-- Verification: checks the signing key, and whether the content matches the signed record.
-- Limits: a signature shows that this ring signed this content. On its own it does not establish original authorship or verified legal identity.
-- Status: signing on the chip is demonstrated. The Signet application is in development.
+## The gesture
 
-Other software could use the same chip for logging in to accounts, approving wallet transactions, showing membership, or approving an action that a person or an AI agent has prepared. None of these work with Signet 01 yet.
+Write a line, or choose an image or a document. Review the exact content. Touch the ring to the phone. Share the seal. A recipient can check that this ring signed this content, and that the content has not changed.
+
+Signing on the chip is demonstrated. The application is in development. Supported phones will be confirmed before delivery.
+
+A signature shows that this ring signed this content. It does not, by itself, prove legal identity.
 
 ## Edition 01
 
 Twenty rings, numbered 01 to 20. USD 4,800. Delivery from Q1 2027.
 
-## Contact
+## Enquiries
 
 https://www.hannontan.com
-jim@jimhannontan.com
