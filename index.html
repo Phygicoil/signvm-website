@@ -79,8 +79,6 @@ h1 span{display:block}
 .textlink{color:var(--fg);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--dim);padding-bottom:4px}
 .textlink:hover{border-bottom-color:var(--fg)}
 
-footer{border-top:1px solid var(--line);padding-block:28px 40px;color:var(--dim);font-size:13px;line-height:1.5}
-footer p{margin:0;max-width:62ch}
 
 @media (min-width:900px){
   .hero{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:stretch}
@@ -91,8 +89,6 @@ footer p{margin:0;max-width:62ch}
   .sect{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
   .sect > h2{grid-column:1 / span 3}
   .sect > .sect-body{grid-column:4 / span 7}
-  footer{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
-  footer p{grid-column:4 / span 7}
 }
 </style>
 </head>
@@ -139,9 +135,9 @@ footer p{margin:0;max-width:62ch}
   <section class="sect" aria-labelledby="h-object">
     <h2 class="cap" id="h-object">The object</h2>
     <div class="sect-body">
-      <p>A signet used to be pressed into wax. The mark carried its owner. Signet 01 keeps the gesture and seals with a signature instead of wax.</p>
+      <p>A signet used to be pressed into wax. The mark carried its owner’s authority. Signet 01 keeps the gesture and seals with a cryptographic signature instead of wax.</p>
       <p>The square spiral on the face is the antenna. The silver is the machine. Your phone powers the chip when you touch the ring to it. No battery.</p>
-      <p>The ring is made to be opened, so the chip can be serviced without replacing the silver.</p>
+      <p>The ring can be opened by a specialist, so the chip can be serviced without replacing the silver.</p>
       <p>Designed by Jim Hannon-Tan in Adelaide.</p>
     </div>
   </section>
@@ -164,7 +160,6 @@ footer p{margin:0;max-width:62ch}
     </div>
   </section>
 
-  <footer><p>A signature shows that this ring signed this content. It does not, by itself, prove legal identity.</p></footer>
 </div>
 <script>(function(){var p=document.getElementById("photo");if(!p)return;p.addEventListener("click",function(){p.classList.toggle("lit")});})();</script>
 <script>(function(){

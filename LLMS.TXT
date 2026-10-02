@@ -6,17 +6,15 @@ Touch it to your phone and it seals a statement, a work, or a decision. The key 
 
 ## The object
 
-A signet used to be pressed into wax. The mark carried its owner. Signet 01 keeps the gesture and seals with a signature instead of wax.
+A signet used to be pressed into wax. The mark carried its owner’s authority. Signet 01 keeps the gesture and seals with a cryptographic signature instead of wax.
 
-The square spiral on the face is the antenna. Your phone powers the chip when you touch the ring to it. No battery. The ring is made to be opened, so the chip can be serviced without replacing the silver.
+The square spiral on the face is the antenna. Your phone powers the chip when you touch the ring to it. No battery. The ring can be opened by a specialist, so the chip can be serviced without replacing the silver.
 
 ## The gesture
 
 Write a line, or choose an image or a document. Review the exact content. Touch the ring to the phone. Share the seal. A recipient can check that this ring signed this content, and that the content has not changed.
 
 Signing on the chip is demonstrated. The application is in development. Supported phones will be confirmed before delivery.
-
-A signature shows that this ring signed this content. It does not, by itself, prove legal identity.
 
 ## Edition 01
 
