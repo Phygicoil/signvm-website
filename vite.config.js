@@ -9,6 +9,7 @@ export default defineConfig({
         v1: 'v1.html',
         v2: 'v2.html',
         v3: 'v3.html',
+        six: '6.html',
         pd: 'pd/index.html',
         pitchdeck: 'pitchdeck/index.html'
       }
