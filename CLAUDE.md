@@ -4,7 +4,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 
 ## Names
 - HANNON TAN: the brand, always in capitals.
-- Jim Hannon-Tan: the designer, with a hyphen. Company: Jim Hannon-Tan Design Pty Ltd.
+- Jim Hannon-Tan: the designer, with a hyphen. Company: Jim Hannon-Tan Design Pty Ltd, ABN 79 609 672 184 (in the footers of /, /1c and /6).
 - Signet 01: the product. Edition 01: its first numbered edition.
 
 ## Publishing
