@@ -101,9 +101,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 /* The register of ten. A number chosen here is a preference that travels with the enquiry. */
 .ledger { margin: 0; padding: 0; border: 0; min-width: 0; }
 .ledger__legend { float: left; margin: 0 0 10px; padding: 0; color: var(--ink-2); }
-.ledger__aside { float: right; display: flex; align-items: baseline; gap: 10px; margin: 0 0 10px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.ledger__aside { float: right; margin: 0 0 10px; }
 .ledger__aside .textbtn { padding: 0; color: var(--ink-2); }
-.ledger__aside #chosen.is-set { color: var(--ink); }
 .cells {
   clear: both; position: relative;
   display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; padding: 1px;
@@ -284,7 +283,7 @@ textarea.input { min-height: 72px; resize: vertical; }
     </div>
     <form class="form" id="enquiry-form" novalidate>
       <div class="field">
-        <label class="flabel" for="f-name">Name (optional)</label>
+        <label class="flabel" for="f-name">Name</label>
         <input class="input" id="f-name" name="name" type="text" autocomplete="name">
       </div>
       <div class="field">
@@ -292,8 +291,8 @@ textarea.input { min-height: 72px; resize: vertical; }
         <input class="input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required>
       </div>
       <fieldset class="ledger">
-        <legend class="ledger__legend">Preferred number (optional)</legend>
-        <span class="ledger__aside"><span id="chosen" aria-live="polite">No preference</span><button class="textbtn" id="clear" type="button" hidden>Clear</button></span>
+        <legend class="ledger__legend">Preferred number</legend>
+        <span class="ledger__aside"><button class="textbtn" id="clear" type="button" hidden>Clear</button></span>
         <div class="cells">
           <input type="radio" name="number" id="pick-01" value="01"><label for="pick-01">01</label>
           <input type="radio" name="number" id="pick-02" value="02"><label for="pick-02">02</label>
@@ -308,7 +307,7 @@ textarea.input { min-height: 72px; resize: vertical; }
         </div>
       </fieldset>
       <details class="prefs" id="prefs">
-        <summary>Functions you’d like (optional)</summary>
+        <summary>Functions you’d like</summary>
         <div class="prefs__body">
           <p class="hint">Choose any. Some are still in development.</p>
           <fieldset class="group">
@@ -336,13 +335,12 @@ textarea.input { min-height: 72px; resize: vertical; }
         </div>
       </details>
       <div class="field">
-        <label class="flabel" for="f-note">A note for Jim (optional)</label>
+        <label class="flabel" for="f-note">A note for Jim</label>
         <textarea class="input" id="f-note" name="note" rows="3" placeholder="Ask about the ring, a function or a private viewing."></textarea>
       </div>
       <input class="trap" id="f-check" name="botcheck" type="checkbox" tabindex="-1" aria-hidden="true">
       <button class="cta" id="send" type="submit">Send enquiry</button>
       <p class="status" id="status" role="status" aria-live="polite"></p>
-      <p class="note">Jim confirms your size, your phone and the functions you need before any payment.</p>
     </form>
   </div>
 </dialog>
@@ -371,7 +369,6 @@ textarea.input { min-height: 72px; resize: vertical; }
   var title = document.getElementById("enq-title");
   var dlgName = document.getElementById("dlg-name");
   var statusEl = document.getElementById("status");
-  var chosen = document.getElementById("chosen");
   var clearBtn = document.getElementById("clear");
   var sendBtn = document.getElementById("send");
   var nameEl = document.getElementById("f-name");
@@ -416,8 +413,6 @@ textarea.input { min-height: 72px; resize: vertical; }
     radios.forEach(function (r) { r.checked = r.value === current; });
     ctas.forEach(function (b) { b.textContent = current ? "Enquire about #" + current : (closed ? "Join the waitlist" : "Enquire"); });
     dlgName.textContent = current ? "Signet 01 #" + current : "Signet 01";
-    chosen.textContent = current ? "#" + current : "No preference";
-    chosen.className = current ? "is-set" : "";
     clearBtn.hidden = !current;
   }
 
