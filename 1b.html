@@ -178,7 +178,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 textarea.input { min-height: 72px; resize: vertical; }
 @media (hover: hover) and (pointer: fine) { .input { font-size: var(--fs); line-height: 1.55; } }
 
-/* Functions they would like: closed until wanted, any number chosen, grouped as on the full site. */
+/* What they would use it for: closed until wanted, any number chosen, five plain uses. */
 .prefs { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
 .prefs > summary {
   display: flex; align-items: baseline; gap: 16px; padding-block: 10px;
@@ -187,9 +187,9 @@ textarea.input { min-height: 72px; resize: vertical; }
 .prefs > summary::-webkit-details-marker { display: none; }
 .prefs > summary::after { content: "+"; flex: none; width: 1ch; margin-left: auto; text-align: right; }
 .prefs[open] > summary::after { content: "\2212"; }
-.prefs__body { display: grid; row-gap: 14px; padding: 0 0 14px; }
-.group { margin: 0; padding: 0; border: 0; min-width: 0; }
-.group__name { margin: 0 0 2px; padding: 0; color: var(--ink-2); font-size: var(--fs-s); }
+.prefs__body { display: grid; row-gap: 6px; padding: 0 0 12px; }
+.opts { margin: 0; padding: 0; border: 0; min-width: 0; }
+.sr { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .opt { display: flex; align-items: flex-start; gap: 10px; padding-block: 4px; cursor: pointer; }
 .opt input { flex: none; width: 16px; height: 16px; margin: 3px 0 0; accent-color: var(--ink); cursor: pointer; }
 @media (pointer: coarse) {
@@ -307,30 +307,16 @@ textarea.input { min-height: 72px; resize: vertical; }
         </div>
       </fieldset>
       <details class="prefs" id="prefs">
-        <summary>Functions you’d like</summary>
+        <summary>What would you use it for?</summary>
         <div class="prefs__body">
-          <p class="hint">Choose any. Some are still in development.</p>
-          <fieldset class="group">
-            <legend class="group__name">Sign your work</legend>
-            <label class="opt"><input type="checkbox" name="fn" value="Sign a text, image or document"><span>Sign a text, image or document</span></label>
-            <label class="opt"><input type="checkbox" name="fn" value="Mint a moment"><span>Mint a moment</span></label>
-          </fieldset>
-          <fieldset class="group">
-            <legend class="group__name">Give your authority</legend>
-            <label class="opt"><input type="checkbox" name="fn" value="Delegate to a person"><span>Delegate to a person</span></label>
-            <label class="opt"><input type="checkbox" name="fn" value="Set an AI mandate"><span>Set an AI mandate</span></label>
-            <label class="opt"><input type="checkbox" name="fn" value="Approve a protected action"><span>Approve a protected action</span></label>
-            <label class="opt"><input type="checkbox" name="fn" value="Manage agent permissions"><span>Manage agent permissions</span></label>
-            <label class="opt"><input type="checkbox" name="fn" value="Approve a transaction"><span>Approve a transaction</span></label>
-          </fieldset>
-          <fieldset class="group">
-            <legend class="group__name">Carry your access</legend>
-            <label class="opt"><input type="checkbox" name="fn" value="Unlock access"><span>Unlock access</span></label>
-            <label class="opt"><input type="checkbox" name="fn" value="Carry your membership"><span>Carry your membership</span></label>
-          </fieldset>
-          <fieldset class="group">
-            <legend class="group__name">For developers</legend>
-            <label class="opt"><input type="checkbox" name="fn" value="Build with Signet"><span>Build with Signet</span></label>
+          <p class="hint">Some are still in development.</p>
+          <fieldset class="opts">
+            <legend class="sr">What would you use it for?</legend>
+            <label class="opt"><input type="checkbox" name="fn" value="Sign documents, images and autographs"><span>Sign documents, images and autographs</span></label>
+            <label class="opt"><input type="checkbox" name="fn" value="Authorise people or AI to act for you"><span>Authorise people or AI to act for you</span></label>
+            <label class="opt"><input type="checkbox" name="fn" value="Approve crypto transactions"><span>Approve crypto transactions</span></label>
+            <label class="opt"><input type="checkbox" name="fn" value="Use it as an event pass or membership card"><span>Use it as an event pass or membership card</span></label>
+            <label class="opt"><input type="checkbox" name="fn" value="Add ring approval to your own app"><span>Add ring approval to your own app</span></label>
           </fieldset>
         </div>
       </details>

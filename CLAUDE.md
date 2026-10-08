@@ -19,10 +19,16 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 | --- | --- | --- |
 | / | `index.html` | Live home page, launched 8 Oct 2026 |
 | /6 | `6.html` | Copy of branch `6`, live since 8 Oct 2026, hidden from search engines |
-| /1b | `1b.html` | One-screen page: "Signet 01" header, the offer as a label and value list, Enquire (the same solid button as Send enquiry), and Details folded away in a 12px size whose values line up with the offer's. No number boxes on the page; the enquiry form keeps them. The enquiry lets people tick any functions they'd like (sent as `functions`, joined with "; ", page "hannontan.com/1b"). Live since 8 Oct 2026, hidden from search engines |
+| /1b | `1b.html` | One-screen page: "Signet 01" header, the offer as a label and value list, Enquire (the same solid button as Send enquiry), and Details folded away in a 12px size whose values line up with the offer's. No number boxes on the page; the enquiry form keeps them. The enquiry asks "What would you use it for?" with five plain uses, any number ticked (sent as `functions`, joined with "; ", page "hannontan.com/1b"). Live since 8 Oct 2026, hidden from search engines |
 | /v1, /v2, /v3 | `v1.html` … `v3.html` | Earlier versions, kept. /v3 is the previous home page |
 | /pd, /pitchdeck | `pd/`, `pitchdeck/` | Earlier materials |
 
+- /1b's five uses cover the ten functions:
+  - Sign documents, images and autographs: Sign a text, image or document; Mint a moment.
+  - Authorise people or AI to act for you: Delegate to a person; Set an AI mandate; Manage agent permissions.
+  - Approve crypto transactions: Approve a transaction.
+  - Use it as an event pass or membership card: Unlock access; Carry your membership.
+  - Add ring approval to your own app: Build with Signet; Approve a protected action.
 - A new page needs an entry in the `vite.config.js` inputs and, for a clean URL, a rewrite in `vercel.json`.
 - Photos live in `public/images/s01/`: `one.jpg` (hero), `touch.jpg` (the gesture), `cream.jpg` (the object), `portrait.jpg` (designer), `share.jpg` (1200 × 630 share image).
 - `LLMS.TXT` is old SIGNVM copy and isn't deployed. Don't use it as a source of facts.
