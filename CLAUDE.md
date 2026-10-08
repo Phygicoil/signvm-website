@@ -11,19 +11,20 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 - `main` is production: every push to `main` publishes hannontan.com. Push to `main` only when Jim asks to publish.
 - Every other branch gets a Vercel preview. Previews sit behind Vercel login (Deployment Protection), so people without Jim's Vercel account can't open them.
 - To check a deploy without Vercel access, read the GitHub commit status: `https://api.github.com/repos/Phygicoil/signvm-website/commits/<sha>/status`.
-- `pnpm install`, `pnpm build` (writes `dist/`), `pnpm preview` (serves `dist/`). Preview ignores the `vercel.json` rewrites, so open `/6.html` or `/v3.html` there.
+- `pnpm install`, `pnpm build` (writes `dist/`), `pnpm preview` (serves `dist/`). Preview ignores the `vercel.json` rewrites and redirects, so open `/6.html` or `/1c.html` there.
 - `node_modules/` and `dist/` are ignored. Stage files by name.
 
 ## Pages
 | URL | File | What it is |
 | --- | --- | --- |
-| / | `index.html` | Live home page, launched 8 Oct 2026 |
+| / | `index.html` | Home page since 9 Oct 2026, first built as /1b. One screen: "Signet 01" header, the offer as a label and value list, Enquire (the same solid button as Send enquiry), and Details folded away in a 12px size whose values line up with the offer's. No number boxes on the page; the enquiry form keeps them. The form asks "What would you use it for?" with five plain uses, shown as it opens, any number ticked (sent as `functions`, joined with "; ", page "hannontan.com") |
+| /1b | none | Redirects to / (temporary, so it can come back as its own page) |
+| /1c | `1c.html` | The home page from 8 to 9 Oct 2026, hidden from search engines. Its form sends page "hannontan.com/1c" |
 | /6 | `6.html` | Copy of branch `6`, live since 8 Oct 2026, hidden from search engines |
-| /1b | `1b.html` | One-screen page: "Signet 01" header, the offer as a label and value list, Enquire (the same solid button as Send enquiry), and Details folded away in a 12px size whose values line up with the offer's. No number boxes on the page; the enquiry form keeps them. The enquiry asks "What would you use it for?" with five plain uses, any number ticked (sent as `functions`, joined with "; ", page "hannontan.com/1b"). Live since 8 Oct 2026, hidden from search engines |
-| /v1, /v2, /v3 | `v1.html` … `v3.html` | Earlier versions, kept. /v3 is the previous home page |
+| /v1, /v2, /v3 | `v1.html` … `v3.html` | Earlier versions, kept. /v3 is the home page before 8 Oct 2026 |
 | /pd, /pitchdeck | `pd/`, `pitchdeck/` | Earlier materials |
 
-- /1b's five uses cover the ten functions:
+- The home page's five uses cover the ten functions:
   - Sign documents, images and autographs: Sign a text, image or document; Mint a moment.
   - Authorise people or AI to act for you: Delegate to a person; Set an AI mandate; Manage agent permissions.
   - Approve crypto transactions: Approve a transaction.
@@ -34,7 +35,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 - `LLMS.TXT` is old SIGNVM copy and isn't deployed. Don't use it as a source of facts.
 
 ## Branch 6
-- Branch `6` holds the response to Jim's brief for a first-edition buyer. Its `index.html` is the proposed new home page. Making it the home page means merging `6` into `main`, which is Jim's decision.
+- Branch `6` holds the response to Jim's brief for a first-edition buyer. Its `index.html` was proposed as the home page. Merging `6` into `main` would replace the current home page, so that's Jim's decision.
 - `6.html` on `main` is branch 6's `index.html` with three edits: `<meta name="robots" content="noindex">`; canonical and `og:url` set to `https://www.hannontan.com/6`; the form's `page` field set to `"hannontan.com/6"`. When branch 6 changes and Jim wants /6 updated, copy it across again and reapply the three edits.
 
 ## How the pages are built
@@ -43,7 +44,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 - Colours: paper `#FFFFFF`, plate `#EFF0F2` (behind photos), ink `#000000`, ink-2 `#696C72` (labels, captions, notes), rule `#E3E4E7`, line `#8C8F95`.
 - Two type sizes:
   - Titles are 32px on desktop and 26px on phones, weight 500, line height 1.12.
-  - Everything else is one size, 14px with line height 1.55. The current home page uses 13px on desktop.
+  - Everything else is one size, 14px with line height 1.55. /1c uses 13px on desktop. The home page adds 12px for details and notes.
   - Hierarchy comes from weight (400 and 500), from black versus grey, and from space.
   - Form fields are 16px on touch screens so iPhones don't zoom.
 - Grid: 12 columns from 960px. Pictures in columns 1 to 7, words in 9 to 12 (1 to 6 and 8 to 12 between 960 and 1279px). On branch 6 the three areas of use are the one band across all twelve columns.
@@ -70,8 +71,8 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
   - `access_key`, `from_name` ("The Signet"), `replyto`, `name`, `email`
   - `subject`: "Signet 01 enquiry", or "Signet 01 enquiry · #07" when a number is chosen
   - `number`, `message`
-  - `functions`: joined with "; " on branch 6 and with ", " on the current home page
-  - `page`: "hannontan.com" or "hannontan.com/6"
+  - `functions`: joined with "; " on the home page and branch 6, and with ", " on /1c
+  - `page`: "hannontan.com", "hannontan.com/1c" or "hannontan.com/6"
 - Only the email is required.
 - Links to `#enquire` or `#enquire-07` open the form, with that number chosen.
 - Never send a real enquiry while testing. Intercept `api.web3forms.com` (for example with Playwright's `page.route`) and answer it locally.
