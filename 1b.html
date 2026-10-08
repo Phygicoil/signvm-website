@@ -24,7 +24,7 @@
 <style>
 /* One screen, split in half. The ring fills the left half; the words sit together in the right half:
    the line, what it does, the offer, the enquiry. Everything else waits behind Details.
-   Same type, ink and enquiry as the full page. Light only. */
+   Three sizes: the title, the text, and a small size for details and notes. Light only. */
 :root {
   --paper: #FFFFFF;
   --plate: #EFF0F2;
@@ -38,6 +38,7 @@
   --sans: "Instrument Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --m: 16px;
   --fs: 14px;
+  --fs-s: 12px;
   --fs-t: 26px;
   color-scheme: light;
 }
@@ -57,14 +58,12 @@ img { display: block; max-width: 100%; }
 button, input, textarea, select { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .muted { color: var(--ink-2); }
+.vh { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .p { margin: 0; max-width: 34em; text-wrap: pretty; }
 
 /* ---------- The screen ---------- */
 .one { display: grid; grid-template-columns: minmax(0, 1fr); }
-.mark { display: flex; align-items: center; height: 52px; margin: 0; padding-inline: var(--m); white-space: nowrap; }
-.mark__spiral { flex: none; width: 16px; height: 16px; margin-right: 10px; }
-.mark__house { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; }
-.mark__product { margin-left: 10px; padding-left: 12px; border-left: 1px solid var(--rule); font-weight: 500; line-height: 16px; }
+.mark { display: flex; align-items: center; height: 52px; margin: 0; padding-inline: var(--m); font-weight: 500; white-space: nowrap; }
 .pic { position: relative; margin: 0; aspect-ratio: 4 / 5; max-width: 100%; background: var(--plate); overflow: hidden; }
 .pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 54%; }
 .side { display: flex; flex-direction: column; gap: 56px; min-width: 0; padding: 28px var(--m) 32px; }
@@ -94,7 +93,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   background: transparent; color: var(--ink); font-size: var(--fs); font-weight: 500; cursor: pointer;
   font-variant-numeric: tabular-nums; transition: background-color 0.2s, color 0.2s;
 }
-.note { margin: 0; color: var(--ink-2); text-wrap: pretty; }
+.note { margin: 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.5; text-wrap: pretty; }
 
 /* The register of ten. A number chosen here is a preference that travels with the enquiry. */
 .ledger { margin: 0; padding: 0; border: 0; min-width: 0; }
@@ -102,7 +101,6 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .ledger__aside { float: right; display: flex; align-items: baseline; gap: 10px; margin: 0 0 10px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .ledger__aside .textbtn { padding: 0; color: var(--ink-2); }
 .ledger__aside #chosen { color: var(--ink); }
-.ledger__note { clear: both; margin: 10px 0 0; color: var(--ink-2); text-wrap: pretty; }
 .cells {
   clear: both; position: relative;
   display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; padding: 1px;
@@ -138,10 +136,10 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .more summary::after { content: "+"; color: var(--ink-2); }
 .more[open] summary::after { content: "\2212"; }
 @media (pointer: coarse) { .more summary { padding-block: 12px; } }
-.spec { margin: 0 0 10px; }
+.spec { margin: 0 0 10px; font-size: var(--fs-s); line-height: 1.5; }
 .spec > div {
-  display: grid; grid-template-columns: 96px minmax(0, 1fr); column-gap: 16px;
-  padding-block: 8px; border-top: 1px solid var(--rule);
+  display: grid; grid-template-columns: 84px minmax(0, 1fr); column-gap: 16px;
+  padding-block: 7px; border-top: 1px solid var(--rule);
 }
 .spec dt { color: var(--ink-2); }
 .spec dd { margin: 0; text-wrap: pretty; }
@@ -173,22 +171,34 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .form { display: grid; row-gap: 22px; }
 .field { display: grid; row-gap: 2px; min-width: 0; }
 .flabel { color: var(--ink-2); }
-.hint { margin: 6px 0 0; color: var(--ink-2); }
-.input, .select {
+.hint { margin: 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.5; }
+.input {
   width: 100%; min-width: 0; padding: 8px 0 9px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0;
   background-color: transparent; color: var(--ink); font-size: 16px; line-height: 1.4;
 }
-.select {
-  appearance: none; -webkit-appearance: none; padding-right: 24px; cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23000' stroke-width='1.2'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 2px center; background-size: 12px 8px;
-}
-.select.is-empty { color: var(--ink-2); }
-.select option, .select optgroup { color: var(--ink); }
-.input:focus, .select:focus { outline: none; border-bottom-color: var(--ink); box-shadow: 0 1px 0 var(--ink); }
+.input:focus { outline: none; border-bottom-color: var(--ink); box-shadow: 0 1px 0 var(--ink); }
 .input::placeholder { color: var(--line); opacity: 1; }
 textarea.input { min-height: 72px; resize: vertical; }
-@media (hover: hover) and (pointer: fine) { .input, .select { font-size: var(--fs); line-height: 1.55; } }
+@media (hover: hover) and (pointer: fine) { .input { font-size: var(--fs); line-height: 1.55; } }
+
+/* Functions they would like: closed until wanted, any number chosen, grouped as on the full site. */
+.prefs { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.prefs > summary {
+  display: flex; align-items: baseline; gap: 16px; padding-block: 10px;
+  color: var(--ink-2); cursor: pointer; list-style: none;
+}
+.prefs > summary::-webkit-details-marker { display: none; }
+.prefs > summary::after { content: "+"; flex: none; width: 1ch; margin-left: auto; text-align: right; }
+.prefs[open] > summary::after { content: "\2212"; }
+.prefs__body { display: grid; row-gap: 14px; padding: 0 0 14px; }
+.group { margin: 0; padding: 0; border: 0; min-width: 0; }
+.group__name { margin: 0 0 2px; padding: 0; color: var(--ink-2); font-size: var(--fs-s); }
+.opt { display: flex; align-items: flex-start; gap: 10px; padding-block: 4px; cursor: pointer; }
+.opt input { flex: none; width: 16px; height: 16px; margin: 3px 0 0; accent-color: var(--ink); cursor: pointer; }
+@media (pointer: coarse) {
+  .opt { padding-block: 8px; }
+  .opt input { width: 18px; height: 18px; margin-top: 2px; }
+}
 .trap { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none; }
 .cta {
   appearance: none; width: 100%; height: 48px; padding: 0 20px; border: 0; border-radius: 999px;
@@ -205,6 +215,7 @@ textarea.input { min-height: 72px; resize: vertical; }
   .cells input:not(:checked):not(:disabled) + label:hover { background: var(--hover); }
   .cta:not(:disabled):hover { background: #2E2F33; }
   .more summary:hover::after { color: var(--ink); }
+  .prefs > summary:hover { color: var(--ink); }
 }
 
 /* Motion only answers an action: the enquiry opening. */
@@ -222,11 +233,7 @@ textarea.input { min-height: 72px; resize: vertical; }
 <body>
 
 <main class="one" aria-labelledby="name">
-  <p class="mark">
-    <svg class="mark__spiral" viewBox="6 6 20 20" aria-hidden="true" focusable="false"><path d="M16 14.5 L19 14.5 L19 17.5 L13 17.5 L13 11.5 L22 11.5 L22 20.5 L10 20.5 L10 8.5 L25 8.5 L25 23.5 L7 23.5 L7 8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg>
-    <span class="mark__house">Hannon Tan</span>
-    <span class="mark__product">Signet 01</span>
-  </p>
+  <p class="mark">Signet 01</p>
 
   <figure class="pic">
     <img src="/images/s01/one.jpg" width="1286" height="1870" alt="Signet 01 in polished silver standing face up on a pale cloth, the spiral of twelve turns on its square face">
@@ -245,8 +252,8 @@ textarea.input { min-height: 72px; resize: vertical; }
         <p data-casting data-closed="First casting closed. Next casting to be announced" data-full="All ten rings reserved">First casting closes 30 November 2026</p>
         <p>Delivery expected from Q1 2027</p>
       </div>
-      <fieldset class="ledger" aria-describedby="pref-note">
-        <legend class="ledger__legend">Preferred number (optional)</legend>
+      <fieldset class="ledger">
+        <legend class="vh">Preferred number (optional)</legend>
         <div class="cells">
           <input type="radio" name="choose" id="choose-01" value="01"><label for="choose-01">01</label>
           <input type="radio" name="choose" id="choose-02" value="02"><label for="choose-02">02</label>
@@ -259,7 +266,6 @@ textarea.input { min-height: 72px; resize: vertical; }
           <input type="radio" name="choose" id="choose-09" value="09"><label for="choose-09">09</label>
           <input type="radio" name="choose" id="choose-10" value="10"><label for="choose-10">10</label>
         </div>
-        <p class="ledger__note" id="pref-note">Your preference goes with your enquiry. It does not reserve the&nbsp;number.</p>
       </fieldset>
       <div class="act">
         <button class="pill" id="cta" type="button" data-open data-cta>Enquire</button>
@@ -280,7 +286,7 @@ textarea.input { min-height: 72px; resize: vertical; }
         </dl>
       </details>
     </div>
-    <p class="note">Jim Hannon-Tan Design Pty Ltd, Tonsley, Adelaide,&nbsp;Australia</p>
+    <p class="note">Jim Hannon-Tan Design Pty Ltd, Adelaide,&nbsp;Australia</p>
   </div>
 </main>
 
@@ -319,31 +325,34 @@ textarea.input { min-height: 72px; resize: vertical; }
           <input type="radio" name="number" id="pick-10" value="10"><label for="pick-10">10</label>
         </div>
       </fieldset>
-      <div class="field">
-        <label class="flabel" for="f-fn">The function you’d most like (optional)</label>
-        <select class="select is-empty" id="f-fn" name="fn" aria-describedby="fn-hint">
-          <option value="">Choose one</option>
-          <optgroup label="Sign your work">
-            <option>Sign a text, image or document</option>
-            <option>Mint a moment</option>
-          </optgroup>
-          <optgroup label="Give your authority">
-            <option>Delegate to a person</option>
-            <option>Set an AI mandate</option>
-            <option>Approve a protected action</option>
-            <option>Manage agent permissions</option>
-            <option>Approve a transaction</option>
-          </optgroup>
-          <optgroup label="Carry your access">
-            <option>Unlock access</option>
-            <option>Carry your membership</option>
-          </optgroup>
-          <optgroup label="For developers">
-            <option>Build with Signet</option>
-          </optgroup>
-        </select>
-        <p class="hint" id="fn-hint">Some functions are still in development.</p>
-      </div>
+      <details class="prefs" id="prefs">
+        <summary>Functions you’d like (optional)</summary>
+        <div class="prefs__body">
+          <p class="hint">Choose any. Some are still in development.</p>
+          <fieldset class="group">
+            <legend class="group__name">Sign your work</legend>
+            <label class="opt"><input type="checkbox" name="fn" value="Sign a text, image or document"><span>Sign a text, image or document</span></label>
+            <label class="opt"><input type="checkbox" name="fn" value="Mint a moment"><span>Mint a moment</span></label>
+          </fieldset>
+          <fieldset class="group">
+            <legend class="group__name">Give your authority</legend>
+            <label class="opt"><input type="checkbox" name="fn" value="Delegate to a person"><span>Delegate to a person</span></label>
+            <label class="opt"><input type="checkbox" name="fn" value="Set an AI mandate"><span>Set an AI mandate</span></label>
+            <label class="opt"><input type="checkbox" name="fn" value="Approve a protected action"><span>Approve a protected action</span></label>
+            <label class="opt"><input type="checkbox" name="fn" value="Manage agent permissions"><span>Manage agent permissions</span></label>
+            <label class="opt"><input type="checkbox" name="fn" value="Approve a transaction"><span>Approve a transaction</span></label>
+          </fieldset>
+          <fieldset class="group">
+            <legend class="group__name">Carry your access</legend>
+            <label class="opt"><input type="checkbox" name="fn" value="Unlock access"><span>Unlock access</span></label>
+            <label class="opt"><input type="checkbox" name="fn" value="Carry your membership"><span>Carry your membership</span></label>
+          </fieldset>
+          <fieldset class="group">
+            <legend class="group__name">For developers</legend>
+            <label class="opt"><input type="checkbox" name="fn" value="Build with Signet"><span>Build with Signet</span></label>
+          </fieldset>
+        </div>
+      </details>
       <div class="field">
         <label class="flabel" for="f-note">A note for Jim (optional)</label>
         <textarea class="input" id="f-note" name="note" rows="3" placeholder="Ask about the ring, a function or a private viewing."></textarea>
@@ -385,7 +394,7 @@ textarea.input { min-height: 72px; resize: vertical; }
   var sendBtn = document.getElementById("send");
   var nameEl = document.getElementById("f-name");
   var emailEl = document.getElementById("f-email");
-  var fnEl = document.getElementById("f-fn");
+  var prefs = document.getElementById("prefs");
   var noteEl = document.getElementById("f-note");
   var trapEl = document.getElementById("f-check");
   var radios = all('input[name="choose"], input[name="number"]');
@@ -436,9 +445,10 @@ textarea.input { min-height: 72px; resize: vertical; }
   });
   clearBtn.addEventListener("click", function () { setNumber(""); });
 
-  // The function menu reads grey until a function is chosen.
-  function fnState() { fnEl.classList.toggle("is-empty", !fnEl.value); }
-  fnEl.addEventListener("change", fnState);
+  // The functions the person would like, in the order the form lists them.
+  function chosenFunctions() {
+    return all('input[name="fn"]:checked').map(function (i) { return i.value; });
+  }
 
   function say(message, kind) {
     statusEl.textContent = message;
@@ -505,7 +515,7 @@ textarea.input { min-height: 72px; resize: vertical; }
       name: nameEl.value.trim() || "Not given",
       email: email,
       number: current ? "#" + current : "No preference",
-      functions: fnEl.value || "None chosen",
+      functions: chosenFunctions().join("; ") || "None chosen",
       message: noteEl.value.trim() || "No note",
       page: "hannontan.com/1b"
     };
@@ -527,7 +537,7 @@ textarea.input { min-height: 72px; resize: vertical; }
       .then(function (r) {
         if (r.ok && r.data.success !== false) {
           form.reset();
-          fnState();
+          prefs.open = false;
           setNumber("");
           say("Thank you. Jim has your enquiry and will reply by email.", "ok");
         } else if (r.data.message) {
