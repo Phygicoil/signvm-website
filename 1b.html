@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Signet 01 · HANNON TAN</title>
+<meta name="description" content="Your word, sealed. Signet 01 is a sterling silver signet ring that signs. Edition 01, ten numbered rings.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.hannontan.com/1b">
+<meta property="og:title" content="Signet 01 · HANNON TAN">
+<meta property="og:description" content="Your word, sealed.">
+<meta property="og:url" content="https://www.hannontan.com/1b">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.hannontan.com/images/s01/share.jpg">
+<meta name="twitter:image" content="https://www.hannontan.com/images/s01/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* One screen, split in half. The ring fills the left half; the words sit together in the right half:
+   the line, what it does, the offer, the enquiry. Everything else waits behind Details.
+   Same type, ink and enquiry as the full page. Light only. */
+:root {
+  --paper: #FFFFFF;
+  --plate: #EFF0F2;
+  --ink: #000000;
+  --ink-2: #696C72;
+  --ink-3: #B4B7BC;
+  --line: #8C8F95;
+  --rule: #E3E4E7;
+  --hover: #F3F4F6;
+  --scrim: rgba(0, 0, 0, 0.3);
+  --sans: "Instrument Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --m: 16px;
+  --fs: 14px;
+  --fs-t: 26px;
+  color-scheme: light;
+}
+@media (min-width: 960px) { :root { --m: clamp(40px, 4.5vw, 72px); --fs-t: 32px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html:has(dialog[open]) { overflow: hidden; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--fs)/1.55 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; }
+button, input, textarea, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.muted { color: var(--ink-2); }
+.p { margin: 0; max-width: 34em; text-wrap: pretty; }
+
+/* ---------- The screen ---------- */
+.one { display: grid; grid-template-columns: minmax(0, 1fr); }
+.mark { display: flex; align-items: center; height: 52px; margin: 0; padding-inline: var(--m); white-space: nowrap; }
+.mark__spiral { flex: none; width: 16px; height: 16px; margin-right: 10px; }
+.mark__house { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; }
+.mark__product { margin-left: 10px; padding-left: 12px; border-left: 1px solid var(--rule); font-weight: 500; line-height: 16px; }
+.pic { position: relative; margin: 0; aspect-ratio: 4 / 5; max-width: 100%; background: var(--plate); overflow: hidden; }
+.pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 54%; }
+.side { display: flex; flex-direction: column; gap: 56px; min-width: 0; padding: 28px var(--m) 32px; }
+.body { display: grid; row-gap: 30px; max-width: 420px; }
+
+@media (min-width: 960px) {
+  .one {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-areas: "pic mark" "pic side";
+    min-height: 100vh; min-height: 100svh;
+  }
+  .pic { grid-area: pic; align-self: start; position: sticky; top: 0; height: 100vh; height: 100svh; aspect-ratio: auto; }
+  .mark { grid-area: mark; height: 64px; }
+  .side { grid-area: side; padding-top: 0; }
+  .body { margin-block: auto; }
+}
+
+/* ---------- The words ---------- */
+.intro { display: grid; row-gap: 14px; }
+.title { margin: 0; font-size: var(--fs-t); font-weight: 500; line-height: 1.12; letter-spacing: -0.014em; }
+.offer p { margin: 0; font-variant-numeric: tabular-nums; }
+.act { display: grid; justify-items: start; row-gap: 12px; }
+.pill {
+  appearance: none; display: inline-flex; align-items: center; justify-content: center;
+  height: 40px; padding: 0 24px; border: 1px solid var(--ink); border-radius: 999px;
+  background: transparent; color: var(--ink); font-size: var(--fs); font-weight: 500; cursor: pointer;
+  font-variant-numeric: tabular-nums; transition: background-color 0.2s, color 0.2s;
+}
+.note { margin: 0; color: var(--ink-2); text-wrap: pretty; }
+
+/* The register of ten. A number chosen here is a preference that travels with the enquiry. */
+.ledger { margin: 0; padding: 0; border: 0; min-width: 0; }
+.ledger__legend { float: left; margin: 0 0 10px; padding: 0; color: var(--ink-2); }
+.ledger__aside { float: right; display: flex; align-items: baseline; gap: 10px; margin: 0 0 10px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.ledger__aside .textbtn { padding: 0; color: var(--ink-2); }
+.ledger__aside #chosen { color: var(--ink); }
+.ledger__note { clear: both; margin: 10px 0 0; color: var(--ink-2); text-wrap: pretty; }
+.cells {
+  clear: both; position: relative;
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; padding: 1px;
+  background: var(--rule);
+}
+@media (min-width: 520px) { .cells { grid-template-columns: repeat(10, minmax(0, 1fr)); } }
+.cells input { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none; }
+.cells label {
+  display: grid; place-items: center; height: 44px; background: var(--paper);
+  font-size: var(--fs); font-variant-numeric: tabular-nums;
+  cursor: pointer; user-select: none; -webkit-user-select: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+@media (min-width: 960px) { .cells label { height: 38px; } }
+/* On touch screens of any width, two rows of five keep each number a comfortable target. */
+@media (pointer: coarse) {
+  .cells { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .cells label { height: 44px; }
+}
+.cells input:checked + label { background: var(--ink); color: var(--paper); }
+.cells input:focus-visible + label { box-shadow: inset 0 0 0 2px var(--ink); }
+.cells input:checked:focus-visible + label { box-shadow: none; }
+.cells input:disabled + label { background: var(--paper); color: var(--ink-3); cursor: default; }
+.cells label.is-held { text-decoration: line-through; }
+
+/* Details, set like a catalogue entry */
+.more { border-block: 1px solid var(--rule); }
+.more summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding-block: 10px; cursor: pointer; list-style: none;
+}
+.more summary::-webkit-details-marker { display: none; }
+.more summary::after { content: "+"; color: var(--ink-2); }
+.more[open] summary::after { content: "\2212"; }
+@media (pointer: coarse) { .more summary { padding-block: 12px; } }
+.spec { margin: 0 0 10px; }
+.spec > div {
+  display: grid; grid-template-columns: 96px minmax(0, 1fr); column-gap: 16px;
+  padding-block: 8px; border-top: 1px solid var(--rule);
+}
+.spec dt { color: var(--ink-2); }
+.spec dd { margin: 0; text-wrap: pretty; }
+
+/* ---------- Enquiry ---------- */
+.enquiry {
+  width: min(460px, calc(100vw - 32px)); max-width: none;
+  max-height: calc(100vh - 48px); max-height: calc(100dvh - 48px);
+  padding: 0; overflow: auto; overscroll-behavior: contain; border: 0; border-radius: 0;
+  background: var(--paper); color: var(--ink);
+}
+.enquiry::backdrop { background: var(--scrim); }
+@media (max-width: 640px) {
+  .enquiry { width: 100%; height: 100%; max-width: 100%; max-height: 100%; margin: 0; }
+}
+.dlg { display: grid; row-gap: 24px; padding: 8px 24px 28px; }
+@media (max-width: 640px) {
+  .dlg { padding: calc(4px + env(safe-area-inset-top, 0px)) var(--m) calc(28px + env(safe-area-inset-bottom, 0px)); }
+}
+.dlg__bar { display: flex; align-items: center; justify-content: space-between; min-height: 48px; }
+.dlg__name { font-weight: 500; font-variant-numeric: tabular-nums; }
+.textbtn {
+  appearance: none; padding: 10px 0; border: 0; background: none; color: var(--ink); cursor: pointer;
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+}
+.dlg__intro { display: grid; row-gap: 8px; }
+.dlg__title { margin: 0; font-size: var(--fs-t); font-weight: 500; line-height: 1.12; letter-spacing: -0.014em; }
+.dlg__title:focus { outline: none; }
+.form { display: grid; row-gap: 22px; }
+.field { display: grid; row-gap: 2px; min-width: 0; }
+.flabel { color: var(--ink-2); }
+.hint { margin: 6px 0 0; color: var(--ink-2); }
+.input, .select {
+  width: 100%; min-width: 0; padding: 8px 0 9px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0;
+  background-color: transparent; color: var(--ink); font-size: 16px; line-height: 1.4;
+}
+.select {
+  appearance: none; -webkit-appearance: none; padding-right: 24px; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23000' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 2px center; background-size: 12px 8px;
+}
+.select.is-empty { color: var(--ink-2); }
+.select option, .select optgroup { color: var(--ink); }
+.input:focus, .select:focus { outline: none; border-bottom-color: var(--ink); box-shadow: 0 1px 0 var(--ink); }
+.input::placeholder { color: var(--line); opacity: 1; }
+textarea.input { min-height: 72px; resize: vertical; }
+@media (hover: hover) and (pointer: fine) { .input, .select { font-size: var(--fs); line-height: 1.55; } }
+.trap { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none; }
+.cta {
+  appearance: none; width: 100%; height: 48px; padding: 0 20px; border: 0; border-radius: 999px;
+  background: var(--ink); color: var(--paper); font-size: var(--fs); font-weight: 500; cursor: pointer;
+  transition: background-color 0.2s;
+}
+.cta:disabled { opacity: 0.45; cursor: default; }
+.status { margin: 0; }
+.status:empty { display: none; }
+.status[data-kind="note"] { color: var(--ink-2); }
+
+@media (hover: hover) {
+  .pill:hover { background: var(--ink); color: var(--paper); }
+  .cells input:not(:checked):not(:disabled) + label:hover { background: var(--hover); }
+  .cta:not(:disabled):hover { background: #2E2F33; }
+  .more summary:hover::after { color: var(--ink); }
+}
+
+/* Motion only answers an action: the enquiry opening. */
+@media (prefers-reduced-motion: no-preference) {
+  .enquiry[open] { animation: rise 0.28s ease-out; }
+  .enquiry[open]::backdrop { animation: fade 0.28s ease-out; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+@keyframes fade { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<main class="one" aria-labelledby="name">
+  <p class="mark">
+    <svg class="mark__spiral" viewBox="6 6 20 20" aria-hidden="true" focusable="false"><path d="M16 14.5 L19 14.5 L19 17.5 L13 17.5 L13 11.5 L22 11.5 L22 20.5 L10 20.5 L10 8.5 L25 8.5 L25 23.5 L7 23.5 L7 8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></svg>
+    <span class="mark__house">Hannon Tan</span>
+    <span class="mark__product">Signet 01</span>
+  </p>
+
+  <figure class="pic">
+    <img src="/images/s01/one.jpg" width="1286" height="1870" alt="Signet 01 in polished silver standing face up on a pale cloth, the spiral of twelve turns on its square face">
+  </figure>
+
+  <div class="side">
+    <div class="body">
+      <div class="intro">
+        <h1 class="title" id="name">Your word, sealed.</h1>
+        <p class="p">A sterling silver signet ring that signs. Touch it to your phone to sign words, work or&nbsp;instructions.</p>
+      </div>
+      <div class="offer">
+        <p>Designed by Jim Hannon-Tan</p>
+        <p>Edition 01, ten numbered rings</p>
+        <p>US$4,800</p>
+        <p data-casting data-closed="First casting closed. Next casting to be announced" data-full="All ten rings reserved">First casting closes 30 November 2026</p>
+        <p>Delivery expected from Q1 2027</p>
+      </div>
+      <fieldset class="ledger" aria-describedby="pref-note">
+        <legend class="ledger__legend">Preferred number (optional)</legend>
+        <div class="cells">
+          <input type="radio" name="choose" id="choose-01" value="01"><label for="choose-01">01</label>
+          <input type="radio" name="choose" id="choose-02" value="02"><label for="choose-02">02</label>
+          <input type="radio" name="choose" id="choose-03" value="03"><label for="choose-03">03</label>
+          <input type="radio" name="choose" id="choose-04" value="04"><label for="choose-04">04</label>
+          <input type="radio" name="choose" id="choose-05" value="05"><label for="choose-05">05</label>
+          <input type="radio" name="choose" id="choose-06" value="06"><label for="choose-06">06</label>
+          <input type="radio" name="choose" id="choose-07" value="07"><label for="choose-07">07</label>
+          <input type="radio" name="choose" id="choose-08" value="08"><label for="choose-08">08</label>
+          <input type="radio" name="choose" id="choose-09" value="09"><label for="choose-09">09</label>
+          <input type="radio" name="choose" id="choose-10" value="10"><label for="choose-10">10</label>
+        </div>
+        <p class="ledger__note" id="pref-note">Your preference goes with your enquiry. It does not reserve the&nbsp;number.</p>
+      </fieldset>
+      <div class="act">
+        <button class="pill" id="cta" type="button" data-open data-cta>Enquire</button>
+        <noscript><p class="note">Enquiries need JavaScript. Please enable it to send one.</p></noscript>
+      </div>
+      <details class="more" id="details">
+        <summary>Details</summary>
+        <dl class="spec">
+          <div><dt>Signing</dt><dd>Review the words, work or request on your phone, then touch the ring to sign. The signature is bound to exactly what you approved.</dd></div>
+          <div><dt>Material</dt><dd>925 sterling silver</dd></div>
+          <div><dt>Antenna</dt><dd>12-turn labyrinth</dd></div>
+          <div><dt>Chip</dt><dd>Arx HaLo secure element. The key cannot be exported.</dd></div>
+          <div><dt>Connection</dt><dd>Passive NFC, powered by the phone during a touch. No battery.</dd></div>
+          <div><dt>Works with</dt><dd>iPhone and Android phones with NFC. Each function needs compatible software.</dd></div>
+          <div><dt>Size</dt><dd>Made to the owner’s size, confirmed with Jim before any payment</dd></div>
+          <div><dt>Provenance</dt><dd>Recorded on LUKSO, in the owner’s Universal Profile</dd></div>
+          <div><dt>Servicing</dt><dd>Studio servicing can renew the electronics and refinish the silver.</dd></div>
+        </dl>
+      </details>
+    </div>
+    <p class="note">Jim Hannon-Tan Design Pty Ltd, Tonsley, Adelaide,&nbsp;Australia</p>
+  </div>
+</main>
+
+<dialog class="enquiry" id="enquiry" aria-labelledby="enq-title">
+  <div class="dlg">
+    <div class="dlg__bar">
+      <span class="dlg__name" id="dlg-name">Signet 01</span>
+      <button class="textbtn" id="close" type="button">Close</button>
+    </div>
+    <div class="dlg__intro">
+      <h2 class="dlg__title" id="enq-title" tabindex="-1">Speak with Jim.</h2>
+      <p class="p muted">Jim Hannon-Tan designed Signet 01 and replies personally by email.</p>
+    </div>
+    <form class="form" id="enquiry-form" novalidate>
+      <div class="field">
+        <label class="flabel" for="f-name">Name (optional)</label>
+        <input class="input" id="f-name" name="name" type="text" autocomplete="name">
+      </div>
+      <div class="field">
+        <label class="flabel" for="f-email">Email</label>
+        <input class="input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+      </div>
+      <fieldset class="ledger">
+        <legend class="ledger__legend">Preferred number (optional)</legend>
+        <span class="ledger__aside"><span id="chosen" aria-live="polite">No preference</span><button class="textbtn" id="clear" type="button" hidden>Clear</button></span>
+        <div class="cells">
+          <input type="radio" name="number" id="pick-01" value="01"><label for="pick-01">01</label>
+          <input type="radio" name="number" id="pick-02" value="02"><label for="pick-02">02</label>
+          <input type="radio" name="number" id="pick-03" value="03"><label for="pick-03">03</label>
+          <input type="radio" name="number" id="pick-04" value="04"><label for="pick-04">04</label>
+          <input type="radio" name="number" id="pick-05" value="05"><label for="pick-05">05</label>
+          <input type="radio" name="number" id="pick-06" value="06"><label for="pick-06">06</label>
+          <input type="radio" name="number" id="pick-07" value="07"><label for="pick-07">07</label>
+          <input type="radio" name="number" id="pick-08" value="08"><label for="pick-08">08</label>
+          <input type="radio" name="number" id="pick-09" value="09"><label for="pick-09">09</label>
+          <input type="radio" name="number" id="pick-10" value="10"><label for="pick-10">10</label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label class="flabel" for="f-fn">The function you’d most like (optional)</label>
+        <select class="select is-empty" id="f-fn" name="fn" aria-describedby="fn-hint">
+          <option value="">Choose one</option>
+          <optgroup label="Sign your work">
+            <option>Sign a text, image or document</option>
+            <option>Mint a moment</option>
+          </optgroup>
+          <optgroup label="Give your authority">
+            <option>Delegate to a person</option>
+            <option>Set an AI mandate</option>
+            <option>Approve a protected action</option>
+            <option>Manage agent permissions</option>
+            <option>Approve a transaction</option>
+          </optgroup>
+          <optgroup label="Carry your access">
+            <option>Unlock access</option>
+            <option>Carry your membership</option>
+          </optgroup>
+          <optgroup label="For developers">
+            <option>Build with Signet</option>
+          </optgroup>
+        </select>
+        <p class="hint" id="fn-hint">Some functions are still in development.</p>
+      </div>
+      <div class="field">
+        <label class="flabel" for="f-note">A note for Jim (optional)</label>
+        <textarea class="input" id="f-note" name="note" rows="3" placeholder="Ask about the ring, a function or a private viewing."></textarea>
+      </div>
+      <input class="trap" id="f-check" name="botcheck" type="checkbox" tabindex="-1" aria-hidden="true">
+      <button class="cta" id="send" type="submit">Send enquiry</button>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+      <p class="note">Jim confirms your size, your phone and the functions you need before any payment.</p>
+    </form>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------- Settings ----------
+  // Numbers reserved with a paid deposit, e.g. ["01", "07"]. Each is struck out on the page.
+  var HELD = [];
+  // The first casting takes the numbers reserved before this moment (Adelaide time).
+  // Numbers still open afterwards wait for the next casting.
+  var FIRST_CASTING_CLOSES = new Date("2026-12-01T00:00:00+10:30");
+  // Web3Forms access key, the same one the Signet 01 request form on hannontan.com uses.
+  var FORM_KEY = "2bcce2a4-04ef-4d44-8747-5753f9fe040a";
+  // ------------------------------
+
+  var ENDPOINT = "https://api.web3forms.com/submit";
+  var EDITION = 10;
+
+  function all(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+
+  var dialog = document.getElementById("enquiry");
+  var form = document.getElementById("enquiry-form");
+  var title = document.getElementById("enq-title");
+  var dlgName = document.getElementById("dlg-name");
+  var statusEl = document.getElementById("status");
+  var chosen = document.getElementById("chosen");
+  var clearBtn = document.getElementById("clear");
+  var sendBtn = document.getElementById("send");
+  var nameEl = document.getElementById("f-name");
+  var emailEl = document.getElementById("f-email");
+  var fnEl = document.getElementById("f-fn");
+  var noteEl = document.getElementById("f-note");
+  var trapEl = document.getElementById("f-check");
+  var radios = all('input[name="choose"], input[name="number"]');
+  var ctas = all("[data-cta]");
+  var current = "";
+  var lastTrigger = null;
+
+  HELD.forEach(function (n) {
+    radios.forEach(function (r) {
+      if (r.value === n) {
+        r.disabled = true; r.nextElementSibling.classList.add("is-held");
+        r.setAttribute("aria-label", "Number " + n + ", reserved");
+      }
+    });
+  });
+
+  // Every mention of the first casting changes together once the edition is full or the casting has closed.
+  function casting(state, fallback) {
+    all("[data-casting]").forEach(function (el) { el.textContent = el.getAttribute("data-" + state) || fallback; });
+  }
+  var closed = HELD.length >= EDITION;
+  if (closed) {
+    radios.forEach(function (r) { r.disabled = true; });
+    casting("full", "All ten reserved");
+  } else if (Date.now() >= FIRST_CASTING_CLOSES.getTime()) {
+    casting("closed", "Closed. Next casting to be announced");
+  }
+
+  function valid(n) {
+    var r = /^\d{2}$/.test(n || "") ? document.getElementById("choose-" + n) : null;
+    return !!r && !r.disabled;
+  }
+
+  // One preferred number, shared by the page and the enquiry form. It is a preference, sent with the enquiry.
+  function setNumber(n) {
+    current = valid(n) ? n : "";
+    radios.forEach(function (r) { r.checked = r.value === current; });
+    ctas.forEach(function (b) { b.textContent = current ? "Enquire about #" + current : (closed ? "Join the waitlist" : "Enquire"); });
+    dlgName.textContent = current ? "Signet 01 #" + current : "Signet 01";
+    chosen.textContent = current ? "#" + current : "No preference";
+    clearBtn.hidden = !current;
+  }
+
+  radios.forEach(function (r) {
+    // Pressing the chosen number again clears it.
+    r.addEventListener("click", function () { setNumber(r.value === current ? "" : r.value); });
+    r.addEventListener("change", function () { if (r.checked && r.value !== current) { setNumber(r.value); } });
+  });
+  clearBtn.addEventListener("click", function () { setNumber(""); });
+
+  // The function menu reads grey until a function is chosen.
+  function fnState() { fnEl.classList.toggle("is-empty", !fnEl.value); }
+  fnEl.addEventListener("change", fnState);
+
+  function say(message, kind) {
+    statusEl.textContent = message;
+    if (kind) { statusEl.setAttribute("data-kind", kind); } else { statusEl.removeAttribute("data-kind"); }
+  }
+
+  function openEnquiry(trigger) {
+    lastTrigger = trigger || null;
+    say("");
+    if (typeof dialog.showModal === "function") {
+      if (!dialog.open) { dialog.showModal(); }
+    } else {
+      dialog.setAttribute("open", "");
+    }
+    title.focus();
+  }
+
+  function closeEnquiry() {
+    if (!dialog.open) { return; }
+    if (typeof dialog.close === "function") { dialog.close(); } else { dialog.removeAttribute("open"); }
+  }
+
+  all("[data-open]").forEach(function (b) {
+    b.addEventListener("click", function () { openEnquiry(b); });
+  });
+  document.getElementById("close").addEventListener("click", closeEnquiry);
+  dialog.addEventListener("click", function (e) { if (e.target === dialog) { closeEnquiry(); } });
+  dialog.addEventListener("close", function () {
+    if (lastTrigger && typeof lastTrigger.focus === "function") { lastTrigger.focus(); }
+  });
+
+  // A link to #enquire or #enquire-07 opens the form, with that number preferred.
+  function fromHash(first) {
+    var deep = /^#enquire(?:-(\d{2}))?$/.exec(window.location.hash || "");
+    if (first || (deep && deep[1])) { setNumber(deep && deep[1] ? deep[1] : ""); }
+    if (deep) { openEnquiry(null); }
+  }
+  fromHash(true);
+  window.addEventListener("hashchange", function () { fromHash(false); });
+
+  emailEl.addEventListener("input", function () { emailEl.removeAttribute("aria-invalid"); });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (trapEl.checked) { return; }
+
+    var email = emailEl.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      say("Add your email so Jim can reply.", "error");
+      emailEl.setAttribute("aria-invalid", "true");
+      emailEl.focus();
+      return;
+    }
+    if (!FORM_KEY) {
+      say("Preview only. This form sends once the Web3Forms key is added.", "note");
+      return;
+    }
+
+    var payload = {
+      access_key: FORM_KEY,
+      subject: current ? "Signet 01 enquiry · #" + current : "Signet 01 enquiry",
+      from_name: "The Signet",
+      replyto: email,
+      name: nameEl.value.trim() || "Not given",
+      email: email,
+      number: current ? "#" + current : "No preference",
+      functions: fnEl.value || "None chosen",
+      message: noteEl.value.trim() || "No note",
+      page: "hannontan.com/1b"
+    };
+
+    sendBtn.disabled = true;
+    say("Sending…");
+    var ctrl = typeof AbortController === "function" ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) { ctrl.abort(); } }, 15000);
+
+    fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(payload),
+      signal: ctrl ? ctrl.signal : undefined
+    })
+      .then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (data) { return { ok: res.ok, data: data || {} }; });
+      })
+      .then(function (r) {
+        if (r.ok && r.data.success !== false) {
+          form.reset();
+          fnState();
+          setNumber("");
+          say("Thank you. Jim has your enquiry and will reply by email.", "ok");
+        } else if (r.data.message) {
+          say(r.data.message + " Your details are still here.", "error");
+        } else {
+          say("Your enquiry didn’t send. Your details are still here. Please try again.", "error");
+        }
+      })
+      .catch(function (err) {
+        if (window.claude) {
+          // Inside the Claude preview, pages cannot reach outside services. On hannontan.com the same request sends.
+          say("This preview can’t send enquiries. The form sends once the page is on hannontan.com.", "note");
+        } else if (err && err.name === "AbortError") {
+          say("We couldn’t confirm it arrived. Your details are still here. Please try again.", "error");
+        } else {
+          say("We couldn’t connect. Your details are still here. Please try again.", "error");
+        }
+      })
+      .then(function () {
+        clearTimeout(timer);
+        sendBtn.disabled = false;
+      });
+  });
+})();
+</script>
+</body>
+</html>

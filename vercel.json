@@ -3,6 +3,7 @@
     { "source": "/v1", "destination": "/v1.html" },
     { "source": "/v2", "destination": "/v2.html" },
     { "source": "/v3", "destination": "/v3.html" },
-    { "source": "/6", "destination": "/6.html" }
+    { "source": "/6", "destination": "/6.html" },
+    { "source": "/1b", "destination": "/1b.html" }
   ]
 }

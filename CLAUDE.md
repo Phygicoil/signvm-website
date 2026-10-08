@@ -19,6 +19,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 | --- | --- | --- |
 | / | `index.html` | Live home page, launched 8 Oct 2026 |
 | /6 | `6.html` | Copy of branch `6`, live since 8 Oct 2026, hidden from search engines |
+| /1b | `1b.html` | One-screen page: the offer, Details folded away, the enquiry with one optional "function you'd most like" (sent as `functions`, page "hannontan.com/1b"). Live since 8 Oct 2026, hidden from search engines |
 | /v1, /v2, /v3 | `v1.html` … `v3.html` | Earlier versions, kept. /v3 is the previous home page |
 | /pd, /pitchdeck | `pd/`, `pitchdeck/` | Earlier materials |
 
