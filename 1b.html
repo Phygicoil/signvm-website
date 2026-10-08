@@ -58,7 +58,6 @@ img { display: block; max-width: 100%; }
 button, input, textarea, select { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .muted { color: var(--ink-2); }
-.vh { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .p { margin: 0; max-width: 34em; text-wrap: pretty; }
 
 /* ---------- The screen ---------- */
@@ -252,21 +251,6 @@ textarea.input { min-height: 72px; resize: vertical; }
         <p data-casting data-closed="First casting closed. Next casting to be announced" data-full="All ten rings reserved">First casting closes 30 November 2026</p>
         <p>Delivery expected from Q1 2027</p>
       </div>
-      <fieldset class="ledger">
-        <legend class="vh">Preferred number (optional)</legend>
-        <div class="cells">
-          <input type="radio" name="choose" id="choose-01" value="01"><label for="choose-01">01</label>
-          <input type="radio" name="choose" id="choose-02" value="02"><label for="choose-02">02</label>
-          <input type="radio" name="choose" id="choose-03" value="03"><label for="choose-03">03</label>
-          <input type="radio" name="choose" id="choose-04" value="04"><label for="choose-04">04</label>
-          <input type="radio" name="choose" id="choose-05" value="05"><label for="choose-05">05</label>
-          <input type="radio" name="choose" id="choose-06" value="06"><label for="choose-06">06</label>
-          <input type="radio" name="choose" id="choose-07" value="07"><label for="choose-07">07</label>
-          <input type="radio" name="choose" id="choose-08" value="08"><label for="choose-08">08</label>
-          <input type="radio" name="choose" id="choose-09" value="09"><label for="choose-09">09</label>
-          <input type="radio" name="choose" id="choose-10" value="10"><label for="choose-10">10</label>
-        </div>
-      </fieldset>
       <div class="act">
         <button class="pill" id="cta" type="button" data-open data-cta>Enquire</button>
         <noscript><p class="note">Enquiries need JavaScript. Please enable it to send one.</p></noscript>
@@ -397,7 +381,7 @@ textarea.input { min-height: 72px; resize: vertical; }
   var prefs = document.getElementById("prefs");
   var noteEl = document.getElementById("f-note");
   var trapEl = document.getElementById("f-check");
-  var radios = all('input[name="choose"], input[name="number"]');
+  var radios = all('input[name="number"]');
   var ctas = all("[data-cta]");
   var current = "";
   var lastTrigger = null;
@@ -424,11 +408,11 @@ textarea.input { min-height: 72px; resize: vertical; }
   }
 
   function valid(n) {
-    var r = /^\d{2}$/.test(n || "") ? document.getElementById("choose-" + n) : null;
+    var r = /^\d{2}$/.test(n || "") ? document.getElementById("pick-" + n) : null;
     return !!r && !r.disabled;
   }
 
-  // One preferred number, shared by the page and the enquiry form. It is a preference, sent with the enquiry.
+  // One preferred number, chosen in the enquiry form. It is a preference, sent with the enquiry.
   function setNumber(n) {
     current = valid(n) ? n : "";
     radios.forEach(function (r) { r.checked = r.value === current; });
