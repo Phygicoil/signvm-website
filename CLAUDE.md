@@ -27,7 +27,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 - The home page's five uses cover the ten functions:
   - Sign documents, images and autographs: Sign a text, image or document; Mint a moment.
   - Authorise people or AI to act for you: Delegate to a person; Set an AI mandate; Manage agent permissions.
-  - Approve crypto transactions: Approve a transaction.
+  - Approve multisig transactions: Approve a transaction.
   - Use it as an event pass or membership card: Unlock access; Carry your membership.
   - Add ring approval to your own app: Build with Signet; Approve a protected action.
 - A new page needs an entry in the `vite.config.js` inputs and, for a clean URL, a rewrite in `vercel.json`.
