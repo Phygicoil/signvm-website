@@ -40,9 +40,11 @@
   --fs: 14px;
   --fs-s: 12px;
   --fs-t: 26px;
+  --key: 112px;
   color-scheme: light;
 }
 @media (min-width: 960px) { :root { --m: clamp(40px, 4.5vw, 72px); --fs-t: 32px; } }
+@media (max-width: 359px) { :root { --key: 92px; } }
 
 *, *::before, *::after { box-sizing: border-box; }
 html:has(dialog[open]) { overflow: hidden; }
@@ -57,7 +59,6 @@ body {
 img { display: block; max-width: 100%; }
 button, input, textarea, select { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-.muted { color: var(--ink-2); }
 .p { margin: 0; max-width: 34em; text-wrap: pretty; }
 
 /* ---------- The screen ---------- */
@@ -84,14 +85,17 @@ button, input, textarea, select { font: inherit; color: inherit; }
 /* ---------- The words ---------- */
 .intro { display: grid; row-gap: 14px; }
 .title { margin: 0; font-size: var(--fs-t); font-weight: 500; line-height: 1.12; letter-spacing: -0.014em; }
-.offer p { margin: 0; font-variant-numeric: tabular-nums; }
-.act { display: grid; justify-items: start; row-gap: 12px; }
-.pill {
-  appearance: none; display: inline-flex; align-items: center; justify-content: center;
-  height: 40px; padding: 0 24px; border: 1px solid var(--ink); border-radius: 999px;
-  background: transparent; color: var(--ink); font-size: var(--fs); font-weight: 500; cursor: pointer;
-  font-variant-numeric: tabular-nums; transition: background-color 0.2s, color 0.2s;
+/* The offer and the details share one grid, so their values line up. The details are set smaller. */
+.facts, .spec { margin: 0; }
+.facts > div, .spec > div {
+  display: grid; grid-template-columns: var(--key) minmax(0, 1fr); column-gap: 16px;
+  border-top: 1px solid var(--rule);
 }
+.facts > div { padding-block: 9px; }
+.facts > div:last-child { border-bottom: 1px solid var(--rule); }
+.facts dt, .spec dt { color: var(--ink-2); }
+.facts dd, .spec dd { margin: 0; text-wrap: pretty; font-variant-numeric: tabular-nums; }
+.act { display: grid; row-gap: 12px; }
 .note { margin: 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.5; text-wrap: pretty; }
 
 /* The register of ten. A number chosen here is a preference that travels with the enquiry. */
@@ -99,7 +103,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .ledger__legend { float: left; margin: 0 0 10px; padding: 0; color: var(--ink-2); }
 .ledger__aside { float: right; display: flex; align-items: baseline; gap: 10px; margin: 0 0 10px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .ledger__aside .textbtn { padding: 0; color: var(--ink-2); }
-.ledger__aside #chosen { color: var(--ink); }
+.ledger__aside #chosen.is-set { color: var(--ink); }
 .cells {
   clear: both; position: relative;
   display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; padding: 1px;
@@ -135,13 +139,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .more summary::after { content: "+"; color: var(--ink-2); }
 .more[open] summary::after { content: "\2212"; }
 @media (pointer: coarse) { .more summary { padding-block: 12px; } }
-.spec { margin: 0 0 10px; font-size: var(--fs-s); line-height: 1.5; }
-.spec > div {
-  display: grid; grid-template-columns: 84px minmax(0, 1fr); column-gap: 16px;
-  padding-block: 7px; border-top: 1px solid var(--rule);
-}
-.spec dt { color: var(--ink-2); }
-.spec dd { margin: 0; text-wrap: pretty; }
+.spec { margin-bottom: 10px; font-size: var(--fs-s); line-height: 1.5; }
+.spec > div { padding-block: 7px; }
 
 /* ---------- Enquiry ---------- */
 .enquiry {
@@ -202,7 +201,7 @@ textarea.input { min-height: 72px; resize: vertical; }
 .cta {
   appearance: none; width: 100%; height: 48px; padding: 0 20px; border: 0; border-radius: 999px;
   background: var(--ink); color: var(--paper); font-size: var(--fs); font-weight: 500; cursor: pointer;
-  transition: background-color 0.2s;
+  font-variant-numeric: tabular-nums; transition: background-color 0.2s;
 }
 .cta:disabled { opacity: 0.45; cursor: default; }
 .status { margin: 0; }
@@ -210,7 +209,6 @@ textarea.input { min-height: 72px; resize: vertical; }
 .status[data-kind="note"] { color: var(--ink-2); }
 
 @media (hover: hover) {
-  .pill:hover { background: var(--ink); color: var(--paper); }
   .cells input:not(:checked):not(:disabled) + label:hover { background: var(--hover); }
   .cta:not(:disabled):hover { background: #2E2F33; }
   .more summary:hover::after { color: var(--ink); }
@@ -244,15 +242,15 @@ textarea.input { min-height: 72px; resize: vertical; }
         <h1 class="title" id="name">Your word, sealed.</h1>
         <p class="p">A sterling silver signet ring that signs. Touch it to your phone to sign words, work or&nbsp;instructions.</p>
       </div>
-      <div class="offer">
-        <p>Designed by Jim Hannon-Tan</p>
-        <p>Edition 01, ten numbered rings</p>
-        <p>US$4,800</p>
-        <p data-casting data-closed="First casting closed. Next casting to be announced" data-full="All ten rings reserved">First casting closes 30 November 2026</p>
-        <p>Delivery expected from Q1 2027</p>
-      </div>
+      <dl class="facts">
+        <div><dt>Design</dt><dd>Jim Hannon-Tan</dd></div>
+        <div><dt>Edition 01</dt><dd>Ten numbered rings</dd></div>
+        <div><dt>Price</dt><dd>US$4,800</dd></div>
+        <div><dt>First casting</dt><dd data-casting data-closed="Closed. Next casting to be announced" data-full="All ten rings reserved">Closes 30&nbsp;November&nbsp;2026</dd></div>
+        <div><dt>Delivery</dt><dd>Expected from Q1&nbsp;2027</dd></div>
+      </dl>
       <div class="act">
-        <button class="pill" id="cta" type="button" data-open data-cta>Enquire</button>
+        <button class="cta" id="cta" type="button" data-open data-cta>Enquire</button>
         <noscript><p class="note">Enquiries need JavaScript. Please enable it to send one.</p></noscript>
       </div>
       <details class="more" id="details">
@@ -264,8 +262,8 @@ textarea.input { min-height: 72px; resize: vertical; }
           <div><dt>Chip</dt><dd>Arx HaLo secure element. The key cannot be exported.</dd></div>
           <div><dt>Connection</dt><dd>Passive NFC, powered by the phone during a touch. No battery.</dd></div>
           <div><dt>Works with</dt><dd>iPhone and Android phones with NFC. Each function needs compatible software.</dd></div>
-          <div><dt>Size</dt><dd>Made to the owner’s size, confirmed with Jim before any payment</dd></div>
-          <div><dt>Provenance</dt><dd>Recorded on LUKSO, in the owner’s Universal Profile</dd></div>
+          <div><dt>Size</dt><dd>Made to the owner’s size, confirmed with Jim before any payment.</dd></div>
+          <div><dt>Provenance</dt><dd>Recorded on LUKSO, in the owner’s Universal Profile.</dd></div>
           <div><dt>Servicing</dt><dd>Studio servicing can renew the electronics and refinish the silver.</dd></div>
         </dl>
       </details>
@@ -282,7 +280,7 @@ textarea.input { min-height: 72px; resize: vertical; }
     </div>
     <div class="dlg__intro">
       <h2 class="dlg__title" id="enq-title" tabindex="-1">Speak with Jim.</h2>
-      <p class="p muted">Jim Hannon-Tan designed Signet 01 and replies personally by email.</p>
+      <p class="p">Jim Hannon-Tan designed Signet 01 and replies personally by email.</p>
     </div>
     <form class="form" id="enquiry-form" novalidate>
       <div class="field">
@@ -419,6 +417,7 @@ textarea.input { min-height: 72px; resize: vertical; }
     ctas.forEach(function (b) { b.textContent = current ? "Enquire about #" + current : (closed ? "Join the waitlist" : "Enquire"); });
     dlgName.textContent = current ? "Signet 01 #" + current : "Signet 01";
     chosen.textContent = current ? "#" + current : "No preference";
+    chosen.className = current ? "is-set" : "";
     clearBtn.hidden = !current;
   }
 

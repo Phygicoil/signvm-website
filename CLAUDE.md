@@ -19,7 +19,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 | --- | --- | --- |
 | / | `index.html` | Live home page, launched 8 Oct 2026 |
 | /6 | `6.html` | Copy of branch `6`, live since 8 Oct 2026, hidden from search engines |
-| /1b | `1b.html` | One-screen page: "Signet 01" header, the offer and Enquire (no number boxes on the page; the enquiry form keeps them), Details folded away in a 12px size. The enquiry lets people tick any functions they'd like (sent as `functions`, joined with "; ", page "hannontan.com/1b"). Live since 8 Oct 2026, hidden from search engines |
+| /1b | `1b.html` | One-screen page: "Signet 01" header, the offer as a label and value list, Enquire (the same solid button as Send enquiry), and Details folded away in a 12px size whose values line up with the offer's. No number boxes on the page; the enquiry form keeps them. The enquiry lets people tick any functions they'd like (sent as `functions`, joined with "; ", page "hannontan.com/1b"). Live since 8 Oct 2026, hidden from search engines |
 | /v1, /v2, /v3 | `v1.html` … `v3.html` | Earlier versions, kept. /v3 is the previous home page |
 | /pd, /pitchdeck | `pd/`, `pitchdeck/` | Earlier materials |
 
