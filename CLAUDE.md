@@ -36,7 +36,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 
 ## Branch 6
 - Branch `6` holds the response to Jim's brief for a first-edition buyer. Its `index.html` was proposed as the home page. Merging `6` into `main` would replace the current home page, so that's Jim's decision.
-- `6.html` on `main` is branch 6's `index.html` with three edits: `<meta name="robots" content="noindex">`; canonical and `og:url` set to `https://www.hannontan.com/6`; the form's `page` field set to `"hannontan.com/6"`. When branch 6 changes and Jim wants /6 updated, copy it across again and reapply the three edits.
+- `6.html` on `main` is branch 6's `index.html` with four edits: `<meta name="robots" content="noindex">`; canonical and `og:url` set to `https://www.hannontan.com/6`; the form's `page` field set to `"hannontan.com/6"`; its two Price rows removed. When branch 6 changes and Jim wants /6 updated, copy it across again and reapply the four edits.
 
 ## How the pages are built
 - Each page is one self-contained HTML file with inline CSS and JS. No framework.
@@ -84,10 +84,11 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 - British spelling: authorise, centre, colour.
 - Claims stay honest. Add no promises the product can't back, such as lifetime support, upgrades, investment value or working with every phone, door or system.
 - Prices, edition terms and readiness labels are Jim's to decide. Publish deposit or reservation terms only after he confirms them.
+- No price on any page for now (Jim, 10 Oct 2026). Don't publish one until he says.
 
 ## Product facts on the site
 - Signet 01, reference S01.AG. 925 sterling silver. A 12-turn labyrinth antenna. Arx HaLo secure element; its key is made on the chip and can't be exported. Passive NFC, with no battery.
-- Edition 01: ten rings numbered 01 to 10, US$4,800 each, made to the owner's size. First casting closes 30 November 2026. Delivery expected from Q1 2027.
+- Edition 01: ten rings numbered 01 to 10, made to the owner's size. The price (US$4,800 each) is off the site for now. First casting closes 30 November 2026. Delivery expected from Q1 2027.
 - Works with iPhone and Android phones with NFC. Each function needs compatible software.
 - Provenance is recorded on LUKSO, in the owner's Universal Profile. Studio servicing can renew the electronics and refinish the silver.
 
