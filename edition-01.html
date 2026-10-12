@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Signet Edition 01 · HANNON TAN</title>
+<meta name="description" content="Review the exact content. Touch the ring. The signature binds only to what you approved.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://www.hannontan.com/edition-01">
+<meta property="og:title" content="Signet Edition 01 · HANNON TAN">
+<meta property="og:description" content="Review the exact content. Touch the ring. The signature binds only to what you approved.">
+<meta property="og:url" content="https://www.hannontan.com/edition-01">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.hannontan.com/images/s01/share.jpg">
+<meta name="twitter:image" content="https://www.hannontan.com/images/s01/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* A catalogue plate: one column. The object first, then the act in large type, the face in detail,
+   three conditions, and the edition. Nothing about features, chains or roadmaps. Light only. */
+:root {
+  --paper: #FFFFFF;
+  --plate: #EFF0F2;
+  --ink: #000000;
+  --ink-2: #696C72;
+  --rule: #E3E4E7;
+  --line: #8C8F95;
+  --press: #2E2F33;
+  --scrim: rgba(0, 0, 0, 0.3);
+  --sans: "Instrument Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fs: 14px;
+  --fs-s: 12px;
+  --fs-t: 26px;
+  --m: 16px;
+  --col: 640px;
+  --gap: 72px;
+  color-scheme: light;
+}
+@media (min-width: 960px) { :root { --fs-t: 32px; --m: 40px; --gap: 120px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html:has(dialog[open]) { overflow: hidden; }
+body {
+  margin: 0;
+  padding-inline: var(--m);
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--fs)/1.55 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; }
+button, input, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.p { margin: 0; max-width: 34em; text-wrap: pretty; }
+.note { margin: 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.5; text-wrap: pretty; }
+
+/* ---------- The page ---------- */
+.page, .foot { width: min(var(--col), 100%); margin-inline: auto; }
+.page { display: grid; row-gap: var(--gap); padding-block: 0; }
+@media (min-width: 640px) { .page { padding-block-start: 40px; } }
+
+.plate { margin: 0; display: grid; row-gap: 12px; }
+.frame { position: relative; overflow: hidden; max-width: 100%; background: var(--plate); }
+.frame img { width: 100%; height: 100%; object-fit: cover; }
+
+/* The ring, large. On phones it runs edge to edge; on wider screens it sits in the column,
+   short enough that its caption shows on the first screen. */
+.hero .frame { width: 100%; aspect-ratio: 4 / 5; max-height: max(360px, calc(100svh - 150px)); }
+.hero img { object-position: 50% 54%; }
+@media (max-width: 639px) { .hero .frame { width: calc(100% + var(--m) * 2); max-width: none; margin-inline: calc(var(--m) * -1); } }
+.caption { display: grid; font-size: var(--fs-s); line-height: 1.5; }
+.caption span:first-child { font-weight: 500; }
+.caption span + span { color: var(--ink-2); }
+
+/* The act */
+.act { display: grid; row-gap: 24px; }
+.line { margin: 0; font-size: var(--fs-t); font-weight: 500; line-height: 1.12; letter-spacing: -0.014em; }
+.line span, .statement span, .close span { display: block; }
+.line span { text-wrap: balance; }
+
+/* The face */
+.detail .frame { aspect-ratio: 1 / 1; }
+
+/* Three conditions, ruled like the rest of the site's lists */
+.terms { margin: 0; padding: 0; list-style: none; }
+.terms li { padding-block: 12px; border-top: 1px solid var(--rule); text-wrap: pretty; }
+.terms li:last-child { border-bottom: 1px solid var(--rule); }
+
+/* The edition */
+.close { display: grid; row-gap: 24px; justify-items: start; }
+.close p { margin: 0; }
+.strong { font-weight: 500; }
+.muted { color: var(--ink-2); }
+.cta {
+  appearance: none; height: 48px; padding: 0 28px; border: 0; border-radius: 999px;
+  background: var(--ink); color: var(--paper); font-size: var(--fs); font-weight: 500; cursor: pointer;
+  transition: background-color 0.2s;
+}
+.cta:disabled { opacity: 0.45; cursor: default; }
+@media (max-width: 639px) { .close { justify-items: stretch; } }
+
+.foot { padding-block: var(--gap) 32px; }
+
+/* ---------- Request ---------- */
+.enquiry {
+  width: min(460px, calc(100vw - 32px)); max-width: none;
+  max-height: calc(100vh - 48px); max-height: calc(100dvh - 48px);
+  padding: 0; overflow: auto; overscroll-behavior: contain; border: 0; border-radius: 0;
+  background: var(--paper); color: var(--ink);
+}
+.enquiry::backdrop { background: var(--scrim); }
+@media (max-width: 640px) {
+  .enquiry { width: 100%; height: 100%; max-width: 100%; max-height: 100%; margin: 0; }
+}
+.dlg { display: grid; row-gap: 24px; padding: 8px 24px 28px; }
+@media (max-width: 640px) {
+  .dlg { padding: calc(4px + env(safe-area-inset-top, 0px)) 16px calc(28px + env(safe-area-inset-bottom, 0px)); }
+}
+.dlg__bar { display: flex; align-items: center; justify-content: space-between; min-height: 48px; }
+.dlg__name { font-weight: 500; }
+.textbtn {
+  appearance: none; padding: 10px 0; border: 0; background: none; color: var(--ink); cursor: pointer;
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+}
+.dlg__intro { display: grid; row-gap: 8px; }
+.dlg__title { margin: 0; font-size: var(--fs-t); font-weight: 500; line-height: 1.12; letter-spacing: -0.014em; }
+.dlg__title:focus { outline: none; }
+.form { display: grid; row-gap: 22px; }
+.form .cta { width: 100%; }
+.field { display: grid; row-gap: 2px; min-width: 0; }
+.flabel { color: var(--ink-2); }
+.input {
+  width: 100%; min-width: 0; padding: 8px 0 9px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0;
+  background-color: transparent; color: var(--ink); font-size: 16px; line-height: 1.4;
+}
+.input:focus { outline: none; border-bottom-color: var(--ink); box-shadow: 0 1px 0 var(--ink); }
+.input::placeholder { color: var(--line); opacity: 1; }
+textarea.input { min-height: 72px; resize: vertical; }
+@media (hover: hover) and (pointer: fine) { .input { font-size: var(--fs); line-height: 1.55; } }
+.trap { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none; }
+.status { margin: 0; }
+.status:empty { display: none; }
+.status[data-kind="note"] { color: var(--ink-2); }
+
+@media (hover: hover) { .cta:not(:disabled):hover { background: var(--press); } }
+
+/* Motion only answers an action: the request opening. */
+@media (prefers-reduced-motion: no-preference) {
+  .enquiry[open] { animation: rise 0.28s ease-out; }
+  .enquiry[open]::backdrop { animation: fade 0.28s ease-out; }
+}
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+@keyframes fade { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<main class="page" aria-labelledby="act">
+  <figure class="plate hero">
+    <div class="frame">
+      <img src="/images/s01/one.jpg" width="1286" height="1870" fetchpriority="high" alt="Signet in polished sterling silver, standing face up on a pale cloth">
+    </div>
+    <figcaption class="caption"><span>Signet</span><span>Edition 01</span></figcaption>
+  </figure>
+
+  <section class="act">
+    <h1 class="line" id="act">
+      <span>Review the exact content.</span>
+      <span>Touch the ring.</span>
+      <span>The signature binds only to what you approved.</span>
+    </h1>
+    <p class="p statement">
+      <span>A physical seal for human authorisation.</span>
+      <span>When an agent is ready to act, you confirm the precise step.</span>
+    </p>
+  </section>
+
+  <figure class="plate detail">
+    <div class="frame">
+      <img src="/images/s01/cream.jpg" width="1254" height="1254" loading="lazy" alt="Close view of the ring's face: a square spiral of twelve turns in sterling silver, the antenna and the point of contact">
+    </div>
+  </figure>
+
+  <ul class="terms" aria-label="What holds when you sign">
+    <li>The content is shown before you sign.</li>
+    <li>Any change invalidates the signature.</li>
+    <li>The ring is a revocable controller. It can be renewed.</li>
+  </ul>
+
+  <section class="close" aria-label="Edition 01">
+    <p>
+      <span class="strong">Numbered. Sterling silver. Serviceable.</span>
+      <span class="muted">Edition 01. Ten pieces.</span>
+    </p>
+    <button class="cta" id="cta" type="button" data-open>Request information</button>
+    <noscript><p class="note">Requests need JavaScript. Please enable it to send one.</p></noscript>
+  </section>
+</main>
+
+<footer class="foot">
+  <p class="note">Jim Hannon-Tan Design Pty Ltd, ABN&nbsp;79&nbsp;609&nbsp;672&nbsp;184, Adelaide,&nbsp;Australia</p>
+</footer>
+
+<dialog class="enquiry" id="enquiry" aria-labelledby="enq-title">
+  <div class="dlg">
+    <div class="dlg__bar">
+      <span class="dlg__name">Signet</span>
+      <button class="textbtn" id="close" type="button">Close</button>
+    </div>
+    <div class="dlg__intro">
+      <h2 class="dlg__title" id="enq-title" tabindex="-1">Request information.</h2>
+      <p class="p">Jim Hannon-Tan replies personally by email.</p>
+    </div>
+    <form class="form" id="enquiry-form" novalidate>
+      <div class="field">
+        <label class="flabel" for="f-name">Name</label>
+        <input class="input" id="f-name" name="name" type="text" autocomplete="name">
+      </div>
+      <div class="field">
+        <label class="flabel" for="f-email">Email</label>
+        <input class="input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+      </div>
+      <div class="field">
+        <label class="flabel" for="f-note">A note for Jim</label>
+        <textarea class="input" id="f-note" name="note" rows="3" placeholder="Ask about the ring, its making or a private viewing."></textarea>
+      </div>
+      <input class="trap" id="f-check" name="botcheck" type="checkbox" tabindex="-1" aria-hidden="true">
+      <button class="cta" id="send" type="submit">Send request</button>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------- Settings ----------
+  // Web3Forms access key, the same one the other hannontan.com forms use.
+  var FORM_KEY = "2bcce2a4-04ef-4d44-8747-5753f9fe040a";
+  // ------------------------------
+
+  var ENDPOINT = "https://api.web3forms.com/submit";
+  var PAGE = "hannontan.com/edition-01";
+
+  var dialog = document.getElementById("enquiry");
+  var form = document.getElementById("enquiry-form");
+  var title = document.getElementById("enq-title");
+  var statusEl = document.getElementById("status");
+  var sendBtn = document.getElementById("send");
+  var nameEl = document.getElementById("f-name");
+  var emailEl = document.getElementById("f-email");
+  var noteEl = document.getElementById("f-note");
+  var trapEl = document.getElementById("f-check");
+  var lastTrigger = null;
+
+  function say(message, kind) {
+    statusEl.textContent = message;
+    if (kind) { statusEl.setAttribute("data-kind", kind); } else { statusEl.removeAttribute("data-kind"); }
+  }
+
+  function openRequest(trigger) {
+    lastTrigger = trigger || null;
+    say("");
+    if (typeof dialog.showModal === "function") {
+      if (!dialog.open) { dialog.showModal(); }
+    } else {
+      dialog.setAttribute("open", "");
+    }
+    title.focus();
+  }
+
+  function closeRequest() {
+    if (!dialog.open) { return; }
+    if (typeof dialog.close === "function") { dialog.close(); } else { dialog.removeAttribute("open"); }
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-open]"), function (b) {
+    b.addEventListener("click", function () { openRequest(b); });
+  });
+  document.getElementById("close").addEventListener("click", closeRequest);
+  dialog.addEventListener("click", function (e) { if (e.target === dialog) { closeRequest(); } });
+  dialog.addEventListener("close", function () {
+    if (lastTrigger && typeof lastTrigger.focus === "function") { lastTrigger.focus(); }
+  });
+
+  // A link to #enquire opens the request form.
+  function fromHash() { if ((window.location.hash || "") === "#enquire") { openRequest(null); } }
+  fromHash();
+  window.addEventListener("hashchange", fromHash);
+
+  emailEl.addEventListener("input", function () { emailEl.removeAttribute("aria-invalid"); });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (trapEl.checked) { return; }
+
+    var email = emailEl.value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      say("Add your email so Jim can reply.", "error");
+      emailEl.setAttribute("aria-invalid", "true");
+      emailEl.focus();
+      return;
+    }
+
+    var payload = {
+      access_key: FORM_KEY,
+      subject: "Signet 01 enquiry",
+      from_name: "The Signet",
+      replyto: email,
+      name: nameEl.value.trim() || "Not given",
+      email: email,
+      message: noteEl.value.trim() || "No note",
+      page: PAGE
+    };
+
+    sendBtn.disabled = true;
+    say("Sending…");
+    var ctrl = typeof AbortController === "function" ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctrl) { ctrl.abort(); } }, 15000);
+
+    fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(payload),
+      signal: ctrl ? ctrl.signal : undefined
+    })
+      .then(function (res) {
+        return res.json().catch(function () { return {}; }).then(function (data) { return { ok: res.ok, data: data || {} }; });
+      })
+      .then(function (r) {
+        if (r.ok && r.data.success !== false) {
+          form.reset();
+          say("Thank you. Jim has your request and will reply by email.", "ok");
+        } else if (r.data.message) {
+          say(r.data.message + " Your details are still here.", "error");
+        } else {
+          say("Your request didn’t send. Your details are still here. Please try again.", "error");
+        }
+      })
+      .catch(function (err) {
+        if (window.claude) {
+          // Inside the Claude preview, pages cannot reach outside services. On hannontan.com the same request sends.
+          say("This preview can’t send requests. The form sends once the page is on hannontan.com.", "note");
+        } else if (err && err.name === "AbortError") {
+          say("We couldn’t confirm it arrived. Your details are still here. Please try again.", "error");
+        } else {
+          say("We couldn’t connect. Your details are still here. Please try again.", "error");
+        }
+      })
+      .then(function () {
+        clearTimeout(timer);
+        sendBtn.disabled = false;
+      });
+  });
+})();
+</script>
+</body>
+</html>
