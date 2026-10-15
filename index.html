@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Signet 01 · HANNON TAN</title>
-<meta name="description" content="Your word, sealed. Signet 01 is a sterling silver signet ring that signs. Edition 01, ten numbered rings.">
+<meta name="description" content="A ring that signs. Your personal digital seal, cast in sterling silver. Review a message, touch the ring to seal it, and share a link so others can check your seal. Foundation Edition, ten numbered rings, US$7,500.">
 <link rel="canonical" href="https://www.hannontan.com/">
 <meta property="og:title" content="Signet 01 · HANNON TAN">
-<meta property="og:description" content="Your word, sealed.">
+<meta property="og:description" content="A ring that signs.">
 <meta property="og:url" content="https://www.hannontan.com/">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.hannontan.com/images/s01/share.jpg">
 <meta name="twitter:image" content="https://www.hannontan.com/images/s01/share.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#F7F5F1">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -21,29 +21,34 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap">
 <style>
-/* One screen, split in half. The ring fills the left half; the words sit together in the right half:
-   the line, what it does, the offer, the enquiry. Everything else waits behind Details.
-   Three sizes: the title, the text, and a small size for details and notes. Light only. */
+/* One screen. The ring on the left; on the right one statement, the edition and Enquire.
+   Quiet type: a modest title, 15px text, small tracked capitals for labels. Ink and one grey. Light only. */
 :root {
-  --paper: #FFFFFF;
-  --plate: #EFF0F2;
+  --paper: #F7F5F1;
+  --plate: #EEEAE4;
   --ink: #000000;
-  --ink-2: #696C72;
+  --ink-2: #66625C;
   --ink-3: #B4B7BC;
   --line: #8C8F95;
-  --rule: #E3E4E7;
-  --hover: #F3F4F6;
+  --rule: #E4E0D9;
+  --hover: #EFECE6;
   --scrim: rgba(0, 0, 0, 0.3);
   --sans: "Instrument Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --m: 16px;
-  --fs: 14px;
-  --fs-s: 12px;
-  --fs-t: 26px;
-  --key: 112px;
+  --m: 24px;
+  --fs: 15px;
+  --fs-s: 11px;
+  --fs-t: 30px;
+  --fs-l: 17px;
+  --fs-m: 16px;
+  --track: 0.12em;
+  /* Spacing scale, 4px base. Tight steps inside a group, the wide steps between groups. */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 20px; --s-6: 24px; --s-7: 32px; --s-8: 48px; --s-9: 64px;
+  --col: 440px;
+  --key: 128px;
   color-scheme: light;
 }
-@media (min-width: 960px) { :root { --m: clamp(40px, 4.5vw, 72px); --fs-t: 32px; } }
-@media (max-width: 359px) { :root { --key: 92px; } }
+@media (min-width: 960px) { :root { --m: clamp(40px, 4.5vw, 72px); --fs-t: 40px; --fs-l: 19px; --fs-m: 17px; } }
+
 
 *, *::before, *::after { box-sizing: border-box; }
 html:has(dialog[open]) { overflow: hidden; }
@@ -56,89 +61,54 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 img { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
 button, input, textarea, select { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .p { margin: 0; max-width: 34em; text-wrap: pretty; }
+.dlg__name { letter-spacing: var(--track); font-size: var(--fs-s); }
+.caps { font-size: var(--fs-s); font-weight: 500; letter-spacing: var(--track); text-transform: uppercase; }
 
-/* ---------- The screen ---------- */
-.one { display: grid; grid-template-columns: minmax(0, 1fr); }
-.mark { display: flex; align-items: center; height: 52px; margin: 0; padding-inline: var(--m); font-weight: 500; white-space: nowrap; }
-.pic { position: relative; margin: 0; aspect-ratio: 4 / 5; max-width: 100%; background: var(--plate); overflow: hidden; }
-.pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 54%; }
-.side { display: flex; flex-direction: column; gap: 56px; min-width: 0; padding: 28px var(--m) 32px; }
-.body { display: grid; row-gap: 30px; max-width: 420px; }
+/* ---------- First screen ---------- */
+.top { display: grid; grid-template-columns: minmax(0, 1fr); }
+.pic { position: relative; margin: 0; aspect-ratio: 4 / 5; background: var(--plate); overflow: hidden; }
+.pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 52%; }
 
-@media (min-width: 960px) {
-  .one {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-rows: auto minmax(0, 1fr);
-    grid-template-areas: "pic mark" "pic side";
-    min-height: 100vh; min-height: 100svh;
-  }
-  .pic { grid-area: pic; align-self: start; position: sticky; top: 0; height: 100vh; height: 100svh; aspect-ratio: auto; }
-  .mark { grid-area: mark; height: 64px; }
-  .side { grid-area: side; padding-top: 0; }
-  .body { margin-block: auto; }
-}
-
-/* ---------- The words ---------- */
-.intro { display: grid; row-gap: 14px; }
-.title { margin: 0; font-size: var(--fs-t); font-weight: 500; line-height: 1.12; letter-spacing: -0.014em; }
-/* The offer and the details share one grid, so their values line up. The details are set smaller. */
-.facts, .spec { margin: 0; }
-.facts > div, .spec > div {
-  display: grid; grid-template-columns: var(--key) minmax(0, 1fr); column-gap: 16px;
-  border-top: 1px solid var(--rule);
-}
-.facts > div { padding-block: 9px; }
-.facts > div:last-child { border-bottom: 1px solid var(--rule); }
-.facts dt, .spec dt { color: var(--ink-2); }
-.facts dd, .spec dd { margin: 0; text-wrap: pretty; font-variant-numeric: tabular-nums; }
-.act { display: grid; row-gap: 12px; }
+.panel { display: flex; flex-direction: column; min-width: 0; padding: 0 var(--m) var(--s-8); }
+.bar { display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 0; padding-inline: var(--m); }
+.intro { padding-block: var(--s-7); }
+.title { margin: 0; font-size: var(--fs-t); font-weight: 500; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
+.sub { margin: var(--s-4) 0 0; font-size: var(--fs-l); line-height: 1.35; letter-spacing: -0.008em; text-wrap: balance; }
+.how { margin: 0 0 var(--s-5); font-size: 13px; line-height: 1.5; text-wrap: pretty; }
+.foot-of-panel { padding-top: var(--s-5); border-top: 1px solid var(--rule); }
+.facts { display: grid; grid-template-columns: repeat(2, max-content); justify-content: start; gap: var(--s-4) var(--s-8); margin: 0; padding-top: var(--s-5); border-top: 1px solid var(--rule); font-size: 13px; line-height: 1.45; font-variant-numeric: tabular-nums; }
+.facts div { min-width: 0; }
+.facts dd { margin: var(--s-1) 0 0; }
+@media (max-width: 380px) { .facts { grid-template-columns: max-content; } }
+.act { display: grid; justify-items: start; row-gap: var(--s-3); margin-top: var(--s-7); }
 .note { margin: 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.5; text-wrap: pretty; }
 
-/* The register of ten. A number chosen here is a preference that travels with the enquiry. */
-.ledger { margin: 0; padding: 0; border: 0; min-width: 0; }
-.ledger__legend { float: left; margin: 0 0 10px; padding: 0; color: var(--ink-2); }
-.ledger__aside { float: right; margin: 0 0 10px; }
-.ledger__aside .textbtn { padding: 0; color: var(--ink-2); }
-.cells {
-  clear: both; position: relative;
-  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1px; padding: 1px;
-  background: var(--rule);
+@media (min-width: 960px) {
+  .top {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-areas: "pic bar" "pic panel";
+    min-height: 100vh; min-height: 100svh;
+  }
+  .pic { grid-area: pic; aspect-ratio: auto; height: 100vh; height: 100svh; }
+  .bar { grid-area: bar; height: 72px; }
+  .panel { grid-area: panel; padding-bottom: var(--s-8); }
+  .intro { margin-top: auto; padding-block: var(--s-8); max-width: var(--col); }
+  .foot-of-panel { margin-bottom: auto; max-width: var(--col); }
 }
-@media (min-width: 520px) { .cells { grid-template-columns: repeat(10, minmax(0, 1fr)); } }
-.cells input { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none; }
-.cells label {
-  display: grid; place-items: center; height: 44px; background: var(--paper);
-  font-size: var(--fs); font-variant-numeric: tabular-nums;
-  cursor: pointer; user-select: none; -webkit-user-select: none;
-  transition: background-color 0.15s, color 0.15s;
-}
-@media (min-width: 960px) { .cells label { height: 38px; } }
-/* On touch screens of any width, two rows of five keep each number a comfortable target. */
-@media (pointer: coarse) {
-  .cells { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  .cells label { height: 44px; }
-}
-.cells input:checked + label { background: var(--ink); color: var(--paper); }
-.cells input:focus-visible + label { box-shadow: inset 0 0 0 2px var(--ink); }
-.cells input:checked:focus-visible + label { box-shadow: none; }
-.cells input:disabled + label { background: var(--paper); color: var(--ink-3); cursor: default; }
-.cells label.is-held { text-decoration: line-through; }
 
-/* Details, set like a catalogue entry */
-.more { border-block: 1px solid var(--rule); }
-.more summary {
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  padding-block: 10px; cursor: pointer; list-style: none;
+/* Small tracked capitals: every label on the page */
+.bar {
+  font-size: var(--fs-s); font-weight: 500; letter-spacing: var(--track); text-transform: uppercase;
 }
-.more summary::-webkit-details-marker { display: none; }
-.more summary::after { content: "+"; color: var(--ink-2); }
-.more[open] summary::after { content: "\2212"; }
-@media (pointer: coarse) { .more summary { padding-block: 12px; } }
-.spec { margin-bottom: 10px; font-size: var(--fs-s); line-height: 1.5; }
-.spec > div { padding-block: 7px; }
+.facts dt { color: var(--ink-2); }
+
+.foot { margin: var(--s-9) 0 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.6; }
+.opt-tag { color: var(--ink-3); }
 
 /* ---------- Enquiry ---------- */
 .enquiry {
@@ -155,18 +125,21 @@ button, input, textarea, select { font: inherit; color: inherit; }
 @media (max-width: 640px) {
   .dlg { padding: calc(4px + env(safe-area-inset-top, 0px)) var(--m) calc(28px + env(safe-area-inset-bottom, 0px)); }
 }
-.dlg__bar { display: flex; align-items: center; justify-content: space-between; min-height: 48px; }
+.dlg__bar { display: flex; align-items: center; justify-content: space-between; min-height: 48px; padding-top: 12px; }
 .dlg__name { font-weight: 500; font-variant-numeric: tabular-nums; }
 .textbtn {
   appearance: none; padding: 10px 0; border: 0; background: none; color: var(--ink); cursor: pointer;
   text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
 }
 .dlg__intro { display: grid; row-gap: 8px; }
-.dlg__title { margin: 0; font-size: var(--fs-t); font-weight: 500; line-height: 1.12; letter-spacing: -0.014em; }
+.done { display: grid; row-gap: 8px; padding-bottom: 8px; }
+.done .cta { margin-top: 24px; }
+.dlg__title { margin: 0; font-size: 24px; font-weight: 500; line-height: 1.15; letter-spacing: -0.015em; }
 .dlg__title:focus { outline: none; }
 .form { display: grid; row-gap: 22px; }
 .field { display: grid; row-gap: 2px; min-width: 0; }
-.flabel { color: var(--ink-2); }
+.flabel { color: var(--ink-2); font-size: var(--fs-s); font-weight: 500; letter-spacing: var(--track); text-transform: uppercase; }
+.flabel .opt-tag { text-transform: none; letter-spacing: 0; font-weight: 400; }
 .hint { margin: 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.5; }
 .input {
   width: 100%; min-width: 0; padding: 8px 0 9px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0;
@@ -177,34 +150,40 @@ button, input, textarea, select { font: inherit; color: inherit; }
 textarea.input { min-height: 72px; resize: vertical; }
 @media (hover: hover) and (pointer: fine) { .input { font-size: var(--fs); line-height: 1.55; } }
 
-/* What they would use it for: five plain uses, in view as the form opens, any number chosen. */
-.uses { margin: 0; padding: 0; border: 0; min-width: 0; }
-.uses__legend { padding: 0; }
-.uses .hint { margin: 0 0 6px; }
-.opt { display: flex; align-items: flex-start; gap: 10px; padding-block: 4px; cursor: pointer; }
-.opt input { flex: none; width: 16px; height: 16px; margin: 3px 0 0; accent-color: var(--ink); cursor: pointer; }
-@media (pointer: coarse) {
-  .opt { padding-block: 8px; }
-  .opt input { width: 18px; height: 18px; margin-top: 2px; }
-}
 .trap { position: absolute; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none; }
 .cta {
-  appearance: none; width: 100%; height: 48px; padding: 0 20px; border: 0; border-radius: 999px;
-  background: var(--ink); color: var(--paper); font-size: var(--fs); font-weight: 500; cursor: pointer;
+  appearance: none; width: 100%; height: 48px; padding: 0 20px; border: 0; border-radius: 4px;
+  background: var(--ink); color: var(--paper); font-size: var(--fs-s); font-weight: 600; letter-spacing: var(--track); text-transform: uppercase; cursor: pointer;
   font-variant-numeric: tabular-nums; transition: background-color 0.2s;
 }
 .cta:disabled { opacity: 0.45; cursor: default; }
+.cta--main { width: 200px; max-width: 100%; }
+.textbtn--small { padding: 6px 0; font-size: var(--fs-s); font-weight: 500; letter-spacing: var(--track); text-transform: uppercase; }
 .status { margin: 0; }
 .status:empty { display: none; }
 .status[data-kind="note"] { color: var(--ink-2); }
 
 @media (hover: hover) {
-  .cells input:not(:checked):not(:disabled) + label:hover { background: var(--hover); }
   .cta:not(:disabled):hover { background: #2E2F33; }
-  .more summary:hover::after { color: var(--ink); }
 }
 
-/* Motion only answers an action: the enquiry opening. */
+/* Arrival: the photograph settles first, then the words in reading order. Everything is visible
+   without it; reduced motion skips it entirely. */
+@media (prefers-reduced-motion: no-preference) {
+  .pic img { animation: settle 1.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .intro > *, .facts, .act, .bar, .foot { animation: arrive 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .bar { animation-delay: 0.2s; }
+  .title { animation-delay: 0.35s; }
+  .sub { animation-delay: 0.45s; }
+  .how { animation-delay: 0.6s; }
+  .facts { animation-delay: 0.75s; }
+  .act { animation-delay: 0.85s; }
+  .foot { animation-delay: 1s; }
+}
+@keyframes settle { from { opacity: 0; transform: scale(1.035); } }
+@keyframes arrive { from { opacity: 0; transform: translateY(6px); } }
+
+/* Motion otherwise only answers an action: the enquiry opening. */
 @media (prefers-reduced-motion: no-preference) {
   .enquiry[open] { animation: rise 0.28s ease-out; }
   .enquiry[open]::backdrop { animation: fade 0.28s ease-out; }
@@ -218,100 +197,69 @@ textarea.input { min-height: 72px; resize: vertical; }
 </head>
 <body>
 
-<main class="one" aria-labelledby="name">
-  <p class="mark">Signet 01</p>
+<main>
+  <div class="top">
+    <p class="bar"><span>SIGNET 01</span><span>HANNON TAN</span></p>
+    <figure class="pic">
+      <img src="/images/s01/one.jpg" width="1286" height="1870" alt="Signet 01 in polished sterling silver standing face up on a pale surface, the twelve-turn labyrinth on its square face">
+    </figure>
 
-  <figure class="pic">
-    <img src="/images/s01/one.jpg" width="1286" height="1870" alt="Signet 01 in polished silver standing face up on a pale cloth, the spiral of twelve turns on its square face">
-  </figure>
-
-  <div class="side">
-    <div class="body">
+    <div class="panel">
       <div class="intro">
-        <h1 class="title" id="name">Your word, sealed.</h1>
-        <p class="p">A sterling silver signet ring that signs. Touch it to your phone to sign words, work or&nbsp;instructions.</p>
+        <h1 class="title" id="name">A ring that signs.</h1>
+        <p class="sub">Your personal digital seal, cast in sterling silver.</p>
       </div>
-      <dl class="facts">
-        <div><dt>Design</dt><dd>Jim Hannon-Tan</dd></div>
-        <div><dt>Edition 01</dt><dd>Ten numbered rings</dd></div>
-        <div><dt>First casting</dt><dd data-casting data-closed="Closed. Next casting to be announced" data-full="All ten rings reserved">Closes 30&nbsp;November&nbsp;2026</dd></div>
-        <div><dt>Delivery</dt><dd>Expected from Q1&nbsp;2027</dd></div>
-      </dl>
-      <div class="act">
-        <button class="cta" id="cta" type="button" data-open data-cta>Enquire</button>
-        <noscript><p class="note">Enquiries need JavaScript. Please enable it to send one.</p></noscript>
-      </div>
-      <details class="more" id="details">
-        <summary>Details</summary>
-        <dl class="spec">
-          <div><dt>Signing</dt><dd>Review the words, work or request on your phone, then touch the ring to sign. The signature is bound to exactly what you approved.</dd></div>
-          <div><dt>Material</dt><dd>925 sterling silver</dd></div>
-          <div><dt>Antenna</dt><dd>12-turn labyrinth</dd></div>
-          <div><dt>Chip</dt><dd>Arx HaLo secure element. The key cannot be exported.</dd></div>
-          <div><dt>Connection</dt><dd>Passive NFC, powered by the phone during a touch. No battery.</dd></div>
-          <div><dt>Works with</dt><dd>iPhone and Android phones with NFC. Each function needs compatible software.</dd></div>
-          <div><dt>Size</dt><dd>Made to the owner’s size, confirmed with Jim before any payment.</dd></div>
-          <div><dt>Provenance</dt><dd>Recorded on LUKSO, in the owner’s Universal Profile.</dd></div>
-          <div><dt>Servicing</dt><dd>Studio servicing can renew the electronics and refinish the silver.</dd></div>
+
+      <div class="foot-of-panel">
+        <p class="how">Review a message. Touch the ring to seal it. Share a link so others can check your seal.</p>
+        <dl class="facts">
+          <div><dt>Foundation Edition</dt><dd>10 numbered rings</dd></div>
+          <div><dt>Price</dt><dd>US$7,500</dd></div>
+          <div><dt>First casting</dt><dd data-casting data-closed="Closed" data-full="All ten reserved">Closes 15&nbsp;December&nbsp;2026</dd></div>
+          <div><dt>Delivery</dt><dd>From Q1&nbsp;2027</dd></div>
         </dl>
-      </details>
+        <div class="act">
+          <button class="cta cta--main" id="cta" type="button" data-open data-cta>Enquire</button>
+          <noscript><p class="note">Please enable JavaScript to send an enquiry.</p></noscript>
+        </div>
+      </div>
+      <footer class="foot">©2026 Jim Hannon-Tan Design Pty Ltd · ABN&nbsp;79&nbsp;609&nbsp;672&nbsp;184 · Adelaide, Australia</footer>
     </div>
-    <p class="note">Jim Hannon-Tan Design Pty Ltd, ABN&nbsp;79&nbsp;609&nbsp;672&nbsp;184, Adelaide,&nbsp;Australia</p>
   </div>
 </main>
 
 <dialog class="enquiry" id="enquiry" aria-labelledby="enq-title">
   <div class="dlg">
     <div class="dlg__bar">
-      <span class="dlg__name" id="dlg-name">Signet 01</span>
-      <button class="textbtn" id="close" type="button">Close</button>
+      <span class="dlg__name">SIGNET 01</span>
+      <button class="textbtn textbtn--small" id="close" type="button">Close</button>
     </div>
-    <div class="dlg__intro">
-      <h2 class="dlg__title" id="enq-title" tabindex="-1">Speak with Jim.</h2>
-      <p class="p">Jim Hannon-Tan designed Signet 01 and replies personally by email.</p>
+    <div class="dlg__intro" id="enq-intro">
+      <h2 class="dlg__title" id="enq-title" tabindex="-1">Enquire about Signet&nbsp;01</h2>
+      <p class="p">For availability, sizing or questions about the Foundation Edition.</p>
     </div>
     <form class="form" id="enquiry-form" novalidate>
       <div class="field">
         <label class="flabel" for="f-name">Name</label>
-        <input class="input" id="f-name" name="name" type="text" autocomplete="name">
+        <input class="input" id="f-name" name="name" type="text" autocomplete="name" required>
       </div>
       <div class="field">
         <label class="flabel" for="f-email">Email</label>
         <input class="input" id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required>
       </div>
-      <fieldset class="ledger">
-        <legend class="ledger__legend">Preferred number</legend>
-        <span class="ledger__aside"><button class="textbtn" id="clear" type="button" hidden>Clear</button></span>
-        <div class="cells">
-          <input type="radio" name="number" id="pick-01" value="01"><label for="pick-01">01</label>
-          <input type="radio" name="number" id="pick-02" value="02"><label for="pick-02">02</label>
-          <input type="radio" name="number" id="pick-03" value="03"><label for="pick-03">03</label>
-          <input type="radio" name="number" id="pick-04" value="04"><label for="pick-04">04</label>
-          <input type="radio" name="number" id="pick-05" value="05"><label for="pick-05">05</label>
-          <input type="radio" name="number" id="pick-06" value="06"><label for="pick-06">06</label>
-          <input type="radio" name="number" id="pick-07" value="07"><label for="pick-07">07</label>
-          <input type="radio" name="number" id="pick-08" value="08"><label for="pick-08">08</label>
-          <input type="radio" name="number" id="pick-09" value="09"><label for="pick-09">09</label>
-          <input type="radio" name="number" id="pick-10" value="10"><label for="pick-10">10</label>
-        </div>
-      </fieldset>
-      <fieldset class="uses" id="uses">
-        <legend class="flabel uses__legend">What would you use it for?</legend>
-        <p class="hint">Some are still in development.</p>
-        <label class="opt"><input type="checkbox" name="fn" value="Sign documents, images and autographs"><span>Sign documents, images and autographs</span></label>
-        <label class="opt"><input type="checkbox" name="fn" value="Authorise people or AI to act for you"><span>Authorise people or AI to act for you</span></label>
-        <label class="opt"><input type="checkbox" name="fn" value="Approve multisig transactions"><span>Approve multisig transactions</span></label>
-        <label class="opt"><input type="checkbox" name="fn" value="Use it as an event pass or membership card"><span>Use it as an event pass or membership card</span></label>
-        <label class="opt"><input type="checkbox" name="fn" value="Add ring approval to your own app"><span>Add ring approval to your own app</span></label>
-      </fieldset>
       <div class="field">
-        <label class="flabel" for="f-note">A note for Jim</label>
-        <textarea class="input" id="f-note" name="note" rows="3" placeholder="Ask about the ring, a function or a private viewing."></textarea>
+        <label class="flabel" for="f-note">Message <span class="opt-tag">Optional</span></label>
+        <textarea class="input" id="f-note" name="note" rows="4"></textarea>
       </div>
       <input class="trap" id="f-check" name="botcheck" type="checkbox" tabindex="-1" aria-hidden="true">
       <button class="cta" id="send" type="submit">Send enquiry</button>
       <p class="status" id="status" role="status" aria-live="polite"></p>
     </form>
+    <div class="done" id="enq-done" hidden>
+      <h2 class="dlg__title" id="done-title" tabindex="-1">Thank you.</h2>
+      <p class="p">Your enquiry has been received. Jim will reply by email.</p>
+      <button class="cta" id="done-close" type="button">Close</button>
+    </div>
   </div>
 </dialog>
 
@@ -320,11 +268,10 @@ textarea.input { min-height: 72px; resize: vertical; }
   "use strict";
 
   // ---------- Settings ----------
-  // Numbers reserved with a paid deposit, e.g. ["01", "07"]. Each is struck out on the page.
-  var HELD = [];
+  // How many of the ten are reserved with a paid deposit. At ten, the page shows the edition as full.
+  var RESERVED = 0;
   // The first casting takes the numbers reserved before this moment (Adelaide time).
-  // Numbers still open afterwards wait for the next casting.
-  var FIRST_CASTING_CLOSES = new Date("2026-12-01T00:00:00+10:30");
+  var FIRST_CASTING_CLOSES = new Date("2026-12-16T00:00:00+10:30");
   // Web3Forms access key, the same one the Signet 01 request form on hannontan.com uses.
   var FORM_KEY = "2bcce2a4-04ef-4d44-8747-5753f9fe040a";
   // ------------------------------
@@ -337,64 +284,25 @@ textarea.input { min-height: 72px; resize: vertical; }
   var dialog = document.getElementById("enquiry");
   var form = document.getElementById("enquiry-form");
   var title = document.getElementById("enq-title");
-  var dlgName = document.getElementById("dlg-name");
   var statusEl = document.getElementById("status");
-  var clearBtn = document.getElementById("clear");
   var sendBtn = document.getElementById("send");
   var nameEl = document.getElementById("f-name");
   var emailEl = document.getElementById("f-email");
   var noteEl = document.getElementById("f-note");
   var trapEl = document.getElementById("f-check");
-  var radios = all('input[name="number"]');
   var ctas = all("[data-cta]");
-  var current = "";
   var lastTrigger = null;
-
-  HELD.forEach(function (n) {
-    radios.forEach(function (r) {
-      if (r.value === n) {
-        r.disabled = true; r.nextElementSibling.classList.add("is-held");
-        r.setAttribute("aria-label", "Number " + n + ", reserved");
-      }
-    });
-  });
 
   // Every mention of the first casting changes together once the edition is full or the casting has closed.
   function casting(state, fallback) {
     all("[data-casting]").forEach(function (el) { el.textContent = el.getAttribute("data-" + state) || fallback; });
   }
-  var closed = HELD.length >= EDITION;
+  var closed = RESERVED >= EDITION;
   if (closed) {
-    radios.forEach(function (r) { r.disabled = true; });
+    ctas.forEach(function (b) { b.textContent = "Join the waitlist"; });
     casting("full", "All ten reserved");
   } else if (Date.now() >= FIRST_CASTING_CLOSES.getTime()) {
     casting("closed", "Closed. Next casting to be announced");
-  }
-
-  function valid(n) {
-    var r = /^\d{2}$/.test(n || "") ? document.getElementById("pick-" + n) : null;
-    return !!r && !r.disabled;
-  }
-
-  // One preferred number, chosen in the enquiry form. It is a preference, sent with the enquiry.
-  function setNumber(n) {
-    current = valid(n) ? n : "";
-    radios.forEach(function (r) { r.checked = r.value === current; });
-    ctas.forEach(function (b) { b.textContent = current ? "Enquire about #" + current : (closed ? "Join the waitlist" : "Enquire"); });
-    dlgName.textContent = current ? "Signet 01 #" + current : "Signet 01";
-    clearBtn.hidden = !current;
-  }
-
-  radios.forEach(function (r) {
-    // Pressing the chosen number again clears it.
-    r.addEventListener("click", function () { setNumber(r.value === current ? "" : r.value); });
-    r.addEventListener("change", function () { if (r.checked && r.value !== current) { setNumber(r.value); } });
-  });
-  clearBtn.addEventListener("click", function () { setNumber(""); });
-
-  // The functions the person would like, in the order the form lists them.
-  function chosenFunctions() {
-    return all('input[name="fn"]:checked').map(function (i) { return i.value; });
   }
 
   function say(message, kind) {
@@ -402,8 +310,20 @@ textarea.input { min-height: 72px; resize: vertical; }
     if (kind) { statusEl.setAttribute("data-kind", kind); } else { statusEl.removeAttribute("data-kind"); }
   }
 
+  var intro = document.getElementById("enq-intro");
+  var done = document.getElementById("enq-done");
+
+  // After a successful send the form gives way to a thank-you. Opening the form again starts fresh.
+  function showDone(isDone) {
+    intro.hidden = isDone;
+    form.hidden = isDone;
+    done.hidden = !isDone;
+    document.getElementById("close").hidden = isDone;
+  }
+
   function openEnquiry(trigger) {
     lastTrigger = trigger || null;
+    showDone(false);
     say("");
     if (typeof dialog.showModal === "function") {
       if (!dialog.open) { dialog.showModal(); }
@@ -422,29 +342,35 @@ textarea.input { min-height: 72px; resize: vertical; }
     b.addEventListener("click", function () { openEnquiry(b); });
   });
   document.getElementById("close").addEventListener("click", closeEnquiry);
+  document.getElementById("done-close").addEventListener("click", closeEnquiry);
   dialog.addEventListener("click", function (e) { if (e.target === dialog) { closeEnquiry(); } });
   dialog.addEventListener("close", function () {
     if (lastTrigger && typeof lastTrigger.focus === "function") { lastTrigger.focus(); }
   });
 
-  // A link to #enquire or #enquire-07 opens the form, with that number preferred.
-  function fromHash(first) {
-    var deep = /^#enquire(?:-(\d{2}))?$/.exec(window.location.hash || "");
-    if (first || (deep && deep[1])) { setNumber(deep && deep[1] ? deep[1] : ""); }
-    if (deep) { openEnquiry(null); }
+  // A link to #enquire opens the form. Older links such as #enquire-07 still open it.
+  function fromHash() {
+    if (/^#enquire(?:-\w+)?$/i.test(window.location.hash || "")) { openEnquiry(null); }
   }
-  fromHash(true);
-  window.addEventListener("hashchange", function () { fromHash(false); });
+  fromHash();
+  window.addEventListener("hashchange", fromHash);
 
   emailEl.addEventListener("input", function () { emailEl.removeAttribute("aria-invalid"); });
+  nameEl.addEventListener("input", function () { nameEl.removeAttribute("aria-invalid"); });
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     if (trapEl.checked) { return; }
 
+    if (!nameEl.value.trim()) {
+      say("Please enter your name.", "error");
+      nameEl.setAttribute("aria-invalid", "true");
+      nameEl.focus();
+      return;
+    }
     var email = emailEl.value.trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      say("Add your email so Jim can reply.", "error");
+      say("Please enter a valid email address.", "error");
       emailEl.setAttribute("aria-invalid", "true");
       emailEl.focus();
       return;
@@ -456,14 +382,12 @@ textarea.input { min-height: 72px; resize: vertical; }
 
     var payload = {
       access_key: FORM_KEY,
-      subject: current ? "Signet 01 enquiry · #" + current : "Signet 01 enquiry",
+      subject: "Signet 01 enquiry",
       from_name: "The Signet",
       replyto: email,
-      name: nameEl.value.trim() || "Not given",
+      name: nameEl.value.trim(),
       email: email,
-      number: current ? "#" + current : "No preference",
-      functions: chosenFunctions().join("; ") || "None chosen",
-      message: noteEl.value.trim() || "No note",
+      message: noteEl.value.trim() || "No message",
       page: "hannontan.com"
     };
 
@@ -484,12 +408,11 @@ textarea.input { min-height: 72px; resize: vertical; }
       .then(function (r) {
         if (r.ok && r.data.success !== false) {
           form.reset();
-          setNumber("");
-          say("Thank you. Jim has your enquiry and will reply by email.", "ok");
-        } else if (r.data.message) {
-          say(r.data.message + " Your details are still here.", "error");
+          say("");
+          showDone(true);
+          document.getElementById("done-title").focus();
         } else {
-          say("Your enquiry didn’t send. Your details are still here. Please try again.", "error");
+          say("Your enquiry couldn’t be sent. Your details are still here. Please try again.", "error");
         }
       })
       .catch(function (err) {
@@ -497,9 +420,9 @@ textarea.input { min-height: 72px; resize: vertical; }
           // Inside the Claude preview, pages cannot reach outside services. On hannontan.com the same request sends.
           say("This preview can’t send enquiries. The form sends once the page is on hannontan.com.", "note");
         } else if (err && err.name === "AbortError") {
-          say("We couldn’t confirm it arrived. Your details are still here. Please try again.", "error");
+          say("We couldn’t confirm that your enquiry arrived. Your details are still here. Please try again.", "error");
         } else {
-          say("We couldn’t connect. Your details are still here. Please try again.", "error");
+          say("Your enquiry couldn’t be sent. Your details are still here. Please try again.", "error");
         }
       })
       .then(function () {
