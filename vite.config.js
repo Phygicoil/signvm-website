@@ -11,6 +11,7 @@ export default defineConfig({
         v3: 'v3.html',
         six: '6.html',
         onec: '1c.html',
+        thesignet: 'the-signet.html',
         pd: 'pd/index.html',
         pitchdeck: 'pitchdeck/index.html'
       }

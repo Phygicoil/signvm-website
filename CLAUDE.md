@@ -23,6 +23,15 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 | /6 | `6.html` | Copy of branch `6`, live since 8 Oct 2026, hidden from search engines |
 | /v1, /v2, /v3 | `v1.html` … `v3.html` | Earlier versions, kept. /v3 is the home page before 8 Oct 2026 |
 | /pd, /pitchdeck | `pd/`, `pitchdeck/` | Earlier materials |
+| /the-signet | `the-signet.html` | Rebuild of hannon-tan.vercel.app ("The weight of a decision."), 16 Oct 2026, on branch `the-signet` until Jim decides. Hidden from search engines. Keeps the original's own design (see below) |
+
+- `/the-signet` copies the original's layout, type and spacing pixel for pixel, so it does not use the house style below:
+  - Colours: paper `#F1F0EA`, ink `#111`, seal red `#A5362E`, white `#FFF` behind photos and the demonstration card.
+  - Type: "Neue Haas Grotesk Display Pro", then Helvetica Neue, Helvetica, Arial. No web font, as on the original.
+  - Grid: a 1360px shell with 20, 64 and 96px side padding (from 768 and 1200px); 4 columns on phones, 12 from 768px.
+  - The demonstration has six states: conversation, phone hand-off (768px and wider only), review, touch, sealed, return.
+  - The only wording changes replace em dashes: in the title, the hero photo's alt text and "QR · Secure Mobile Request".
+  - Photos: `public/images/the-signet/` (JPEG copies of the original PNGs).
 
 - The home page's five uses cover the ten functions:
   - Sign documents, images and autographs: Sign a text, image or document; Mint a moment.

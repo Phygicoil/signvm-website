@@ -8,6 +8,7 @@
     { "source": "/v2", "destination": "/v2.html" },
     { "source": "/v3", "destination": "/v3.html" },
     { "source": "/6", "destination": "/6.html" },
-    { "source": "/1c", "destination": "/1c.html" }
+    { "source": "/1c", "destination": "/1c.html" },
+    { "source": "/the-signet", "destination": "/the-signet.html" }
   ]
 }
