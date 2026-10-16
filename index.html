@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Signet 01 · HANNON TAN</title>
-<meta name="description" content="Signet 01, Jim Hannon-Tan, 2026. A signet ring that signs. Cast in sterling silver, it holds a private key that never leaves the object. Foundation Edition of 10.">
+<meta name="description" content="Signet 01, Jim Hannon-Tan, 2026. A ring that signs. Cast in sterling silver, it lets you add your seal to a written message. Foundation Edition of ten numbered rings.">
 <link rel="canonical" href="https://www.hannontan.com/">
 <meta property="og:title" content="Signet 01 · HANNON TAN">
 <meta property="og:description" content="A signet ring that signs. Jim Hannon-Tan, 2026.">
@@ -21,8 +21,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap">
 <style>
-/* One screen. The ring on the left; on the right one statement, the edition and Enquire.
-   Quiet type: a modest title, 15px text, small tracked capitals for labels. Ink and one grey. Light only. */
+/* The ring on the left, held in place on wide screens; on the right the work's label, the statement,
+   the labyrinth, the edition and Enquire. Quiet type: a modest title, 15px text, small tracked capitals
+   for labels. Ink and one grey. Light only. */
 :root {
   --paper: #F7F5F1;
   --plate: #EEEAE4;
@@ -77,18 +78,17 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .bar { display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 0; padding-inline: var(--m); }
 .intro { padding-block: var(--s-7); }
 .title { margin: 0; font-size: var(--fs-t); font-weight: 500; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
-.sub { margin: var(--s-4) 0 0; font-size: var(--fs-l); line-height: 1.35; letter-spacing: -0.008em; text-wrap: balance; }
 .byline { margin: var(--s-1) 0 0; color: var(--ink-2); font-size: var(--fs-l); line-height: 1.35; }
-.statement { margin: var(--s-7) 0 0; max-width: 32em; font-size: var(--fs-m); line-height: 1.55; text-wrap: pretty; }
+.lead { margin: var(--s-7) 0 0; font-size: var(--fs-l); line-height: 1.35; letter-spacing: -0.008em; text-wrap: balance; }
+.statement { margin: var(--s-4) 0 0; max-width: 32em; font-size: var(--fs-m); line-height: 1.55; text-wrap: pretty; }
+/* The labyrinth, the edition and Enquire: each opens with a rule and a label in small capitals. */
+.part { margin-top: var(--s-8); padding-top: var(--s-5); border-top: 1px solid var(--rule); }
+.part__name { margin: 0; font-size: var(--fs-s); font-weight: 500; line-height: 1.5; letter-spacing: var(--track); text-transform: uppercase; }
+.part__name + .statement, .part__name + .caption { margin-top: var(--s-3); }
 .caption { margin: 0; font-size: 13px; line-height: 1.6; font-variant-numeric: tabular-nums; }
 .caption--terms { margin-top: var(--s-4); color: var(--ink-2); }
-.how { margin: 0 0 var(--s-5); font-size: 13px; line-height: 1.5; text-wrap: pretty; }
-.foot-of-panel { padding-top: var(--s-5); border-top: 1px solid var(--rule); }
-.facts { display: grid; grid-template-columns: repeat(2, max-content); justify-content: start; gap: var(--s-4) var(--s-8); margin: 0; padding-top: var(--s-5); border-top: 1px solid var(--rule); font-size: 13px; line-height: 1.45; font-variant-numeric: tabular-nums; }
-.facts div { min-width: 0; }
-.facts dd { margin: var(--s-1) 0 0; }
-@media (max-width: 380px) { .facts { grid-template-columns: max-content; } }
-.act { display: grid; justify-items: start; row-gap: var(--s-3); margin-top: var(--s-7); }
+.act { display: grid; justify-items: start; row-gap: var(--s-3); }
+.act .caption--terms { margin-top: 0; max-width: 30em; text-wrap: pretty; }
 .note { margin: 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.5; text-wrap: pretty; }
 
 @media (min-width: 960px) {
@@ -98,18 +98,18 @@ button, input, textarea, select { font: inherit; color: inherit; }
     grid-template-areas: "pic bar" "pic panel";
     min-height: 100vh; min-height: 100svh;
   }
-  .pic { grid-area: pic; aspect-ratio: auto; height: 100vh; height: 100svh; }
+  .pic { grid-area: pic; position: sticky; top: 0; align-self: start; aspect-ratio: auto; height: 100vh; height: 100svh; }
   .bar { grid-area: bar; height: 72px; }
   .panel { grid-area: panel; padding-bottom: var(--s-8); }
-  .intro { margin-top: auto; padding-block: var(--s-8); max-width: var(--col); }
-  .foot-of-panel { margin-bottom: auto; max-width: var(--col); }
+  .intro { padding-block: var(--s-8) 0; }
+  .intro, .part { max-width: var(--col); }
+  .part { margin-top: var(--s-9); }
 }
 
 /* Small tracked capitals: every label on the page */
 .bar {
   font-size: var(--fs-s); font-weight: 500; letter-spacing: var(--track); text-transform: uppercase;
 }
-.facts dt { color: var(--ink-2); }
 
 .foot { margin: var(--s-9) 0 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.6; }
 .opt-tag { color: var(--ink-3); }
@@ -175,14 +175,12 @@ textarea.input { min-height: 72px; resize: vertical; }
    without it; reduced motion skips it entirely. */
 @media (prefers-reduced-motion: no-preference) {
   .pic img { animation: settle 1.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
-  .intro > *, .facts, .act, .bar, .foot { animation: arrive 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .bar, .intro > * { animation: arrive 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
   .bar { animation-delay: 0.2s; }
   .title { animation-delay: 0.35s; }
-  .sub { animation-delay: 0.45s; }
-  .how { animation-delay: 0.6s; }
-  .facts { animation-delay: 0.75s; }
-  .act { animation-delay: 0.85s; }
-  .foot { animation-delay: 1s; }
+  .byline { animation-delay: 0.45s; }
+  .lead { animation-delay: 0.55s; }
+  .statement { animation-delay: 0.65s; }
 }
 @keyframes settle { from { opacity: 0; transform: scale(1.035); } }
 @keyframes arrive { from { opacity: 0; transform: translateY(6px); } }
@@ -212,16 +210,28 @@ textarea.input { min-height: 72px; resize: vertical; }
       <div class="intro">
         <h1 class="title" id="name">Signet 01</h1>
         <p class="byline">Jim Hannon-Tan, 2026</p>
-        <p class="statement">Signet 01 is a signet ring that signs. Cast in sterling silver, it holds a private key that never leaves the object. Touched to a phone, it seals a written message; whoever receives it can verify that the words are the wearer’s own, unaltered.</p>
+        <p class="lead">A ring that signs.</p>
+        <p class="statement">Signet 01 brings the personal gesture of a signet ring to digital life. Cast in sterling silver, it lets you add your seal to a written message: a personal note, a dedication, an instruction or a statement you choose to put your name to.</p>
+        <p class="statement">Write or review your message on your phone, then touch the ring to seal it. A secure chip inside creates a digital signature linked to those exact words. Share the sealed message as a link through email or WhatsApp. The recipient can verify which ring signed it and check that the message has not been altered.</p>
+        <p class="statement">Adding your seal is a deliberate gesture. It gives you a way to mark the words and moments that deserve your personal attention.</p>
       </div>
 
-      <div class="foot-of-panel">
-        <p class="caption">Sterling silver, secure element<br>Foundation Edition of 10</p>
-        <p class="caption caption--terms">US$7,500<br><span data-casting data-closed="First casting closed" data-full="All ten reserved">First casting closes 15&nbsp;December&nbsp;2026</span><br>Delivery from Q1&nbsp;2027</p>
-        <div class="act">
-          <button class="cta cta--main" id="cta" type="button" data-open data-cta>Enquire</button>
-          <noscript><p class="note">Please enable JavaScript to send an enquiry.</p></noscript>
-        </div>
+      <section class="part" aria-labelledby="labyrinth">
+        <h2 class="part__name" id="labyrinth">The labyrinth</h2>
+        <p class="statement">The labyrinth divides the silver face into a continuous, twelve-turn path, forming the antenna that connects the ring to your phone. The silver itself becomes a working part of the instrument.</p>
+        <p class="statement">Powered by the phone during the touch, the ring needs no battery or charging. The same path that makes this interaction possible invites a moment of consideration before you make your mark.</p>
+      </section>
+
+      <section class="part" aria-labelledby="edition">
+        <h2 class="part__name" id="edition">Foundation Edition</h2>
+        <p class="caption">Ten individually numbered rings<br>925 sterling silver<br>US$7,500</p>
+        <p class="caption caption--terms"><span data-casting data-closed="First casting closed" data-full="All ten reserved">First casting closes 15&nbsp;December&nbsp;2026</span><br>Delivery from Q1&nbsp;2027</p>
+      </section>
+
+      <div class="part act">
+        <button class="cta cta--main" id="cta" type="button" data-open data-cta>Enquire</button>
+        <p class="caption caption--terms">For availability, sizing or questions about Signet&nbsp;01, contact Jim&nbsp;Hannon-Tan.</p>
+        <noscript><p class="note">Please enable JavaScript to send an enquiry.</p></noscript>
       </div>
       <footer class="foot">©2026 · ABN&nbsp;79&nbsp;609&nbsp;672&nbsp;184 · Adelaide, Australia</footer>
     </div>

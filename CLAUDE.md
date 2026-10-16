@@ -5,7 +5,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 ## Names
 - HANNON TAN: the brand, always in capitals.
 - Jim Hannon-Tan: the designer, with a hyphen. Company: Jim Hannon-Tan Design Pty Ltd, ABN 79 609 672 184 (in the footers of /, /1c and /6).
-- Signet 01: the product. Edition 01: its first numbered edition.
+- Signet 01: the product. Foundation Edition: its first edition, ten numbered rings. Older pages call it Edition 01.
 
 ## Publishing
 - `main` is production: every push to `main` publishes hannontan.com. Push to `main` only when Jim asks to publish.
@@ -17,19 +17,13 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 ## Pages
 | URL | File | What it is |
 | --- | --- | --- |
-| / | `index.html` | Home page since 9 Oct 2026, first built as /1b. One screen: "Signet 01" header, the offer as a label and value list, Enquire (the same solid button as Send enquiry), and Details folded away in a 12px size whose values line up with the offer's. No number boxes on the page; the enquiry form keeps them. The form asks "What would you use it for?" with five plain uses, shown as it opens, any number ticked (sent as `functions`, joined with "; ", page "hannontan.com") |
+| / | `index.html` | Home page, in Jim's gallery voice since 15 Oct 2026; copy from Jim, 16 Oct 2026. The work's label ("Signet 01", "Jim Hannon-Tan, 2026"), "A ring that signs." and three paragraphs, then The labyrinth, Foundation Edition and Enquire, each under a rule. On wide screens the photograph stays in place while the words scroll. The enquiry form asks for name, email and an optional message |
 | /1b | none | Redirects to / (temporary, so it can come back as its own page) |
 | /1c | `1c.html` | The home page from 8 to 9 Oct 2026, hidden from search engines. Its form sends page "hannontan.com/1c" |
 | /6 | `6.html` | Copy of branch `6`, live since 8 Oct 2026, hidden from search engines |
 | /v1, /v2, /v3 | `v1.html` … `v3.html` | Earlier versions, kept. /v3 is the home page before 8 Oct 2026 |
 | /pd, /pitchdeck | `pd/`, `pitchdeck/` | Earlier materials |
 
-- The home page's five uses cover the ten functions:
-  - Sign documents, images and autographs: Sign a text, image or document; Mint a moment.
-  - Authorise people or AI to act for you: Delegate to a person; Set an AI mandate; Manage agent permissions.
-  - Approve multisig transactions: Approve a transaction.
-  - Use it as an event pass or membership card: Unlock access; Carry your membership.
-  - Add ring approval to your own app: Build with Signet; Approve a protected action.
 - A new page needs an entry in the `vite.config.js` inputs and, for a clean URL, a rewrite in `vercel.json`.
 - Photos live in `public/images/s01/`: `one.jpg` (hero), `touch.jpg` (the gesture), `cream.jpg` (the object), `portrait.jpg` (designer), `share.jpg` (1200 × 630 share image).
 - `LLMS.TXT` is old SIGNVM copy and isn't deployed. Don't use it as a source of facts.
@@ -40,6 +34,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 
 ## How the pages are built
 - Each page is one self-contained HTML file with inline CSS and JS. No framework.
+- The home page has its own palette and sizes: paper `#F7F5F1`, plate `#EEEAE4`, ink `#000000`, ink-2 `#66625C`, rule `#E4E0D9`; a 30px title (40px from 960px), 15px text, statements at 16px (17px), labels in 11px tracked capitals. The notes below describe the older pages.
 - Typeface: Instrument Sans from Google Fonts (400, 500, 600). Light only.
 - Colours: paper `#FFFFFF`, plate `#EFF0F2` (behind photos), ink `#000000`, ink-2 `#696C72` (labels, captions, notes), rule `#E3E4E7`, line `#8C8F95`.
 - Two type sizes:
@@ -57,7 +52,8 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 - Motion only answers an action (the enquiry opening) and respects `prefers-reduced-motion`.
 
 ## Settings at the top of each page's script
-- `HELD`: numbers already reserved, for example `["01", "07"]`. They show struck out. When all ten are held, the button becomes "Join the waitlist".
+- `HELD` (older pages): numbers already reserved, for example `["01", "07"]`. They show struck out. When all ten are held, the button becomes "Join the waitlist".
+- `RESERVED` (home page): how many of the ten are reserved. At ten, Enquire becomes "Join the waitlist" and the casting line reads "All ten reserved".
 - `FIRST_CASTING_CLOSES`: the casting deadline, in Adelaide time. After it, every element marked `data-casting` switches to its closed wording.
 - `FORM_KEY`: the Web3Forms access key. It's public by design, because the browser sends it.
 - `DEMO_FILM` (branch 6 and /6 only): the demonstration film. While it's empty, the gesture photograph shows and no player appears. To add the film:
@@ -69,12 +65,11 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 ## Enquiry form
 - Posts JSON to `https://api.web3forms.com/submit` with these fields:
   - `access_key`, `from_name` ("The Signet"), `replyto`, `name`, `email`
-  - `subject`: "Signet 01 enquiry", or "Signet 01 enquiry · #07" when a number is chosen
-  - `number`, `message`
-  - `functions`: joined with "; " on the home page and branch 6, and with ", " on /1c
+  - `subject`: "Signet 01 enquiry", or "Signet 01 enquiry · #07" when a number is chosen (older pages)
+  - `message`; older pages also send `number` and `functions` (joined with "; " on branch 6, ", " on /1c)
   - `page`: "hannontan.com", "hannontan.com/1c" or "hannontan.com/6"
-- Only the email is required.
-- Links to `#enquire` or `#enquire-07` open the form, with that number chosen.
+- The home page requires name and email. Older pages require only the email.
+- Links to `#enquire` open the form. On older pages `#enquire-07` also chooses that number.
 - Never send a real enquiry while testing. Intercept `api.web3forms.com` (for example with Playwright's `page.route`) and answer it locally.
 
 ## Copy rules
@@ -84,11 +79,12 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 - British spelling: authorise, centre, colour.
 - Claims stay honest. Add no promises the product can't back, such as lifetime support, upgrades, investment value or working with every phone, door or system.
 - Prices, edition terms and readiness labels are Jim's to decide. Publish deposit or reservation terms only after he confirms them.
-- No price on any page for now (Jim, 10 Oct 2026). Don't publish one until he says.
+- The home page shows the Foundation Edition price, US$7,500 (Jim, 16 Oct 2026). /1c, /6 and branch 6 still show none.
 
 ## Product facts on the site
 - Signet 01, reference S01.AG. 925 sterling silver. A 12-turn labyrinth antenna. Arx HaLo secure element; its key is made on the chip and can't be exported. Passive NFC, with no battery.
-- Edition 01: ten rings numbered 01 to 10, made to the owner's size. The price (US$4,800 each) is off the site for now. First casting closes 30 November 2026. Delivery expected from Q1 2027.
+- Foundation Edition: ten individually numbered rings in 925 sterling silver, US$7,500 each. First casting closes 15 December 2026. Delivery from Q1 2027. Older pages still show Edition 01 with a 30 November casting and no price.
+- Sealing a written message: write or review it on the phone, touch the ring, share the sealed message as a link by email or WhatsApp; the recipient can verify which ring signed it and that the words are unaltered (Jim's home page copy, 16 Oct 2026).
 - Works with iPhone and Android phones with NFC. Each function needs compatible software.
 - Provenance is recorded on LUKSO, in the owner's Universal Profile. Studio servicing can renew the electronics and refinish the silver.
 
