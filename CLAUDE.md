@@ -17,7 +17,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 ## Pages
 | URL | File | What it is |
 | --- | --- | --- |
-| / | `index.html` | Home page, one screen, in Jim's gallery voice (19 Oct 2026). The work's label ("Signet 01", "Jim Hannon-Tan, 2026"), one paragraph ("A ring that signs, cast in sterling silver…"), a grey note that AI and blockchain applications are in development, then a caption (sterling silver, 12-turn labyrinth antenna, secure element; Foundation Edition of 10), price and dates, and Enquire. The enquiry form asks for name, email and an optional message |
+| / | `index.html` | Home page, one screen, set as a gallery label (20 Oct 2026): "Signet 01", "Jim Hannon-Tan, 2026", "Sterling silver, antenna, secure element / Foundation Edition of 10"; under a rule, two short paragraphs (the personal seal in digital communication; the labyrinth as face and antenna; touching the ring to a phone signs a message the recipient can verify), then Enquire. No price or dates on the page. The enquiry form asks for name, email and an optional message |
 | /1b | none | Redirects to / (temporary, so it can come back as its own page) |
 | /1c | `1c.html` | The home page from 8 to 9 Oct 2026, hidden from search engines. Its form sends page "hannontan.com/1c" |
 | /6 | `6.html` | Copy of branch `6`, live since 8 Oct 2026, hidden from search engines |
@@ -79,7 +79,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 - British spelling: authorise, centre, colour.
 - Claims stay honest. Add no promises the product can't back, such as lifetime support, upgrades, investment value or working with every phone, door or system.
 - Prices, edition terms and readiness labels are Jim's to decide. Publish deposit or reservation terms only after he confirms them.
-- The home page shows the Foundation Edition price, US$7,500 (Jim, 16 Oct 2026). /1c, /6 and branch 6 still show none.
+- The Foundation Edition price is US$7,500 (Jim, 16 Oct 2026), but the home page no longer shows it, or the casting and delivery dates (Jim, 20 Oct 2026). /1c, /6 and branch 6 show none either.
 
 ## Product facts on the site
 - Signet 01, reference S01.AG. 925 sterling silver. A 12-turn labyrinth antenna. Arx HaLo secure element; its key is made on the chip and can't be exported. Passive NFC, with no battery.
