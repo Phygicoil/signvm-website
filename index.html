@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Signet 01 · HANNON TAN</title>
-<meta name="description" content="Signet 01, Jim Hannon-Tan, 2026. Sterling silver, antenna, secure element. Foundation Edition of 10. Signet 01 brings the tradition of the personal seal into digital communication.">
+<meta name="description" content="Signet 01 by Jim Hannon-Tan. Physical verifiable intent. Foundation Edition of 10, US$10,000. Request allocation.">
 <link rel="canonical" href="https://www.hannontan.com/">
 <meta property="og:title" content="Signet 01 · HANNON TAN">
 <meta property="og:description" content="A signet ring that signs. Jim Hannon-Tan, 2026.">
@@ -19,104 +19,70 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap">
 <style>
-/* One screen. The ring on the left; on the right one statement, the edition and Enquire.
-   Quiet type: a modest title, 15px text, small tracked capitals for labels. Ink and one grey. Light only. */
+/* One object, one line, one action. Nothing else. A placeholder that says only what is certain:
+   the ring, its name, its idea, the edition and how to ask for one. */
 :root {
-  --paper: #F7F5F1;
-  --plate: #EEEAE4;
-  --ink: #000000;
-  --ink-2: #66625C;
-  --ink-3: #B4B7BC;
-  --line: #8C8F95;
-  --rule: #E4E0D9;
-  --hover: #EFECE6;
+  --paper: #F5F3EF;
+  --plate: #ECE7E0;
+  --ink: #111111;
+  --ink-2: #6B6862;
+  --ink-3: #B4B1AB;
+  --line: #8C8A86;
+  --rule: #DFDBD4;
+  --hover: #ECE9E3;
   --scrim: rgba(0, 0, 0, 0.3);
-  --sans: "Instrument Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --m: 24px;
-  --fs: 15px;
-  --fs-s: 11px;
-  --fs-t: 30px;
-  --fs-l: 17px;
-  --fs-m: 16px;
+  --sans: "Geist", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --fs-t: 34px;
+  --fs: 16px;
+  --fs-s: 12px;
+  --fs-l: var(--fs);
+  --fs-m: var(--fs);
   --track: 0.12em;
-  /* Spacing scale, 4px base. Tight steps inside a group, the wide steps between groups. */
-  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 20px; --s-6: 24px; --s-7: 32px; --s-8: 48px; --s-9: 64px;
-  --col: 440px;
-  --key: 128px;
+  --m: 20px;
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 20px; --s-6: 24px; --s-7: 32px; --s-8: 48px; --s-9: 64px; --s-10: 96px; --s-11: 144px;
+  --read: 34em;
   color-scheme: light;
 }
-@media (min-width: 960px) { :root { --m: clamp(40px, 4.5vw, 72px); --fs-t: 40px; --fs-l: 19px; --fs-m: 17px; } }
-
+@media (min-width: 960px) { :root { --fs-t: 44px; --m: 40px; } }
 
 *, *::before, *::after { box-sizing: border-box; }
 html:has(dialog[open]) { overflow: hidden; }
 body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font: 400 var(--fs)/1.55 var(--sans);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 400 var(--fs)/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
 }
 img { display: block; max-width: 100%; }
 [hidden] { display: none !important; }
 button, input, textarea, select { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .p { margin: 0; max-width: 34em; text-wrap: pretty; }
+.nowrap { white-space: nowrap; }
+.small { font-size: var(--fs-s); font-weight: 500; letter-spacing: var(--track); text-transform: uppercase; }
 .dlg__name { letter-spacing: var(--track); font-size: var(--fs-s); }
-.caps { font-size: var(--fs-s); font-weight: 500; letter-spacing: var(--track); text-transform: uppercase; }
 
-/* ---------- First screen ---------- */
-.top { display: grid; grid-template-columns: minmax(0, 1fr); }
-.pic { position: relative; margin: 0; aspect-ratio: 4 / 5; background: var(--plate); overflow: hidden; }
-.pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 52%; }
+/* ---------- Header ---------- */
+.bar { display: flex; justify-content: space-between; align-items: center; height: 64px; margin: 0; padding-inline: var(--m); }
+.bar__link { color: var(--ink); text-decoration: none; padding: 8px 0 8px 16px; }
+@media (hover: hover) { .bar__link:hover { color: var(--ink-2); } }
 
-.panel { display: flex; flex-direction: column; min-width: 0; padding: 0 var(--m) var(--s-8); }
-.bar { display: flex; justify-content: space-between; align-items: center; height: 56px; margin: 0; padding-inline: var(--m); }
-.intro { padding-block: var(--s-7); }
-.title { margin: 0; font-size: var(--fs-t); font-weight: 500; line-height: 1.08; letter-spacing: -0.02em; text-wrap: balance; }
-.sub { margin: var(--s-4) 0 0; font-size: var(--fs-l); line-height: 1.35; letter-spacing: -0.008em; text-wrap: balance; }
-.byline { margin: var(--s-2) 0 0; color: var(--ink-2); font-size: var(--fs-m); line-height: 1.35; }
-.statement { margin: var(--s-7) 0 0; max-width: 31em; font-size: var(--fs-m); line-height: 1.5; text-wrap: pretty; }
-.medium { margin: var(--s-4) 0 0; font-size: 13px; line-height: 1.6; }
-.essay p { margin: 0; max-width: 31em; font-size: var(--fs-m); line-height: 1.55; text-wrap: pretty; }
-.essay p + p { margin-top: var(--s-4); }
-.future { margin: 0 0 var(--s-4); max-width: 31em; color: var(--ink-2); font-size: 13px; line-height: 1.5; text-wrap: pretty; }
-.caption { margin: 0; font-size: 13px; line-height: 1.6; font-variant-numeric: tabular-nums; }
-.caption--terms { margin-top: var(--s-4); color: var(--ink-2); }
-.caption--terms .price { color: var(--ink); }
-.how { margin: 0 0 var(--s-5); font-size: 13px; line-height: 1.5; text-wrap: pretty; }
-.foot-of-panel { padding-top: var(--s-6); border-top: 1px solid var(--rule); }
-.facts { display: grid; grid-template-columns: repeat(2, max-content); justify-content: start; gap: var(--s-4) var(--s-8); margin: 0; padding-top: var(--s-5); border-top: 1px solid var(--rule); font-size: 13px; line-height: 1.45; font-variant-numeric: tabular-nums; }
-.facts div { min-width: 0; }
-.facts dd { margin: var(--s-1) 0 0; }
-@media (max-width: 380px) { .facts { grid-template-columns: max-content; } }
-.act { display: grid; justify-items: start; row-gap: var(--s-3); margin-top: var(--s-7); }
-.note { margin: 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.5; text-wrap: pretty; }
+/* ---------- The object ---------- */
+.hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100svh - 64px - 72px); padding: var(--s-4) var(--m) var(--s-7); text-align: center; }
+.plate { margin: 0; width: min(100%, 600px); aspect-ratio: 1; background: var(--plate); overflow: hidden; }
+.plate img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 80%; }
+/* On wide screens the first view holds plate, name, line and action without scrolling. */
+@media (min-width: 720px) { .plate { width: min(640px, calc(100vh - 440px), calc(100svh - 440px)); min-width: 320px; } }
+.title { margin: var(--s-8) 0 0; font-size: var(--fs-t); font-weight: 500; line-height: 1.05; letter-spacing: -0.025em; }
+.line { margin: var(--s-3) 0 0; color: var(--ink-2); }
+.terms { margin: var(--s-6) 0 0; font-size: var(--fs-s); font-weight: 500; letter-spacing: var(--track); text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.act { display: flex; justify-content: center; margin-top: var(--s-6); }
+.cta--main { width: 240px; max-width: 100%; }
 
-@media (min-width: 960px) {
-  .top {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-rows: auto minmax(0, 1fr);
-    grid-template-areas: "pic bar" "pic panel";
-    min-height: 100vh; min-height: 100svh;
-  }
-  .pic { grid-area: pic; aspect-ratio: auto; height: 100vh; height: 100svh; }
-  .bar { grid-area: bar; height: 72px; }
-  .panel { grid-area: panel; padding-bottom: var(--s-8); }
-  .intro { margin-top: auto; padding-block: var(--s-8); max-width: var(--col); }
-  .foot-of-panel { margin-bottom: auto; max-width: var(--col); }
-}
-
-/* Small tracked capitals: every label on the page */
-.bar {
-  font-size: var(--fs-s); font-weight: 500; letter-spacing: var(--track); text-transform: uppercase;
-}
-.facts dt { color: var(--ink-2); }
-
-.foot { margin: var(--s-9) 0 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.6; }
+.foot { margin: 0; padding: var(--s-4) var(--m) var(--s-6); color: var(--ink-2); font-size: var(--fs-s); line-height: 1.6; text-align: center; }
+.note { margin: 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.5; }
 .opt-tag { color: var(--ink-3); }
 
 /* ---------- Enquiry ---------- */
@@ -166,7 +132,7 @@ textarea.input { min-height: 72px; resize: vertical; }
   font-variant-numeric: tabular-nums; transition: background-color 0.2s;
 }
 .cta:disabled { opacity: 0.45; cursor: default; }
-.cta--main { width: 200px; max-width: 100%; }
+.cta--main { width: 240px; max-width: 100%; }
 .textbtn--small { padding: 6px 0; font-size: var(--fs-s); font-weight: 500; letter-spacing: var(--track); text-transform: uppercase; }
 .status { margin: 0; }
 .status:empty { display: none; }
@@ -179,15 +145,12 @@ textarea.input { min-height: 72px; resize: vertical; }
 /* Arrival: the photograph settles first, then the words in reading order. Everything is visible
    without it; reduced motion skips it entirely. */
 @media (prefers-reduced-motion: no-preference) {
-  .pic img { animation: settle 1.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
-  .intro > *, .facts, .act, .bar, .foot { animation: arrive 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
-  .bar { animation-delay: 0.2s; }
-  .title { animation-delay: 0.35s; }
-  .sub { animation-delay: 0.45s; }
-  .how { animation-delay: 0.6s; }
-  .facts { animation-delay: 0.75s; }
-  .act { animation-delay: 0.85s; }
-  .foot { animation-delay: 1s; }
+  .plate img { animation: settle 1.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero > .title, .hero > .line, .hero > .terms, .hero > .act { animation: arrive 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .hero > .title { animation-delay: 0.3s; }
+  .hero > .line { animation-delay: 0.42s; }
+  .hero > .terms { animation-delay: 0.5s; }
+  .hero > .act { animation-delay: 0.6s; }
 }
 @keyframes settle { from { opacity: 0; transform: scale(1.035); } }
 @keyframes arrive { from { opacity: 0; transform: translateY(6px); } }
@@ -206,34 +169,25 @@ textarea.input { min-height: 72px; resize: vertical; }
 </head>
 <body>
 
+<header class="bar small"><span>HANNON TAN</span><a class="bar__link" href="https://x.com/phygicoil" rel="me noopener" target="_blank" aria-label="Jim Hannon-Tan on X">X</a></header>
+
 <main>
-  <div class="top">
-    <p class="bar"><span>HANNON TAN</span></p>
-    <figure class="pic">
+  <section class="hero" aria-labelledby="name">
+    <figure class="plate">
       <img src="/images/s01/one.jpg" width="1286" height="1870" alt="Signet 01 in polished sterling silver standing face up on a pale surface, the twelve-turn labyrinth on its square face">
     </figure>
-
-    <div class="panel">
-      <div class="intro">
-        <h1 class="title" id="name">Signet 01</h1>
-        <p class="byline">Jim Hannon-Tan, 2026</p>
-        <p class="medium">Sterling silver, antenna, secure element<br>Foundation Edition of 10</p>
-      </div>
-
-      <div class="foot-of-panel">
-        <div class="essay">
-          <p>Signet 01 brings the tradition of the personal seal into digital communication. Its twelve-turn labyrinth forms both the face of the ring and the antenna through which it communicates.</p>
-          <p>Touching the ring to a phone signs a message, creating a signature that its recipient can verify.</p>
-        </div>
-        <div class="act">
-          <button class="cta cta--main" id="cta" type="button" data-open data-cta>Enquire</button>
-          <noscript><p class="note">Please enable JavaScript to send an enquiry.</p></noscript>
-        </div>
-      </div>
-      <footer class="foot">©2026 · ABN&nbsp;79&nbsp;609&nbsp;672&nbsp;184 · Adelaide, Australia</footer>
+    <h1 class="title" id="name">Signet 01</h1>
+    <p class="line">Physical verifiable intent.</p>
+    <p class="terms">Foundation Edition of 10 · US$10,000</p>
+    <div class="act">
+      <button class="cta cta--main" id="cta" type="button" data-open data-cta>Request allocation</button>
+      <noscript><p class="note">Please enable JavaScript to send an enquiry.</p></noscript>
     </div>
-  </div>
+  </section>
+
 </main>
+
+<footer class="foot">©2026 · ABN&nbsp;79&nbsp;609&nbsp;672&nbsp;184 · Adelaide, Australia</footer>
 
 <dialog class="enquiry" id="enquiry" aria-labelledby="enq-title">
   <div class="dlg">
@@ -242,8 +196,8 @@ textarea.input { min-height: 72px; resize: vertical; }
       <button class="textbtn textbtn--small" id="close" type="button">Close</button>
     </div>
     <div class="dlg__intro" id="enq-intro">
-      <h2 class="dlg__title" id="enq-title" tabindex="-1">Enquire about Signet&nbsp;01</h2>
-      <p class="p">For availability, sizing or questions about the Foundation Edition.</p>
+      <h2 class="dlg__title" id="enq-title" tabindex="-1">Request allocation</h2>
+      <p class="p">For one of ten Foundation Edition rings. Jim replies personally.</p>
     </div>
     <form class="form" id="enquiry-form" novalidate>
       <div class="field">
@@ -259,7 +213,7 @@ textarea.input { min-height: 72px; resize: vertical; }
         <textarea class="input" id="f-note" name="note" rows="4"></textarea>
       </div>
       <input class="trap" id="f-check" name="botcheck" type="checkbox" tabindex="-1" aria-hidden="true">
-      <button class="cta" id="send" type="submit">Send enquiry</button>
+      <button class="cta" id="send" type="submit">Send request</button>
       <p class="status" id="status" role="status" aria-live="polite"></p>
     </form>
     <div class="done" id="enq-done" hidden>
