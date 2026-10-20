@@ -45,7 +45,7 @@
   --read: 34em;
   color-scheme: light;
 }
-@media (min-width: 960px) { :root { --fs-t: 44px; --m: 40px; } }
+@media (min-width: 960px) { :root { --fs-t: 32px; --m: 40px; } }
 
 *, *::before, *::after { box-sizing: border-box; }
 html:has(dialog[open]) { overflow: hidden; }
@@ -70,21 +70,38 @@ button, input, textarea, select { font: inherit; color: inherit; }
 @media (hover: hover) { .bar__link:hover { color: var(--ink-2); } }
 
 /* ---------- The object ---------- */
-.hero { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100svh - 64px - 72px); padding: var(--s-4) var(--m) var(--s-7); text-align: center; }
-.plate { margin: 0; width: min(100%, 600px); aspect-ratio: 1; background: var(--plate); overflow: hidden; }
+.hero { display: flex; justify-content: center; align-items: center; min-height: calc(100svh - 64px - 72px); padding: var(--s-4) var(--m) var(--s-7); }
+.work { width: min(100%, 600px); }
+@media (min-width: 720px) { .work { width: min(720px, calc(100vh - 420px), calc(100svh - 420px)); min-width: 440px; } }
+.plate { margin: 0; width: 100%; aspect-ratio: 1; background: var(--plate); overflow: hidden; }
 .plate img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 80%; }
-/* On wide screens the first view holds plate, name, line and action without scrolling. */
-@media (min-width: 720px) { .plate { width: min(640px, calc(100vh - 450px), calc(100svh - 450px)); min-width: 320px; } }
-.title { margin: var(--s-8) 0 0; font-size: var(--fs-t); font-weight: 500; line-height: 1.05; letter-spacing: -0.025em; }
-.line { margin: var(--s-3) 0 0; }
-.material { margin: var(--s-1) 0 0; color: var(--ink-2); text-wrap: balance; }
-.terms .seg { white-space: nowrap; }
-@media (max-width: 560px) { .terms .sep { display: none; } .terms .seg { display: block; } .terms .seg + .seg { margin-top: var(--s-1); } }
-.terms { margin: var(--s-6) 0 0; font-size: var(--fs-s); font-weight: 500; letter-spacing: var(--track); text-transform: uppercase; font-variant-numeric: tabular-nums; }
-.act { display: flex; justify-content: center; margin-top: var(--s-6); }
+
+/* Everything hangs from the plate's left edge. The facts sit as three short columns,
+   so they read across like a catalogue line, not down like a list. */
+.caption { margin-top: var(--s-6); }
+.title { margin: 0; font-size: var(--fs-t); font-weight: 500; line-height: 1.05; letter-spacing: -0.025em; }
+.line { margin: var(--s-2) 0 0; color: var(--ink-2); }
+.caption__offer { margin-top: var(--s-6); padding-top: var(--s-4); border-top: 1px solid var(--rule); }
+.terms { display: grid; grid-template-columns: repeat(3, max-content); column-gap: var(--s-8); margin: 0; font-size: var(--fs-s); line-height: 1.5; font-variant-numeric: tabular-nums; }
+.terms div { display: block; }
+.terms dt { color: var(--ink-2); }
+.terms dd { margin: 2px 0 0; font-size: var(--fs); }
+.act { display: flex; margin-top: var(--s-6); }
+.act .cta--main { width: auto; padding-inline: var(--s-8); height: 44px; }
+@media (max-width: 560px) {
+  .terms { column-gap: var(--s-6); }
+  .act, .act .cta--main { width: 100%; }
+}
+  .caption__offer { justify-items: stretch; text-align: left; }
+  .terms div { justify-content: flex-start; }
+  .terms dt { min-width: 6.5em; }
+  .act, .act .cta--main { width: 100%; }
+}
 .cta--main { width: 240px; max-width: 100%; }
 
 .foot { margin: 0; padding: var(--s-4) var(--m) var(--s-6); color: var(--ink-2); font-size: var(--fs-s); line-height: 1.6; text-align: center; }
+.foot__in { width: min(100%, 600px); margin: 0 auto; text-align: left; }
+@media (min-width: 720px) { .foot__in { width: min(720px, calc(100vh - 420px), calc(100svh - 420px)); min-width: 440px; } }
 .note { margin: 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.5; }
 .opt-tag { color: var(--ink-3); }
 
@@ -149,9 +166,8 @@ textarea.input { min-height: 72px; resize: vertical; }
    without it; reduced motion skips it entirely. */
 @media (prefers-reduced-motion: no-preference) {
   .plate img { animation: settle 1.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
-  .hero > .title, .hero > .line, .hero > .material, .hero > .terms, .hero > .act { animation: arrive 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
-  .hero > .title { animation-delay: 0.3s; }
-  .hero > .line { animation-delay: 0.42s; }
+  .caption { animation: arrive 1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .caption { animation-delay: 0.35s; }
   .hero > .material { animation-delay: 0.48s; }
   .hero > .terms { animation-delay: 0.55s; }
   .hero > .act { animation-delay: 0.6s; }
@@ -177,21 +193,33 @@ textarea.input { min-height: 72px; resize: vertical; }
 
 <main>
   <section class="hero" aria-labelledby="name">
-    <figure class="plate">
-      <img src="/images/s01/one.jpg" width="1286" height="1870" alt="Signet 01 in polished sterling silver standing face up on a pale surface, the twelve-turn labyrinth on its square face">
-    </figure>
-    <h1 class="title" id="name">Signet 01</h1>
-    <p class="line">Physical verifiable intent.</p>
-    <p class="terms"><span class="nowrap">Sterling silver</span> · <span class="nowrap">Edition of 10</span> · <span class="nowrap">US$10,000</span></p>
-    <div class="act">
-      <button class="cta cta--main" id="cta" type="button" data-open data-cta>Request allocation</button>
-      <noscript><p class="note">Please enable JavaScript to send an enquiry.</p></noscript>
+    <div class="work">
+      <figure class="plate">
+        <img src="/images/s01/one.jpg" width="1286" height="1870" alt="Signet 01 in polished sterling silver standing face up on a pale surface, the twelve-turn labyrinth on its square face">
+      </figure>
+      <div class="caption">
+        <div class="caption__id">
+          <h1 class="title" id="name">Signet 01</h1>
+          <p class="line">Physical verifiable intent.</p>
+        </div>
+        <div class="caption__offer">
+          <dl class="terms">
+            <div><dt>Material</dt><dd>Sterling silver</dd></div>
+            <div><dt>Edition</dt><dd>10</dd></div>
+            <div><dt>Price</dt><dd>US$10,000</dd></div>
+          </dl>
+          <div class="act">
+            <button class="cta cta--main" id="cta" type="button" data-open data-cta>Request allocation</button>
+            <noscript><p class="note">Please enable JavaScript to send an enquiry.</p></noscript>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
 </main>
 
-<footer class="foot">©2026 · ABN&nbsp;79&nbsp;609&nbsp;672&nbsp;184 · Adelaide, Australia</footer>
+<footer class="foot"><div class="foot__in">©2026 · ABN&nbsp;79&nbsp;609&nbsp;672&nbsp;184 · Adelaide, Australia</div></footer>
 
 <dialog class="enquiry" id="enquiry" aria-labelledby="enq-title">
   <div class="dlg">
