@@ -17,7 +17,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 ## Pages
 | URL | File | What it is |
 | --- | --- | --- |
-| / | `index.html` | Home page, one screen, no scrolling (20 Oct 2026): centred square photograph, "Signet 01", "Physical verifiable intent.", "Solid 925 sterling silver · Edition of 10 · US$10,000" (two lines on phones), Request allocation, footer. Header: HANNON TAN and an X link (x.com/phygicoil). Geist only, three sizes, two tones. The form is titled "Request allocation" and asks for name, email and an optional message |
+| / | `index.html` | Home page, one screen, no scrolling (20 Oct 2026): centred square photograph, "Signet 01", "Physical verifiable intent.", "Sterling silver · Edition of 10 · US$10,000", Request allocation, footer. Header: HANNON TAN and an X link (x.com/phygicoil). Geist only, three sizes, two tones. The form is titled "Request allocation" and asks for name, email and an optional message |
 | /1b | none | Redirects to / (temporary, so it can come back as its own page) |
 | /1c | `1c.html` | The home page from 8 to 9 Oct 2026, hidden from search engines. Its form sends page "hannontan.com/1c" |
 | /6 | `6.html` | Copy of branch `6`, live since 8 Oct 2026, hidden from search engines |
