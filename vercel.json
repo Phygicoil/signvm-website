@@ -1,13 +1,41 @@
 {
   "redirects": [
-    { "source": "/1b", "destination": "/", "permanent": false },
-    { "source": "/1b.html", "destination": "/", "permanent": false }
+    {
+      "source": "/1b",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/1b.html",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/signet-01-project-notes.pdf",
+      "destination": "/signet-01-monograph.pdf",
+      "permanent": false
+    }
   ],
   "rewrites": [
-    { "source": "/v1", "destination": "/v1.html" },
-    { "source": "/v2", "destination": "/v2.html" },
-    { "source": "/v3", "destination": "/v3.html" },
-    { "source": "/6", "destination": "/6.html" },
-    { "source": "/1c", "destination": "/1c.html" }
+    {
+      "source": "/v1",
+      "destination": "/v1.html"
+    },
+    {
+      "source": "/v2",
+      "destination": "/v2.html"
+    },
+    {
+      "source": "/v3",
+      "destination": "/v3.html"
+    },
+    {
+      "source": "/6",
+      "destination": "/6.html"
+    },
+    {
+      "source": "/1c",
+      "destination": "/1c.html"
+    }
   ]
 }
