@@ -100,7 +100,10 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .cta--main { width: 240px; max-width: 100%; }
 
 .foot { margin: 0; padding: var(--s-4) var(--m) var(--s-6); color: var(--ink-2); font-size: var(--fs-s); line-height: 1.6; text-align: center; }
-.foot__in { width: min(100%, 600px); margin: 0 auto; text-align: left; }
+.foot__in { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); width: min(100%, 600px); margin: 0 auto; text-align: left; }
+.foot__link { color: var(--ink); text-decoration: none; }
+.foot__type { color: var(--ink-2); margin-left: 4px; }
+@media (hover: hover) { .foot__link:hover { text-decoration: underline; text-underline-offset: 3px; } }
 @media (min-width: 720px) { .foot__in { width: min(720px, calc(100vh - 420px), calc(100svh - 420px)); min-width: 440px; } }
 .note { margin: 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.5; }
 .opt-tag { color: var(--ink-3); }
@@ -219,7 +222,7 @@ textarea.input { min-height: 72px; resize: vertical; }
 
 </main>
 
-<footer class="foot"><div class="foot__in">©2026 · ABN&nbsp;79&nbsp;609&nbsp;672&nbsp;184 · Adelaide, Australia</div></footer>
+<footer class="foot"><div class="foot__in"><span>©2026 · Adelaide, Australia</span><a class="foot__link" href="/signet-01-project-notes.pdf" target="_blank" rel="noopener">Project notes <span class="foot__type">PDF</span></a></div></footer>
 
 <dialog class="enquiry" id="enquiry" aria-labelledby="enq-title">
   <div class="dlg">

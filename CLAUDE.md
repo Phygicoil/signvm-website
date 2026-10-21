@@ -4,7 +4,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 
 ## Names
 - HANNON TAN: the brand, always in capitals.
-- Jim Hannon-Tan: the designer, with a hyphen. Company: Jim Hannon-Tan Design Pty Ltd, ABN 79 609 672 184 (in the footers of /, /1c and /6).
+- Jim Hannon-Tan: the designer, with a hyphen. Company: Jim Hannon-Tan Design Pty Ltd, ABN 79 609 672 184 (in the footers of /1c and /6, and in the project notes PDF linked from /).
 - Signet 01: the product. Foundation Edition: its first edition, ten numbered rings. Older pages call it Edition 01.
 
 ## Publishing
@@ -17,7 +17,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 ## Pages
 | URL | File | What it is |
 | --- | --- | --- |
-| / | `index.html` | Home page, one screen, no scrolling (20 Oct 2026). A square photograph centred on the page; everything below hangs from its left edge: "Signet 01", "Physical verifiable intent.", a rule, three short fact columns (Material: Sterling silver · Edition: 10 · Price: US$10,000), Request allocation at the photograph's width, footer. Header: HANNON TAN and an X link (x.com/phygicoil). Geist only. The form is titled "Request allocation" and asks for name, email and an optional message |
+| / | `index.html` | Home page, one screen, no scrolling (20 Oct 2026). A square photograph centred on the page; everything below hangs from its left edge: "Signet 01", "Physical verifiable intent.", a rule, three short fact columns (Material: Sterling silver · Edition: 10 · Price: US$10,000), Request allocation at the photograph's width, footer ("©2026 · Adelaide, Australia" left, "Project notes PDF" link right, opening /signet-01-project-notes.pdf in a new tab). Header: HANNON TAN and an X link (x.com/phygicoil). Geist only. The form is titled "Request allocation" and asks for name, email and an optional message |
 | /1b | none | Redirects to / (temporary, so it can come back as its own page) |
 | /1c | `1c.html` | The home page from 8 to 9 Oct 2026, hidden from search engines. Its form sends page "hannontan.com/1c" |
 | /6 | `6.html` | Copy of branch `6`, live since 8 Oct 2026, hidden from search engines |
@@ -25,6 +25,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 | /pd, /pitchdeck | `pd/`, `pitchdeck/` | Earlier materials |
 
 - A new page needs an entry in the `vite.config.js` inputs and, for a clean URL, a rewrite in `vercel.json`.
+- The project notes PDF is `public/signet-01-project-notes.pdf` (2 pages, Jim's, updated 21 Oct 2026). Replace the file to update it; keep the name so the link stays the same.
 - Photos live in `public/images/s01/`: `one.jpg` (hero), `touch.jpg` (the gesture), `cream.jpg` (the object), `portrait.jpg` (designer), `share.jpg` (1200 × 630 share image).
 - `LLMS.TXT` is old SIGNVM copy and isn't deployed. Don't use it as a source of facts.
 
