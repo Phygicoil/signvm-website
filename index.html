@@ -65,8 +65,10 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .dlg__name { letter-spacing: var(--track); font-size: var(--fs-s); }
 
 /* ---------- Header ---------- */
-.bar { display: flex; justify-content: space-between; align-items: center; height: 64px; margin: 0; padding-inline: var(--m); }
-.bar__link { color: var(--ink); text-decoration: none; padding: 8px 0 8px 16px; }
+.bar { display: flex; justify-content: space-between; align-items: baseline; padding-top: 22px; box-sizing: border-box; height: 64px; margin: 0; padding-inline: var(--m); }
+.bar__link { color: var(--ink); text-decoration: none; padding: 12px 0 12px 16px; line-height: 1; }
+/* The logo is cut to its own edges and set to the cap height of HANNON TAN, sitting on the same baseline. */
+.bar__x { display: inline-block; height: 0.71em; width: calc(0.71em * 21.044 / 19.5); vertical-align: baseline; overflow: visible; }
 @media (hover: hover) { .bar__link:hover { color: var(--ink-2); } }
 
 /* ---------- The object ---------- */
@@ -192,7 +194,7 @@ textarea.input { min-height: 72px; resize: vertical; }
 </head>
 <body>
 
-<header class="bar small"><span>HANNON TAN</span><a class="bar__link" href="https://x.com/phygicoil" rel="me noopener" target="_blank" aria-label="Jim Hannon-Tan on X">X</a></header>
+<header class="bar small"><span>HANNON TAN</span><a class="bar__link" href="https://x.com/phygicoil" rel="me noopener" target="_blank" aria-label="Jim Hannon-Tan on X"><svg class="bar__x" viewBox="1.254 2.25 21.044 19.5" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></header>
 
 <main>
   <section class="hero" aria-labelledby="name">
