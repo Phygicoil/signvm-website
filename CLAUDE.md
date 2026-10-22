@@ -25,7 +25,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 | /pd, /pitchdeck | `pd/`, `pitchdeck/` | Earlier materials |
 
 - A new page needs an entry in the `vite.config.js` inputs and, for a clean URL, a rewrite in `vercel.json`.
-- The monograph PDF is `public/signet-01-monograph.pdf` (2 pages; its footer carries a version and date, e.g. "Version 2 · 21 October 2026"; bump both on every update; source `monograph-src.html` in Jim's local hannontan-com folder, printed with headless Chrome). Replace the file to update it; keep the name so the link stays the same. The earlier `/signet-01-project-notes.pdf` redirects to it (vercel.json).
+- The monograph PDF is `public/signet-01-monograph.pdf` (3 pages since version 4; its footer carries a version and date, e.g. "Version 2 · 21 October 2026"; bump both on every update; source `monograph-src.html` in Jim's local hannontan-com folder, printed with headless Chrome). Replace the file to update it; keep the name so the link stays the same. The earlier `/signet-01-project-notes.pdf` redirects to it (vercel.json).
 - Photos live in `public/images/s01/`: `one.jpg` (hero), `touch.jpg` (the gesture), `cream.jpg` (the object), `portrait.jpg` (designer), `share.jpg` (1200 × 630 share image).
 - `LLMS.TXT` is old SIGNVM copy and isn't deployed. Don't use it as a source of facts.
 
