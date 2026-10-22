@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Signet 01 · HANNON TAN</title>
-<meta name="description" content="Signet 01 by Jim Hannon-Tan. A sovereign instrument of human intent. Sterling silver. Foundation Edition of 10, US$10,000. Request allocation.">
+<meta name="description" content="Signet 01 by Jim Hannon-Tan. A signet ring that signs. Sterling silver. Foundation Edition of 10, US$10,000. Request allocation.">
 <link rel="canonical" href="https://www.hannontan.com/">
 <meta property="og:title" content="Signet 01 · HANNON TAN">
 <meta property="og:description" content="A signet ring that signs. Jim Hannon-Tan, 2026.">
@@ -92,6 +92,10 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .act .cta--main { width: auto; padding-inline: var(--s-8); height: 44px; }
 @media (max-width: 560px) {
   .terms { column-gap: var(--s-6); }
+}
+/* Narrow phones: two columns, so the price never runs off the edge. */
+@media (max-width: 440px) {
+  .terms { grid-template-columns: repeat(2, max-content); row-gap: var(--s-3); }
   .act, .act .cta--main { width: 100%; }
 }
   .caption__offer { justify-items: stretch; text-align: left; }
@@ -205,12 +209,12 @@ textarea.input { min-height: 72px; resize: vertical; }
       <div class="caption">
         <div class="caption__id">
           <h1 class="title" id="name">Signet 01</h1>
-          <p class="line">A sovereign instrument of human intent.</p>
+          <p class="line">A signet ring that signs.</p>
         </div>
         <div class="caption__offer">
           <dl class="terms">
             <div><dt>Material</dt><dd>925 sterling silver</dd></div>
-            <div><dt>Edition</dt><dd>10 numbered pieces</dd></div>
+            <div><dt>Foundation Edition</dt><dd>10 numbered pieces</dd></div>
             <div><dt>Price</dt><dd>US$10,000</dd></div>
           </dl>
           <div class="act">
