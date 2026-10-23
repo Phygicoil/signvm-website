@@ -76,7 +76,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .work { width: min(100%, 600px); }
 @media (min-width: 720px) { .work { width: min(720px, calc(100vh - 420px), calc(100svh - 420px)); min-width: 440px; } }
 .plate { margin: 0; width: 100%; aspect-ratio: 1; background: var(--plate); overflow: hidden; }
-.plate img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 80%; }
+.plate img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 74%; }
 
 /* Everything hangs from the plate's left edge. The facts sit as three short columns,
    so they read across like a catalogue line, not down like a list. */
@@ -108,7 +108,9 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .foot { margin: 0; padding: var(--s-4) var(--m) var(--s-6); color: var(--ink-2); font-size: var(--fs-s); line-height: 1.6; text-align: center; }
 .foot__in { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); width: min(100%, 600px); margin: 0 auto; text-align: left; }
 .foot__link { color: var(--ink); text-decoration: none; }
-.foot__type { color: var(--ink-2); margin-left: 4px; }
+.foot__type { color: var(--ink-2); }
+.foot__arrow { display: inline-block; transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+@media (hover: hover) { .foot__link:hover .foot__arrow { transform: translate(2px, -2px); } }
 @media (hover: hover) { .foot__link:hover { text-decoration: underline; text-underline-offset: 3px; } }
 @media (min-width: 720px) { .foot__in { width: min(720px, calc(100vh - 420px), calc(100svh - 420px)); min-width: 440px; } }
 .note { margin: 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.5; }
@@ -228,7 +230,7 @@ textarea.input { min-height: 72px; resize: vertical; }
 
 </main>
 
-<footer class="foot"><div class="foot__in"><span>©2026 · Adelaide, Australia</span><a class="foot__link" href="/signet-01-monograph.pdf" target="_blank" rel="noopener">Monograph <span class="foot__type">PDF</span></a></div></footer>
+<footer class="foot"><div class="foot__in"><span>©2026 · Adelaide, Australia</span><a class="foot__link" href="/signet-01-monograph.pdf" target="_blank" rel="noopener">Monograph <span class="foot__type">(PDF)</span> <span class="foot__arrow" aria-hidden="true">↗</span></a></div></footer>
 
 <dialog class="enquiry" id="enquiry" aria-labelledby="enq-title">
   <div class="dlg">
