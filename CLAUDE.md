@@ -5,7 +5,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 ## Names
 - HANNON TAN: the brand, always in capitals.
 - Jim Hannon-Tan: the designer, with a hyphen. Company: Jim Hannon-Tan Design Pty Ltd, ABN 79 609 672 184 (in the footers of /1c and /6, and in the project notes PDF linked from /).
-- Signet 01: the product. Foundation Edition: its first edition, ten numbered rings. Older pages call it Edition 01.
+- Signet 01: the product. Founding Edition: its first edition, ten numbered rings. Older pages call it Edition 01.
 
 ## Publishing
 - `main` is production: every push to `main` publishes hannontan.com. Push to `main` only when Jim asks to publish.
@@ -17,7 +17,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 ## Pages
 | URL | File | What it is |
 | --- | --- | --- |
-| / | `index.html` | Home page, one screen, no scrolling (20 Oct 2026). A square photograph centred on the page; everything below hangs from its left edge: "Signet 01", "A ring that signs.", a rule, three short fact columns (Material: 925 sterling silver · Edition: 10 numbered pieces · Price: US$10,000; two columns below 380px), Request allocation at the photograph's width, footer ("©2026 · Adelaide, Australia" left, "Monograph PDF" link right, opening /signet-01-monograph.pdf in a new tab). Header: HANNON TAN and an X link (x.com/phygicoil). Geist only. The form is titled "Request allocation" and asks for name, email and an optional message |
+| / | `index.html` | Home page, one screen, no scrolling (20 Oct 2026). A square photograph centred on the page; everything below hangs from its left edge: "Signet 01", "A ring that signs.", a rule, two short fact columns (Material: 925 sterling silver · Founding Edition: 10 numbered pieces; no price since 3 Nov 2026), Request allocation at the photograph's width, footer ("©2026 · Adelaide, Australia" left, "Monograph PDF" link right, opening /signet-01-monograph.pdf in a new tab). Header: HANNON TAN and an X link (x.com/phygicoil). Geist only. The form is titled "Request allocation" and asks for name, email and an optional message |
 | /1b | none | Redirects to / (temporary, so it can come back as its own page) |
 | /1c | `1c.html` | The home page from 8 to 9 Oct 2026, hidden from search engines. Its form sends page "hannontan.com/1c" |
 | /6 | `6.html` | Copy of branch `6`, live since 8 Oct 2026, hidden from search engines |
@@ -25,7 +25,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 | /pd, /pitchdeck | `pd/`, `pitchdeck/` | Earlier materials |
 
 - A new page needs an entry in the `vite.config.js` inputs and, for a clean URL, a rewrite in `vercel.json`.
-- The monograph PDF is `public/signet-01-monograph.pdf` (4 pages since version 6; its footer carries a version and date, e.g. "Version 2 · 21 October 2026"; bump both on every update; source `monograph-src.html` in Jim's local hannontan-com folder, printed with headless Chrome). Replace the file to update it; keep the name so the link stays the same. The earlier `/signet-01-project-notes.pdf` redirects to it (vercel.json).
+- The monograph PDF is `public/signet-01-monograph.pdf` (5 pages since version 7, 3 November 2026; its footer carries a version and date, e.g. "Version 7 · 3 November 2026"; bump both on every update; source `monograph-src-v7.html` in Jim's local hannontan-com folder, printed with headless Chrome). Replace the file to update it; keep the name so the link stays the same. The earlier `/signet-01-project-notes.pdf` redirects to it (vercel.json).
 - Photos live in `public/images/s01/`: `one.jpg` (hero), `touch.jpg` (the gesture), `cream.jpg` (the object), `portrait.jpg` (designer), `share.jpg` (1200 × 630 share image).
 - `LLMS.TXT` is old SIGNVM copy and isn't deployed. Don't use it as a source of facts.
 
@@ -80,11 +80,11 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 - British spelling: authorise, centre, colour.
 - Claims stay honest. Add no promises the product can't back, such as lifetime support, upgrades, investment value or working with every phone, door or system.
 - Prices, edition terms and readiness labels are Jim's to decide. Publish deposit or reservation terms only after he confirms them.
-- The Foundation Edition price is US$10,000 and is shown on the home page (Jim, 20 Oct 2026). /1c, /6 and branch 6 show none.
+- The Founding Edition price is US$10,000. Jim took it off the home page on 3 Nov 2026; the monograph still shows it. /1c, /6 and branch 6 show none.
 
 ## Product facts on the site
 - Signet 01, reference S01.AG. 925 sterling silver. A 12-turn labyrinth antenna. Arx HaLo secure element; its key is made on the chip and can't be exported. Passive NFC, with no battery.
-- Foundation Edition: ten individually numbered rings in 925 sterling silver, US$10,000 each. First casting closes 15 December 2026. Delivery from Q1 2027. Older pages still show Edition 01 with a 30 November casting and no price.
+- Founding Edition: ten individually numbered rings in 925 sterling silver, US$10,000 each. First casting closes 15 December 2026. Delivery from Q1 2027. Older pages still show Edition 01 with a 30 November casting and no price.
 - Sealing a written message: touch the ring to the phone to seal a message; whoever receives it can confirm it came from the owner, unaltered.
 - Further applications (authorising AI actions, blockchain transactions) are described on the home page only as "in development".
 - Works with iPhone and Android phones with NFC. Each function needs compatible software.
