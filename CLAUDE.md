@@ -17,7 +17,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 ## Pages
 | URL | File | What it is |
 | --- | --- | --- |
-| / | `index.html` | Home page, one screen, no scrolling (20 Oct 2026). A square photograph centred on the page; everything below hangs from its left edge: "Signet 01", "A ring that signs.", a rule, two short fact columns (Material: 925 sterling silver · Founding Edition: 10 numbered pieces; no price since 3 Nov 2026), Request allocation at the photograph's width, footer ("©2026 · Adelaide, Australia" left, "Monograph PDF" link right, opening /signet-01-monograph.pdf in a new tab). Header: HANNON TAN and an X link (x.com/phygicoil). Geist only. The form is titled "Request allocation" and asks for name, email and an optional message |
+| / | `index.html` | Home page (branch `home-object`, 10 Nov 2026; not yet on `main`). Dark ground (#0F0D0C). One 4:3 photograph, `images/s01/hero.jpg` by Isamu Sawa, credited small below it. Below, two columns: left "Signet 01", "Jim Hannon-Tan, 2026" and three short paragraphs; right Founding Edition with Material, Edition and Price (US$10,000) and an Enquire button that opens the form. Footer: "©2026 · Adelaide, Australia" left; X, Instagram (@hannontan) and "Monograph (PDF)" right. Header: HANNON TAN only. Geist only. The form is titled "Enquire" and asks for name, email and an optional message |
 | /1b | none | Redirects to / (temporary, so it can come back as its own page) |
 | /1c | `1c.html` | The home page from 8 to 9 Oct 2026, hidden from search engines. Its form sends page "hannontan.com/1c" |
 | /6 | `6.html` | Copy of branch `6`, live since 8 Oct 2026, hidden from search engines |
@@ -26,7 +26,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 
 - A new page needs an entry in the `vite.config.js` inputs and, for a clean URL, a rewrite in `vercel.json`.
 - The monograph PDF is `public/signet-01-monograph.pdf` (5 pages since version 7; version 8, 3 November 2026, is current; its footer carries a version and date, e.g. "Version 8 · 3 November 2026"; bump both on every update; source `monograph-src-v8.html` in Jim's local hannontan-com folder, printed with headless Chrome). Replace the file to update it; keep the name so the link stays the same. The earlier `/signet-01-project-notes.pdf` redirects to it (vercel.json).
-- Photos live in `public/images/s01/`: `one.jpg` (hero), `touch.jpg` (the gesture), `cream.jpg` (the object), `portrait.jpg` (designer), `share.jpg` (1200 × 630 share image).
+- Photos live in `public/images/s01/`: `hero.jpg` (home page hero, Isamu Sawa, 1254 × 1254; replace with his full-resolution file), `one.jpg` (earlier hero), `touch.jpg` (the gesture), `cream.jpg` (the object), `portrait.jpg` (designer), `share.jpg` (1200 × 630 share image).
 - `LLMS.TXT` is old SIGNVM copy and isn't deployed. Don't use it as a source of facts.
 
 ## Branch 6
