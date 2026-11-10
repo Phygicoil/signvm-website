@@ -87,7 +87,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 - Founding Edition: ten individually numbered rings in 925 sterling silver, US$10,000 each. Two artist's proofs besides the ten (Jim, 10 Nov 2026; on the home page and in the monograph). First casting closes 15 December 2026. Delivery from Q1 2027. Older pages still show Edition 01 with a 30 November casting and no price.
 - Sealing a written message: touch the ring to the phone to seal a message; whoever receives it can confirm it came from the owner, unaltered.
 - Further applications (authorising AI actions, blockchain transactions) are described on the home page only as "in development".
-- The monograph (version 9) describes the product as it will ship: the Signet app for iPhone and a page for every seal. Jim doesn't want development status mentioned there.
+- The monograph (version 9) describes the product as it will ship: the Signet app for iPhone and a page for every seal. Jim doesn't want development status mentioned there. It shows no casting or delivery dates: Jim is keeping those open for now (10 Nov 2026).
 - iPhone only to begin with (Jim, 10 Nov 2026), through the Signet app. Older pages still say iPhone and Android.
 - Provenance is recorded on LUKSO, in the owner's Universal Profile. Studio servicing can renew the electronics and refinish the silver.
 
