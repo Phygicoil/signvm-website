@@ -25,7 +25,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 | /pd, /pitchdeck | `pd/`, `pitchdeck/` | Earlier materials |
 
 - A new page needs an entry in the `vite.config.js` inputs and, for a clean URL, a rewrite in `vercel.json`.
-- The monograph PDF is `public/signet-01-monograph.pdf` (5 pages since version 7; version 8, 3 November 2026, is current; its footer carries a version and date, e.g. "Version 8 · 3 November 2026"; bump both on every update; source `monograph-src-v8.html` in Jim's local hannontan-com folder, printed with headless Chrome). Replace the file to update it; keep the name so the link stays the same. The earlier `/signet-01-project-notes.pdf` redirects to it (vercel.json).
+- The monograph PDF is `public/signet-01-monograph.pdf` (version 9, 10 November 2026, is current: text only, two A4 pages, with the price; its footer carries a version and date, e.g. "Version 9 · 10 November 2026"; bump both on every update; source `monograph-src-v9.html` in Jim's local hannontan-com folder, printed with headless Chrome). Replace the file to update it; keep the name so the link stays the same. The earlier `/signet-01-project-notes.pdf` redirects to it (vercel.json).
 - Photos live in `public/images/s01/`: `hero.jpg` (home page hero, Isamu Sawa, 1254 × 1254; replace with his full-resolution file), `one.jpg` (earlier hero), `touch.jpg` (the gesture), `cream.jpg` (the object), `portrait.jpg` (designer), `share.jpg` (1200 × 630 share image).
 - `LLMS.TXT` is old SIGNVM copy and isn't deployed. Don't use it as a source of facts.
 
@@ -80,7 +80,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 - British spelling: authorise, centre, colour.
 - Claims stay honest. Add no promises the product can't back, such as lifetime support, upgrades, investment value or working with every phone, door or system.
 - Prices, edition terms and readiness labels are Jim's to decide. Publish deposit or reservation terms only after he confirms them.
-- The Founding Edition price is US$10,000. Jim took it off the home page and the monograph on 3 Nov 2026. /1c, /6 and branch 6 show none.
+- The Founding Edition price is US$10,000. Jim took it off the home page and the monograph on 3 Nov 2026; the `home-object` home page and monograph version 9 show it again. /1c, /6 and branch 6 show none.
 
 ## Product facts on the site
 - Signet 01, reference S01.AG. 925 sterling silver. A 12-turn labyrinth antenna. Arx HaLo secure element; its key is made on the chip and can't be exported. Passive NFC, with no battery.
