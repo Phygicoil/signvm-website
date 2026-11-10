@@ -84,9 +84,10 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 
 ## Product facts on the site
 - Signet 01, reference S01.AG. 925 sterling silver. A 12-turn labyrinth antenna. Arx HaLo secure element; its key is made on the chip and can't be exported. Passive NFC, with no battery.
-- Founding Edition: ten individually numbered rings in 925 sterling silver, US$10,000 each. First casting closes 15 December 2026. Delivery from Q1 2027. Older pages still show Edition 01 with a 30 November casting and no price.
+- Founding Edition: ten individually numbered rings in 925 sterling silver, US$10,000 each. Two artist's proofs besides the ten (Jim, 10 Nov 2026; in the monograph, not yet on the home page). First casting closes 15 December 2026. Delivery from Q1 2027. Older pages still show Edition 01 with a 30 November casting and no price.
 - Sealing a written message: touch the ring to the phone to seal a message; whoever receives it can confirm it came from the owner, unaltered.
 - Further applications (authorising AI actions, blockchain transactions) are described on the home page only as "in development".
+- The monograph (version 9) describes the product as it will ship: the Signet app for iPhone and a page for every seal. Jim doesn't want development status mentioned there.
 - Works with iPhone and Android phones with NFC. Each function needs compatible software.
 - Provenance is recorded on LUKSO, in the owner's Universal Profile. Studio servicing can renew the electronics and refinish the silver.
 
