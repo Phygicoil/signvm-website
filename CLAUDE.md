@@ -17,7 +17,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 ## Pages
 | URL | File | What it is |
 | --- | --- | --- |
-| / | `index.html` | Home page (branch `home-object`, 10 Nov 2026; not yet on `main`). Dark ground (#0F0D0C). One 4:3 photograph, `images/s01/hero.jpg` by Isamu Sawa, credited small below it. Below, two columns: left "Signet 01", "Jim Hannon-Tan, 2026" and three short paragraphs; right Founding Edition with Material, Edition and Price (US$10,000) and an Enquire button that opens the form. Footer: "©2026 · Adelaide, Australia" left; X, Instagram (@hannontan) and "Monograph (PDF)" right. Header: HANNON TAN only. Geist only. The form is titled "Enquire" and asks for name, email and an optional message |
+| / | `index.html` | Home page (branch `home-object`, 10 Nov 2026; not yet on `main`). Dark ground (#0F0D0C). One square photograph, shown uncropped, `images/s01/hero.jpg` by Isamu Sawa, credited small below it. Below, two columns: left "Signet 01", "Jim Hannon-Tan, 2026" and three short paragraphs; right Founding Edition with Material ("Sterling silver"), Edition ("10 items") and Price (US$10,000), Jim's wording of 10 Nov 2026 and an Enquire button that opens the form. Footer: "©2026 · Adelaide, Australia" left; X, Instagram (@hannontan) and "Monograph (PDF)" right. Header: HANNON TAN only. Geist only. The form is titled "Enquire" and asks for name, email and an optional message |
 | /1b | none | Redirects to / (temporary, so it can come back as its own page) |
 | /1c | `1c.html` | The home page from 8 to 9 Oct 2026, hidden from search engines. Its form sends page "hannontan.com/1c" |
 | /6 | `6.html` | Copy of branch `6`, live since 8 Oct 2026, hidden from search engines |
@@ -25,7 +25,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 | /pd, /pitchdeck | `pd/`, `pitchdeck/` | Earlier materials |
 
 - A new page needs an entry in the `vite.config.js` inputs and, for a clean URL, a rewrite in `vercel.json`.
-- The monograph PDF is `public/signet-01-monograph.pdf` (5 pages since version 7; version 8, 3 November 2026, is current; its footer carries a version and date, e.g. "Version 8 · 3 November 2026"; bump both on every update; source `monograph-src-v8.html` in Jim's local hannontan-com folder, printed with headless Chrome). Replace the file to update it; keep the name so the link stays the same. The earlier `/signet-01-project-notes.pdf` redirects to it (vercel.json).
+- The monograph PDF is `public/signet-01-monograph.pdf` (6 pages since version 10; version 10, 10 November 2026, is current; its last page carries a version and date, e.g. "Version 10 · 10 November 2026"; bump both on every update; source `monograph-src-v10.html` in Jim's local hannontan-com folder, printed with headless Chrome). Replace the file to update it; keep the name so the link stays the same. The earlier `/signet-01-project-notes.pdf` redirects to it (vercel.json).
 - Photos live in `public/images/s01/`: `hero.jpg` (home page hero, Isamu Sawa, 1254 × 1254; replace with his full-resolution file), `one.jpg` (earlier hero), `touch.jpg` (the gesture), `cream.jpg` (the object), `portrait.jpg` (designer), `share.jpg` (1200 × 630 share image).
 - `LLMS.TXT` is old SIGNVM copy and isn't deployed. Don't use it as a source of facts.
 
@@ -35,12 +35,20 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 
 ## How the pages are built
 - Each page is one self-contained HTML file with inline CSS and JS. No framework.
-- The home page has its own palette and sizes: paper `#F7F5F1`, plate `#EEEAE4`, ink `#000000`, ink-2 `#66625C`, rule `#E4E0D9`; a 30px title (40px from 960px), 15px text, statements at 16px (17px), labels in 11px tracked capitals. The notes below describe the older pages.
-- Typeface: the home page uses Geist only (400, 500, 600). Older pages use Instrument Sans. Light only.
+- The home page is dark only (`color-scheme: dark`) and has its own palette, sizes and layout. The notes after this group describe the older pages.
+  - Colours: paper `#0F0D0C`, plate `#191614` (behind the photo), ink `#ECE7DF`, ink-2 `#9C958B` (paragraphs, labels, credit, footer), ink-3 `#878077` (the form's "Optional" tag and placeholders; the faintest grey that still reads on paper and plate), line `#6E675F` (field underlines), rule `#2B2723`, hover `#D8D2C8` (button hover), error `#E8A08C` (form error messages and the underline of the field at fault).
+  - Sizes: three only. 40px for the title and the form title (32px up to 520px), weight 500; 16px for text, edition values and form fields; 12px for everything small (the name under the title, edition names, credit, footer, form labels, and the tracked capitals of the header, the "Founding Edition" label and buttons). Do not add a fourth size.
+  - Lines: all type sits on lines 26px apart (`--line`). The two columns share them: the title on lines 1-2 and the name on line 3; on the right the "Founding Edition" label sits on the title's baseline, a rule falls under line 3, the edition names sit on the first line of the first paragraph and their values on its second, and Enquire is two lines high. `--sit` (1px) and `--sit-title` (4px) nudge 12px and 40px type onto the 16px baseline; re-measure them if the typeface changes.
+  - Layout: one centred column with 20px side padding. It is up to 1040px wide and narrows to the height of the screen (never below 860px on a desktop), so the photograph is seen whole. The photograph is square at every width and is never cropped. Below it, two equal columns with a 64px gap; one column up to 760px. The three edition terms sit side by side, and stack as ruled rows up to 520px.
+  - The header is not sticky. It lines up with the column, and from 1280px sits apart at the screen edge (40px). There are no `<details>` rows and no number register.
+  - Footer: the copyright and the links wrap onto two rows when they don't fit (about 320px). The X and Instagram icons are 15px inside a 33 × 44px tap area.
+  - The Enquire button is ink on paper (light on dark), 48px high, 4px radius. The form fills the screen up to 640px, on paper; above that it is a panel in the plate colour so its edge shows against the page.
+  - Motion: on arrival the photograph settles and the columns rise once. `prefers-reduced-motion` skips both.
+- Typeface: the home page uses Geist only (400, 500, 600). Older pages use Instrument Sans and are light only.
 - Colours: paper `#FFFFFF`, plate `#EFF0F2` (behind photos), ink `#000000`, ink-2 `#696C72` (labels, captions, notes), rule `#E3E4E7`, line `#8C8F95`.
 - Two type sizes:
   - Titles are 32px on desktop and 26px on phones, weight 500, line height 1.12.
-  - Everything else is one size, 14px with line height 1.55. /1c uses 13px on desktop. The home page adds 12px for details and notes.
+  - Everything else is one size, 14px with line height 1.55. /1c uses 13px on desktop.
   - Hierarchy comes from weight (400 and 500), from black versus grey, and from space.
   - Form fields are 16px on touch screens so iPhones don't zoom.
 - Grid: 12 columns from 960px. Pictures in columns 1 to 7, words in 9 to 12 (1 to 6 and 8 to 12 between 960 and 1279px). On branch 6 the three areas of use are the one band across all twelve columns.
@@ -50,7 +58,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
   - The number register 01 to 10: ten across with a mouse, two rows of five on phones and touch screens.
   - `<details>` rows with + and −.
   - A native `<dialog>` for the enquiry.
-- Motion only answers an action (the enquiry opening) and respects `prefers-reduced-motion`.
+- Motion only answers an action (the enquiry opening) and respects `prefers-reduced-motion`. The home page adds its arrival, above.
 
 ## Settings at the top of each page's script
 - `HELD` (older pages): numbers already reserved, for example `["01", "07"]`. They show struck out. When all ten are held, the button becomes "Join the waitlist".
@@ -80,7 +88,7 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 - British spelling: authorise, centre, colour.
 - Claims stay honest. Add no promises the product can't back, such as lifetime support, upgrades, investment value or working with every phone, door or system.
 - Prices, edition terms and readiness labels are Jim's to decide. Publish deposit or reservation terms only after he confirms them.
-- The Founding Edition price is US$10,000. Jim took it off the home page and the monograph on 3 Nov 2026. /1c, /6 and branch 6 show none.
+- The Founding Edition price is US$10,000. Jim took it off the home page and the monograph on 3 Nov 2026. The dark home page on branch `home-object` (10 Nov 2026) shows it again. The monograph, /1c, /6 and branch 6 show none.
 
 ## Product facts on the site
 - Signet 01, reference S01.AG. 925 sterling silver. A 12-turn labyrinth antenna. Arx HaLo secure element; its key is made on the chip and can't be exported. Passive NFC, with no battery.

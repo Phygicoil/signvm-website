@@ -29,25 +29,36 @@
   --plate: #191614;
   --ink: #ECE7DF;
   --ink-2: #9C958B;
-  --ink-3: #5E5851;
+  --ink-3: #878077;
   --line: #6E675F;
   --rule: #2B2723;
   --hover: #D8D2C8;
+  --error: #E8A08C;
   --scrim: rgba(0, 0, 0, 0.6);
   --sans: "Geist", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* Type: three sizes only. 40px for the title (32px on phones), 16px for text, 12px for
+     everything small. All of it sits on lines 26px apart. Small type is nudged down by --sit
+     so its baseline lands on the same line as 16px text beside it. */
   --fs: 16px;
   --fs-s: 12px;
+  --line: 26px;
+  --sit: 1px;
+  --sit-title: 4px;
   --track: 0.12em;
   --m: 20px;
+  /* The column. On a desktop it narrows to the height of the screen, so the square photograph is
+     seen whole without scrolling, and never drops below 860px, where the two columns still fit. */
+  --w: min(100%, clamp(860px, calc(100vh - 80px), 1040px));
   color-scheme: dark;
 }
+@supports (height: 100svh) { :root { --w: min(100%, clamp(860px, calc(100svh - 80px), 1040px)); } }
 @media (min-width: 960px) { :root { --m: 40px; } }
 
 *, *::before, *::after { box-sizing: border-box; }
 html:has(dialog[open]) { overflow: hidden; }
 body {
   margin: 0; background: var(--paper); color: var(--ink);
-  font: 400 var(--fs)/1.6 var(--sans);
+  font: 400 var(--fs)/var(--line) var(--sans);
   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
   font-synthesis: none;
 }
@@ -61,36 +72,46 @@ a { color: inherit; }
 .dlg__name { letter-spacing: var(--track); font-size: var(--fs-s); }
 
 /* ---------- Header ---------- */
-.bar { display: flex; align-items: baseline; height: 64px; padding-top: 22px; padding-inline: max(var(--m), env(safe-area-inset-left, 0px)) max(var(--m), env(safe-area-inset-right, 0px)); }
+/* Lines up with the column. From 1280px it sits apart at the screen edge. */
+.bar { display: flex; align-items: baseline; height: 64px; width: var(--w); margin-inline: auto; padding-top: 22px; padding-inline: max(20px, env(safe-area-inset-left, 0px)) max(20px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 1280px) { .bar { width: auto; padding-inline: max(var(--m), env(safe-area-inset-left, 0px)) max(var(--m), env(safe-area-inset-right, 0px)); } }
 
 /* ---------- Page ---------- */
-.wrap { width: min(1040px, 100%); margin: 0 auto; padding-inline: max(20px, env(safe-area-inset-left, 0px)) max(20px, env(safe-area-inset-right, 0px)); }
-.plate { position: relative; margin: 0; aspect-ratio: 4 / 3; background: var(--plate); overflow: hidden; }
-.plate img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; }
-.credit { margin: 8px 0 0; text-align: right; font-size: 10px; letter-spacing: .04em; color: var(--ink-2); }
+.wrap { width: var(--w); margin: 0 auto; padding-inline: max(20px, env(safe-area-inset-left, 0px)) max(20px, env(safe-area-inset-right, 0px)); }
+/* The photograph is square and is shown whole, never cropped. */
+.plate { position: relative; margin: 0; aspect-ratio: 1; background: var(--plate); overflow: hidden; }
+.plate img { width: 100%; height: 100%; object-fit: cover; }
+.credit { margin: 8px 0 0; text-align: right; font-size: var(--fs-s); letter-spacing: .04em; color: var(--ink-2); }
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; padding-block: 40px 72px; align-items: start; }
-.title { margin: 0; font-size: 40px; font-weight: 500; line-height: 1.05; letter-spacing: -0.03em; }
-.maker { margin: 8px 0 0; font-size: 14px; color: var(--ink-2); letter-spacing: .01em; }
-.about .p { margin-top: 22px; color: var(--ink-2); }
-.label { margin: 0; font-size: var(--fs-s); letter-spacing: var(--track); text-transform: uppercase; color: var(--ink-2); font-weight: 500; }
-.terms { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 24px; margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 13px; line-height: 1.5; font-variant-numeric: tabular-nums; }
-.terms dt { color: var(--ink-2); }
-.terms dd { margin: 2px 0 0; }
-.offer .cta { margin-top: 26px; }
-@media (max-width: 760px) { .cols { grid-template-columns: 1fr; gap: 40px; padding-block: 32px 56px; } }
+/* The two columns share one set of lines. Left: the title on lines 1-2, the name on line 3, a
+   blank line, then the paragraphs. Right: the label on the title's baseline, a rule under line 3,
+   the edition names on the first line of the first paragraph and their values on its second. */
+.title { position: relative; top: var(--sit-title, 0px); margin: 0; font-size: 40px; font-weight: 500; line-height: calc(var(--line) * 2); letter-spacing: -0.03em; }
+.maker { position: relative; top: var(--sit); margin: 0; font-size: var(--fs-s); color: var(--ink-2); letter-spacing: .01em; }
+.about .p { margin-top: var(--line); color: var(--ink-2); }
+.label { position: relative; top: var(--sit); margin: var(--line) 0 0; font-size: var(--fs-s); letter-spacing: var(--track); text-transform: uppercase; color: var(--ink-2); font-weight: 500; }
+.terms { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 24px; margin: var(--line) 0 0; padding-top: calc(var(--line) - 1px); border-top: 1px solid var(--rule); font-variant-numeric: tabular-nums; }
+.terms dt { position: relative; top: var(--sit); font-size: var(--fs-s); color: var(--ink-2); }
+.terms dd { margin: 0; }
+.offer .cta { margin-top: var(--line); height: calc(var(--line) * 2); }
+@media (max-width: 760px) { .cols { grid-template-columns: 1fr; gap: 40px; padding-block: 32px 56px; } .label { margin-top: 0; } }
 @media (max-width: 520px) {
   .title { font-size: 32px; }
-  .plate { aspect-ratio: 1; }
+  .dlg__title { font-size: 32px; }
   .terms { grid-template-columns: 1fr; gap: 0; }
-  .terms div { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px solid var(--rule); }
+  .terms div { display: flex; justify-content: space-between; align-items: baseline; padding: 6px 0; border-bottom: 1px solid var(--rule); }
+  .terms dt { top: 0; }
   .terms dd { margin: 0; }
 }
 
 /* ---------- Footer ---------- */
-.foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 8px calc(36px + env(safe-area-inset-bottom, 0px)); font-size: var(--fs-s); line-height: 1; color: var(--ink-2); }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px 16px; padding-block: 8px calc(36px + env(safe-area-inset-bottom, 0px)); font-size: var(--fs-s); line-height: 1; color: var(--ink-2); }
+.foot > span { white-space: nowrap; }
 .foot__right { display: flex; align-items: center; gap: 18px; }
 .foot a { text-decoration: none; }
-.soc { display: inline-flex; color: var(--ink-2); }
+/* The icons stay 15px; the area that takes a tap is 33 by 44px, pulled back so nothing moves. */
+.soc { display: inline-flex; align-items: center; justify-content: center; width: 33px; height: 44px; margin: -14px -9px; color: var(--ink-2); }
+.foot__mono { display: inline-block; padding-block: 16px; margin-block: -16px; }
 .soc svg { width: 15px; height: 15px; display: block; }
 .foot__mono b { color: var(--ink); font-weight: 400; }
 @media (hover: hover) {
@@ -106,6 +127,8 @@ a { color: inherit; }
   background: var(--paper); color: var(--ink);
 }
 .enquiry::backdrop { background: var(--scrim); }
+/* As a panel over the page it takes the plate colour so its edge shows. Full screen, it stays on paper. */
+@media (min-width: 641px) { .enquiry { background: var(--plate); } }
 @media (max-width: 640px) {
   .enquiry { width: 100%; height: 100%; max-width: 100%; max-height: 100%; margin: 0; }
 }
@@ -115,7 +138,7 @@ a { color: inherit; }
 }
 .dlg__bar { display: flex; align-items: center; justify-content: space-between; min-height: 48px; padding-top: 12px; }
 .dlg__name { font-weight: 500; font-variant-numeric: tabular-nums; }
-.dlg__close { appearance: none; padding: 10px 0 10px 16px; border: 0; background: none; color: var(--ink); font-size: 13px; cursor: pointer; }
+.dlg__close { appearance: none; padding: 10px 0 10px 16px; border: 0; background: none; color: var(--ink); font-size: var(--fs-s); cursor: pointer; }
 @media (hover: hover) { .dlg__close:hover { text-decoration: underline; text-underline-offset: 3px; } }
 .textbtn {
   appearance: none; padding: 10px 0; border: 0; background: none; color: var(--ink); cursor: pointer;
@@ -125,11 +148,11 @@ a { color: inherit; }
 .dlg__intro .p { color: var(--ink-2); }
 .done { display: grid; row-gap: 8px; padding-bottom: 8px; }
 .done .cta { margin-top: 24px; }
-.dlg__title { margin: 0; font-size: 32px; font-weight: 500; line-height: 1.05; letter-spacing: -0.025em; }
+.dlg__title { margin: 0; font-size: 40px; font-weight: 500; line-height: 1.05; letter-spacing: -0.025em; }
 .dlg__title:focus { outline: none; }
 .form { display: grid; row-gap: 22px; padding-top: 22px; border-top: 1px solid var(--rule); }
 .field { display: grid; row-gap: 2px; min-width: 0; }
-.flabel { color: var(--ink-2); font-size: 13px; line-height: 1.5; }
+.flabel { color: var(--ink-2); font-size: var(--fs-s); line-height: 1.5; }
 .flabel .opt-tag { color: var(--ink-3); margin-left: 4px; }
 .hint { margin: 0; color: var(--ink-2); font-size: var(--fs-s); line-height: 1.5; }
 .input {
@@ -137,7 +160,7 @@ a { color: inherit; }
   background-color: transparent; color: var(--ink); font-size: 16px; line-height: 1.4;
 }
 .input:focus { outline: none; border-bottom-color: var(--ink); box-shadow: none; }
-.input::placeholder { color: var(--line); opacity: 1; }
+.input::placeholder { color: var(--ink-3); opacity: 1; }
 textarea.input { min-height: 72px; resize: vertical; }
 @media (hover: hover) and (pointer: fine) { .input { font-size: var(--fs); line-height: 1.55; } }
 
@@ -153,6 +176,8 @@ textarea.input { min-height: 72px; resize: vertical; }
 .status { margin: 0; }
 .status:empty { display: none; }
 .status[data-kind="note"] { color: var(--ink-2); }
+.status[data-kind="error"] { color: var(--error); }
+.input[aria-invalid="true"] { border-bottom-color: var(--error); }
 
 @media (hover: hover) {
   .cta:not(:disabled):hover { background: var(--hover); }
@@ -193,7 +218,7 @@ textarea.input { min-height: 72px; resize: vertical; }
     <section class="about" aria-labelledby="name">
       <h1 class="title" id="name">Signet 01</h1>
       <p class="maker">Jim Hannon-Tan, 2026</p>
-      <p class="p">Signet 01 is a silver signet ring. The square spiral cut into its face makes the entire object an antenna.</p>
+      <p class="p">Signet 01 is a silver signet ring. The square spiral cut into its face makes the entire object resonate as a finely tuned antenna.</p>
       <p class="p">Touched to a phone, the ring seals a written message with a mark that anyone can verify and no one can forge.</p>
       <p class="p">For five thousand years, a signet proved that a letter came from its sender. Now that any text can be generated in a person&rsquo;s name, Signet 01 restores the purpose of the signet.</p>
     </section>
@@ -201,8 +226,8 @@ textarea.input { min-height: 72px; resize: vertical; }
     <section class="offer" aria-label="Founding Edition">
       <p class="label">Founding Edition</p>
       <dl class="terms">
-        <div><dt>Material</dt><dd>925 sterling silver</dd></div>
-        <div><dt>Edition</dt><dd>10 numbered pieces</dd></div>
+        <div><dt>Material</dt><dd>Sterling silver</dd></div>
+        <div><dt>Edition</dt><dd>10 items</dd></div>
         <div><dt>Price</dt><dd>US$10,000</dd></div>
       </dl>
       <button class="cta" id="cta" type="button" data-open data-cta>Enquire</button>
