@@ -88,14 +88,15 @@ The website of HANNON TAN, Jim Hannon-Tan's design studio, and its first product
 - British spelling: authorise, centre, colour.
 - Claims stay honest. Add no promises the product can't back, such as lifetime support, upgrades, investment value or working with every phone, door or system.
 - Prices, edition terms and readiness labels are Jim's to decide. Publish deposit or reservation terms only after he confirms them.
-- The Founding Edition price is US$10,000. Jim took it off the home page and the monograph on 3 Nov 2026. The dark home page on branch `home-object` (10 Nov 2026) shows it again. The monograph, /1c, /6 and branch 6 show none.
+- The Founding Edition price is US$10,000. Jim took it off the home page and the monograph on 3 Nov 2026. The dark home page on branch `home-object` (10 Nov 2026) and the monograph (versions 9 and 10) show it again. /1c, /6 and branch 6 show none.
 
 ## Product facts on the site
 - Signet 01, reference S01.AG. 925 sterling silver. A 12-turn labyrinth antenna. Arx HaLo secure element; its key is made on the chip and can't be exported. Passive NFC, with no battery.
-- Founding Edition: ten individually numbered rings in 925 sterling silver, US$10,000 each. First casting closes 15 December 2026. Delivery from Q1 2027. Older pages still show Edition 01 with a 30 November casting and no price.
+- Founding Edition: ten individually numbered rings in 925 sterling silver, US$10,000 each. Two artist's proofs besides the ten (Jim, 10 Nov 2026; in the monograph. The home page Edition row reads "10 items", Jim's wording of 10 Nov). First casting closes 15 December 2026. Delivery from Q1 2027. Older pages still show Edition 01 with a 30 November casting and no price.
 - Sealing a written message: touch the ring to the phone to seal a message; whoever receives it can confirm it came from the owner, unaltered.
 - Further applications (authorising AI actions, blockchain transactions) are described on the home page only as "in development".
-- Works with iPhone and Android phones with NFC. Each function needs compatible software.
+- The monograph (versions 9 and 10) describes the product as it will ship: the Signet app for iPhone and a page for every seal. Jim doesn't want development status mentioned there. Version 9 showed the casting close (15 December 2026) and delivery (from Q1 2027); version 10 shows delivery only.
+- iPhone only to begin with (Jim, 10 Nov 2026), through the Signet app. Older pages still say iPhone and Android.
 - Provenance is recorded on LUKSO, in the owner's Universal Profile. Studio servicing can renew the electronics and refinish the silver.
 
 ## Readiness labels (branch 6 and /6)
